@@ -30,7 +30,7 @@ afterEach(async () => {
   await termBrowser();
 });
 
-describe('Crie uma página para adicionar ou editar uma partida', () => {
+describe('Implemente a página de adicionar ou editar uma partida', () => {
   it('Será avaliado que existem todos os componentes na tela', async () => {
     await page.waitForTimeout(500);
 

@@ -12,7 +12,6 @@ const {
 
 let database;
 
-/* O Docker deveria ser inicializado juntamente com o Sequelize para o teste rodar no container porem não estou fazendo isso aqui devido ao problema no Docker que não espera o Backend popular o Banco de Dados com o Sequelize */
 beforeAll(async () => {
   database = sequelize;
 });

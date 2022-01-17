@@ -25,38 +25,62 @@ beforeAll(async () => {
   });
 });
 
-describe('Crie testes que cubram no mínimo X por cento dos arquivos do front-end e back-end em src com um mínimo de X linhas cobertas em cada', () => {
-  test('No front-end e no back-end', () => {
-    expect(frontEnd.skipped).toStrictEqual(0);
-    expect(frontEnd.pct).toBeGreaterThanOrEqual(20);
-    expect(frontEnd.covered).toBeGreaterThanOrEqual(40);
-
-    expect(backEnd.skipped).toStrictEqual(0);
-    expect(backEnd.pct).toBeGreaterThanOrEqual(20);
-    expect(backEnd.covered).toBeGreaterThanOrEqual(40);
-  });
-});
-
-describe('Crie testes que cubram no mínimo X por cento dos arquivos do front-end e back-end em src com um mínimo de X linhas cobertas em cada', () => {
+describe('Crie testes que cubram no mínimo 40 por cento dos arquivos do front-end e back-end em src com um mínimo de 60 linhas cobertas em cada', () => {
   test('No front-end e no back-end', () => {
     expect(frontEnd.skipped).toStrictEqual(0);
     expect(frontEnd.pct).toBeGreaterThanOrEqual(40);
-    expect(frontEnd.covered).toBeGreaterThanOrEqual(80);
+    expect(frontEnd.covered).toBeGreaterThanOrEqual(60);
 
     expect(backEnd.skipped).toStrictEqual(0);
     expect(backEnd.pct).toBeGreaterThanOrEqual(40);
+    expect(backEnd.covered).toBeGreaterThanOrEqual(60);
+  });
+});
+
+describe('Crie testes que cubram no mínimo 50 por cento dos arquivos do front-end e back-end em src com um mínimo de 70 linhas cobertas em cada', () => {
+  test('No front-end e no back-end', () => {
+    expect(frontEnd.skipped).toStrictEqual(0);
+    expect(frontEnd.pct).toBeGreaterThanOrEqual(50);
+    expect(frontEnd.covered).toBeGreaterThanOrEqual(70);
+
+    expect(backEnd.skipped).toStrictEqual(0);
+    expect(backEnd.pct).toBeGreaterThanOrEqual(50);
+    expect(backEnd.covered).toBeGreaterThanOrEqual(70);
+  });
+});
+
+describe('Crie testes que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 80 linhas cobertas em cada', () => {
+  test('No front-end e no back-end', () => {
+    expect(frontEnd.skipped).toStrictEqual(0);
+    expect(frontEnd.pct).toBeGreaterThanOrEqual(60);
+    expect(frontEnd.covered).toBeGreaterThanOrEqual(80);
+
+    expect(backEnd.skipped).toStrictEqual(0);
+    expect(backEnd.pct).toBeGreaterThanOrEqual(60);
     expect(backEnd.covered).toBeGreaterThanOrEqual(80);
   });
 });
 
-describe('Crie testes que cubram no mínimo X por cento dos arquivos do front-end e back-end em src com um mínimo de X linhas cobertas em cada', () => {
+describe('Crie testes que cubram no mínimo 70 por cento dos arquivos do front-end e back-end em src com um mínimo de 100 linhas cobertas em cada', () => {
   test('No front-end e no back-end', () => {
     expect(frontEnd.skipped).toStrictEqual(0);
-    expect(frontEnd.pct).toBeGreaterThanOrEqual(60);
-    expect(frontEnd.covered).toBeGreaterThanOrEqual(120);
+    expect(frontEnd.pct).toBeGreaterThanOrEqual(70);
+    expect(frontEnd.covered).toBeGreaterThanOrEqual(100);
 
     expect(backEnd.skipped).toStrictEqual(0);
-    expect(backEnd.pct).toBeGreaterThanOrEqual(60);
-    expect(backEnd.covered).toBeGreaterThanOrEqual(120);
+    expect(backEnd.pct).toBeGreaterThanOrEqual(70);
+    expect(backEnd.covered).toBeGreaterThanOrEqual(100);
+  });
+});
+
+describe('Crie testes que cubram no mínimo 80 por cento dos arquivos do front-end e back-end em src com um mínimo de 130 linhas cobertas em cada', () => {
+  test('No front-end e no back-end', () => {
+    expect(frontEnd.skipped).toStrictEqual(0);
+    expect(frontEnd.pct).toBeGreaterThanOrEqual(80);
+    expect(frontEnd.covered).toBeGreaterThanOrEqual(130);
+
+    expect(backEnd.skipped).toStrictEqual(0);
+    expect(backEnd.pct).toBeGreaterThanOrEqual(80);
+    expect(backEnd.covered).toBeGreaterThanOrEqual(130);
   });
 });

@@ -20,7 +20,7 @@ afterEach(async () => {
   await termBrowser();
 });
 
-describe('Crie uma página de login com a rota "/login"', () => {
+describe('Implemente a página de login com a rota "/login"', () => {
   it('O avaliador verifica se é possível acessar com dados corretos de um usuário comum, e que após o acesso será redirecionado para a tela de jogos', async () => {
     await page.waitForTimeout(500);
 
