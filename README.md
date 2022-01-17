@@ -749,23 +749,16 @@ Alguns exemplos:
     - Será avaliado que ao alterar o resultado de uma partida, o novo resultado será salvo no banco de dados com o status de `true` ao clicar no botão de `Editar` na tela `/matchs/settings`
     - Será avaliado que ao alterar o resultado de uma partida, o novo resultado deve ser salvo no banco de dados com o status de `false` ao clicar no botão de `Finalizar` na tela `/matchs/settings`
 ## Testes
+### 18 - Crie testes para aplicação de `Frontend` e `Backend` que cubram no mínimo 20 porcento dos arquivos em src com um mínimo de 40 linhas cobertas
 
-## Backend
-### 18 - Crie testes de integração para o `Backend` que cubram no mínimo 20 porcento dos arquivos em src com um mínimo de 40 linhas cobertas
+### 19 - Crie testes para aplicação de `Frontend` e `Backend` que cubram no mínimo 40 porcento dos arquivos em src com um mínimo de 80 linhas cobertas
 
-### 19 - Crie testes de integração para o `Backend` que cubram no mínimo 40 porcento dos arquivos em src com um mínimo de 80 linhas cobertas
-
-## Bonus
-### 20 - Crie testes de integração para o `Backend` que cubram no mínimo 60 porcento dos arquivos em src com um mínimo de 120 linhas cobertas
-
-## FrontEnd
-### 21 - Crie testes com RTL para o `Frontend` que cubram no mínimo 20 porcento dos arquivos em src com um mínimo de 40 linhas cobertas
-
-### 22 - Crie testes com RTL para o `Frontend` que cubram no mínimo 40 porcento dos arquivos em src com um mínimo de 80 linhas cobertas
+### 20 - Crie testes para aplicação de `Frontend` e `Backend` que cubram no mínimo 60 porcento dos arquivos em src com um mínimo de 120 linhas cobertas
 
 ## Bonus 
 
-### 23 - Crie testes com RTL para o `Frontend` que cubram no mínimo 60 porcento dos arquivos em src com um mínimo de 120 linhas cobertas
+### 23 - Crie testes para aplicação de `Frontend` e `Backend` que cubram no mínimo 60 porcento dos arquivos em src com um mínimo de 120 linhas cobertas
+
 ## Depois de terminar o desenvolvimento
 
 Para **"entregar"** seu projeto, siga os passos a seguir:
