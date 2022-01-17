@@ -2,16 +2,60 @@
   "requirements":
   [
     {
-      "description": "1 - Crie uma migration e um model para a tabela de clubs",
+      "description": "1 - Crie uma migration e um model para as tabelas de clubs, matchs e users ",
       "bonus": false
     },
     {
-      "description": "2 - Crie uma migration e um model para a tabela de matchs",
+      "description": "2 - Implemente os botões que redirecionam para as páginas de `Login`, `Jogos`, `Classificação` ",
       "bonus": false
     },
     {
-      "description": "3 - Crie uma migration e um model para a tabela de users",
+      "description": "3 - O header deve possuir o titulo indicando em qual página está atualmente",
       "bonus": false
+    },
+    {
+      "description": "4 - Verifica a tabela de ScoreBoard",
+      "bonus": false
+    },
+    {
+      "description": "5 - Verifica se é possível a partir da página LEADERBOARD navegar para",
+      "bonus": false
+    },
+    {
+      "description": "6 - Implemente a página de login com a rota `/login`",
+      "bonus": false
+    },
+    {
+      "description": "7 - Ao fazer login, será armazenado os dados do usuario no localstorage, na chave `user`",
+      "bonus": false
+    },
+    {
+      "description": "8 - Implemente a página de Partidas",
+      "bonus": false
+    },
+    {
+      "description": "9 - Implemente a página de Adicionar Partida",
+      "bonus": false
+    },
+    {
+      "description": "10 - Implemente página de Editar Partida",
+      "bonus": false
+    },
+    {
+      "description": "11 - Crie testes que cubram no mínimo 40 por cento dos arquivos do front-end e back-end em src com um mínimo de 60 linhas cobertas em cada",
+      "bonus": false
+    },
+    {
+      "description": "12 - Crie testes que cubram no mínimo 50 por cento dos arquivos do front-end e back-end em src com um mínimo de 70 linhas cobertas em cada",
+      "bonus": false
+    },
+    {
+      "description": "13 - Crie testes que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 80 linhas cobertas em cada",
+      "bonus": false
+    },
+    {
+      "description": "14 - Crie testes que cubram no mínimo 70 por cento dos arquivos do front-end e back-end em src com um mínimo de 100 linhas cobertas em cada",
+      "bonus": true
     }
   ]
 }

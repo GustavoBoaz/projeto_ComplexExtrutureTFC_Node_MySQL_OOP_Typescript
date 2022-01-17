@@ -34,7 +34,7 @@ afterEach(async () => {
   await termBrowser();
 });
 
-describe('Crie uma página para adicionar ou editar uma partida', () => {
+describe('Implemente página de Editar Partida', () => {
   it('Será avaliado que é possivel aterar o resultado de uma partida', async () => {
     await page.waitForTimeout(500);
 

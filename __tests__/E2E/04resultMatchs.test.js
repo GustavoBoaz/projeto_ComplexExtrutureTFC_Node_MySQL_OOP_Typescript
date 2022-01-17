@@ -19,7 +19,7 @@ afterEach(async () => {
   await termBrowser();
 });
 
-describe('Crie uma página com os jogos que finalizaram e que ainda estão em andamento', () => {
+describe('Implemente a página de Partidas', () => {
   it('Será validado que todos os componentes estão na tela quando acessado por uma pessoa usuária', async () => {
     await page.waitForTimeout(500);
 

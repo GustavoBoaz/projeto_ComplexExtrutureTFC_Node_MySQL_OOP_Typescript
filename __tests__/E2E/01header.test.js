@@ -23,7 +23,7 @@ afterEach(async () => {
   await termBrowser();
 });
 
-describe('Crie um botão que redireciona para página de `Login`', () => {
+describe('Implemente os botões que redirecionam para as páginas de `Login`, `Jogos`, `Classificação`', () => {
   it('Sera avaliado que ao clicar no botão, será redirecionara para a rota `/login`', async () => {
     await page.waitForTimeout(500);
 
@@ -33,8 +33,6 @@ describe('Crie um botão que redireciona para página de `Login`', () => {
 
     await expect(page.url()).toBe(URL_PAGE_LOGIN);
   });
-});
-describe('Crie um botão que redireciona para página de `Jogos`', () => {
   it('Sera avaliado que ao clicar no botão, será redirecionara para a rota `/matchs`', async () => {
     await page.waitForTimeout(500);
     const showMatchsButton = await page.$(header.showMatchsButton);
@@ -43,8 +41,6 @@ describe('Crie um botão que redireciona para página de `Jogos`', () => {
 
     await expect(page.url()).toBe(URL_PAGE_MATCHS);
   });
-});
-describe('Crie um botão que redireciona para página de `Classificação`', () => {
   it('Sera avaliado que ao clicar no botão, será redirecionara para a rota `/leaderboard`', async () => {
     await page.waitForTimeout(500);
     const showMatchsButton = await page.$(header.showMatchsButton);
@@ -58,6 +54,7 @@ describe('Crie um botão que redireciona para página de `Classificação`', () 
     await expect(page.url()).toBe(URL_PAGE_LEADERBOARD);
   });
 });
+
 describe('O header deve possuir um titulo indicando em qual página estamos', () => {
   it('Sera avaliado que na página de classificacao o header possui o titulo  "CLASSIFICACAO"', async () => {
     await page.waitForTimeout(500);
