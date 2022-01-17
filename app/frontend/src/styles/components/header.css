@@ -14,14 +14,14 @@
   justify-content: flex-start;
 }
 
-.image-content img {
+.image-logo {
   height: 83px;
   left: 110px;
   top: 20px;
   width: 130px;
 }
 
-.common-header h1 {
+.header-title {
   align-items: center;
   color: white;
   display: flex;
@@ -34,11 +34,13 @@
   text-align: center;
 }
 
-.common-header a {
+.navigation-btn {
   align-items: center;
   background: #2fc18c;
+  border: none;
   border-radius: 8px;
   color: white;
+  cursor: pointer;
   display: flex;
   font-family: Verdana , Tahoma , sans-serif;
   font-size: 16px;
@@ -52,7 +54,7 @@
   width: 164px;
 }
 
-.common-header a:hover {
+.navigation-btn:hover {
   background: #32a791;
   transition: (
     200ms
@@ -69,7 +71,7 @@
   justify-content: flex-end;
 }
 
-.buttons-content button {
+.logoff-btn {
   align-items: center;
   background: none;
   border: none;

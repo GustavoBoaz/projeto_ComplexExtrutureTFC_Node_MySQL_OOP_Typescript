@@ -1,7 +1,11 @@
 import React from 'react';
 
 const MatchsBtn = () => (
-  <button type='button' data-testid="header__show_matchs_btn">
+  <button
+    className="navigation-btn"
+    data-testid="header__show_matchs_btn"
+    type="button"
+  >
     Partidas
   </button>
 );

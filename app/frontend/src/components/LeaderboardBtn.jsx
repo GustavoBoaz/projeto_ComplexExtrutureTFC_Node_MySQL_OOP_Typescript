@@ -1,7 +1,11 @@
 import React from 'react';
 
 const LeaderboardBtn = () => (
-  <button type='button' data-testid="header__show_classification_btn">
+  <button
+    className="navigation-btn"
+    data-testid="header__show_classification_btn"
+    type="button"
+  >
     Classificação
   </button>
 );

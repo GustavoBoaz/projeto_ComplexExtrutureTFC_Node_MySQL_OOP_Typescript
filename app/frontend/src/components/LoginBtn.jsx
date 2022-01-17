@@ -1,7 +1,11 @@
 import React from 'react';
 
 const LoginBtn = () => (
-  <button type='button' data-testid="header__login_btn">
+  <button
+    className="navigation-btn"
+    data-testid="header__login_btn"
+    type="button"
+  >
     Login
   </button>
 );

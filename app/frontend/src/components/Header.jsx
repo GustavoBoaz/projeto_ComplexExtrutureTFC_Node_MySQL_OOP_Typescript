@@ -22,15 +22,28 @@ const Header = ({
   return (
     <header className="common-header">
       <div className="image-content">
-        <img src={ negativeLogo } alt="Trybe Futebol Clube Negative Logo" />
+        <img
+          className="image-logo"
+          src={ negativeLogo }
+          alt="Trybe Futebol Clube Negative Logo"
+        />
       </div>
-      <h1 data-testId="header__title">{ page }</h1>
+      <h1
+        className="header-title"
+        data-testId="header__title"
+      >
+        { page }
+      </h1>
       <div className="buttons-content">
         <FirstNavigationLink />
         {
           (logged)
             ? (
-              <button type="button" onClick={ () => logoff() }>
+              <button
+                className="logoff-btn"
+                type="button"
+                onClick={ () => logoff() }
+              >
                 Sair
                 <img src={ exitToAppImg } alt="Sair do aplicativo" />
               </button>
