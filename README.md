@@ -292,24 +292,24 @@ Alguns exemplos:
           retries: 10
 ```
 
+
+## Lista de Requisitos:
 ### Sequelize
 
+### 1 - Crie uma migration e um model para as tabelas de clubs, matchs e users
 #### Faça a estrutura do sequelize corretamente e adicione os valores iniciais nas seeders.
 
   - Será avaliado que o sequelize foi construído corretamente e se os valores iniciais que foram salvos no banco de dados estão corretos.
-
-## Lista de Requisitos:
+  - O avaliador consultará os dados da tabela `clubs`,`matchs` e `users` verificando se ela contém os dados iniciais corretos
 
 ### Header
 
-#### 1 - O header deve possuir um titulo indicando em qual página estamos
+### 2 - Os headers devem possuir o titulo indicando em qual página está atualmente
+#### 2.1 - O header deve possuir um titulo indicando em qual página estamos
 
   EXEMPLO: 
   - Se estamos na página de Classificação o header deve possuir o título `CLASSIFICAÇÃO`
-  - Se estamos na página de Login o header deve possuir o titulo `LOGIN`
-  - Se estamos na página de Jogos o header deve possuir o titulo `JOGOS`
-  - Se estamos na página de Adicionar partida o header deve possuir o titulo `ADICIONAR PARTIDA`
-  - Se estamos na página de Editar partida o header deve possuir o titulo `EDITAR PARTIDA`
+  
 
   **OBS:**
     O titulo deve ser passado para o componente `/components/Header.jsx` pela props `page`
@@ -317,7 +317,9 @@ Alguns exemplos:
   **A seguinte verificação será feita:**
     - Sera avaliado que ao mudar de página o seu título corresponde a página atual
 
-### 2 - Implemente o botão que redireciona para página de `Login`
+### 3 - Implemente os botões que redirecionam para as páginas de `Login`, `Jogos`, `Classificação`
+
+#### 3.1 - Implemente o botão que redireciona para página de `Login`
 
   - O botão com o data-testid `header__login_btn` deve redirecionar para a rota `/login`, 
 
@@ -331,7 +333,7 @@ Alguns exemplos:
   **A seguinte verificação será feita:**
     - Sera avaliado que ao clicar no botão, a página será redirecionada para a rota `/login`
 
-### 3 - Implemente o botão que redireciona para página de `Classificação`
+#### 3.2 - Implemente o botão que redireciona para página de `Classificação`
 
   - O botão com o data-testid `header__show_classification_btn` deve redirecionar para a rota `/leaderboard`, 
   
@@ -342,7 +344,7 @@ Alguns exemplos:
   **A seguinte verificação será feita:**
     - Sera avaliado que ao clicar no botão, a página será redirecionada para a rota `/leaderboard`
 
-### 4 - Implemente um botão que redireciona para página de `Jogos`.
+#### 3.3 - Implemente um botão que redireciona para página de `Jogos`.
 
   - Esse botão deve conter o data-testid `header__show_matchs_btn`
 
@@ -355,7 +357,10 @@ Alguns exemplos:
 
 ## Leaderboard
 
-### 5 - Crie um endpoint para retornar a tabela do campeonato
+### 4 - Verifica se é possível a partir da página LEADERBOARD navegar para as demais páginas
+
+### 5 - Implemente a tabela de ScoreBoard para a pagina CLASSIFICAÇÃO
+#### 5.1 - Crie um endpoint para retornar a tabela do campeonato
 
 - Sua rota deve ser (`/leaderboard`);
 
@@ -441,7 +446,7 @@ Alguns exemplos:
   
   Por padrão a resposta de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
 
-### 6 - Faça uma requisição para o endpoint `/leaderboard` e preencha uma tabela com os dados retornados
+### 5.2 - Faça uma requisição para o endpoint `/leaderboard` e preencha uma tabela com os dados retornados
 
   - O valor retornado pela requisição deve ser adicionado ao state `leaderboard`, no arquivo `/components/LeaderboardTable.jsx`
 
@@ -456,7 +461,8 @@ Alguns exemplos:
 
 ## Login
 
-### 7 - Crie um endpoint para o login de usuários
+### 6 - Implemente a página de login com a rota /login
+#### 6.1 - Crie um endpoint para o login de usuários
 
 - A rota deve ser (`/auth`).
 
@@ -522,7 +528,8 @@ Alguns exemplos:
     - Será avaliado que não é possível acessar com senha incorreta
 
 
-### 8 - Implemente a página de login com a rota `/login`
+### 7 - Ao fazer login, será armazenado os dados do usuario no localstorage, na chave user
+#### 7.1 - Implemente a página de login com a rota `/login`
 
   - Faça uma requisição ao endpoint `/auth`, enviando pelo body o `email` e `password` do usuário
   - Salve os dados de login retornados no localstorage com a chave `user`
@@ -535,7 +542,8 @@ Alguns exemplos:
 
 ## Jogos
 
-### 9 - Implemente o botão que redireciona para a página de `Adicionar Partida`
+### 8 - Implemente a página de Partidas
+#### 8.1 - Implemente o botão que redireciona para a página de `Adicionar Partida`
 
   - O botão de adicionar partidas deve direcionar para a rota `/matchs/settings`
 
@@ -546,14 +554,14 @@ Alguns exemplos:
     - Sera avaliado que ao clicar no botão, a página será redirecionada para a rota `/matches/settings` 
 
 
-### 10 - O botão de `Adicionar Partida` deve somente estar visivel quando o administrador estiver logado.
+#### 8.2 - O botão de `Adicionar Partida` deve somente estar visivel quando o administrador estiver logado.
 
   **A seguinte verificação será feita:**
     - Sera avaliado que o botão de adicionar partida estará visivel somente com o administrador logado
     - Será validado que o botão adicionar partida não está visivel quando não houver um usuário logado.
     - Será validado que ao clicar no botão de adicionar partida, será redirecionado para tela de `matchs/settings`
 
-### 11 - Crie um endpoint para listar todas as partidas
+#### 8.3 - Crie um endpoint para listar todas as partidas
 
   - O endpoint deve ter a rota `/matchs`
   - Deve retornar todos os jogos, que estejam em andamento ou finalizados
@@ -600,7 +608,7 @@ Alguns exemplos:
 
 
   
-### 12 - Implemente a página de Partidas com a rota `/matchs`
+### 8.4 - Implemente a página de Partidas com a rota `/matchs`
 
   - Faça uma requisição ao endpoint `/matchs` poara retorna todas as partidas e adicione seu retorno no state `games`
 
@@ -628,7 +636,8 @@ Alguns exemplos:
 
 ## Adicionar
 
-### 13 - Crie um endpoint para listar todos os clubes cadastrados
+### 9 - Implemente a página de Adicionar Partida
+#### 9.1 - Crie um endpoint para listar todos os clubes cadastrados
 
 - Sua rota deve ser (`/clubs`);
 
@@ -662,12 +671,12 @@ Alguns exemplos:
 }
 ```
 
-### 14 - Implemente a página de Adicionar Partida
+#### 9.2 - Implemente a página de Adicionar Partida
 
   - Faça uma requisição ao endpoint `/clubs` para retorna todos os times e armazena-o no state `clubs`, no arquivo `/components/MatchSettings.jsx`
 
 
-### 15 - Crie um endpoint para o cadastro de novas partidas
+#### 9.3 - Crie um endpoint para o cadastro de novas partidas
 
 - Sua rota deve ser (`/match`);
 
@@ -717,7 +726,7 @@ Alguns exemplos:
 }
 ```
 
-#### 16 - Implemente a página para adicionar partidas
+#### 9.4 - Implemente a página para adicionar partidas
 
   - Deve conter um select para o time mandante com todos os times.
   - Deve conter um select para o time visitante com todos os times.
@@ -738,7 +747,8 @@ Alguns exemplos:
 
 ### Editar Partidas
 
-#### 17 - Implemente a página para editar partidas
+### 10 - Implemente página de Editar Partida
+#### 10.1 - Implemente a página para editar partidas
 
   - Ao clicar no botão `Editar` uma partida na tela de `/matchs`, os dados desta partida deve ser exibido na tela de `Editar Partida` no `/matchs/settings`
   - Ao alterar o resultado de uma partida, o novo resultado deve ser salvo no banco de dados com o status de `true` ao clicar no botão de `Editar` na tela `/matchs/settings`
@@ -749,15 +759,15 @@ Alguns exemplos:
     - Será avaliado que ao alterar o resultado de uma partida, o novo resultado será salvo no banco de dados com o status de `true` ao clicar no botão de `Editar` na tela `/matchs/settings`
     - Será avaliado que ao alterar o resultado de uma partida, o novo resultado deve ser salvo no banco de dados com o status de `false` ao clicar no botão de `Finalizar` na tela `/matchs/settings`
 ## Testes
-### 18 - Crie testes para aplicação de `Frontend` e `Backend` que cubram no mínimo 20 porcento dos arquivos em src com um mínimo de 40 linhas cobertas
+### 11 - Crie testes que cubram no mínimo 40 por cento dos arquivos do `frontend` e `backend` em src com um mínimo de 60 linhas cobertas em cada
 
-### 19 - Crie testes para aplicação de `Frontend` e `Backend` que cubram no mínimo 40 porcento dos arquivos em src com um mínimo de 80 linhas cobertas
+### 12 - Crie testes que cubram no mínimo 50 por cento dos arquivos do `frontend` e `backend` em src com um mínimo de 70 linhas cobertas em cada
 
-### 20 - Crie testes para aplicação de `Frontend` e `Backend` que cubram no mínimo 60 porcento dos arquivos em src com um mínimo de 120 linhas cobertas
+### 13 - Crie testes que cubram no mínimo 60 por cento dos arquivos do `frontend` e `backend` em src com um mínimo de 80 linhas cobertas em cada
 
 ## Bonus 
 
-### 23 - Crie testes para aplicação de `Frontend` e `Backend` que cubram no mínimo 60 porcento dos arquivos em src com um mínimo de 120 linhas cobertas
+### 14 - Crie testes que cubram no mínimo 70 por cento dos arquivos do `frontend` e `backend` em src com um mínimo de 100 linhas cobertas em cada
 
 ## Depois de terminar o desenvolvimento
 

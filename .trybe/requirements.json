@@ -2,31 +2,31 @@
   "requirements":
   [
     {
-      "description": "1 - Crie uma migration e um model para as tabelas de clubs, matchs e users ",
+      "description": "1 - Crie uma migration e um model para as tabelas de clubs, matchs e users",
       "bonus": false
     },
     {
-      "description": "2 - Implemente os botões que redirecionam para as páginas de `Login`, `Jogos`, `Classificação` ",
+      "description": "2 - Os headers devem possuir o titulo indicando em qual página está atualmente",
       "bonus": false
     },
     {
-      "description": "3 - O header deve possuir o titulo indicando em qual página está atualmente",
+      "description": "3 - Implemente os botões que redirecionam para as páginas de Login, Partidas, Classificação",
       "bonus": false
     },
     {
-      "description": "4 - Verifica a tabela de ScoreBoard",
+      "description": "4 - Verifica se é possível a partir da página LEADERBOARD navegar para as demais páginas",
       "bonus": false
     },
     {
-      "description": "5 - Verifica se é possível a partir da página LEADERBOARD navegar para",
+      "description": "5 - Implemente a tabela de ScoreBoard para a pagina CLASSIFICAÇÃO",
       "bonus": false
     },
     {
-      "description": "6 - Implemente a página de login com a rota `/login`",
+      "description": "6 - Implemente a página de login com a rota /login",
       "bonus": false
     },
     {
-      "description": "7 - Ao fazer login, será armazenado os dados do usuario no localstorage, na chave `user`",
+      "description": "7 - Ao fazer login, será armazenado os dados do usuario no localstorage, na chave user",
       "bonus": false
     },
     {
