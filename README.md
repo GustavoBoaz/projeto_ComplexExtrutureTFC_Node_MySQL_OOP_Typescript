@@ -217,7 +217,7 @@ O não cumprimento de um requisito, total ou parcialmente, impactará em sua ava
 module.exports = {
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: women_soccer,
+  database: TRYBE_FUTBOL_CLUB,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dialect: 'mysql',
@@ -225,7 +225,7 @@ module.exports = {
 
 ```
 
-**(Neste arquivo e obrigatório deixar o nome do database como `"database": 'women_soccer'`)**
+**(Neste arquivo e obrigatório deixar o nome do database como `"database": 'TRYBE_FUTBOL_CLUB'`)**
 
 **É essencial usar essas 3 variávies no arquivo acima:**
 
