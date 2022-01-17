@@ -397,7 +397,7 @@ Alguns exemplos:
 
   Obs.: O seu resultado deverá ser limitado a `uma casa decimal`.
   
-- O resultado deverá ser ordenado sempre de forma decrescente, levando em consideração a quantidade de pontos que o time acumulou. Em caso de empate no `Total de Pontos`, você deve levar em consieração os seguintes critérios para desempate:
+- O resultado deverá ser ordenado sempre de forma decrescente, levando em consideração a quantidade de pontos que o time acumulou. Em caso de empate no `Total de Pontos`, você deve levar em consideração os seguintes critérios para desempate:
 
   **Ordem para desempate**
 
