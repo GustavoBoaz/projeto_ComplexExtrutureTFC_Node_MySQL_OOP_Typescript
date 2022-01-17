@@ -1,0 +1,17 @@
+{
+  "requirements":
+  [
+    {
+      "description": "1 - Crie uma migration e um model para a tabela de clubs",
+      "bonus": false
+    },
+    {
+      "description": "2 - Crie uma migration e um model para a tabela de matchs",
+      "bonus": false
+    },
+    {
+      "description": "3 - Crie uma migration e um model para a tabela de users",
+      "bonus": false
+    }
+  ]
+}
