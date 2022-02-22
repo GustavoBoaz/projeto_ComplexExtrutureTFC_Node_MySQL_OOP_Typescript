@@ -23,7 +23,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [Instruções para entregar seu projeto:](#instruções-para-entregar-seu-projeto)
     - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
     - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-    - [Execução de testes unitários](#execução-de-testes-unitários)
+    - [Execução de testes de cobertura](#execução-de-testes-de-cobertura)
 - [Como desenvolver](#como-desenvolver)
   - [Linter](#linter)
 - [Requisitos do projeto:](#requisitos-do-projeto)
@@ -31,7 +31,8 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     - [⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️](#️-leia-os-atentamente-e-siga-à-risca-o-que-for-pedido-️)
     - [👀 Observações importantes:](#-observações-importantes)
       - [Variáveis:](#variáveis)
-      - [Variável JWT (opcional):](#variável-jwt-opcional)
+      - [Chave JWT:](#chave-jwt)
+      - [⚠️ Inicie seu `docker-compose` antes de testar localmente](#️-inicie-seu-docker-compose-antes-de-testar-localmente)
     - [Dicas](#dicas)
       - [Status HTTP](#status-http)
   - [Lista Pré-Requisitos:](#lista-pré-requisitos)
@@ -46,7 +47,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
       - [5 - Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas](#5---desenvolva-testes-que-cubram-no-mínimo-30-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-45-linhas-cobertas)
       - [6 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas](#6---desenvolva-testes-que-cubram-no-mínimo-45-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-70-linhas-cobertas)
       - [7 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas](#7---desenvolva-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-80-linhas-cobertas)
-      - [8 - Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#8---desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
+      - [8 - (`Bônus`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#8---bônus-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
     - [Sequelize](#sequelize)
       - [9 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs](#9---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-clubs)
       - [10 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs](#10---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-matchs)
@@ -188,12 +189,39 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
 
 ---
 
-### Execução de testes unitários
+* ⚠️ **Para adicionar pacotes adicionais ao backend, utilize o arquivo `app/backend/packages.npm`, separando os pacotes adicionais por espaços ou quebras de linha.**
+* ⚠️ **Não altere o arquivo `app/backend/packages.json`, pois o mesmo está travado para essa avaliação**
+
+---
+
+### Execução de testes de cobertura
 
 
+A execução de testes de cobertura no backend, depende que a aplicação tenha sido *buildada* previamente.
+
+Por tanto, o cabeçalho dos seus testes, deve seguir o seguinte modelo:
+
+```javascript
+const sinon = require('sinon');
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+
+const { expect } = chai;
+
+// Essas importações dependem da `build` (script `pretest`)
+// ter sido criada corretamente
+const { app } = require('../build/app');
+const { default: Example } = require('../build/database/models/ExampleModel');
+
+chai.use(chaiHttp);
+
+describe('Seu teste', () => {
+  it('Seu sub-teste', () => {
+  });
+});
 ```
-Preencher aqui as instruções para realizar os testes localmente
-```
+
+Esse processo de *build* **deve ocorrer automaticamente, toda vez que seu backend for rodar testes de cobertura** (script `pretest` em `app/backend/package.json`)
 
 ---
 
@@ -256,13 +284,20 @@ module.exports = {
 
 **Com elas que iremos conseguir conectar ao banco do avaliador automático**
 
-#### Variável JWT (opcional):
+#### Chave JWT:
 
-`JWT_SECRET`
+⚠️ A sua chave `JWT` de ser inserida em `app/jwt.evaluation.key` e pode ser carregada no backend com o uso da biblioteca `fs`.
 
-**Também poderá ser utilizada esta variável de ambiente para o SECRET do JWT**
+#### ⚠️ Inicie seu `docker-compose` antes de testar localmente
+
+Os testes vão utilizar sua aplicação do compose para fazer as validações, por tanto **é essencial que ele esteja funcionando corretamente** para que os testes passem!
 
 ### Dicas
+
+- Você pode **instalar suas aplicações (front e back)** rodando o comando `npm run install:apps`;
+- Você pode rodar o avaliador **mostrando as operações que o navegador vai fazer no frontend** durante os testes E2E utilizando o comando `npm run test:browser`;
+- Você pode **debugar alguns erros do avaliador** (como por exemplo a validação do banco de dados, ou da compilação do TS), onde são *printados* na tela algumas infos adicionais, utilizando o comando `npm run test:debug`;
+- Você pode **subir ou descer uma aplicação do compose**, utilizando os scripts `compose:up`, `compose:down`
 
 #### Status HTTP
 
@@ -292,21 +327,24 @@ Alguns exemplos:
   **Observação**
     Em seu projeto vai conter um arquivo docker-compose.example.yml.
     Seu service do backend no docker-compose deve ter o `depends_on` exatamente igual ao do arquivo docker-compose.example.yml.
-    Use o modelo de serviço do banco de dados que está no arquivo docker-compose.example.yml que está igual ao formato abaixo.
+    Use o modelo de serviço do banco de dados que está no arquivo `app/docker-compose.example.yml` que está igual ao formato abaixo.
 
 ``` yml
-  db:
-    image: mysql:8.0.21
-    container_name: db
-    ports:
-      - 3002:3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=123456
-    restart: 'always'
-    healthcheck: # Espera a resposta do db dizendo que está 100%
-          test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-          timeout: 20s
-          retries: 10
+db:
+  image: mysql:8.0.21
+  container_name: db
+  ports:
+    - 3002:3306
+  environment:
+    - MYSQL_ROOT_PASSWORD=123456
+  restart: 'always'
+  healthcheck:
+    # Deve aguardar o banco ficar operacional
+    test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+    timeout: 10s
+    retries: 5
+  cap_add:
+    - SYS_NICE # Deve omitir alertas menores
 ```
 
 
@@ -348,7 +386,7 @@ Alguns exemplos:
   **Sugestão:**
   - Desenvolva o teste de integração da rota `/leaderboard/away`
 
-#### 8 - Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas
+#### 8 - (`Bônus`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
   - Desenvolva o teste de integração da rota `/leaderboard`
