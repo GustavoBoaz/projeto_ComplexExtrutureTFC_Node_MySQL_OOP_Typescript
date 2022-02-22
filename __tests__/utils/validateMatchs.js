@@ -1,4 +1,7 @@
+const { containerPorts } = require('../config/constants');
 const { pageMatchs } = require('./dataTestIds');
+const { URL } = require('./urls');
+const waitForResponse = require('./waitForResponse');
 
 const validateMatchs = async (page, optionShowFinishMatch, expectedResult, isAdmin) => {
   await page.waitForTimeout(500);
@@ -22,18 +25,18 @@ const validateMatchs = async (page, optionShowFinishMatch, expectedResult, isAdm
     expect(awatyTeamGoals).toEqual(matchs.away_team_goals);
 
     if (matchs.in_progress) {
-      await expect(matchStatus).toEqual('Em andamento');
+      expect(matchStatus).toEqual('Em andamento');
     } else {
-      await expect(matchStatus).toEqual('Finalizado');
+      expect(matchStatus).toEqual('Finalizado');
     }
 
     if (isAdmin) {
       const matchStatusBtn = await page.$eval(pageMatchs.matchStatusBtn(matchs.id), (el) => el.disabled);
 
       if (matchs.in_progress) {
-        await expect(matchStatusBtn).toEqual(false);
+        expect(matchStatusBtn).toEqual(false);
       } else {
-        await expect(matchStatusBtn).toEqual(true);
+        expect(matchStatusBtn).toEqual(true);
       }
     }
   }

@@ -5,6 +5,7 @@ import EditGame from '../components/EditGame';
 import Header from '../components/Header';
 import MatchsBtn from '../components/MatchsBtn';
 import Loading from '../components/Loading';
+import api, { requestData, setToken } from '../services/requests';
 import '../styles/pages/matchSettings.css';
 
 const MatchSettings = () => {
@@ -19,11 +20,34 @@ const MatchSettings = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Faça a verificação se a pessoa usuaria está logada e é um administrador.
+    (async () => {
+      const storage = JSON.parse(localStorage.getItem('user'));
+
+      if (!storage) return navigate('/');
+
+      const { token } = storage;
+
+      setToken(token);
+      api.get('/validate')
+        .then(() => setIsAuthenticated(true))
+        .catch(() => navigate('/'));
+    })();
   }, [navigate]);
 
   useEffect(() => {
-    // Faça uma requisição para o endpoint `/clubs`
+    const endpoint = '/clubs';
+
+    const { token } = JSON.parse(localStorage.getItem('user')) || { token: '' };
+    if (token !== '') {
+      setToken(token);
+    }
+    if (!clubs.length) {
+      requestData(endpoint)
+        .then((response) => {
+          setClubs(response);
+        })
+        .catch((error) => console.log(error));
+    }
   });
 
   const getClub = (club, homeOrAway) => {
@@ -32,18 +56,23 @@ const MatchSettings = () => {
   };
 
   const createMatch = async (inProgress) => {
-    // Utilize as informações necessarias para inserir uma partida no endpoint `/matchs`
-    return true
+    const body = {
+      homeTeam: +homeClub,
+      awayTeam: +awayClub,
+      homeTeamGoals: +homeTeamScoreboard,
+      awayTeamGoals: +awayTeamScoreboard,
+      inProgress,
+    };
+
+    const { data } = await api.post('/matchs', body);
+    return data;
   };
 
-  const updateMatch = async (idMatch, { homeTeamGoals, awayTeamGoals }) => {
-    // Utilize as informações necessarias para atualizar uma partida no endpoint `/matchs/:id`
-   return true
+  const updateMatch = async (id, updateGoals) => {
+    await api.patch(`/matchs/${id}`, { ...updateGoals });
   };
-  const finishMatch = async (inProgress) => {
-    // Utilize as informações necessarias para finalizar uma partida no endpoint `/matchs/:id`
-    // Essa função deve ser usada para finalizar uma partida que acabou ser criada ou que já esteja no banco de dados
-    return true
+  const finishMatch = async (id) => {
+    await api.patch(`/matchs/${id}/finish`);
   };
 
   if (!isAuthenticated) return <Loading />;
@@ -58,7 +87,7 @@ const MatchSettings = () => {
     return (
       <>
         <Header
-          page=""
+          page="EDITAR PARTIDA"
           FirstNavigationLink={ MatchsBtn }
           logged={ isAuthenticated }
           setLogin={ setIsAuthenticated }
@@ -80,7 +109,7 @@ const MatchSettings = () => {
   return (
     <>
       <Header
-        page=""
+        page="ADICIONAR PARTIDA"
         FirstNavigationLink={ MatchsBtn }
         logged={ isAuthenticated }
         setLogin={ setIsAuthenticated }

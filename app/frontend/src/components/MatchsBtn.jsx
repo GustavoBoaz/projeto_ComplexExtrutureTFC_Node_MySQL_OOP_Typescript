@@ -1,13 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MatchsBtn = () => (
-  <button
-    className="navigation-btn"
-    data-testid="header__show_matchs_btn"
-    type="button"
-  >
+  <Link data-testid="header__show_matchs_btn" to="/matchs">
     Partidas
-  </button>
+  </Link>
 );
 
 export default MatchsBtn;

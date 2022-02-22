@@ -17,6 +17,7 @@ const CreateNewGame = ({
 }) => {
   const notCreated = 'not-created';
   const [inProgress, setInProgress] = useState(notCreated);
+  const [createdMatch, setCreatedMatch] = useState(notCreated);
 
   return (
     <section className="match-settings-section">
@@ -56,23 +57,24 @@ const CreateNewGame = ({
         <div className="match-settings-form-buttons">
           <button
             data-testid="insertion_matchs__save_match_btn"
-            onClick={ () => {
-              createMatch(true);
+            onClick={ async () => {
+              const body = await createMatch(true);
+              setCreatedMatch(body);
               setInProgress('In-Progress');
             } }
             type="button"
             disabled={ (inProgress !== notCreated) }
           >
-            Salvar
+            Salvar Partida
 
           </button>
           <button
             data-testid="insertion_matchs__finish_match_btn"
-            onClick={ () => { finishMatch(false); } }
+            onClick={ () => { finishMatch(createdMatch.id); } }
             type="button"
             disabled={ (inProgress === notCreated) }
           >
-            Finalizar
+            Finalizar Partida
 
           </button>
         </div>

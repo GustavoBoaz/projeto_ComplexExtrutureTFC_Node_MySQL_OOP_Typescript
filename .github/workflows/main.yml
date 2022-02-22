@@ -15,19 +15,9 @@ on:
         required: true
 
 jobs:
-  evaluator2:
+  ESLint-Evaluator:
     runs-on: self-hosted
-
-    services:
-      mysql:
-        image: mysql:8.0.21
-        env:
-          MYSQL_ROOT_PASSWORD: 'password'
-        ports:
-          - 3306:3306
-          - 33060:33060
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
+    name: ESLint
     steps:
       - name: Fetch project repository
         uses: actions/checkout@v2
@@ -39,61 +29,6 @@ jobs:
           ref: v2
           token: ${{ secrets.GIT_HUB_PAT }}
           path: .github/actions/blocked-files-checkout
-
-      - name: Fetch Jest evaluator
-        uses: actions/checkout@v2
-        with:
-          repository: betrybe/jest-evaluator-action
-          token: ${{ secrets.GIT_HUB_PAT }}
-          path: .github/actions/jest-evaluator
-          ref: v9
-
-      - name: Fetch Store evaluation
-        uses: actions/checkout@v2
-        with:
-          repository: betrybe/store-evaluation-action
-          ref: v2
-          token: ${{ secrets.GIT_HUB_PAT }}
-          path: .github/actions/store-evaluation
-
-      - name: Restore protected files
-        uses: ./.github/actions/blocked-files-checkout
-        with:
-          restore_branch: 'main'
-
-      - name: Run Jest evaluation
-        id: evaluator
-        uses: ./.github/actions/jest-evaluator
-        with:
-          pr_author_username: ${{ github.event.inputs.pr_author_username }}
-        env:
-          MYSQL_HOST: 'mysql'
-          MYSQL_USER: 'root'
-          MYSQL_PASSWORD: 'password'
-
-      - name: Run Store evaluation
-        uses: ./.github/actions/store-evaluation
-        with:
-          evaluation-data: ${{ steps.evaluator.outputs.result }}
-          environment: staging
-          pr-number: ${{ github.event.inputs.pr_number }}
-
-  evaluator:
-    runs-on: self-hosted
-
-    services:
-      mysql:
-        image: mysql:8.0.21
-        env:
-          MYSQL_ROOT_PASSWORD: 'password'
-        ports:
-          - 3306:3306
-          - 33060:33060
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
-    steps:
-      - name: Fetch project repository
-        uses: actions/checkout@v2
 
       - name: Fetch ESLint evaluator
         uses: actions/checkout@v2
@@ -103,34 +38,10 @@ jobs:
           token: ${{ secrets.GIT_HUB_PAT }}
           path: .github/actions/eslint-evaluator
 
-      - name: Fetch Blocked Files Checkout action
-        uses: actions/checkout@v2
-        with:
-          repository: betrybe/blocked-files-checkout-action
-          ref: v2
-          token: ${{ secrets.GIT_HUB_PAT }}
-          path: .github/actions/blocked-files-checkout
-
-      - name: Fetch Jest evaluator
-        uses: actions/checkout@v2
-        with:
-          repository: betrybe/jest-evaluator-action
-          token: ${{ secrets.GIT_HUB_PAT }}
-          path: .github/actions/jest-evaluator
-          ref: v9
-
-      - name: Fetch Store evaluation
-        uses: actions/checkout@v2
-        with:
-          repository: betrybe/store-evaluation-action
-          ref: v2
-          token: ${{ secrets.GIT_HUB_PAT }}
-          path: .github/actions/store-evaluation
-
       - name: Setup NodeJS
         uses: actions/setup-node@v1.4.4
         with:
-          node-version: '12'
+          node-version: '14'
 
       - name: Restore protected files
         uses: ./.github/actions/blocked-files-checkout
@@ -143,19 +54,69 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr_number: ${{ github.event.inputs.pr_number }}
 
-      - name: Run Jest evaluation
-        id: evaluator
-        uses: ./.github/actions/jest-evaluator
+  dockerfile-linter:
+      runs-on: self-hosted
+      name: Dockerfile Linter
+      steps:
+      - uses: actions/checkout@v2
+      - name: Run Dockerfile Linter on Backend
+        run: docker run --rm -i hadolint/hadolint < ./app/backend/Dockerfile
+
+  Evaluator:
+    runs-on: self-hosted
+    name: Evaluator
+    needs: [ESLint-Evaluator, dockerfile-linter]
+    steps:
+
+      - name: Fetch project repository
+        uses: actions/checkout@v2
+
+      - name: Fetch Blocked Files Checkout action
+        uses: actions/checkout@v2
         with:
+          repository: betrybe/blocked-files-checkout-action
+          ref: v2
+          token: ${{ secrets.GIT_HUB_PAT }}
+          path: .github/actions/blocked-files-checkout
+
+      - name: Fetch Docker Jest evaluator
+        uses: actions/checkout@v2
+        with:
+          repository: betrybe/docker-jest-evaluator-action
+          ref: v1_1
+          token: ${{ secrets.GIT_HUB_PAT }}
+          path: .github/actions/docker-jest-evaluator
+
+      - name: Fetch Store evaluation
+        uses: actions/checkout@v2
+        with:
+          repository: betrybe/store-evaluation-action
+          ref: v4
+          token: ${{ secrets.GIT_HUB_PAT }}
+          path: .github/actions/store-evaluation
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v1.4.6
+        with:
+          node-version: '16'
+
+      - name: Restore protected files
+        uses: ./.github/actions/blocked-files-checkout
+        with:
+          restore_branch: 'main'
+
+      - name: Run Docker Jest evaluation
+        id: jest_eval
+        uses: ./.github/actions/docker-jest-evaluator
+        with:
+          puppeteer_test: true
+          run_compose: true
+          wait_for: 'http://localhost:3000'
           pr_author_username: ${{ github.event.inputs.pr_author_username }}
-        env:
-          MYSQL_HOST: 'mysql'
-          MYSQL_USER: 'root'
-          MYSQL_PASSWORD: 'password'
 
       - name: Run Store evaluation
         uses: ./.github/actions/store-evaluation
         with:
-          evaluation-data: ${{ steps.evaluator.outputs.result }}
+          evaluation-data: ${{ steps.jest_eval.outputs.result }}
           environment: staging
           pr-number: ${{ github.event.inputs.pr_number }}

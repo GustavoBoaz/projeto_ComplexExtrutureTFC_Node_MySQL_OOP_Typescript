@@ -1,9 +1,13 @@
-const BASE_URL = 'http://localhost:3000';
+const { puppeteerDefs } = require("../config/constants");
+
+const URL = (PORT = 3000) => ({
+  BASE_URL: `${puppeteerDefs.baseUrl}:${PORT}`,
+  URL_PAGE_LOGIN: `${puppeteerDefs.baseUrl}:${PORT}/login`,
+  URL_PAGE_MATCHS: `${puppeteerDefs.baseUrl}:${PORT}/matchs`,
+  URL_PAGE_MATCHS_SETTINGS: `${puppeteerDefs.baseUrl}:${PORT}/matchs/settings`,
+  URL_PAGE_LEADERBOARD: `${puppeteerDefs.baseUrl}:${PORT}/leaderboard`,
+});
 
 module.exports = {
-  BASE_URL,
-  URL_PAGE_LOGIN: `${BASE_URL}/login`,
-  URL_PAGE_MATCHS: `${BASE_URL}/matchs`,
-  URL_PAGE_MATCHS_SETTINGS: `${BASE_URL}/matchs/settings`,
-  URL_PAGE_LEADERBOARD: `${BASE_URL}/leaderboard`,
+  URL,
 };

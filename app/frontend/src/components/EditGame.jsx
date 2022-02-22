@@ -66,7 +66,7 @@ const EditGame = ({
           </button>
           <button
             data-testid="insertion_matchs__finish_match_btn"
-            onClick={ () => finishMatch(false) }
+            onClick={ () => finishMatch(idMatch) }
             type="button"
           >
             Finalizar

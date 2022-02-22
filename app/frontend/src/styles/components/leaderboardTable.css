@@ -50,7 +50,7 @@
   text-align: center;
 }
 
-.score-board-total-points, .score-board-total-victories, .score-board-total-looses, .score-board-goals-own, .score-board-efficiency {
+.score-board-total-points, .score-board-total-victories {
   background: #f0f2f5;
   border-radius: 8px;
   color: black;
@@ -63,7 +63,33 @@
   text-align: center;
 }
 
-.score-board-total-games, .score-board-total-draws, .score-board-goals-favor, .score-board-goals-balance {
+.score-board-total-looses, .score-board-goals-own, .score-board-efficiency {
+  background: #f0f2f5;
+  border-radius: 8px;
+  color: black;
+  font-family: Verdana , Tahoma , sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  height: 43px;
+  line-height: 22px;
+  min-width: 87px;
+  text-align: center;
+}
+
+.score-board-total-games, .score-board-total-draws {
+  background: #e1e5eb;
+  border-radius: 8px;
+  color: black;
+  font-family: Verdana , Tahoma , sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  height: 43px;
+  line-height: 22px;
+  min-width: 87px;
+  text-align: center;
+}
+
+.score-board-goals-favor, .score-board-goals-balance {
   background: #e1e5eb;
   border-radius: 8px;
   color: black;

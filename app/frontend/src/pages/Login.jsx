@@ -17,8 +17,11 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      // Faça a requisição para o endpoint `/auth` aqui
-      // Adicione os dados do user no localstorage aqui
+      const endpoint = '/auth';
+
+      const { token, user } = await requestLogin(endpoint, { email, password });
+
+      localStorage.setItem('user', JSON.stringify({ token, ...user }));
       setIsLogged(true);
     } catch (error) {
       setFailedTryLogin(true);

@@ -16,7 +16,7 @@ const GamerFilter = ({ currentFilter, setCurrentFilter }) => {
           defaultValue={ currentFilter }
           data-testid="matchs__option_show_finish_matchs"
         >
-          <option>Status do Jogo</option>
+          <option>Todos os Jogos</option>
           <option>Em andamento</option>
           <option>Finalizado</option>
         </select>

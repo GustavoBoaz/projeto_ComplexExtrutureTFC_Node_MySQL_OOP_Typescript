@@ -1,3 +1,3 @@
 module.exports = {
-  exclude: ['src/tests/**', 'src/database/**'],
+  exclude: ['tests', 'nyc*', 'src/database'],
 };

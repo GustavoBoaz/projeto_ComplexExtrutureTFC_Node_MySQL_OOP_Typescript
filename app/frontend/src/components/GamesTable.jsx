@@ -1,31 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { requestData } from '../services/requests';
 import Loading from './Loading';
 import { check, editIcon } from '../images';
 
 const GamesTable = ({ currentFilter, isAdm }) => {
   const [games, setGames] = useState([]);
-  const [gamesFiltered, setGamesFiltered] = useState([]);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    switch (currentFilter) {
-    case 'Em andamento':
-      setGamesFiltered(games.filter(({ inProgress }) => inProgress));
-      break;
-    case 'Finalizado':
-      setGamesFiltered(games.filter(({ inProgress }) => !inProgress));
-      break;
-    default:
-      setGamesFiltered(games);
-      break;
-    }
-  }, [currentFilter, games]);
+  const getGames = (endpoint) => requestData(endpoint)
+    .then((response) => setGames(response))
+    .catch((error) => console.log(error));
 
   useEffect(() => {
-    //Faça a requisição para o endpoint `/matchs`
+    const endpoint = '/matchs';
+
+    switch (currentFilter) {
+    case 'Em andamento':
+      getGames(`${endpoint}?inProgress=true`);
+      break;
+    case 'Finalizado':
+      getGames(`${endpoint}?inProgress=false`);
+      break;
+    default:
+      getGames(endpoint);
+      break;
+    }
+  }, [currentFilter]);
+
+  useEffect(() => {
+    const endpoint = '/matchs';
+
+    if (!games.length) {
+      getGames(endpoint);
+    }
   }, [games]);
 
   if (!games.length) {
@@ -47,7 +57,7 @@ const GamesTable = ({ currentFilter, isAdm }) => {
       </thead>
       <tbody>
         {
-          gamesFiltered
+          games
             .sort((a, b) => b.inProgress - a.inProgress)
             .map(({
               id,
@@ -125,6 +135,7 @@ const GamesTable = ({ currentFilter, isAdm }) => {
                                 inProgress,
                               } },
                             );
+                            localStorage.setItem('game', 'editar');
                           } }
                         >
                           {

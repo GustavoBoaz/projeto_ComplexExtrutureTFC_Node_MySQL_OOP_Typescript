@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AddNewMatchBtn = () => (
   <div>
-    <button
-      type="button"
+    <Link
       className="add-new-game-button"
       data-testid="header__add_match_btn"
+      to="/matchs/settings"
     >
       + Adicionar nova partida
-    </button>
+    </Link>
   </div>
 );
 

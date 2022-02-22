@@ -1,4 +1,7 @@
-const leaderboardDataToString = require('./leaderboardDataToString');
+const { URL } = require('./urls');
+const { normalizeString } = require('./util');
+const waitForResponse = require('./waitForResponse');
+const { leaderboard } = require('./dataTestIds')
 
 const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
   const { table: { header } } = leaderboardTestsIds;
@@ -32,20 +35,21 @@ const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
   expect(efficiency).toEqual(scoreBoardTableHeaderMock[10]);
 };
 
-const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTestsIds, page) => {
-  await page.reload();
+const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTestsIds, page, apiPort, endpoint, actionTrigger) => {
+  await page.waitForTimeout(500);
 
-  page.on('response', async (response) => {
-    const { _request: { _initiator: { type } } } = await response;
-
-    if (type === 'script' && response.url() === 'http://localhost:3001/result') {
-      const parseLeaderboardDataToString = leaderboardDataToString(await response.json());
-
-      expect(await response.status()).toBe(200);
-      expect(await response.request().method()).toBe('GET');
-      expect(parseLeaderboardDataToString).toEqual(scoreBoardTableBodyMock);
-    }
+  
+  const { body: scoreBoardTableResponse } = await waitForResponse({
+    page,
+    trigger: () => actionTrigger(),
+    expectedRequestType: 'script',
+    expectedRequestMethod: 'GET',
+    expectedResponseStatus: 200,
+    expectedResponseUrl: `${URL(apiPort).BASE_URL}${endpoint}`
   });
+  const newScoreBoardTableResponse = normalizeString(scoreBoardTableResponse)
+
+  expect(newScoreBoardTableResponse).toEqual(scoreBoardTableBodyMock);
 
   const clubs = scoreBoardTableBodyMock.map((el, index) => ({ id: `${index + 1}`, ...el }));
 

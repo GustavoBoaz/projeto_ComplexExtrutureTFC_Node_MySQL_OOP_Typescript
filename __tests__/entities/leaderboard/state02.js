@@ -1,4 +1,4 @@
-const state02 = [
+const state02 =[
   {
     name: 'Palmeiras',
     totalPoints: '13',
@@ -9,7 +9,7 @@ const state02 = [
     goalsFavor: '17',
     goalsOwn: '5',
     goalsBalance: '12',
-    efficiency: '86.67',
+    efficiency: '86.67'
   },
   {
     name: 'Corinthians',
@@ -21,7 +21,7 @@ const state02 = [
     goalsFavor: '12',
     goalsOwn: '3',
     goalsBalance: '9',
-    efficiency: '80',
+    efficiency: '80'
   },
   {
     name: 'Santos',
@@ -33,7 +33,7 @@ const state02 = [
     goalsFavor: '12',
     goalsOwn: '6',
     goalsBalance: '6',
-    efficiency: '73.33',
+    efficiency: '73.33'
   },
   {
     name: 'Internacional',
@@ -45,7 +45,7 @@ const state02 = [
     goalsFavor: '7',
     goalsOwn: '6',
     goalsBalance: '1',
-    efficiency: '66.67',
+    efficiency: '66.67'
   },
   {
     name: 'Real Brasília',
@@ -57,7 +57,7 @@ const state02 = [
     goalsFavor: '5',
     goalsOwn: '4',
     goalsBalance: '1',
-    efficiency: '66.67',
+    efficiency: '66.67'
   },
   {
     name: 'Grêmio',
@@ -69,7 +69,7 @@ const state02 = [
     goalsFavor: '9',
     goalsOwn: '8',
     goalsBalance: '1',
-    efficiency: '66.67',
+    efficiency: '66.67'
   },
   {
     name: 'São Paulo',
@@ -81,19 +81,19 @@ const state02 = [
     goalsFavor: '9',
     goalsOwn: '6',
     goalsBalance: '3',
-    efficiency: '53.33',
+    efficiency: '53.33'
   },
   {
-    name: 'Avaí/Kindermann',
-    totalPoints: '7',
+    name: 'Flamengo',
+    totalPoints: '8',
     totalGames: '6',
     totalVictories: '2',
-    totalDraws: '1',
-    totalLooses: '3',
-    goalsFavor: '7',
-    goalsOwn: '9',
-    goalsBalance: '-2',
-    efficiency: '38.89',
+    totalDraws: '2',
+    totalLooses: '2',
+    goalsFavor: '5',
+    goalsOwn: '5',
+    goalsBalance: '0',
+    efficiency: '44.44'
   },
   {
     name: 'Ferroviária',
@@ -105,7 +105,7 @@ const state02 = [
     goalsFavor: '7',
     goalsOwn: '7',
     goalsBalance: '0',
-    efficiency: '46.67',
+    efficiency: '46.67'
   },
   {
     name: 'São José-SP',
@@ -117,19 +117,7 @@ const state02 = [
     goalsFavor: '5',
     goalsOwn: '6',
     goalsBalance: '-1',
-    efficiency: '40',
-  },
-  {
-    name: 'Flamengo',
-    totalPoints: '5',
-    totalGames: '5',
-    totalVictories: '1',
-    totalDraws: '2',
-    totalLooses: '2',
-    goalsFavor: '2',
-    goalsOwn: '5',
-    goalsBalance: '-3',
-    efficiency: '33.33',
+    efficiency: '40'
   },
   {
     name: 'Botafogo',
@@ -141,19 +129,31 @@ const state02 = [
     goalsFavor: '3',
     goalsOwn: '8',
     goalsBalance: '-5',
-    efficiency: '26.67',
+    efficiency: '26.67'
   },
   {
     name: 'Cruzeiro',
     totalPoints: '4',
-    totalGames: '6',
+    totalGames: '5',
     totalVictories: '1',
     totalDraws: '1',
-    totalLooses: '4',
-    goalsFavor: '9',
-    goalsOwn: '13',
+    totalLooses: '3',
+    goalsFavor: '8',
+    goalsOwn: '10',
+    goalsBalance: '-2',
+    efficiency: '26.67'
+  },
+  {
+    name: 'Avaí/Kindermann',
+    totalPoints: '4',
+    totalGames: '5',
+    totalVictories: '1',
+    totalDraws: '1',
+    totalLooses: '3',
+    goalsFavor: '4',
+    goalsOwn: '8',
     goalsBalance: '-4',
-    efficiency: '22.22',
+    efficiency: '26.67'
   },
   {
     name: 'Bahia',
@@ -165,7 +165,7 @@ const state02 = [
     goalsFavor: '2',
     goalsOwn: '6',
     goalsBalance: '-4',
-    efficiency: '13.33',
+    efficiency: '13.33'
   },
   {
     name: 'Minas Brasília',
@@ -177,20 +177,20 @@ const state02 = [
     goalsFavor: '4',
     goalsOwn: '9',
     goalsBalance: '-5',
-    efficiency: '13.33',
+    efficiency: '13.33'
   },
   {
     name: 'Napoli-SC',
     totalPoints: '2',
-    totalGames: '5',
+    totalGames: '6',
     totalVictories: '0',
     totalDraws: '2',
-    totalLooses: '3',
+    totalLooses: '4',
     goalsFavor: '3',
-    goalsOwn: '12',
-    goalsBalance: '-9',
-    efficiency: '13.33',
-  },
-];
+    goalsOwn: '15',
+    goalsBalance: '-12',
+    efficiency: '11.11'
+  }
+]
 
 module.exports = state02;

@@ -2,60 +2,136 @@
   "requirements":
   [
     {
-      "description": "1 - Crie uma migration e um model para as tabelas de clubs, matchs e users",
+      "description": "1 - Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "2 - Os headers devem possuir o titulo indicando em qual página está atualmente",
+      "description": "2 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "3 - Implemente os botões que redirecionam para as páginas de Login, Partidas, Classificação",
+      "description": "3 - Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "4 - Verifica se é possível a partir da página LEADERBOARD navegar para as demais páginas",
+      "description": "4 - Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "5 - Implemente a tabela de ScoreBoard para a pagina CLASSIFICAÇÃO",
+      "description": "5 - Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "6 - Implemente a página de login com a rota /login",
+      "description": "6 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "7 - Ao fazer login, será armazenado os dados do usuario no localstorage, na chave user",
+      "description": "7 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "8 - Implemente a página de Partidas",
-      "bonus": false
-    },
-    {
-      "description": "9 - Implemente a página de Adicionar Partida",
-      "bonus": false
-    },
-    {
-      "description": "10 - Implemente página de Editar Partida",
-      "bonus": false
-    },
-    {
-      "description": "11 - Crie testes que cubram no mínimo 40 por cento dos arquivos do front-end e back-end em src com um mínimo de 60 linhas cobertas em cada",
-      "bonus": false
-    },
-    {
-      "description": "12 - Crie testes que cubram no mínimo 50 por cento dos arquivos do front-end e back-end em src com um mínimo de 70 linhas cobertas em cada",
-      "bonus": false
-    },
-    {
-      "description": "13 - Crie testes que cubram no mínimo 60 por cento dos arquivos do front-end e back-end em src com um mínimo de 80 linhas cobertas em cada",
-      "bonus": false
-    },
-    {
-      "description": "14 - Crie testes que cubram no mínimo 70 por cento dos arquivos do front-end e back-end em src com um mínimo de 100 linhas cobertas em cada",
+      "description": "8 - Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas",
       "bonus": true
+    },
+    {
+      "description": "9 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs",
+      "bonus": false
+    },
+    {
+      "description": "10 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs",
+      "bonus": false
+    },
+    {
+      "description": "11 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users",
+      "bonus": false
+    },
+    {
+      "description": "12 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend",
+      "bonus": false
+    },
+    {
+      "description": "13 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend",
+      "bonus": false
+    },
+    {
+      "description": "14 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend",
+      "bonus": false
+    },
+    {
+      "description": "15 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend",
+      "bonus": false
+    },
+    {
+      "description": "16 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend",
+      "bonus": false
+    },
+    {
+      "description": "17 - Desenvolva o endpoint /matchs de forma que os dados apareçam corretamente na tela de partidas no frontend",
+      "bonus": false
+    },
+    {
+      "description": "18 - Desenvolva o endpoint /matchs de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend",
+      "bonus": false
+    },
+    {
+      "description": "19 - Desenvolva o endpoint /matchs de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend",
+      "bonus": false
+    },
+    {
+      "description": "20 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais",
+      "bonus": false
+    },
+    {
+      "description": "21 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados",
+      "bonus": false
+    },
+    {
+      "description": "22 - Desenvolva a rota /matchs de modo que seja possivel salvar uma partida com o status de inProgress como false no banco de dados",
+      "bonus": false
+    },
+    {
+      "description": "23 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs",
+      "bonus": false
+    },
+    {
+      "description": "24 - Desenvolva o endpoint /matchs de forma que seja possível atualizar partidas em andamento",
+      "bonus": false
+    },
+    {
+      "description": "25 - Desenvolva o endpoint /matchs de forma que seja possível finalizar partidas em andamento",
+      "bonus": false
+    },
+    {
+      "description": "26 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados",
+      "bonus": false
+    },
+    {
+      "description": "27 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada",
+      "bonus": false
+    },
+    {
+      "description": "28 - Desenvolva o endpoint /leaderboard/away de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados",
+      "bonus": false
+    },
+    {
+      "description": "29 - Desenvolva o endpoint /leaderboard/away de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada",
+      "bonus": false
+    },
+    {
+      "description": "30 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend",
+      "bonus": false
+    },
+    {
+      "description": "31 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados",
+      "bonus": false
+    },
+    {
+      "description": "32 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada",
+      "bonus": false
+    },
+    {
+      "description": "33 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada",
+      "bonus": false
     }
   ]
 }

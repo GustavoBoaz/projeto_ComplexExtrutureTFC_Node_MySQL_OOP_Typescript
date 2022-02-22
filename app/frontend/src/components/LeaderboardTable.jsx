@@ -1,12 +1,39 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { requestData } from '../services/requests';
 import Loading from './Loading';
 import '../styles/components/leaderboardTable.css';
 
-const LeaderboardTable = () => {
+const LeaderboardTable = ({ currentFilter }) => {
   const [leaderboard, setLeaderboard] = useState([]);
 
+  const getLeaderboard = (endpoint) => requestData(endpoint)
+    .then((response) => setLeaderboard(response))
+    .catch((error) => console.log(error));
+
   useEffect(() => {
-    // Faça a requisição para o endpoint `/results` para obter a tabela de classificação
+    const apiLeaderboard = '/leaderboard';
+    const apiLeaderboardHome = '/leaderboard/home';
+    const apiLeaderboardAway = '/leaderboard/away';
+    switch (currentFilter) {
+    case 'Classificação Mandantes':
+      getLeaderboard(apiLeaderboardHome);
+      break;
+    case 'Classificação Visitantes':
+      getLeaderboard(apiLeaderboardAway);
+      break;
+    default:
+      getLeaderboard(apiLeaderboard);
+      break;
+    }
+  }, [currentFilter]);
+
+  useEffect(() => {
+    const endpoint = '/leaderboard';
+
+    if (leaderboard.length === 0) {
+      getLeaderboard(endpoint);
+    }
   }, [leaderboard]);
 
   if (!leaderboard.length) {
@@ -122,4 +149,7 @@ const LeaderboardTable = () => {
   );
 };
 
+LeaderboardTable.propTypes = {
+  currentFilter: PropTypes.string.isRequired,
+};
 export default LeaderboardTable;

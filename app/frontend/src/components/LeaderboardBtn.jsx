@@ -1,13 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LeaderboardBtn = () => (
-  <button
-    className="navigation-btn"
-    data-testid="header__show_classification_btn"
-    type="button"
-  >
+  <Link data-testid="header__show_classification_btn" to="/leaderboard">
     Classificação
-  </button>
+  </Link>
 );
 
 export default LeaderboardBtn;

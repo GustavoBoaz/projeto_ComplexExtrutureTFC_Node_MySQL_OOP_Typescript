@@ -11,7 +11,7 @@ module.exports = {
   },
   insert: {
     leaderboard: (homeTeam, homeTeamGoals, awayTeam, awayTeamGoals, inProgress) => (
-      `INSERT INTO women_soccer.matchs (home_team, home_team_goals, away_team, away_team_goals, in_progress) VALUES (${homeTeam}, ${homeTeamGoals}, ${awayTeam}, ${awayTeamGoals}, ${inProgress});`
+      `INSERT INTO TRYBE_FUTEBOL_CLUBE.matchs (home_team, home_team_goals, away_team, away_team_goals, in_progress) VALUES (${homeTeam}, ${homeTeamGoals}, ${awayTeam}, ${awayTeamGoals}, ${inProgress});`
     ),
   },
 };

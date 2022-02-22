@@ -1,8 +1,8 @@
-const { URL_PAGE_MATCHS } = require('./urls');
+const { URL } = require('./urls');
 const { pageLogin } = require('./dataTestIds');
 const { user: { validUser }, admin: { validAdmin } } = require('./users');
 
-const logAdmin = async (page) => {
+const logAdmin = async (page, port) => {
   await page.waitForTimeout(500);
 
   const inputLogin = await page.$(pageLogin.inputEmail);
@@ -17,10 +17,10 @@ const logAdmin = async (page) => {
 
   await page.waitForTimeout(500);
 
-  expect(await page.url()).toEqual(URL_PAGE_MATCHS);
+  expect(await page.url()).toEqual(URL(port).URL_PAGE_MATCHS);
 };
 
-const logUser = async (page) => {
+const logUser = async (page, port) => {
   await page.waitForTimeout(500);
 
   const inputLogin = await page.$(pageLogin.inputEmail);
@@ -35,7 +35,7 @@ const logUser = async (page) => {
 
   await page.waitForTimeout(500);
 
-  expect(await page.url()).toEqual(URL_PAGE_MATCHS);
+  expect(await page.url()).toEqual(URL(port).URL_PAGE_MATCHS);
 };
 
 module.exports = {

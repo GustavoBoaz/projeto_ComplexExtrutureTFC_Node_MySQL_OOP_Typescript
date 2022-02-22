@@ -21,7 +21,7 @@ const Games = () => {
   return (
     <>
       <Header
-        page=""
+        page="PARTIDAS"
         FirstNavigationLink={ LeaderboardBtn }
         SecondNavegationLink={ LoginBtn }
         logged={ logged }

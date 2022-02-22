@@ -38,12 +38,16 @@ module.exports = {
         goalsBalance: (sufix) => dataTestid(`score_boarding__goals_balance_${sufix}`),
         efficiency: (sufix) => dataTestid(`score_boarding__efficiency_${sufix}`),
       },
+      filter: {
+        select: dataTestid('score_boarding__classification_filter'),
+        button: dataTestid('score_boarding__classification_filter_button')
+      }
     },
   },
   pageLogin: {
     inputEmail: `input${dataTestid('login__login_input')}`,
     inputPassword: `input${dataTestid('login__password_input')}`,
-    buttonLogin: `button${dataTestid('login__login_btn')}`,
+    buttonLogin: dataTestid('login__login_btn'),
     alertLogin: dataTestid('login__input_invalid_login_alert'),
   },
   pageMatchs: {

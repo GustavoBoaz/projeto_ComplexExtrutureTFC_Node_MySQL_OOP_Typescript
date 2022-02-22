@@ -1,5 +1,12 @@
-import * as express from 'express';
-import 'dotenv/config';
+class App {
+  public app: any
+  // ...
+  public start(PORT: string | number):void {
+    // ...
+  }
+}
 
-const PORT = process.env.PORT || 3001;
-express().listen(PORT,  () => console.log(`Service online in port ${PORT}`))
+export { App }
+
+// A execução dos testes de cobertura depende dessa exportação
+export const app = new App().app;
