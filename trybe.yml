@@ -2,7 +2,7 @@ ignore_files:
   - package.json
   - package-lock.json
   - jest.config.js
-  - app_install.sh
+  - apps_install.sh
   - .gitignore
   - ./__tests__
   - ./app/frontend/public
@@ -16,7 +16,5 @@ ignore_files:
   - ./app/backend/.sequelizerc
   - ./app/backend/nyc.config.js
   - ./app/backend/package.json
-  - ./app/backend/package-lock.json
   - ./app/backend/tsc_eval.sh
-  - ./app/backend/tsconfig.json
   - ./app/backend/jwt.evaluation.key
