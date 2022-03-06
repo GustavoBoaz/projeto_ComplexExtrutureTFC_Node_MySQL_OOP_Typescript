@@ -122,7 +122,6 @@ jobs:
       - name: Run Store evaluation
         uses: ./.github/actions/store-evaluation
         with:
-          ref: v4
           evaluation-data: ${{ steps.jest_eval.outputs.result }}
-          environment: staging
+          environment: production
           pr-number: ${{ github.event.inputs.pr_number }}
