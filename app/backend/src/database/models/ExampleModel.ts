@@ -10,7 +10,10 @@ Example.init({
   // ... Campos
 }, {
   // ... Outras configs
+  underscored: true,
   sequelize: db,
+  // modelName: 'example',
+  timestamps: false,
 });
 
 /**

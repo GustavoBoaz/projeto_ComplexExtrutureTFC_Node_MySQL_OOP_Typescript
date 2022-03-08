@@ -9,7 +9,6 @@
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "airbnb-base",
-    "plugin:editorconfig/noconflict",
     "plugin:mocha/recommended",
     "airbnb-typescript/base"
   ],
@@ -22,7 +21,6 @@
   "plugins": [
     "@typescript-eslint",
     "sonarjs",
-    "editorconfig",
     "mocha"
   ],
   "rules": {
@@ -79,14 +77,14 @@
     ],
     "complexity": [
       "error",
-      5
+      12
     ],
     "import/no-extraneous-dependencies": [
       "off"
     ],
     "sonarjs/cognitive-complexity": [
       "error",
-      5
+      12
     ],
     "sonarjs/no-one-iteration-loop": [
       "error"
