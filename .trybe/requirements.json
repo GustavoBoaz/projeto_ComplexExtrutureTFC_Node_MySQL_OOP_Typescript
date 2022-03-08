@@ -9,60 +9,60 @@
       "bonus": false
     },
     {
-      "description": "3 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs",
+      "description": "3 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "4 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas",
+      "description": "4 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs",
       "bonus": false
     },
     {
-      "description": "5 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users",
+      "description": "5 - Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "6 - Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas",
+      "description": "6 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users",
       "bonus": false
     },
     {
-      "description": "7 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend",
+      "description": "7 - Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "8 - Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas",
+      "description": "8 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend",
       "bonus": false
     },
     {
-      "description": "9 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend",
+      "description": "9 - Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "10 - Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas",
+      "description": "10 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend",
       "bonus": false
     },
     {
-      "description": "11 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend",
+      "description": "11 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "12 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas",
+      "description": "12 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend",
       "bonus": false
     },
     {
-      "description": "13 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend",
+      "description": "13 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas",
       "bonus": false
     },
     {
-      "description": "14 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas",
+      "description": "14 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend",
       "bonus": false
     },
     {
-      "description": "15 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend",
-      "bonus": false
-    },
-    {
-      "description": "16 - Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas",
+      "description": "15 - Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas",
       "bonus": true
+    },
+    {
+      "description": "16 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend",
+      "bonus": false
     },
     {
       "description": "17 - Desenvolva o endpoint /matchs de forma que os dados apareçam corretamente na tela de partidas no frontend",
