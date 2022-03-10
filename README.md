@@ -23,16 +23,17 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [Instruções para entregar seu projeto:](#instruções-para-entregar-seu-projeto)
     - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
     - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-    - [Execução de testes de cobertura](#execução-de-testes-de-cobertura)
 - [Como desenvolver](#como-desenvolver)
   - [Linter](#linter)
 - [Requisitos do projeto:](#requisitos-do-projeto)
   - [Antes de começar:](#antes-de-começar)
     - [⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️](#️-leia-os-atentamente-e-siga-à-risca-o-que-for-pedido-️)
     - [👀 Observações importantes:](#-observações-importantes)
+      - [⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️](#️-inicie-seu-docker-compose-antes-de-testar-localmente-️)
+      - [Variáveis de ambiente](#variáveis-de-ambiente)
       - [Variáveis:](#variáveis)
       - [Chave JWT:](#chave-jwt)
-      - [⚠️ Inicie seu `docker-compose` antes de testar localmente](#️-inicie-seu-docker-compose-antes-de-testar-localmente)
+      - [Testes de cobertura](#testes-de-cobertura)
     - [Dicas](#dicas)
       - [Status HTTP](#status-http)
   - [Lista Pré-Requisitos:](#lista-pré-requisitos)
@@ -194,37 +195,6 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
 
 ---
 
-### Execução de testes de cobertura
-
-
-A execução de testes de cobertura no backend, depende que a aplicação tenha sido *buildada* previamente.
-
-Por tanto, o cabeçalho dos seus testes, deve seguir o seguinte modelo:
-
-```javascript
-const sinon = require('sinon');
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-
-const { expect } = chai;
-
-// Essas importações dependem da `build` (script `pretest`)
-// ter sido criada corretamente
-const { app } = require('../build/app');
-const { default: Example } = require('../build/database/models/ExampleModel');
-
-chai.use(chaiHttp);
-
-describe('Seu teste', () => {
-  it('Seu sub-teste', () => {
-  });
-});
-```
-
-Esse processo de *build* **deve ocorrer automaticamente, toda vez que seu backend for rodar testes de cobertura** (script `pretest` em `app/backend/package.json`)
-
----
-
 # Como desenvolver
 
 ## Linter
@@ -242,6 +212,7 @@ Você também pode instalar o plugin do `ESLint` no `VSCode`, bastar ir em exten
 ⚠ PULL REQUESTS COM ISSUES DE LINTER NÃO SERÃO AVALIADAS. ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO! ⚠
 
 ---
+
 # Requisitos do projeto:
 
 ## Antes de começar:
@@ -251,6 +222,12 @@ Você também pode instalar o plugin do `ESLint` no `VSCode`, bastar ir em exten
 ### 👀 Observações importantes:
 
 O não cumprimento de um requisito, total ou parcialmente, impactará em sua avaliação.
+
+#### ⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️
+
+Os testes vão utilizar sua aplicação do compose para fazer as validações, por tanto **é essencial que ele esteja funcionando corretamente** para que os testes passem!
+
+#### Variáveis de ambiente
 
 **Você irá precisar configurar as variáveis globais do MySQL.** Você pode usar esse [Conteúdo de variáveis de ambiente com NodeJS](https://blog.rocketseat.com.br/variaveis-ambiente-nodejs/) como referência.
 
@@ -270,7 +247,7 @@ module.exports = {
 
 ```
 
-**(Neste arquivo e obrigatório deixar o nome do database como `"database": 'TRYBE_FUTEBOL_CLUBE'`)**
+**(Neste arquivo é obrigatório deixar o nome do database como `"database": 'TRYBE_FUTEBOL_CLUBE'`)**
 
 **É essencial usar essas 3 variávies no arquivo acima:**
 
@@ -288,9 +265,63 @@ module.exports = {
 
 ⚠️ A sua chave `JWT` de ser inserida em `app/jwt.evaluation.key` e pode ser carregada no backend com o uso da biblioteca `fs`.
 
-#### ⚠️ Inicie seu `docker-compose` antes de testar localmente
+#### Testes de cobertura
 
-Os testes vão utilizar sua aplicação do compose para fazer as validações, por tanto **é essencial que ele esteja funcionando corretamente** para que os testes passem!
+
+A construção de testes de cobertura no backend deve ser feita em *TypeScript*, utilizando `mocha`, `chai` e `sinon`, na pasta `app/backend/src/tests/`, conforme o exemplo em `app/backend/src/tests/change.me.test.ts` *(aqui considerando um teste de integração)*:
+
+```typecript
+import * as sinon from 'sinon';
+import * as chai from 'chai';
+import chaiHttp = require('chai-http');
+
+import { app } from '../app';
+import Example from '../database/models/ExampleModel';
+
+import { Response } from 'superagent';
+
+chai.use(chaiHttp);
+
+const { expect } = chai;
+
+describe('Seu teste', () => {
+  /**
+   * Exemplo do uso de stubs com tipos
+   */
+
+  // let chaiHttpResponse: Response;
+
+  // before(async () => {
+  //   sinon
+  //     .stub(Example, "findOne")
+  //     .resolves({
+  //       ...<Seu mock>
+  //     } as Example);
+  // });
+
+  // after(()=>{
+  //   (Example.findOne as sinon.SinonStub).restore();
+  // })
+
+  // it('...', async () => {
+  //   chaiHttpResponse = await chai
+  //      .request(app)
+  //      ...
+
+  //   expect(...)
+  // });
+
+  it('Seu sub-teste', () => {
+    expect(false).to.be.eq(true);
+  });
+});
+```
+
+Os testes devem cobrir todos os arquivos contidos em `app/backend/src`, com exceção daqueles que já foram entregues com o projeto.
+
+Para rodar testes de cobertura no seu back-end, utilize o comando: `npm run test:coverage`
+
+---
 
 ### Dicas
 
@@ -330,21 +361,53 @@ Alguns exemplos:
     Use o modelo de serviço do banco de dados que está no arquivo `app/docker-compose.example.yml` que está igual ao formato abaixo.
 
 ``` yml
-db:
-  image: mysql:8.0.21
-  container_name: db
-  ports:
-    - 3002:3306
-  environment:
-    - MYSQL_ROOT_PASSWORD=123456
-  restart: 'always'
-  healthcheck:
-    # Deve aguardar o banco ficar operacional
-    test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-    timeout: 10s
-    retries: 5
-  cap_add:
-    - SYS_NICE # Deve omitir alertas menores
+version: '3.9'
+services:
+  frontend:
+    build: ./frontend
+    # ...
+    depends_on:
+      backend:
+        condition: service_healthy
+    # Os `healthcheck` devem garantir que a aplicação
+    # está operacional, antes de liberar o container
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+      timeout: 10s
+      retries: 5
+  backend:
+    build: ./backend
+    # ...
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - PORT=3001
+      # Os dados abaixo se referem ao container `db`
+      # Dica: Relembre aqui da comunicação interna entre containers
+      - DB_USER=root
+      - DB_PASS=123456
+      - DB_HOST=db
+      - DB_NAME=TRYBE_FUTEBOL_CLUBE
+      - DB_PORT=3306
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+      timeout: 10s
+      retries: 5
+  db:
+    image: mysql:8.0.21
+    container_name: db
+    ports:
+      - 3002:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    restart: 'always'
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
+      timeout: 10s
+      retries: 5
+    cap_add:
+      - SYS_NICE # Deve omitir alertas menores
 ```
 
 
