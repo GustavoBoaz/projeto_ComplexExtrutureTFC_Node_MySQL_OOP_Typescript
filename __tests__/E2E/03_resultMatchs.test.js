@@ -30,7 +30,7 @@ afterEach(async () => {
   await termBrowser(browser);
 });
 
-describe(getRequirement(17), () => {
+describe(getRequirement(15), () => {
   it('Será validado que a página apresentará todos os dados de partidas sem nenhum filtro', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -43,7 +43,7 @@ describe(getRequirement(17), () => {
   });
 });
 
-describe(getRequirement(18), () => {
+describe(getRequirement(17), () => {
   it('Será validado que ao escolher a opção de partidas em andamento será filtrado todas as partidas em andamento', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
