@@ -21,7 +21,7 @@ describe(getRequirement(1), () => {
   });
 });
 
-describe(getRequirement(4), () => {
+describe(getRequirement(2), () => {
   it('O avaliador consultará os dados da tabela matchs, verificando se ela contém os dados iniciais corretos', async () => {
     const resultQuery = await database.query(select.all.matchs, { type: 'SELECT' });
     const resultQueryNormalize = normalize(resultQuery);
@@ -29,7 +29,7 @@ describe(getRequirement(4), () => {
   });
 });
 
-describe(getRequirement(6), () => {
+describe(getRequirement(3), () => {
   it('O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos', async () => {
     const resultQuery = await database.query(select.all.users, { type: 'SELECT' });
     const resultQueryNormalize = normalize(resultQuery);

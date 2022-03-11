@@ -31,7 +31,7 @@ afterEach(async () => {
   await termBrowser(browser);
 });
 
-describe(getRequirement(8), () => {
+describe(getRequirement(5), () => {
   it('O avaliador verificará se é possível fazer o login com dados corretos e que após o acesso será redirecionado para a tela de jogos', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -71,7 +71,7 @@ describe(getRequirement(8), () => {
   });
 });
 
-describe(getRequirement(10), () => {
+describe(getRequirement(7), () => {
   it('O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -103,7 +103,7 @@ describe(getRequirement(10), () => {
   });
 });
 
-describe(getRequirement(12), () => {
+describe(getRequirement(9), () => {
   it('O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -135,7 +135,7 @@ describe(getRequirement(12), () => {
   });
 });
 
-describe(getRequirement(14), () => {
+describe(getRequirement(11), () => {
   it('O avaliador verificará se tentar fazer o login sem e-mail retornará status não-autorizado', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -165,7 +165,7 @@ describe(getRequirement(14), () => {
   });
 });
 
-describe(getRequirement(16), () => {
+describe(getRequirement(13), () => {
   it('O avaliador verificará se tentar fazer o login sem senha retornará status não-autorizado', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
