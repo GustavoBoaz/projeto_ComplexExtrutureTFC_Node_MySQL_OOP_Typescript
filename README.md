@@ -40,28 +40,27 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     - [Docker e Docker-compose](#docker-e-docker-compose)
       - [Crie os arquivos dockerfile e docker-compose](#crie-os-arquivos-dockerfile-e-docker-compose)
   - [Lista de Requisitos:](#lista-de-requisitos)
-    - [Testes](#testes)
-      - [1 - Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas](#1---desenvolva-testes-que-cubram-no-mínimo-5-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-7-linhas-cobertas)
-      - [2 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas](#2---desenvolva-testes-que-cubram-no-mínimo-10-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-19-linhas-cobertas)
-      - [3 - Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas](#3---desenvolva-testes-que-cubram-no-mínimo-15-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-25-linhas-cobertas)
-      - [4 - Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas](#4---desenvolva-testes-que-cubram-no-mínimo-20-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-35-linhas-cobertas)
-      - [5 - Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas](#5---desenvolva-testes-que-cubram-no-mínimo-30-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-45-linhas-cobertas)
-      - [6 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas](#6---desenvolva-testes-que-cubram-no-mínimo-45-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-70-linhas-cobertas)
-      - [7 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas](#7---desenvolva-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-80-linhas-cobertas)
-      - [8 - (`Bônus`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#8---bônus-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
     - [Sequelize](#sequelize)
-      - [9 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs](#9---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-clubs)
-      - [10 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs](#10---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-matchs)
-      - [11 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users](#11---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-users)
+      - [1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs](#1---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-clubs)
+      - [2 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs](#2---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-matchs)
+      - [3 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users](#3---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-users)
     - [Login](#login)
-      - [12 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend](#12---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-permita-o-acesso-com-dados-válidos-no-frontend)
-      - [13 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend](#13---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-com-um-email-inválido-no-frontend)
-      - [14 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend](#14---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-com-uma-senha-inválida-no-frontend)
-      - [15 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend](#15---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-um-email-no-frontend)
-      - [16 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend](#16---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-uma-senha-no-frontend)
+      - [4 - (TDD) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas](#4---tdd-desenvolva-testes-que-cubram-no-mínimo-5-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-7-linhas-cobertas)
+      - [5 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend](#5---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-permita-o-acesso-com-dados-válidos-no-frontend)
+      - [6 - (TDD) Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas](#6---tdd-desenvolva-testes-que-cubram-no-mínimo-10-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-19-linhas-cobertas)
+      - [7 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend](#7---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-com-um-email-inválido-no-frontend)
+      - [8 - (TDD) Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas](#8---tdd-desenvolva-testes-que-cubram-no-mínimo-15-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-25-linhas-cobertas)
+      - [9 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend](#9---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-com-uma-senha-inválida-no-frontend)
+      - [10 - (TDD) Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas](#10---tdd-desenvolva-testes-que-cubram-no-mínimo-20-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-35-linhas-cobertas)
+      - [11 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend](#11---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-um-email-no-frontend)
+      - [12 - (TDD) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas](#12---tdd-desenvolva-testes-que-cubram-no-mínimo-30-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-45-linhas-cobertas)
+      - [13 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend](#13---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-uma-senha-no-frontend)
     - [Jogos](#jogos)
-      - [17 - Desenvolva o endpoint` /matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend](#17---desenvolva-o-endpoint-matchs-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-frontend)
-      - [18 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend](#18---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-frontend)
+      - [14 - (TDD) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas](#14---tdd-desenvolva-testes-que-cubram-no-mínimo-45-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-70-linhas-cobertas)
+      - [15 - Desenvolva o endpoint` /matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend](#15---desenvolva-o-endpoint-matchs-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-frontend)
+      - [16 - (TDD) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas](#16---tdd-desenvolva-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-80-linhas-cobertas)
+      - [17 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend](#17---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-frontend)
+      - [18 - (`Bônus`; TDD) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#18---bônus-tdd-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
       - [19 - Desenvolva o endpoint /matchs de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend](#19---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-finalizadas-na-tela-de-partidas-do-frontend)
     - [Adicionar Partidas](#adicionar-partidas)
       - [20 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados](#20---desenvolva-a-rota-matchs-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-true-no-banco-de-dados)
@@ -412,60 +411,18 @@ services:
 
 
 ## Lista de Requisitos:
-### Testes
-
-#### 1 - Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas
-
-  **Sugestão:**
-  - Desenvolva o teste de integração da rota `/clubs`
-
-#### 2 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas
-
-  **Sugestão:**
-  - Desenvolva o teste de integração da rota `/clubs`
-
-#### 3 - Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas
-
-  **Sugestão:**
-  - Desenvolva o teste de integração da rota `/matchs`
-
-#### 4 - Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas
-
-  **Sugestão:**
-  - Desenvolva o teste de integração da rota `/matchs`
-
-#### 5 - Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas
-
-  **Sugestão:**
-  - Desenvolva o teste de integração da rota `/user`
-
-#### 6 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas
-
-  **Sugestão:**
-  - Desenvolva o teste de integração da rota `/leaderboard/home`
-
-#### 7 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas
-
-  **Sugestão:**
-  - Desenvolva o teste de integração da rota `/leaderboard/away`
-
-#### 8 - (`Bônus`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas
-
-  **Sugestão:**
-  - Desenvolva o teste de integração da rota `/leaderboard`
-
 
 ### Sequelize
 
-#### 9 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs
+#### 1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs
 
   - O avaliador consultará os dados da tabela clubs, verificando se ela contém os dados iniciais corretos
 
-#### 10 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs
+#### 2 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs
 
   - O avaliador consultará os dados da tabela matchs, verificando se ela contém os dados iniciais corretos
 
-#### 11 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users
+#### 3 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users
 
   - O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos
 
@@ -488,9 +445,14 @@ services:
   }
   ```
 
+#### 4 - (TDD) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas
 
+  **Sugestões:**
+  - Se baseando no contrato do endpoint `/auth` **do próximo requisito**, inicie um teste de integração utilizando a metodologia *TDD*, que passará a seguir, com a implementação do mesmo;
+  - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
+  - Para isso, utilize/altere o arquivo de referência `app/backend/src/tests/change.me.test.ts`.
 
-#### 12 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend
+#### 5 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend
 
   - O avaliador verificará se é possível fazer o login com dados corretos e que após o acesso será redirecionado para a tela de jogos
 
@@ -507,7 +469,12 @@ services:
   }
   ```
 
-#### 13 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend
+#### 6 - (TDD) Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/auth`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
+
+#### 7 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend
 
   - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado
 
@@ -516,7 +483,12 @@ services:
     "message": "Incorrect email or password"
   ```
 
-#### 14 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend
+#### 8 - (TDD) Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/auth`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
+
+#### 9 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend
 
   - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado
 
@@ -525,7 +497,12 @@ services:
     "message": "Incorrect email or password"
   ```
 
-#### 15 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend
+#### 10 - (TDD) Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/auth`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
+
+#### 11 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend
 
   - O avaliador verificará se tentar fazer o login sem e-mail retornará status não-autorizado
 
@@ -534,7 +511,12 @@ services:
     "message": "All fields must be filled"
   ```
 
-#### 16 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend
+#### 12 - (TDD) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/auth`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
+
+#### 13 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend
 
   - O avaliador verificará se tentar fazer o login sem senha retornará status não-autorizado
 
@@ -545,9 +527,14 @@ services:
 
 ### Jogos
 
- - retorne o nomes dos `clubs` associados a partida para a renderização no frontend.
+ - Os requisitos a seguir consideram o consumo da rota `/clubs` para retornar os nomes dos times associados a partida para na renderização do frontend.
 
-#### 17 - Desenvolva o endpoint` /matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend
+#### 14 - (TDD) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas
+
+  **Sugestão:**
+  - Crie um novo teste de integração, agora da sua rota `/matchs`, utilizando o método TDD, considerando **o contrato do próximo requisito**;`
+
+#### 15 - Desenvolva o endpoint` /matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend
 
   - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro
 
@@ -585,7 +572,13 @@ services:
       }
     ]
     ```
-#### 18 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend
+
+#### 16 - (TDD) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
+
+#### 17 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend
 
   - Será validado que ao escolher a opção de partidas em andamento será filtrado todas as partidas em andamento
 
@@ -625,6 +618,12 @@ services:
     }
   ]
   ```
+
+#### 18 - (`Bônus`; TDD) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
+
 #### 19 - Desenvolva o endpoint /matchs de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend
 
   - Será validado que ao escolher a opção de partidas finalizadas será filtrado todas as partidas finalizadas
