@@ -122,7 +122,7 @@ O seu back-end deverá implementar regras de negócio para popular adequadamente
 
 ## Desenvolvimento
 
-Você deve desenvolver uma aplicação dockerizada em `Node.js` usando o pacote `sequelize`.
+Você deve desenvolver uma aplicação dockerizada em `Node.js + Typescript` usando o pacote `sequelize`.
 
 Para adicionar uma partida é necessário usuário e senha, portanto a pessoa deverá estar logada para fazer as alterações. Teremos um relacionamento entre as tabelas `clubs` e `matchs` para fazermos as atualizações das partidas.
 
@@ -130,9 +130,9 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
 
   - Projeto individual.
 
-  - Serão `4` dias de projeto.
+  - Serão `X` dias de projeto.
 
-  - Data de entrega para avaliação final do projeto: `03/03/2022 14:00`.
+  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00`.
 
 ---
 
@@ -141,9 +141,9 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
 ### Antes de começar a desenvolver
 
 1. Clone o repositório
-  * `git clone https://github.com/tryber/sd-00-trybe-futebol-clube-2022-02-22-15-49-09-staging.git`.
+  * `git clone https://github.com/tryber/sd-0x-trybe-futebol-clube.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-00-trybe-futebol-clube-2022-02-22-15-49-09-staging`
+    * `cd sd-0x-trybe-futebol-clube`
 
 2. Instale as dependências [**Caso existam**]
   * `npm install`
@@ -155,7 +155,7 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
     * Exemplo: `git checkout master`
   * Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
     * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    * Exemplo: `git checkout -b joaozinho-sd-00-trybe-futebol-clube-2022-02-22-15-49-09-staging`
+    * Exemplo: `git checkout -b joaozinho-sd-0x-trybe-futebol-clube`
 
 4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
@@ -170,7 +170,7 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
 5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-00-trybe-futebol-clube-2022-02-22-15-49-09-staging`
+  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-0x-trybe-futebol-clube`
 
 6. Crie um novo `Pull Request` _(PR)_
   * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-[nome-do-projeto]/pulls)
@@ -179,7 +179,7 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
   * Clique no botão verde _"Create pull request"_
   * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
   * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-00-trybe-futebol-clube-2022-02-22-15-49-09-staging/pulls) e confira que o seu _Pull Request_ está criado
+  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-[nome-do-projeto]/pulls) e confira que o seu _Pull Request_ está criado
 
 ---
 
@@ -211,7 +211,7 @@ Para garantir a qualidade do código, usaremos o [ESLint](https://eslint.org/) p
 
 Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
 
-- `sd-00-trybe-futebol-clube-2022-02-22-15-49-09-staging/package.json`
+- `sd-0x-trybe-futebol-clube/app/backend/package.json`
 
 Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
 
@@ -232,6 +232,8 @@ Você também pode instalar o plugin do `ESLint` no `VSCode`, bastar ir em exten
 O não cumprimento de um requisito, total ou parcialmente, impactará em sua avaliação.
 
 #### ⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️
+
+**ATENÇÃO** O seu docker-compose só ira
 
 Os testes vão utilizar sua aplicação do compose para fazer as validações, por tanto **é essencial que ele esteja funcionando corretamente** para que os testes passem!
 
