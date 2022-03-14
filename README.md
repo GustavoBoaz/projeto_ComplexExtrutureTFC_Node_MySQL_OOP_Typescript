@@ -131,7 +131,7 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
   - Projeto individual;
 
   - Serão `X` dias de projeto;
-  -
+
   - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
 
 ---
