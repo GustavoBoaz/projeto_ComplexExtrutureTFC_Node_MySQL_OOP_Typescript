@@ -1,18 +1,6 @@
 on:
-  workflow_dispatch:
-    inputs:
-      dispatch_token:
-        description: 'Token that authorize the dispatch'
-        required: true
-      head_sha:
-        description: 'Head commit SHA that dispatched the workflow'
-        required: true
-      pr_author_username:
-        description: 'Pull Request author username'
-        required: true
-      pr_number:
-        description: 'Pull Request number that dispatched the workflow'
-        required: true
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   ESLint-Evaluator:
@@ -96,7 +84,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: betrybe/store-evaluation-action
-          ref: v4
+          ref: v4.2
           token: ${{ secrets.GIT_HUB_PAT }}
           path: .github/actions/store-evaluation
 
@@ -117,11 +105,11 @@ jobs:
           puppeteer_test: true
           run_compose: true
           wait_for: 'http://localhost:3000'
-          pr_author_username: ${{ github.event.inputs.pr_author_username }}
+          pr_author_username: ${{ github.event.pull_request.user.login }}
 
       - name: Run Store evaluation
         uses: ./.github/actions/store-evaluation
         with:
           evaluation-data: ${{ steps.jest_eval.outputs.result }}
           environment: production
-          pr-number: ${{ github.event.inputs.pr_number }}
+          pr-number: ${{ github.event.pull_request.number }}
