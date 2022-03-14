@@ -516,7 +516,7 @@ services:
 #### 12 - (TDD) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método TDD, agora considerando **o contrato dos próximos requisitos**;`
+  - Evolua os testes de integração da sua rota `/login`, utilizando o método TDD, agora considerando **os contratos dos próximos dois requisitos**;`
 
 #### 13 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar uma senha no frontend
 
@@ -545,7 +545,7 @@ services:
 #### 15 - (TDD) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas
 
   **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/clubs`, utilizando o método TDD, considerando **o contrato do próximo requisito**;
+  - Crie um novo teste de integração, agora da sua rota `/clubs`, utilizando o método TDD, considerando **os contratos dos próximos dois requisitos**;
 
 #### 16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente
 
@@ -583,7 +583,7 @@ services:
 #### 18 - (TDD) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
+  - Crie um novo teste de integração, agora da sua rota `/matchs`, utilizando o método TDD, agora considerando **os contratos dos próximos três requisitos**;`
 
 
 #### 19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend
