@@ -16,7 +16,7 @@ const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
   const totalGames = await page.$eval(header.totalGames, (el) => el.innerText);
   const totalVictories = await page.$eval(header.totalVictories, (el) => el.innerText);
   const totalDraws = await page.$eval(header.totalDraws, (el) => el.innerText);
-  const totalLooses = await page.$eval(header.totalLooses, (el) => el.innerText);
+  const totalLosses = await page.$eval(header.totalLosses, (el) => el.innerText);
   const goalsFavor = await page.$eval(header.goalsFavor, (el) => el.innerText);
   const goalsOwn = await page.$eval(header.goalsOwn, (el) => el.innerText);
   const goalsBalance = await page.$eval(header.goalsBalance, (el) => el.innerText);
@@ -28,7 +28,7 @@ const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
   expect(totalGames).toEqual(scoreBoardTableHeaderMock[3]);
   expect(totalVictories).toEqual(scoreBoardTableHeaderMock[4]);
   expect(totalDraws).toEqual(scoreBoardTableHeaderMock[5]);
-  expect(totalLooses).toEqual(scoreBoardTableHeaderMock[6]);
+  expect(totalLosses).toEqual(scoreBoardTableHeaderMock[6]);
   expect(goalsFavor).toEqual(scoreBoardTableHeaderMock[7]);
   expect(goalsOwn).toEqual(scoreBoardTableHeaderMock[8]);
   expect(goalsBalance).toEqual(scoreBoardTableHeaderMock[9]);
@@ -38,7 +38,7 @@ const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
 const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTestsIds, page, apiPort, endpoint, actionTrigger) => {
   await page.waitForTimeout(500);
 
-  
+
   const { body: scoreBoardTableResponse } = await waitForResponse({
     page,
     trigger: () => actionTrigger(),
@@ -64,7 +64,7 @@ const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTests
     const clubGames = await page.$eval(body.totalGames(club.id), (el) => el.innerText);
     const clubVictories = await page.$eval(body.totalVictories(club.id), (el) => el.innerText);
     const clubDraws = await page.$eval(body.totalDraws(club.id), (el) => el.innerText);
-    const clubLooses = await page.$eval(body.totalLooses(club.id), (el) => el.innerText);
+    const clubLooses = await page.$eval(body.totalLosses(club.id), (el) => el.innerText);
     const clubGoalsFavor = await page.$eval(body.goalsFavor(club.id), (el) => el.innerText);
     const clubGoalsOwn = await page.$eval(body.goalsOwn(club.id), (el) => el.innerText);
     const clubGoalsBalance = await page.$eval(body.goalsBalance(club.id), (el) => el.innerText);
@@ -76,7 +76,7 @@ const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTests
     expect(clubGames).toEqual(club.totalGames);
     expect(clubVictories).toEqual(club.totalVictories);
     expect(clubDraws).toEqual(club.totalDraws);
-    expect(clubLooses).toEqual(club.totalLooses);
+    expect(clubLooses).toEqual(club.totalLosses);
     expect(clubGoalsFavor).toEqual(club.goalsFavor);
     expect(clubGoalsOwn).toEqual(club.goalsOwn);
     expect(clubGoalsBalance).toEqual(club.goalsBalance);

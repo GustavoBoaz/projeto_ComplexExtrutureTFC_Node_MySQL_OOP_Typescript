@@ -832,6 +832,50 @@ services:
   - Se a tabela tem uma linha para cada time;
   ```
 
+  **Exemplo de retorno esperado:**
+
+  ```json
+  [
+    {
+      "name": "Palmeiras",
+      "totalPoints": 13,
+      "totalGames": 5,
+      "totalVictories": 4,
+      "totalDraws": 1,
+      "totalLosses": 0,
+      "goalsFavor": 17,
+      "goalsOwn": 5,
+      "goalsBalance": 12,
+      "efficiency": 86.67
+    },
+    {
+      "name": "Corinthians",
+      "totalPoints": 12,
+      "totalGames": 5,
+      "totalVictories": 4,
+      "totalDraws": 0,
+      "totalLosses": 1,
+      "goalsFavor": 12,
+      "goalsOwn": 3,
+      "goalsBalance": 9,
+      "efficiency": 80
+    },
+    {
+      "name": "Santos",
+      "totalPoints": 11,
+      "totalGames": 5,
+      "totalVictories": 3,
+      "totalDraws": 2,
+      "totalLosses": 0,
+      "goalsFavor": 12,
+      "goalsOwn": 6,
+      "goalsBalance": 6,
+      "efficiency": 73.33
+    },
+    ...
+  ]
+  ```
+
 ### Leaderboard Home
 
 #### 26 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados
@@ -869,37 +913,6 @@ services:
 #### 31 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard` será retonado os campos e valores corretos considerando os dados iniciais do banco de dados
-
-  Exemplo de retorno:
-  ```json
-  [
-    {
-      "name": "Corinthians",
-      "TotalPoints": 38,
-      "TotalGames": 15,
-      "TotalVictories": 12,
-      "TotalDraws": 2,
-      "TotalLooses": 1,
-      "GoalsFavor": 44,
-      "GoalsOwn": 13,
-      "GoalsBalance": 31,
-      "Efficiency": 84.4
-    },
-    {
-      "name": "Palmeiras",
-      "TotalPoints": 37,
-      "TotalGames": 15,
-      "TotalVictories": 11,
-      "TotalDraws": 4,
-      "TotalLooses": 0,
-      "GoalsFavor": 45,
-      "GoalsOwn": 13,
-      "GoalsBalance": 32,
-      "Efficiency": 82.2,
-    },
-    ...
-  ]
-  ```
 
 #### 32 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
 

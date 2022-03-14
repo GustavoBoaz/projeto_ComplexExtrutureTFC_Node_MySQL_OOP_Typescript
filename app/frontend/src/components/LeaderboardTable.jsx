@@ -66,7 +66,7 @@ const LeaderboardTable = ({ currentFilter }) => {
               totalGames,
               totalVictories,
               totalDraws,
-              totalLooses,
+              totalLosses,
               goalsFavor,
               goalsOwn,
               goalsBalance,
@@ -114,7 +114,7 @@ const LeaderboardTable = ({ currentFilter }) => {
                   className="score-board-total-looses"
                   data-testid={ `score_boarding__total_looses_${index + 1}` }
                 >
-                  { totalLooses }
+                  { totalLosses }
                 </td>
                 <td
                   className="score-board-goals-favor"
