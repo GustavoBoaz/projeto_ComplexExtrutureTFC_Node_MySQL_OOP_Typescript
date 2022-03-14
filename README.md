@@ -128,11 +128,11 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
 
 ### Data de Entrega
 
-  - Projeto individual.
+  - Projeto individual;
 
-  - Serão `X` dias de projeto.
+  - Serão `X` dias de projeto;
 
-  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00`.
+  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
 
 ---
 
@@ -233,8 +233,6 @@ O não cumprimento de um requisito, total ou parcialmente, impactará em sua ava
 
 #### ⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️
 
-**ATENÇÃO** O seu docker-compose só ira
-
 Os testes vão utilizar sua aplicação do compose para fazer as validações, por tanto **é essencial que ele esteja funcionando corretamente** para que os testes passem!
 
 - Para isso, garanta que as aplicações, tanto do back, quanto do front-end, possuem arquivos `Dockerfile` válidos;
@@ -276,7 +274,7 @@ module.exports = {
 
 #### Chave JWT:
 
-⚠️ A sua chave `JWT` de ser inserida em `app/jwt.evaluation.key` e pode ser carregada no backend com o uso da biblioteca `fs`.
+⚠️ A sua chave `JWT` de ser inserida em `app/backend/jwt.evaluation.key` e pode ser carregada no backend com o uso da biblioteca `fs`.
 
 #### Testes de cobertura
 
@@ -428,6 +426,13 @@ services:
 
 ### Sequelize
 
+Para desenvolver o banco de dados o time de produto te deu uma imagem para contruir a modelagem de dados, com essa imagem você já consegue saber como:
+  - Nomear suas tabelas e colunas
+  - Quais são os tipos de suas colunas
+  - Relações entre tabelas
+
+![Exemplo banco de dados](./diagram.png)
+
 #### 1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs
 
   - O avaliador consultará os dados da tabela clubs, verificando se ela contém os dados iniciais corretos
@@ -561,7 +566,7 @@ services:
 
 #### 16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente
 
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo a `role` no seguinte modelo:
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
 ```json
 [
@@ -583,7 +588,7 @@ services:
 
 #### 17 - Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico
 
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo a `role` no seguinte modelo:
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
 ```json
 {

@@ -12,6 +12,7 @@ ignore_files:
   - ./app/frontend/package.json
   - ./app/frontend/package-lock.json
   - ./app/backend/.eslintignore
+  - ./app/backend/.eslintrc.json
   - ./app/backend/.gitignore
   - ./app/backend/.sequelizerc
   - ./app/backend/nyc.config.js
