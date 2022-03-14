@@ -559,7 +559,7 @@ services:
 
 #### 16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente
 
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo a `role` no seguinte modelo:
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
 ```json
 [
@@ -581,7 +581,7 @@ services:
 
 #### 17 - Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico
 
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo a `role` no seguinte modelo:
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
 ```json
 {
