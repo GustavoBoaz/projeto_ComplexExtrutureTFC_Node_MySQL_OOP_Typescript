@@ -4,7 +4,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e
 
 ---
 
-# Boas vindas ao repositório do TFC - Trybe Futebol Clube!
+# Boas vindas ao repositório do TFC - Trybe Futebol Clube! ⚽️
 
 Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por Slack! #vqv 🚀
 
@@ -14,7 +14,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 # Sumário
 
-- [Boas vindas ao repositório do TFC - Trybe Futebol Clube!](#boas-vindas-ao-repositório-do-tfc---trybe-futebol-clube)
+- [Boas vindas ao repositório do TFC - Trybe Futebol Clube! ⚽️](#boas-vindas-ao-repositório-do-tfc---trybe-futebol-clube-️)
 - [Habilidades](#habilidades)
 - [Entregáveis](#entregáveis)
   - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
@@ -90,7 +90,14 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 # Habilidades
 
-Nesse projeto, você vai construir um back-end dockerizado utilizando modelagem de dados através do Sequelize. Deverão ser criadas  regras de negócio e também conectar o back-end ao front-end. Você será capaz de:
+![Exemplo app front](./front-example.png)
+
+O `TFC` é um site informativo sobre partidas e classificações de futebol! ⚽️
+
+No time de desenvolvimento do `TFC`, seu *squad* ficou responsável por desenvolver uma API (utilizando o método `TDD`) e também integrar *- através do docker-compose -* as aplicações para que funcionem consumindo um banco de dados.
+
+Nesse projeto, você vai construir **um back-end dockerizado utilizando modelagem de dados através do Sequelize**. Seu desenvolvimento deve **respeitar regras de negócio** providas no projeto e **sua API deve ser capaz de ser consumida por um front-end já provido nesse projeto**. Você será capaz de:
+
  - Realizar a dockerização dos apps, network, volume e compose;
  - Modelar dados com **MySQL** através do **Sequelize**;
  - Criar e associar tabelas usando `models` do `sequelize`;
@@ -227,6 +234,9 @@ O não cumprimento de um requisito, total ou parcialmente, impactará em sua ava
 #### ⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️
 
 Os testes vão utilizar sua aplicação do compose para fazer as validações, por tanto **é essencial que ele esteja funcionando corretamente** para que os testes passem!
+
+- Para isso, garanta que as aplicações, tanto do back, quanto do front-end, possuem arquivos `Dockerfile` válidos;
+- Utilize os scripts de apoio `npm run compose:up` / `npm run compose:down`, para facilitar a execução do seu *compose*.
 
 #### Variáveis de ambiente
 
