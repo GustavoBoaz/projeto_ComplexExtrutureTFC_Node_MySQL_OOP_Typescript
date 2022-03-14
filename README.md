@@ -128,11 +128,11 @@ Para adicionar uma partida é necessário usuário e senha, portanto a pessoa de
 
 ### Data de Entrega
 
-  - Projeto individual.
+  - Projeto individual;
 
-  - Serão `4` dias de projeto.
-
-  - Data de entrega para avaliação final do projeto: `03/03/2022 14:00`.
+  - Serão `X` dias de projeto;
+  -
+  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
 
 ---
 
