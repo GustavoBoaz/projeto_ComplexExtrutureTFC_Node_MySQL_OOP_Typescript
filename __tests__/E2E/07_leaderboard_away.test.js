@@ -32,7 +32,7 @@ const endpoint = '/leaderboard/away'
 const twoGoals = '2';
 const oneGoal = '1';
 
-describe(getRequirement(28), () => {
+describe(getRequirement(31), () => {
   it('Será avaliado que ao fazer a requisição ao endpoint /leaderboard/away será retonado os campos e valores corretos considerando os dados iniciais do banco de dados', async () => {
     await page.select(leaderboard.table.filter.select, 'Classificação Visitantes')
     const classificationButton = await page.$(leaderboard.table.filter.button)
@@ -42,7 +42,7 @@ describe(getRequirement(28), () => {
   });
 });
 
-describe(getRequirement(29), () => {
+describe(getRequirement(32), () => {
   it('Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint /leaderboard/away será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
       homeClub: clubs[3].clubName,

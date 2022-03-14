@@ -33,7 +33,7 @@ afterEach(async () => {
   await termBrowser(browser);
 });
 
-describe(getRequirement(20), () => {
+describe(getRequirement(23), () => {
   it('Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos', async () => {
     const dadosInsert = {
       homeClub: clubs[3].clubName,
@@ -62,7 +62,7 @@ describe(getRequirement(20), () => {
   });
 });
 
-describe(getRequirement(21), () => {
+describe(getRequirement(24), () => {
   it('Será validado que ao finalizar uma partida é alterado no banco de dados e na página', async () => {
 
     const dadosInsert = {
@@ -95,7 +95,7 @@ describe(getRequirement(21), () => {
   });
 });
 
-describe(getRequirement(22), () => {
+describe(getRequirement(25), () => {
   it('Será validado que não é possivel inserir uma partida com times iguais', async () => {
     const dadosInsert = {
       homeClub: clubs[3].clubName,
@@ -110,7 +110,7 @@ describe(getRequirement(22), () => {
   });
 });
 
-describe(getRequirement(23), () => {
+describe(getRequirement(26), () => {
   it('Será validado na API que não é possível inserir uma partida com time que não existe na tabela clubs', async () => {
     const dadosInsert = {
       homeClub: 'Barcelona',
@@ -119,7 +119,7 @@ describe(getRequirement(23), () => {
       awayGoals: oneGoal
     }
 
-    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/auth`, {
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
       "email": "admin@admin.com",
       "password": "secret_admin"
     });

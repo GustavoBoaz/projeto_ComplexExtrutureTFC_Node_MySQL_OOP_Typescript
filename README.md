@@ -46,42 +46,44 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
       - [3 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users](#3---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-users)
     - [Login](#login)
       - [4 - (TDD) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas](#4---tdd-desenvolva-testes-que-cubram-no-mínimo-5-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-7-linhas-cobertas)
-      - [5 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend](#5---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-permita-o-acesso-com-dados-válidos-no-frontend)
+      - [5 - Desenvolva o endpoint /login no backend de maneira ele permita o acesso com dados válidos no frontend](#5---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-permita-o-acesso-com-dados-válidos-no-frontend)
       - [6 - (TDD) Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas](#6---tdd-desenvolva-testes-que-cubram-no-mínimo-10-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-19-linhas-cobertas)
-      - [7 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend](#7---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-com-um-email-inválido-no-frontend)
+      - [7 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso com um email inválido no frontend](#7---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-com-um-email-inválido-no-frontend)
       - [8 - (TDD) Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas](#8---tdd-desenvolva-testes-que-cubram-no-mínimo-15-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-25-linhas-cobertas)
-      - [9 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend](#9---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-com-uma-senha-inválida-no-frontend)
+      - [9 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso com uma senha inválida no frontend](#9---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-com-uma-senha-inválida-no-frontend)
       - [10 - (TDD) Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas](#10---tdd-desenvolva-testes-que-cubram-no-mínimo-20-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-35-linhas-cobertas)
-      - [11 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend](#11---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-um-email-no-frontend)
+      - [11 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar um email no frontend](#11---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-um-email-no-frontend)
       - [12 - (TDD) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas](#12---tdd-desenvolva-testes-que-cubram-no-mínimo-30-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-45-linhas-cobertas)
-      - [13 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend](#13---desenvolva-o-endpoint-auth-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-uma-senha-no-frontend)
+      - [13 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar uma senha no frontend](#13---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-uma-senha-no-frontend)
+      - [14 - Desenvolva o endpoint /login/validate no backend de maneira ele retorne os dados corretamente no frontend](#14---desenvolva-o-endpoint-loginvalidate-no-backend-de-maneira-ele-retorne-os-dados-corretamente-no-frontend)
     - [Jogos](#jogos)
-      - [14 - (TDD) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas](#14---tdd-desenvolva-testes-que-cubram-no-mínimo-45-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-70-linhas-cobertas)
-      - [15 - Desenvolva o endpoint` /matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend](#15---desenvolva-o-endpoint-matchs-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-frontend)
-      - [16 - (TDD) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas](#16---tdd-desenvolva-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-80-linhas-cobertas)
-      - [17 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend](#17---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-frontend)
-      - [18 - (`Bônus`; TDD) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#18---bônus-tdd-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
-      - [19 - Desenvolva o endpoint /matchs de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend](#19---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-finalizadas-na-tela-de-partidas-do-frontend)
+      - [15 - (TDD) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas](#15---tdd-desenvolva-testes-que-cubram-no-mínimo-45-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-70-linhas-cobertas)
+      - [16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente](#16---desenvolva-o-endpoint-clubs-no-backend-de-forma-que-ele-possa-retornar-todos-os-times-corretamente)
+      - [17 - Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico](#17---desenvolva-o-endpoint-clubsid-no-backend-de-forma-que-ele-possa-retornar-dados-de-um-time-específico)
+      - [18 - (TDD) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas](#18---tdd-desenvolva-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-80-linhas-cobertas)
+      - [19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend](#19---desenvolva-o-endpoint-matchs-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-frontend)
+      - [20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend](#20---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-frontend)
+      - [21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend](#21---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-finalizadas-na-tela-de-partidas-do-frontend)
+      - [22 - (`Bônus`; TDD) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#22---bônus-tdd-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
     - [Adicionar Partidas](#adicionar-partidas)
-      - [20 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados](#20---desenvolva-a-rota-matchs-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-true-no-banco-de-dados)
-      - [21 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possivel salvar uma partida com o status de inProgress como false no banco de dados](#21---desenvolva-a-rota-matchsidfinish-de-modo-que-seja-possivel-salvar-uma-partida-com-o-status-de-inprogress-como-false-no-banco-de-dados)
-      - [22 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais](#22---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-times-iguais)
-      - [23 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs](#23---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-time-que-não-existe-na-tabela-clubs)
+      - [23 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados](#23---desenvolva-a-rota-matchs-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-true-no-banco-de-dados)
+      - [24 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados](#24---desenvolva-a-rota-matchsidfinish-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-false-no-banco-de-dados)
+      - [25 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais](#25---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-times-iguais)
+      - [26 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs](#26---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-time-que-não-existe-na-tabela-clubs)
     - [Editar Partidas](#editar-partidas)
-      - [24 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento](#24---desenvolva-o-endpoint-matchsid-de-forma-que-seja-possível-atualizar-partidas-em-andamento)
-      - [25 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível finalizar partidas em andamento](#25---desenvolva-o-endpoint-matchsid-de-forma-que-seja-possível-finalizar-partidas-em-andamento)
+      - [27 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento](#27---desenvolva-o-endpoint-matchsid-de-forma-que-seja-possível-atualizar-partidas-em-andamento)
+      - [28 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível finalizar partidas em andamento](#28---desenvolva-o-endpoint-matchsid-de-forma-que-seja-possível-finalizar-partidas-em-andamento)
   - [Leaderboards](#leaderboards)
     - [Leaderboard Home](#leaderboard-home)
-      - [26 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados](#26---desenvolva-o-endpoint-leaderboardhome-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-mandantes-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
-      - [27 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada](#27---desenvolva-o-endpoint-leaderboardhome-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-mandantes-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-botafogo-2-x-1-grêmio-a-tabela-será-atualizada)
+      - [29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados](#29---desenvolva-o-endpoint-leaderboardhome-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-mandantes-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
+      - [30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada](#30---desenvolva-o-endpoint-leaderboardhome-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-mandantes-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-botafogo-2-x-1-grêmio-a-tabela-será-atualizada)
     - [Leaderboard away](#leaderboard-away)
-      - [28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados](#28---desenvolva-o-endpoint-leaderboardaway-de-forma-que-seja-possível-filtrar-as-classificações-dos-times-quando-visitantes-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
-      - [29 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada](#29---desenvolva-o-endpoint-leaderboardaway-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-visitantes-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-botafogo-2-x-1-grêmio-a-tabela-será-atualizada)
+      - [31 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados](#31---desenvolva-o-endpoint-leaderboardaway-de-forma-que-seja-possível-filtrar-as-classificações-dos-times-quando-visitantes-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
+      - [32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada](#32---desenvolva-o-endpoint-leaderboardaway-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-visitantes-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-botafogo-2-x-1-grêmio-a-tabela-será-atualizada)
     - [Leaderboard](#leaderboard)
-      - [30 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend](#30---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend)
-      - [31 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados](#31---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
-      - [32 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada](#32---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-flamengo-3-x-0-napoli-sc-a-tabela-será-atualizada)
-      - [33 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada](#33---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-minas-brasília-1-x-0-ferroviária-a-tabela-será-atualizada)
+      - [33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados](#33---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
+      - [34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada](#34---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-flamengo-3-x-0-napoli-sc-a-tabela-será-atualizada)
+      - [35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada](#35---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-minas-brasília-1-x-0-ferroviária-a-tabela-será-atualizada)
   - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
     - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
@@ -248,7 +250,7 @@ module.exports = {
 
 **(Neste arquivo é obrigatório deixar o nome do database como `"database": 'TRYBE_FUTEBOL_CLUBE'`)**
 
-**É essencial usar essas 3 variávies no arquivo acima:**
+**É essencial usar essas 3 variáveis no arquivo acima:**
 
 #### Variáveis:
 
@@ -269,7 +271,7 @@ module.exports = {
 
 A construção de testes de cobertura no backend deve ser feita em *TypeScript*, utilizando `mocha`, `chai` e `sinon`, na pasta `app/backend/src/tests/`, conforme o exemplo em `app/backend/src/tests/change.me.test.ts` *(aqui considerando um teste de integração)*:
 
-```typecript
+```typescript
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import chaiHttp = require('chai-http');
@@ -428,7 +430,7 @@ services:
 
 ### Login
 
-- A rota deve ser (`/auth`).
+- A rota deve ser (`/login`).
 
 - A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados.
   - O campo `email` deve receber um email valido.
@@ -448,11 +450,11 @@ services:
 #### 4 - (TDD) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas
 
   **Sugestões:**
-  - Se baseando no contrato do endpoint `/auth` **do próximo requisito**, inicie um teste de integração utilizando a metodologia *TDD*, que passará a seguir, com a implementação do mesmo;
+  - Se baseando no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia *TDD*, que passará a seguir, com a implementação do mesmo;
   - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
   - Para isso, utilize/altere o arquivo de referência `app/backend/src/tests/change.me.test.ts`.
 
-#### 5 - Desenvolva o endpoint /auth no backend de maneira ele permita o acesso com dados válidos no frontend
+#### 5 - Desenvolva o endpoint /login no backend de maneira ele permita o acesso com dados válidos no frontend
 
   - O avaliador verificará se é possível fazer o login com dados corretos e que após o acesso será redirecionado para a tela de jogos
 
@@ -472,9 +474,9 @@ services:
 #### 6 - (TDD) Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/auth`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
+  - Evolua os testes de integração da sua rota `/login`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
 
-#### 7 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com um email inválido no frontend
+#### 7 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso com um email inválido no frontend
 
   - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado
 
@@ -486,9 +488,9 @@ services:
 #### 8 - (TDD) Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/auth`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
+  - Evolua os testes de integração da sua rota `/login`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
 
-#### 9 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso com uma senha inválida no frontend
+#### 9 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso com uma senha inválida no frontend
 
   - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado
 
@@ -500,9 +502,9 @@ services:
 #### 10 - (TDD) Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/auth`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
+  - Evolua os testes de integração da sua rota `/login`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;
 
-#### 11 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar um email no frontend
+#### 11 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar um email no frontend
 
   - O avaliador verificará se tentar fazer o login sem e-mail retornará status não-autorizado
 
@@ -514,9 +516,9 @@ services:
 #### 12 - (TDD) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/auth`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
+  - Evolua os testes de integração da sua rota `/login`, utilizando o método TDD, agora considerando **o contrato dos próximos requisitos**;`
 
-#### 13 - Desenvolva o endpoint /auth no backend de maneira ele não permita o acesso sem informar uma senha no frontend
+#### 13 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar uma senha no frontend
 
   - O avaliador verificará se tentar fazer o login sem senha retornará status não-autorizado
 
@@ -525,16 +527,66 @@ services:
     "message": "All fields must be filled"
   ```
 
+#### 14 - Desenvolva o endpoint /login/validate no backend de maneira ele retorne os dados corretamente no frontend
+
+  - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization` onde ficará armazenado o token gerado no login;
+
+  - O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário
+
+  A resposta deve ser de status `200` com uma `string` contendo a `role` do *user*:
+  ```plaintext
+    "admin"
+  ```
+
 ### Jogos
 
  - Os requisitos a seguir consideram o consumo da rota `/clubs` para retornar os nomes dos times associados a partida para na renderização do frontend.
 
-#### 14 - (TDD) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas
+#### 15 - (TDD) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas
 
   **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/matchs`, utilizando o método TDD, considerando **o contrato do próximo requisito**;`
+  - Crie um novo teste de integração, agora da sua rota `/clubs`, utilizando o método TDD, considerando **o contrato do próximo requisito**;
 
-#### 15 - Desenvolva o endpoint` /matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend
+#### 16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente
+
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo a `role` no seguinte modelo:
+
+```json
+[
+	{
+		"id": 1,
+		"clubName": "Avaí/Kindermann"
+	},
+	{
+		"id": 2,
+		"clubName": "Bahia"
+	},
+	{
+		"id": 3,
+		"clubName": "Botafogo"
+	},
+	...
+]
+```
+
+#### 17 - Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico
+
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo a `role` no seguinte modelo:
+
+```json
+{
+	"id": 5,
+	"clubName": "Cruzeiro"
+}
+```
+
+#### 18 - (TDD) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
+
+
+#### 19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend
 
   - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro
 
@@ -573,16 +625,11 @@ services:
     ]
     ```
 
-#### 16 - (TDD) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
-
-#### 17 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend
+#### 20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend
 
   - Será validado que ao escolher a opção de partidas em andamento será filtrado todas as partidas em andamento
 
-  - Essa requisição devará usar `query string` para definir o parametro
+  - Essa requisição deverá usar `query string` para definir o parâmetro
     ex: `matchs?inProgress=true`
 
   Exemplo de retorno da requisição:
@@ -619,16 +666,11 @@ services:
   ]
   ```
 
-#### 18 - (`Bônus`; TDD) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
-
-#### 19 - Desenvolva o endpoint /matchs de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend
+#### 21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend
 
   - Será validado que ao escolher a opção de partidas finalizadas será filtrado todas as partidas finalizadas
 
-  - Essa requisição devará usar `query string` para definir o parametro
+  - Essa requisição deverá usar `query string` para definir o parâmetro
     ex: `matchs?inProgress=false`
 
   Exemplo de retorno da requisição:
@@ -664,6 +706,12 @@ services:
     }
   ]
   ```
+
+#### 22 - (`Bônus`; TDD) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método TDD, agora considerando **o contrato do próximo requisito**;`
+
 ### Adicionar Partidas
 
   Crie um endpoint `/clubs`
@@ -697,7 +745,7 @@ services:
     ]
   }
   ```
-#### 20 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+#### 23 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
 
   - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos
 
@@ -727,7 +775,7 @@ services:
   }
   ```
 
-#### 21 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possivel salvar uma partida com o status de inProgress como false no banco de dados
+#### 24 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados
 
   - Será validado que ao finalizar uma partida é alterado no banco de dados e na página
 
@@ -738,22 +786,19 @@ services:
   }
   ```
 
-#### 22 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais
+#### 25 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais
 
-  - Será validado que não é possivel inserir uma partida com times iguais
+  - Será validado que não é possível inserir uma partida com times iguais
 
-  - Não deve ser possivel criar uma partida com o mesmo time, exemplo: Barcelona x Barcelona, caso contrário, deve-se retornar o seguinte erro:
+  - Não deve ser possível criar uma partida com o mesmo time, exemplo: Barcelona x Barcelona, caso contrário, deve-se retornar o seguinte erro:
 
   ```json
   { "message": "It is not possible to create a match with two equal teams" }
   ```
 
+#### 26 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs
 
-
-
-#### 23 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs
-
-  - Será validado que não é possivel inserir uma partida com time que não existe na tabela clubs
+  - Será validado que não é possível inserir uma partida com time que não existe na tabela clubs
 
   - caso algum dos times não esteja cadastrado no banco de dados, deve-se retornar o seguinte erro:
 
@@ -763,7 +808,7 @@ services:
 
 ### Editar Partidas
 
-#### 24 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento
+#### 27 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento
 
   - Será avaliado que é possível alterar o resultado de uma partida
 
@@ -775,7 +820,7 @@ services:
   }
   ```
 
-#### 25 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível finalizar partidas em andamento
+#### 28 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível finalizar partidas em andamento
 
   - Será avaliado que é possível finalizar uma partida em andamento
 
@@ -878,23 +923,23 @@ services:
 
 ### Leaderboard Home
 
-#### 26 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados
+#### 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados
 
-  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` será retonado os campos e valores corretos considerando os dados iniciais do banco de dados
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
 
-#### 27 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada
+#### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada
 
-  - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/home` será retonado os campos e valores corretos
+  - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/home` será retornado os campos e valores corretos
 
 ### Leaderboard away
 
-#### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados
+#### 31 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados
 
-  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away` será retonado os campos e valores corretos considerando os dados iniciais do banco de dados
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
 
-#### 29 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada
+#### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada
 
-  - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/away` será retonado os campos e valores corretos
+  - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/away` será retornado os campos e valores corretos
 
 
 ### Leaderboard
@@ -906,23 +951,17 @@ services:
     |      1        |Corinthians| 38 | 15 | 12 | 2 | 1 | 44 | 13 | 31 | 84.4 |
 
 
-#### 30 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend
+#### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados
 
-  - O Header da tabela possui os campos corretos
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
 
-#### 31 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados
+#### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
 
-  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard` será retonado os campos e valores corretos considerando os dados iniciais do banco de dados
+  - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard será retornado os campos e valores corretos
 
-#### 32 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
+#### 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada
 
-  - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos
-
-#### 33 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada
-
-  - Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos
-
-
+  - Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard será retornado os campos e valores corretos
 
 ## Depois de terminar o desenvolvimento
 

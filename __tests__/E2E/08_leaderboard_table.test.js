@@ -34,19 +34,13 @@ const number = {
   one: '1',
 }
 
-describe(getRequirement(30), () => {
-  it('O Header da tabela possui os campos corretos', async () => {
-    await validateLeaderboardHeader(leaderboard, page);
-  });
-});
-
-describe(getRequirement(31), () => {
+describe(getRequirement(33), () => {
   it('Será avaliado que ao fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos considerando os dados iniciais do banco de dados', async () => {
     await validateLeaderboardBody(state01, leaderboard, page, containerPorts.backend, endpoint, actionTriger);
   });
 });
 
-describe(getRequirement(32), () => {
+describe(getRequirement(34), () => {
   it('Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
       homeClub: clubs[6].clubName,
@@ -68,7 +62,7 @@ describe(getRequirement(32), () => {
   });
 });
 
-describe(getRequirement(33), () => {
+describe(getRequirement(35), () => {
   it('Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
       homeClub: clubs[9].clubName,

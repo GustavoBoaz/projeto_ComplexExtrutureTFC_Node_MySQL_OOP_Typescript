@@ -56,7 +56,7 @@ describe(getRequirement(12), () => {
   });
 });
 
-describe(getRequirement(14), () => {
+describe(getRequirement(15), () => {
   test('No back-end', () => {
     expect(backEnd.skipped).toStrictEqual(0);
     expect(backEnd.pct).toBeGreaterThanOrEqual(45);
@@ -64,7 +64,7 @@ describe(getRequirement(14), () => {
   });
 });
 
-describe(getRequirement(16), () => {
+describe(getRequirement(18), () => {
   test('No back-end', () => {
     expect(backEnd.skipped).toStrictEqual(0);
     expect(backEnd.pct).toBeGreaterThanOrEqual(60);
@@ -72,7 +72,7 @@ describe(getRequirement(16), () => {
   });
 });
 
-describe(getRequirement(18), () => {
+describe(getRequirement(22), () => {
   test('No back-end', () => {
     expect(backEnd.skipped).toStrictEqual(0);
     expect(backEnd.pct).toBeGreaterThanOrEqual(80);

@@ -52,7 +52,7 @@ describe(getRequirement(5), () => {
       expectedRequestType: 'script',
       expectedRequestMethod: 'POST',
       expectedResponseStatus: 200,
-      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/auth`
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
@@ -90,7 +90,7 @@ describe(getRequirement(7), () => {
       expectedRequestType: 'script',
       expectedRequestMethod: 'POST',
       expectedResponseStatus: 401,
-      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/auth`
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
     expect(message).toBe('Incorrect email or password');
@@ -122,7 +122,7 @@ describe(getRequirement(9), () => {
       expectedRequestType: 'script',
       expectedRequestMethod: 'POST',
       expectedResponseStatus: 401,
-      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/auth`
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
     expect(message).toBe('Incorrect email or password');
@@ -152,7 +152,7 @@ describe(getRequirement(11), () => {
       expectedRequestType: 'script',
       expectedRequestMethod: 'POST',
       expectedResponseStatus: 401,
-      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/auth`
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
     expect(message).toBe('All fields must be filled');
@@ -182,7 +182,7 @@ describe(getRequirement(13), () => {
       expectedRequestType: 'script',
       expectedRequestMethod: 'POST',
       expectedResponseStatus: 401,
-      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/auth`
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
     expect(message).toBe('All fields must be filled');
@@ -196,9 +196,9 @@ describe(getRequirement(13), () => {
   });
 });
 
-describe("Desenvolva o endpoint /validate no backend de maneira ele retorne os dados corretamente no frontend", () => {
+describe(getRequirement(14), () => {
   it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
-    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/auth`, {
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
       "email": "admin@admin.com",
       "password": "secret_admin"
     });

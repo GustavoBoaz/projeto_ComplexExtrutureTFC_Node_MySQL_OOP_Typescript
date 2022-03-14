@@ -7,6 +7,7 @@ const { validateMatchs } = require('../utils/validateMatchs');
 const { dbReset, initSequelize, termSequelize } = require('../config/sequelize');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const { getRequirement } = require('../utils/util');
+const axios = require('axios').default;
 
 const IN_PROGRESS = 'Em andamento';
 const FINISH = 'Finalizado';
@@ -30,7 +31,7 @@ afterEach(async () => {
   await termBrowser(browser);
 });
 
-describe("Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente", () => {
+describe(getRequirement(16), () => {
   it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
     const expectedResult = [
       {
@@ -109,11 +110,11 @@ describe("Desenvolva o endpoint /clubs no backend de forma que ele possa retorna
     expect(result).toHaveProperty("status");
     expect(result).toHaveProperty("data");
     expect(result.status).toBe(200);
-    expect(result.data).toBe(expectedResult);
+    expect(result.data).toMatchObject(expectedResult);
   });
 });
 
-describe("Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico", () => {
+describe(getRequirement(17), () => {
   it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
     const expectedResult = {
       "id": 5,
@@ -130,11 +131,11 @@ describe("Desenvolva o endpoint /clubs/:id no backend de forma que ele possa ret
     expect(result).toHaveProperty("status");
     expect(result).toHaveProperty("data");
     expect(result.status).toBe(200);
-    expect(result.data).toBe(expectedResult);
+    expect(result.data).toMatchObject(expectedResult);
   });
 });
 
-describe(getRequirement(15), () => {
+describe(getRequirement(19), () => {
   it('Será validado que a página apresentará todos os dados de partidas sem nenhum filtro', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -147,7 +148,7 @@ describe(getRequirement(15), () => {
   });
 });
 
-describe(getRequirement(17), () => {
+describe(getRequirement(20), () => {
   it('Será validado que ao escolher a opção de partidas em andamento será filtrado todas as partidas em andamento', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -160,7 +161,7 @@ describe(getRequirement(17), () => {
   });
 });
 
-describe(getRequirement(19), () => {
+describe(getRequirement(21), () => {
   it('Será validado que ao escolher a opção de partidas finalizadas será filtrado todas as partidas finalizadas', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
