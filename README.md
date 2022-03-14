@@ -64,8 +64,8 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
       - [19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend](#19---desenvolva-o-endpoint-matchs-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-frontend)
       - [20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend](#20---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-frontend)
       - [21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend](#21---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-finalizadas-na-tela-de-partidas-do-frontend)
-      - [22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#22---bônus-tdd-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
     - [Adicionar Partidas](#adicionar-partidas)
+      - [22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#22---bônus-tdd-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
       - [23 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados](#23---desenvolva-a-rota-matchs-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-true-no-banco-de-dados)
       - [24 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados](#24---desenvolva-a-rota-matchsidfinish-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-false-no-banco-de-dados)
       - [25 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais](#25---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-times-iguais)
@@ -717,44 +717,13 @@ services:
   ]
   ```
 
+### Adicionar Partidas
+
 #### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**;`
+  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**;`
 
-### Adicionar Partidas
-
-  Crie um endpoint `/clubs`
-
-  - A rota pode ser acessada por usuário logados ou não;
-
-
-  - A rota deve Retorna todos os times cadastrados no banco de dados.
-
-  Exemplo de retorno:
-  ```json
-  {
-    "clubs": [
-      {
-        "id" : 1,
-        "name" : "Avaí/Kindermann"
-      },
-      {
-        "id" : 2,
-        "name" : "Bahia"
-      },
-      ...
-      {
-        "id" : 15,
-        "name" : "São José-SP"
-      },
-      {
-        "id" : 16,
-        "name" : "São Paulo"
-      }
-    ]
-  }
-  ```
 #### 23 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
 
   - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos
