@@ -8,6 +8,7 @@ const { dbReset, termSequelize, initSequelize } = require('../config/sequelize')
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const waitForResponse = require('../utils/waitForResponse');
 const { getRequirement } = require('../utils/util');
+const axios = require('axios').default;
 
 const jwtKey = fs
   .readFileSync('./app/backend/jwt.evaluation.key', { encoding: 'utf-8' })
@@ -192,5 +193,33 @@ describe(getRequirement(13), () => {
 
     expect(alertLogin).toBe('O endereço de e-mail ou a senha não estão corretos. Por favor, tente novamente.');
     expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_LOGIN);
+  });
+});
+
+describe("Desenvolva o endpoint /validate no backend de maneira ele retorne os dados corretamente no frontend", () => {
+  it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/auth`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .get(
+        `${URL(containerPorts.backend).BASE_URL}/validate`,
+        {
+          headers: {
+            authorization: token
+          }
+        }
+      )
+      .then(({ status, data }) => ({status, data}))
+      .catch(({response: { status, data }}) => ({ status, data }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("data");
+    expect(result.status).toBe(200);
+    expect(result.data).toBe("admin");
   });
 });

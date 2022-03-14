@@ -30,6 +30,110 @@ afterEach(async () => {
   await termBrowser(browser);
 });
 
+describe("Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente", () => {
+  it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
+    const expectedResult = [
+      {
+        "id": 1,
+        "clubName": "Avaí/Kindermann"
+      },
+      {
+        "id": 2,
+        "clubName": "Bahia"
+      },
+      {
+        "id": 3,
+        "clubName": "Botafogo"
+      },
+      {
+        "id": 4,
+        "clubName": "Corinthians"
+      },
+      {
+        "id": 5,
+        "clubName": "Cruzeiro"
+      },
+      {
+        "id": 6,
+        "clubName": "Ferroviária"
+      },
+      {
+        "id": 7,
+        "clubName": "Flamengo"
+      },
+      {
+        "id": 8,
+        "clubName": "Grêmio"
+      },
+      {
+        "id": 9,
+        "clubName": "Internacional"
+      },
+      {
+        "id": 10,
+        "clubName": "Minas Brasília"
+      },
+      {
+        "id": 11,
+        "clubName": "Napoli-SC"
+      },
+      {
+        "id": 12,
+        "clubName": "Palmeiras"
+      },
+      {
+        "id": 13,
+        "clubName": "Real Brasília"
+      },
+      {
+        "id": 14,
+        "clubName": "Santos"
+      },
+      {
+        "id": 15,
+        "clubName": "São José-SP"
+      },
+      {
+        "id": 16,
+        "clubName": "São Paulo"
+      }
+    ];
+
+    const result = await axios
+      .get(
+        `${URL(containerPorts.backend).BASE_URL}/clubs`,
+      )
+      .then(({ status, data }) => ({status, data}))
+      .catch(({response: { status, data }}) => ({ status, data }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("data");
+    expect(result.status).toBe(200);
+    expect(result.data).toBe(expectedResult);
+  });
+});
+
+describe("Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico", () => {
+  it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
+    const expectedResult = {
+      "id": 5,
+      "clubName": "Cruzeiro"
+    };
+
+    const result = await axios
+      .get(
+        `${URL(containerPorts.backend).BASE_URL}/clubs/5`,
+      )
+      .then(({ status, data }) => ({status, data}))
+      .catch(({response: { status, data }}) => ({ status, data }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("data");
+    expect(result.status).toBe(200);
+    expect(result.data).toBe(expectedResult);
+  });
+});
+
 describe(getRequirement(15), () => {
   it('Será validado que a página apresentará todos os dados de partidas sem nenhum filtro', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
