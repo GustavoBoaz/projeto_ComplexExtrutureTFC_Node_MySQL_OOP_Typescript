@@ -315,18 +315,6 @@ module.exports = {
       efficiency: '33.33'
     },
     {
-      name: 'Flamengo',
-      totalPoints: '1',
-      totalGames: '2',
-      totalVictories: '0',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '1',
-      goalsOwn: '2',
-      goalsBalance: '-1',
-      efficiency: '16.67'
-    },
-    {
       name: 'Cruzeiro',
       totalPoints: '1',
       totalGames: '2',
@@ -335,6 +323,18 @@ module.exports = {
       totalLosses: '1',
       goalsFavor: '2',
       goalsOwn: '3',
+      goalsBalance: '-1',
+      efficiency: '16.67'
+    },
+    {
+      name: 'Flamengo',
+      totalPoints: '1',
+      totalGames: '2',
+      totalVictories: '0',
+      totalDraws: '1',
+      totalLosses: '1',
+      goalsFavor: '1',
+      goalsOwn: '2',
       goalsBalance: '-1',
       efficiency: '16.67'
     },
