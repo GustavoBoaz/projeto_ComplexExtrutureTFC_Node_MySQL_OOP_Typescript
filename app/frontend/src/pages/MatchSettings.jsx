@@ -28,7 +28,7 @@ const MatchSettings = () => {
       const { token } = storage;
 
       setToken(token);
-      api.get('/validate')
+      api.get('/login/validate')
         .then(() => setIsAuthenticated(true))
         .catch(() => navigate('/'));
     })();
