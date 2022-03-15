@@ -353,7 +353,7 @@ Alguns exemplos:
 
   - Um problema inesperado no servidor deve retornar um código de `status 500`;
 
-  - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`.
+  - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`
 
 ---
 
@@ -362,14 +362,14 @@ Alguns exemplos:
 ### Docker e Docker-compose
 
 #### Crie os arquivos dockerfile e docker-compose
-  - As pastas `frontend/` e `backend/` devem possuir um arquivo dockerfile.
+  - As pastas `frontend/` e `backend/` devem possuir um arquivo dockerfile
   - A pasta `app/` deve possuir um arquivo docker-compose
   - Os arquivos dockerfile e docker-compose devem estar configurados corretamente
 
   **Observação**
     Em seu projeto vai conter um arquivo docker-compose.example.yml.
     Seu service do backend no docker-compose deve ter o `depends_on` exatamente igual ao do arquivo docker-compose.example.yml.
-    Use o modelo de serviço do banco de dados que está no arquivo `app/docker-compose.example.yml` que está igual ao formato abaixo.
+    Use o modelo de serviço do banco de dados que está no arquivo `app/docker-compose.example.yml` que está igual ao formato abaixo
 
 ``` yml
 version: '3.9'
@@ -451,11 +451,11 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 - A rota deve ser (`/login`).
 
-- A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados.
+- A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados
   - O campo `email` deve receber um email valido.
   - O Campo `password` deve ter mais de 6 characters
 
-- Sua chave `JWT` do backend (utilizada para assinatura do token), deve ser salva no arquivo `app/backend/jwt.evaluation.key` e pode ser carregada em sua aplicação utilizando a biblioteca `fs` e é necessário para passar nos testes.
+- Sua chave `JWT` do backend (utilizada para assinatura do token), deve ser salva no arquivo `app/backend/jwt.evaluation.key` e pode ser carregada em sua aplicação utilizando a biblioteca `fs` e é necessário para passar nos testes
 
 
 - O body da requisição deve conterá o seguinte formato:
@@ -471,7 +471,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   **Sugestões:**
   - Se baseando no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD`, que passará a seguir, com a implementação do mesmo;
   - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
-  - Para isso, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`.
+  - Para isso, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`
 
 #### 5 - Desenvolva o endpoint `/login` no backend de maneira ele permita o acesso com dados válidos no frontend
 
@@ -561,7 +561,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 ### Jogos
 
- - Os requisitos a seguir consideram o consumo da rota `/clubs` para retornar os nomes dos times associados a partida para na renderização do frontend.
+ - Os requisitos a seguir consideram o consumo da rota `/clubs` para retornar os nomes dos times associados a partida para na renderização do frontend
 
 #### 15 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em `/src` com um mínimo de 70 linhas cobertas
 
@@ -609,7 +609,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 #### 19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend.
 
-  - A rota deve ser um `POST` e retorna uma lista de partidas.
+  - A rota deve ser um `GET` e retorna uma lista de partidas
 
   - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro
 
@@ -649,6 +649,8 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
     ```
 
 #### 20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend
+
+  - A rota devera ser do tipo `GET` e retorna uma lista de partidas filtradas
 
   - Será validado que ao escolher a opção de partidas em andamento será filtrado todas as partidas em andamento
 
@@ -691,6 +693,8 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 #### 21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend
 
+  - A rota devera ser do tipo `GET` e retorna uma lista de partidas filtradas
+
   - Será validado que ao escolher a opção de partidas finalizadas será filtrado todas as partidas finalizadas
 
   - Essa requisição deverá usar `query string` para definir o parâmetro
@@ -732,12 +736,16 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 ### Adicionar Partidas
 
+  - Para que os requisitos de criação de partidas, é necessário que a rota `/clubs` funcione corretamente
+
 #### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em `/src` com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**;`
 
-#### 23 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+#### 23 - Desenvolva a rota `/matchs` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+
+  - A rota deverá ser do tipo `POST`, e retornar a partida inserida no banco de dados
 
   - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos
 
@@ -750,7 +758,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
     "awayTeam": 8, // O valor deve ser o id do time
     "homeTeamGoals": 2,
     "awayTeamGoals": 2,
-    "inProgress": true or false, // O mysql converte true para 1 e false para 0
+    "inProgress": true // a partida deve ser criada como em progresso
   }
   ```
 
@@ -760,25 +768,23 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   {
     "id": 1,
     "homeTeam": 16,
-    "homeTeamGoals": 1,
+    "homeTeamGoals": 2,
     "awayTeam": 8,
-    "awayTeamGoals": 1,
-    "inProgress": false,
+    "awayTeamGoals": 2,
+    "inProgress": true,
   }
   ```
 
 #### 24 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados
 
+  - A rota deve ser do tipo `PATCH`
+
+  - Será recebido o `id` pelo parâmetro da url
+
   - Será validado que ao finalizar uma partida é alterado no banco de dados e na página
 
-  - O corpo da requisição terá o seguinte formato:
-  ```json
-  {
-    "id": 49
-  }
-  ```
 
-#### 25 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais
+#### 25 - Desenvolva o endpoint `/matchs` de forma que não seja possível inserir uma partida com times iguais
 
   - Será validado que não é possível inserir uma partida com times iguais
 
@@ -788,7 +794,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   { "message": "It is not possible to create a match with two equal teams" }
   ```
 
-#### 26 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs
+#### 26 - Desenvolva o endpoint `/matchs` de forma que não seja possível inserir uma partida com time que não existe na tabela clubs
 
   - Será validado que não é possível inserir uma partida com time que não existe na tabela clubs
 
@@ -802,6 +808,10 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 #### 27 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento
 
+  - O endpoint deve ser do tipo `PATCH`
+
+  - Será recebido o `id` pelo parâmetro da url
+
   - Será avaliado que é possível alterar o resultado de uma partida
 
   - O corpo da requisição terá o seguinte formato:
@@ -814,12 +824,16 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 #### 28 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível finalizar partidas em andamento
 
+  - O endpoint deve ser do tipo `PATCH`
+
+  - Será recebido o `id` pelo parâmetro da url
+
   - Será avaliado que é possível finalizar uma partida em andamento
 
 ## Leaderboards
 
   **Para construir as classificação, elas devem seguir as seguintes regras de negócios**
-  Onde:
+  - Onde:
     - `Classificação`: Posição na classificação;
     - `Time`: Nome do time;
     - `P`: Total de Pontos;
@@ -831,6 +845,8 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
     - `GC`: Gols marcados contra;
     - `SG`: Saldo total de gols;
     - `%`: Aproveitamento do time.
+
+    <br/>
 
   - Toda a regra de negócio e cálculos necessários deverão ser realizados no seu back-end. A aplicação front-end apenas renderizará essas informações;
 
@@ -845,7 +861,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
     - `P`: Total de Pontos;
     - `J`: Total de Jogos.
 
-    Obs.: O seu resultado deverá ser limitado a `uma casa decimal`.
+    Obs.: O seu resultado deverá ser limitado a `duas casas decimais`.
 
   - O resultado deverá ser ordenado sempre de forma decrescente, levando em consideração a quantidade de pontos que o time acumulou. Em caso de empate no `Total de Pontos`, você deve levar em consideração os seguintes critérios para desempate:
 
@@ -917,9 +933,13 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 #### 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados
 
+  - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
+
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
 
-#### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada
+#### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
+
+  - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
   - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/home` será retornado os campos e valores corretos
 
@@ -927,9 +947,13 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 #### 31 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados
 
+  - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
+
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
 
-#### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada
+#### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
+
+  - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
   - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/away` será retornado os campos e valores corretos
 
@@ -945,13 +969,19 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 #### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados
 
+  - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
+
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
 
 #### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
 
+  - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
+
   - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard será retornado os campos e valores corretos
 
 #### 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada
+
+  - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
   - Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard será retornado os campos e valores corretos
 

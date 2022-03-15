@@ -17,7 +17,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const endpoint = '/auth';
+      const endpoint = '/login';
 
       const { token, user } = await requestLogin(endpoint, { email, password });
 

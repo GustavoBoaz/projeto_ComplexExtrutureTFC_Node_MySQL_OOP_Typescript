@@ -13,18 +13,6 @@ module.exports = {
     efficiency: '100'
   },
   {
-    name: 'Internacional',
-    totalPoints: '6',
-    totalGames: '2',
-    totalVictories: '2',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '3',
-    goalsOwn: '0',
-    goalsBalance: '3',
-    efficiency: '100'
-  },
-  {
     name: 'Corinthians',
     totalPoints: '6',
     totalGames: '3',
@@ -35,6 +23,18 @@ module.exports = {
     goalsOwn: '2',
     goalsBalance: '4',
     efficiency: '66.67'
+  },
+  {
+    name: 'Internacional',
+    totalPoints: '6',
+    totalGames: '2',
+    totalVictories: '2',
+    totalDraws: '0',
+    totalLosses: '0',
+    goalsFavor: '3',
+    goalsOwn: '0',
+    goalsBalance: '3',
+    efficiency: '100'
   },
   {
     name: 'São José-SP',
@@ -49,27 +49,15 @@ module.exports = {
     efficiency: '100'
   },
   {
-    name: 'Grêmio',
+    name: 'São Paulo',
     totalPoints: '4',
     totalGames: '3',
     totalVictories: '1',
     totalDraws: '1',
     totalLosses: '1',
     goalsFavor: '5',
-    goalsOwn: '7',
-    goalsBalance: '-2',
-    efficiency: '44.44'
-  },
-  {
-    name: 'Real Brasília',
-    totalPoints: '4',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '3',
-    goalsOwn: '4',
-    goalsBalance: '-1',
+    goalsOwn: '5',
+    goalsBalance: '0',
     efficiency: '44.44'
   },
   {
@@ -85,15 +73,27 @@ module.exports = {
     efficiency: '44.44'
   },
   {
-    name: 'São Paulo',
+    name: 'Real Brasília',
+    totalPoints: '4',
+    totalGames: '3',
+    totalVictories: '1',
+    totalDraws: '1',
+    totalLosses: '1',
+    goalsFavor: '3',
+    goalsOwn: '4',
+    goalsBalance: '-1',
+    efficiency: '44.44'
+  },
+  {
+    name: 'Grêmio',
     totalPoints: '4',
     totalGames: '3',
     totalVictories: '1',
     totalDraws: '1',
     totalLosses: '1',
     goalsFavor: '5',
-    goalsOwn: '5',
-    goalsBalance: '0',
+    goalsOwn: '7',
+    goalsBalance: '-2',
     efficiency: '44.44'
   },
   {
@@ -169,18 +169,6 @@ module.exports = {
     efficiency: '16.67'
   },
   {
-    name: 'Napoli-SC',
-    totalPoints: '0',
-    totalGames: '3',
-    totalVictories: '0',
-    totalDraws: '0',
-    totalLosses: '3',
-    goalsFavor: '1',
-    goalsOwn: '10',
-    goalsBalance: '-9',
-    efficiency: '0'
-  },
-  {
     name: 'Botafogo',
     totalPoints: '0',
     totalGames: '2',
@@ -190,6 +178,18 @@ module.exports = {
     goalsFavor: '1',
     goalsOwn: '4',
     goalsBalance: '-3',
+    efficiency: '0'
+  },
+  {
+    name: 'Napoli-SC',
+    totalPoints: '0',
+    totalGames: '3',
+    totalVictories: '0',
+    totalDraws: '0',
+    totalLosses: '3',
+    goalsFavor: '1',
+    goalsOwn: '10',
+    goalsBalance: '-9',
     efficiency: '0'
   }
   ],
@@ -207,18 +207,6 @@ module.exports = {
       efficiency: '100'
     },
     {
-      name: 'Internacional',
-      totalPoints: '6',
-      totalGames: '3',
-      totalVictories: '2',
-      totalDraws: '0',
-      totalLosses: '1',
-      goalsFavor: '4',
-      goalsOwn: '2',
-      goalsBalance: '2',
-      efficiency: '66.67'
-    },
-    {
       name: 'Corinthians',
       totalPoints: '6',
       totalGames: '3',
@@ -228,6 +216,18 @@ module.exports = {
       goalsFavor: '6',
       goalsOwn: '2',
       goalsBalance: '4',
+      efficiency: '66.67'
+    },
+    {
+      name: 'Internacional',
+      totalPoints: '6',
+      totalGames: '3',
+      totalVictories: '2',
+      totalDraws: '0',
+      totalLosses: '1',
+      goalsFavor: '4',
+      goalsOwn: '2',
+      goalsBalance: '2',
       efficiency: '66.67'
     },
     {
@@ -243,27 +243,15 @@ module.exports = {
       efficiency: '100'
     },
     {
-      name: 'Grêmio',
+      name: 'São Paulo',
       totalPoints: '4',
       totalGames: '3',
       totalVictories: '1',
       totalDraws: '1',
       totalLosses: '1',
       goalsFavor: '5',
-      goalsOwn: '7',
-      goalsBalance: '-2',
-      efficiency: '44.44'
-    },
-    {
-      name: 'Real Brasília',
-      totalPoints: '4',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '3',
-      goalsOwn: '4',
-      goalsBalance: '-1',
+      goalsOwn: '5',
+      goalsBalance: '0',
       efficiency: '44.44'
     },
     {
@@ -279,15 +267,27 @@ module.exports = {
       efficiency: '44.44'
     },
     {
-      name: 'São Paulo',
+      name: 'Real Brasília',
+      totalPoints: '4',
+      totalGames: '3',
+      totalVictories: '1',
+      totalDraws: '1',
+      totalLosses: '1',
+      goalsFavor: '3',
+      goalsOwn: '4',
+      goalsBalance: '-1',
+      efficiency: '44.44'
+    },
+    {
+      name: 'Grêmio',
       totalPoints: '4',
       totalGames: '3',
       totalVictories: '1',
       totalDraws: '1',
       totalLosses: '1',
       goalsFavor: '5',
-      goalsOwn: '5',
-      goalsBalance: '0',
+      goalsOwn: '7',
+      goalsBalance: '-2',
       efficiency: '44.44'
     },
     {
@@ -363,18 +363,6 @@ module.exports = {
       efficiency: '16.67'
     },
     {
-      name: 'Napoli-SC',
-      totalPoints: '0',
-      totalGames: '3',
-      totalVictories: '0',
-      totalDraws: '0',
-      totalLosses: '3',
-      goalsFavor: '1',
-      goalsOwn: '10',
-      goalsBalance: '-9',
-      efficiency: '0'
-    },
-    {
       name: 'Botafogo',
       totalPoints: '0',
       totalGames: '2',
@@ -384,6 +372,18 @@ module.exports = {
       goalsFavor: '1',
       goalsOwn: '4',
       goalsBalance: '-3',
+      efficiency: '0'
+    },
+    {
+      name: 'Napoli-SC',
+      totalPoints: '0',
+      totalGames: '3',
+      totalVictories: '0',
+      totalDraws: '0',
+      totalLosses: '3',
+      goalsFavor: '1',
+      goalsOwn: '10',
+      goalsBalance: '-9',
       efficiency: '0'
     }
   ]
