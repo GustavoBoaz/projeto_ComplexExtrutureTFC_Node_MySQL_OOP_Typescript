@@ -207,7 +207,7 @@ describe(getRequirement(14), () => {
 
     const result = await axios
       .get(
-        `${URL(containerPorts.backend).BASE_URL}/validate`,
+        `${URL(containerPorts.backend).BASE_URL}/login/validate`,
         {
           headers: {
             authorization: token

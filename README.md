@@ -213,7 +213,7 @@ Este projeto já vem com as dependências relacionadas ao _linter_ configuradas 
 
 - `sd-0x-trybe-futebol-clube/app/backend/package.json`
 
-Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
+Para rodar o `ESLint` em um projeto, basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
 
 Você também pode instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
@@ -353,7 +353,7 @@ Alguns exemplos:
 
   - Um problema inesperado no servidor deve retornar um código de `status 500`;
 
-  - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`
+  - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`.
 
 ---
 
@@ -369,7 +369,7 @@ Alguns exemplos:
   **Observação**
     Em seu projeto vai conter um arquivo docker-compose.example.yml.
     Seu service do backend no docker-compose deve ter o `depends_on` exatamente igual ao do arquivo docker-compose.example.yml.
-    Use o modelo de serviço do banco de dados que está no arquivo `app/docker-compose.example.yml` que está igual ao formato abaixo
+    Use o modelo de serviço do banco de dados que está no arquivo `app/docker-compose.example.yml`, que está igual ao formato abaixo:
 
 ``` yml
 version: '3.9'
@@ -426,7 +426,7 @@ services:
 
 ### Sequelize
 
-Para desenvolver o banco de dados o time de produto te deu uma imagem para contruir a modelagem de dados, com essa imagem você já consegue saber como:
+Para o desenvolvimento, o time de produto te deu uma imagem para construir a modelagem do banco de dados. Com essa imagem você já consegue saber como:
   - Nomear suas tabelas e colunas
   - Quais são os tipos de suas colunas
   - Relações entre tabelas
@@ -435,15 +435,15 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
      ⚠️ **Atenção** ⚠️ para que os testes passem é necessário que a sua migration de `users` termine exatamente com `-create-user.js`.
 
-#### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de clubs
+#### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `clubs`
 
   - O avaliador consultará os dados da tabela clubs, verificando se ela contém os dados iniciais corretos
 
-#### 2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de matchs
+#### 2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matchs`
 
   - O avaliador consultará os dados da tabela matchs, verificando se ela contém os dados iniciais corretos
 
-#### 3 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de users
+#### 3 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
 
   - O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos
 
@@ -451,11 +451,11 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 - A rota deve ser (`/login`).
 
-- A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados
-  - O campo `email` deve receber um email valido.
-  - O Campo `password` deve ter mais de 6 characters
+- A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados;
+  - O campo `email` deve receber um email válido;
+  - O Campo `password` deve ter mais de 6 caracteres.
 
-- Sua chave `JWT` do backend (utilizada para assinatura do token), deve ser salva no arquivo `app/backend/jwt.evaluation.key` e pode ser carregada em sua aplicação utilizando a biblioteca `fs` e é necessário para passar nos testes
+- Sua chave `JWT` do back-end, utilizada para assinatura do token, deve ser salva no arquivo `app/backend/jwt.evaluation.key`. Ela pode ser carregada em sua aplicação utilizando a biblioteca `fs` e é necessária para passar nos testes;
 
 
 - O body da requisição deve conterá o seguinte formato:
@@ -466,10 +466,10 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   }
   ```
 
-#### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em `/src` com um mínimo de 7 linhas cobertas
+#### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivos back-end em `/src` com um mínimo de 7 linhas cobertas
 
   **Sugestões:**
-  - Se baseando no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD`, que passará a seguir, com a implementação do mesmo;
+  - Se baseando no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD`, que passará a seguir, com a implementação do requisito seguinte;
   - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
   - Para isso, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`
 
@@ -492,12 +492,12 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   }
   ```
 
-#### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em `/src` com um mínimo de 19 linhas cobertas
+#### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 10 por cento dos arquivos back-end em `/src` com um mínimo de 19 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**;
 
-#### 7 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso com um email inválido no frontend
+#### 7 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso com um email inválido no front-end
 
   - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado
 
@@ -506,12 +506,12 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
     { "message": "Incorrect email or password" }
   ```
 
-#### 8 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em `/src` com um mínimo de 25 linhas cobertas
+#### 8 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivos back-end em `/src` com um mínimo de 25 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**;
 
-#### 9 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso com uma senha inválida no frontend
+#### 9 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso com uma senha inválida no front-end
 
   - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado
 
@@ -520,35 +520,35 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
     { "message": "Incorrect email or password" }
   ```
 
-#### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em `/src` com um mínimo de 35 linhas cobertas
+#### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 20 por cento dos arquivos back-end em `/src` com um mínimo de 35 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**;
 
-#### 11 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso sem informar um email no frontend
+#### 11 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso sem informar um email no front-end
 
-  - O avaliador verificará se tentar fazer o login sem e-mail retornará status não-autorizado
+  - O avaliador verificará se ao tentar fazer o login sem um email retornará status não-autorizado
 
-  Se o login não tiver o campo "email" o resultado retornado deverá retornar a mensagem abaixo, com um status http `401`:
+  Se o login não tiver o campo "email", o resultado retornado deverá ser a mensagem abaixo, com um status http `401`:
   ```json
     { "message": "All fields must be filled" }
   ```
 
-#### 12 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em `/src` com um mínimo de 45 linhas cobertas
+#### 12 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos back-end em `/src` com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**;`
 
-#### 13 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso sem informar uma senha no frontend
+#### 13 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso sem informar uma senha no front-end
 
-  - O avaliador verificará se tentar fazer o login sem senha retornará status não-autorizado
+  - O avaliador verificará se ao tentar fazer login sem senha retornará status não-autorizado
 
   Se o login não tiver o campo "password" o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
   ```json
     { "message": "All fields must be filled" }
   ```
 
-#### 14 - Desenvolva o endpoint `/login/validate` no backend de maneira ele retorne os dados corretamente no frontend
+#### 14 - Desenvolva o endpoint `/login/validate` no back-end de maneira ele retorne os dados corretamente no front-end
 
   - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization` onde ficará armazenado o token gerado no login;
 
@@ -561,14 +561,14 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 ### Jogos
 
- - Os requisitos a seguir consideram o consumo da rota `/clubs` para retornar os nomes dos times associados a partida para na renderização do frontend
+ - Os requisitos a seguir consideram o consumo da rota `/clubs` para retornar os nomes dos times associados a partida na renderização do front-end
 
-#### 15 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em `/src` com um mínimo de 70 linhas cobertas
+#### 15 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivos back-end em `/src` com um mínimo de 70 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/clubs`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**;
 
-#### 16 - Desenvolva o endpoint `/clubs` no backend de forma que ele possa retornar todos os times corretamente
+#### 16 - Desenvolva o endpoint `/clubs` no back-end de forma que ele possa retornar todos os times corretamente
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -590,7 +590,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 ]
 ```
 
-#### 17 - Desenvolva o endpoint `/clubs/:id` no backend de forma que ele possa retornar dados de um time específico
+#### 17 - Desenvolva o endpoint `/clubs/:id` no back-end de forma que ele possa retornar dados de um time específico
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -601,13 +601,13 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 }
 ```
 
-#### 18 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em `/src` com um mínimo de 80 linhas cobertas
+#### 18 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivos back-end em `/src` com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**;`
 
 
-#### 19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend.
+#### 19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no front-end.
 
   - A rota deve ser um `GET` e retorna uma lista de partidas
 
@@ -648,11 +648,11 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
     ]
     ```
 
-#### 20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend
+#### 20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
 
-  - A rota devera ser do tipo `GET` e retorna uma lista de partidas filtradas
+  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas
 
-  - Será validado que ao escolher a opção de partidas em andamento será filtrado todas as partidas em andamento
+  - Será validado que ao escolher a opção de partidas em andamento serão filtradas todas as partidas em andamento
 
   - Essa requisição deverá usar `query string` para definir o parâmetro
     ex: `matchs?inProgress=true`
@@ -691,11 +691,11 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   ]
   ```
 
-#### 21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend
+#### 21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
 
-  - A rota devera ser do tipo `GET` e retorna uma lista de partidas filtradas
+  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas
 
-  - Será validado que ao escolher a opção de partidas finalizadas será filtrado todas as partidas finalizadas
+  - Será validado que ao escolher a opção de partidas finalizadas serão filtradas todas as partidas finalizadas
 
   - Essa requisição deverá usar `query string` para definir o parâmetro
     ex: `matchs?inProgress=false`
@@ -738,7 +738,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
   - Para que os requisitos de criação de partidas, é necessário que a rota `/clubs` funcione corretamente
 
-#### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em `/src` com um mínimo de 100 linhas cobertas
+#### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo back-end em `/src` com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**;`
@@ -779,7 +779,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
   - A rota deve ser do tipo `PATCH`
 
-  - Será recebido o `id` pelo parâmetro da url
+  - Será recebido o `id` pelo parâmetro da URL
 
   - Será validado que ao finalizar uma partida é alterado no banco de dados e na página
 
@@ -808,11 +808,11 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 #### 27 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento
 
-  - O endpoint deve ser do tipo `PATCH`
+  - O endpoint deve ser do tipo `PATCH`;
 
-  - Será recebido o `id` pelo parâmetro da url
+  - Será recebido o `id` pelo parâmetro da URL;
 
-  - Será avaliado que é possível alterar o resultado de uma partida
+  - Será avaliado que é possível alterar o resultado de uma partida.
 
   - O corpo da requisição terá o seguinte formato:
   ```json
@@ -833,7 +833,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 ## Leaderboards
 
   **Para construir as classificação, elas devem seguir as seguintes regras de negócios**
-  - Onde:
+  - Em que:
     - `Classificação`: Posição na classificação;
     - `Time`: Nome do time;
     - `P`: Total de Pontos;
@@ -937,7 +937,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
 
-#### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
+#### 30 - Desenvolva o endpoint `/leaderboard/home`, de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
@@ -945,13 +945,13 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 ### Leaderboard away
 
-#### 31 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados
+#### 31 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times  na tela de classificação do front-end, com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
 
-#### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
+#### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela seja atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
@@ -967,19 +967,19 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
     |      1        |Corinthians| 38 | 15 | 12 | 2 | 1 | 44 | 13 | 31 | 84.4 |
 
 
-#### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados
+#### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
 
-#### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
+#### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
   - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard serão retornados os campos e valores corretos
 
-#### 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada
+#### 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
