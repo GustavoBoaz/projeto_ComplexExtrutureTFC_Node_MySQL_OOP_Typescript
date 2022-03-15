@@ -32,7 +32,7 @@ afterEach(async () => {
 });
 
 describe(getRequirement(16), () => {
-  it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
+  it('O avaliador verificará se tentar fazer a requisição correta na sua API, os dados corretos são retornados', async () => {
     const expectedResult = [
       {
         "id": 1,
@@ -115,7 +115,7 @@ describe(getRequirement(16), () => {
 });
 
 describe(getRequirement(17), () => {
-  it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
+  it('O avaliador verificará se tentar fazer a requisição correta na sua API, os dados corretos são retornados', async () => {
     const expectedResult = {
       "id": 5,
       "clubName": "Cruzeiro"
