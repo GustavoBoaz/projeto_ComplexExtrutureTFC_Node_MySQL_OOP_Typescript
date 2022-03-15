@@ -8,6 +8,6 @@ npm_config_loglevel=silent npm i --prefix ${frontFolder} --cache $cacheFolderFro
 
 printf "\n> Instalando o back-end\n"
 backFolder="./app/backend"
-cacheFolderBack="/tmp/delivery-app-back-end-cache"
+cacheFolderBack="/tmp/backend-cache"
 rm -rf $cacheFolderBack
 npm_config_loglevel=silent npm i --prefix ${backFolder} --cache $cacheFolderBack

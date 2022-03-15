@@ -113,8 +113,8 @@ describe(getRequirement(25), () => {
 describe(getRequirement(26), () => {
   it('Será validado na API que não é possível inserir uma partida com time que não existe na tabela clubs', async () => {
     const dadosInsert = {
-      homeClub: 'Barcelona',
-      awayClub: clubs[3].clubName,
+      homeTeam: 12345,
+      awayTeam: 3,
       homeGoals: twoGoals,
       awayGoals: oneGoal
     }
