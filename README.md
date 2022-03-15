@@ -244,7 +244,7 @@ Os testes vão utilizar sua aplicação do compose para fazer as validações, p
 
 **Faça essas configurações também para as variáveis de ambiente usadas nesses arquivo:**
 
-`sd-00-trybe-futebol-clube-2022-02-22-15-49-09-staging/app/backend/src/database/config/database.ts`
+`sd-0x-trybe-futebol-clube/app/backend/src/database/config/database.ts`
 
 ```
 module.exports = {
