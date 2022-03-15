@@ -874,7 +874,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 
   ⚠️ **Atenção:** ⚠️
-  Por padrão a resposta de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
+  Por padrão, as respostas de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
 
   **Os seguintes pontos serão avaliados:**
 
@@ -935,13 +935,13 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
-  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
 
 #### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
-  - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/home` será retornado os campos e valores corretos
+  - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos
 
 ### Leaderboard away
 
@@ -949,13 +949,13 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
-  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
 
 #### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
-  - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/away` será retornado os campos e valores corretos
+  - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/away` serão retornados os campos e valores corretos
 
 
 ### Leaderboard
@@ -971,19 +971,19 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
-  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard` será retornado os campos e valores corretos considerando os dados iniciais do banco de dados
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
 
 #### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
-  - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard será retornado os campos e valores corretos
+  - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard serão retornados os campos e valores corretos
 
 #### 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
-  - Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard será retornado os campos e valores corretos
+  - Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard serão retornados os campos e valores corretos
 
 ## Depois de terminar o desenvolvimento
 
