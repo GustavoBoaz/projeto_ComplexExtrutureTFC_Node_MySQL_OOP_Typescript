@@ -431,17 +431,19 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   - Quais são os tipos de suas colunas
   - Relações entre tabelas
 
-![Exemplo banco de dados](./diagram.png)
+    ![Exemplo banco de dados](./diagram.png)
 
-#### 1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs
+     ⚠️ **Atenção** ⚠️ para que os testes passem é necessário que a sua migration de `users` termine exatamente com `-create-user.js`.
+
+#### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de clubs
 
   - O avaliador consultará os dados da tabela clubs, verificando se ela contém os dados iniciais corretos
 
-#### 2 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs
+#### 2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de matchs
 
   - O avaliador consultará os dados da tabela matchs, verificando se ela contém os dados iniciais corretos
 
-#### 3 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users
+#### 3 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de users
 
   - O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos
 
@@ -453,7 +455,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   - O campo `email` deve receber um email valido.
   - O Campo `password` deve ter mais de 6 characters
 
-- Sua chave `JWT` do backend (utilizada para assinatura do token), deve ser salva no arquivo `app/backend/jwt.evaluation.key` e pode ser carregada em sua aplicação utilizando a biblioteca `fs`.
+- Sua chave `JWT` do backend (utilizada para assinatura do token), deve ser salva no arquivo `app/backend/jwt.evaluation.key` e pode ser carregada em sua aplicação utilizando a biblioteca `fs` e é necessário para passar nos testes.
 
 
 - O body da requisição deve conterá o seguinte formato:
@@ -464,14 +466,16 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   }
   ```
 
-#### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas
+#### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em `/src` com um mínimo de 7 linhas cobertas
 
   **Sugestões:**
   - Se baseando no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD`, que passará a seguir, com a implementação do mesmo;
   - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
-  - Para isso, utilize/altere o arquivo de referência `app/backend/src/tests/change.me.test.ts`.
+  - Para isso, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`.
 
-#### 5 - Desenvolva o endpoint /login no backend de maneira ele permita o acesso com dados válidos no frontend
+#### 5 - Desenvolva o endpoint `/login` no backend de maneira ele permita o acesso com dados válidos no frontend
+
+  - A rota de ser do tipo `POST`
 
   - O avaliador verificará se é possível fazer o login com dados corretos e que após o acesso será redirecionado para a tela de jogos
 
@@ -488,63 +492,63 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
   }
   ```
 
-#### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas
+#### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em `/src` com um mínimo de 19 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**;
 
-#### 7 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso com um email inválido no frontend
+#### 7 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso com um email inválido no frontend
 
   - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado
 
   Se o login tiver o "email" **inválido** o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
   ```json
-    "message": "Incorrect email or password"
+    { "message": "Incorrect email or password" }
   ```
 
-#### 8 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas
+#### 8 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em `/src` com um mínimo de 25 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**;
 
-#### 9 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso com uma senha inválida no frontend
+#### 9 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso com uma senha inválida no frontend
 
   - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado
 
   Se o login tiver a "senha" **inválida** o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
   ```json
-    "message": "Incorrect email or password"
+    { "message": "Incorrect email or password" }
   ```
 
-#### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas
+#### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em `/src` com um mínimo de 35 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**;
 
-#### 11 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar um email no frontend
+#### 11 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso sem informar um email no frontend
 
   - O avaliador verificará se tentar fazer o login sem e-mail retornará status não-autorizado
 
   Se o login não tiver o campo "email" o resultado retornado deverá retornar a mensagem abaixo, com um status http `401`:
   ```json
-    "message": "All fields must be filled"
+    { "message": "All fields must be filled" }
   ```
 
-#### 12 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas
+#### 12 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em `/src` com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**;`
 
-#### 13 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar uma senha no frontend
+#### 13 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso sem informar uma senha no frontend
 
   - O avaliador verificará se tentar fazer o login sem senha retornará status não-autorizado
 
   Se o login não tiver o campo "password" o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
   ```json
-    "message": "All fields must be filled"
+    { "message": "All fields must be filled" }
   ```
 
-#### 14 - Desenvolva o endpoint /login/validate no backend de maneira ele retorne os dados corretamente no frontend
+#### 14 - Desenvolva o endpoint `/login/validate` no backend de maneira ele retorne os dados corretamente no frontend
 
   - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization` onde ficará armazenado o token gerado no login;
 
@@ -559,12 +563,12 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
  - Os requisitos a seguir consideram o consumo da rota `/clubs` para retornar os nomes dos times associados a partida para na renderização do frontend.
 
-#### 15 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas
+#### 15 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em `/src` com um mínimo de 70 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/clubs`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**;
 
-#### 16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente
+#### 16 - Desenvolva o endpoint `/clubs` no backend de forma que ele possa retornar todos os times corretamente
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -586,7 +590,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 ]
 ```
 
-#### 17 - Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico
+#### 17 - Desenvolva o endpoint `/clubs/:id` no backend de forma que ele possa retornar dados de um time específico
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -597,17 +601,19 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 }
 ```
 
-#### 18 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas
+#### 18 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em `/src` com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**;`
 
 
-#### 19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend
+#### 19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend.
+
+  - A rota deve ser um `POST` e retorna uma lista de partidas.
 
   - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro
 
-    exemplo de retorno:
+    Exemplo de retorno:
     ```json
     [
       {
@@ -726,7 +732,7 @@ Para desenvolver o banco de dados o time de produto te deu uma imagem para contr
 
 ### Adicionar Partidas
 
-#### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas
+#### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em `/src` com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**;`
