@@ -32,11 +32,11 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
       - [⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️](#️-inicie-seu-docker-compose-antes-de-testar-localmente-️)
       - [Variáveis de ambiente](#variáveis-de-ambiente)
       - [Variáveis:](#variáveis)
-      - [Chave JWT:](#chave-jwt)
+      - [Chave JWT e criptografia de senhas:](#chave-jwt-e-criptografia-de-senhas)
       - [Testes de cobertura](#testes-de-cobertura)
     - [Dicas](#dicas)
       - [Status HTTP](#status-http)
-  - [Lista Pré-Requisitos:](#lista-pré-requisitos)
+  - [Configuração Docker](#configuração-docker)
     - [Docker e Docker-compose](#docker-e-docker-compose)
       - [Crie os arquivos dockerfile e docker-compose](#crie-os-arquivos-dockerfile-e-docker-compose)
   - [Lista de Requisitos:](#lista-de-requisitos)
@@ -272,9 +272,11 @@ module.exports = {
 
 **Com elas que iremos conseguir conectar ao banco do avaliador automático**
 
-#### Chave JWT:
+#### Chave JWT e criptografia de senhas:
 
 ⚠️ A sua chave `JWT` de ser inserida em `app/backend/jwt.evaluation.key` e pode ser carregada no backend com o uso da biblioteca `fs`.
+
+⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs) utilize essa biblioteca, pode ser colocada como dependencia em `app/backend/package.npm` e depois instalar todos os pacotes. ⚠️
 
 #### Testes de cobertura
 
@@ -357,9 +359,13 @@ Alguns exemplos:
 
 ---
 
-## Lista Pré-Requisitos:
+## Configuração Docker:
 
 ### Docker e Docker-compose
+
+#### A criação do docker-compose deve acontecer somente após ter feito o terceiro requisito.
+
+⚠ O seu docker-compose precisa estar na versão 1.29  [Documentação para atualizar docker-compose](https://docs.docker.com/compose/install/) ⚠
 
 #### Crie os arquivos dockerfile e docker-compose
   - As pastas `frontend/` e `backend/` devem possuir um arquivo dockerfile
@@ -420,6 +426,7 @@ services:
     cap_add:
       - SYS_NICE # Deve omitir alertas menores
 ```
+
 
 
 ## Lista de Requisitos:
