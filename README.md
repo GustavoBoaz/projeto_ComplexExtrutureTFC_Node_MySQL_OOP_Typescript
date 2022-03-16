@@ -274,7 +274,7 @@ module.exports = {
 
 #### Chave JWT e criptografia de senhas:
 
-⚠️ A sua chave `JWT` de ser inserida em `app/backend/jwt.evaluation.key` e pode ser carregada no backend com o uso da biblioteca `fs`.
+⚠️ A sua chave `JWT` deve ser inserida em `app/backend/jwt.evaluation.key` e pode ser carregada no backend com o uso da biblioteca `fs`.
 
 ⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs) utilize essa biblioteca, pode ser colocada como dependencia em `app/backend/package.npm` e depois instalar todos os pacotes. ⚠️
 
