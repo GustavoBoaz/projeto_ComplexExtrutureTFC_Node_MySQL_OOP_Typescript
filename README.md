@@ -365,7 +365,7 @@ Alguns exemplos:
 
 #### A criação do docker-compose deve acontecer somente após ter feito o terceiro requisito.
 
-⚠ O seu docker-compose precisa estar na versão 1.29  [Documentação para atualizar docker-compose](https://docs.docker.com/compose/install/) ⚠
+⚠ O seu docker-compose precisa estar na versão 1.29 ou superior. [Veja aqui a documentação para atualizar o docker-compose.](https://docs.docker.com/compose/install/) ⚠
 
 #### Crie os arquivos dockerfile e docker-compose
   - As pastas `frontend/` e `backend/` devem possuir um arquivo dockerfile
