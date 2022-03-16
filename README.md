@@ -421,6 +421,8 @@ services:
       - SYS_NICE # Deve omitir alertas menores
 ```
 
+⚠️ Só o seu docker-compose não vai ser suficiente para gerar os containers. Será necessário criar os models e as migrations para que seu projeto seja executável via Docker.
+
 
 ## Lista de Requisitos:
 
