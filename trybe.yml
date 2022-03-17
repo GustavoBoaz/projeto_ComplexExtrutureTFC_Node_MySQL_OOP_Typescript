@@ -3,6 +3,7 @@ ignore_files:
   - package-lock.json
   - jest.config.js
   - apps_install.sh
+  - dockerfile_denylist.sh
   - .gitignore
   - ./__tests__
   - ./app/frontend/public
