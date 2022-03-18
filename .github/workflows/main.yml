@@ -54,6 +54,8 @@ jobs:
         run: docker run --rm -i hadolint/hadolint < ./app/backend/Dockerfile
       - name: Run Dockerfile Linter on Frontend
         run: docker run --rm -i hadolint/hadolint < ./app/frontend/Dockerfile
+      - name: Validate Denylist for Dockerfile(s)
+        run: /bin/bash ./dockerfile_denylist.sh
 
   Evaluator:
     runs-on: self-hosted
