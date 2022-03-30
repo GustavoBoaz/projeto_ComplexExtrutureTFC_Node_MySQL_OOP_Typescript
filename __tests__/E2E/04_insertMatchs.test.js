@@ -1,6 +1,6 @@
 const { URL } = require('../utils/urls');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
-const { pageMatchSettings, header, pageMatchs } = require('../utils/dataTestIds');
+const { pageMatchSettings, header, pageMatches } = require('../utils/dataTestIds');
 const { logAdmin } = require('../utils/logInto');
 const { clubs } = require('../expected_results/trybe_football_club');
 const { select } = require('../utils/query');
@@ -45,17 +45,17 @@ describe(getRequirement(23), () => {
     const body = await insertInProgress(page, dadosInsert)
     const newBody = {...body, inProgress: Number(body.inProgress)}
 
-    const rows = await database.query(select.all.matchs, { type: 'SELECT' });
+    const rows = await database.query(select.all.matches, { type: 'SELECT' });
     const [matchInserted] = normalize([lastInsert(rows)])
 
     expect(matchInserted).toStrictEqual(newBody);
 
-    const showMatchsButton = await page.$(header.showMatchsButton);
-    await showMatchsButton.click();
+    const showMatchesButton = await page.$(header.showMatchesButton);
+    await showMatchesButton.click();
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-    const homeTeam = await page.$eval(pageMatchs.homeTeam(49), (el) => el.innerText);
-    const awayTeam = await page.$eval(pageMatchs.awayTeam(49), (el) => el.innerText);
+    const homeTeam = await page.$eval(pageMatches.homeTeam(49), (el) => el.innerText);
+    const awayTeam = await page.$eval(pageMatches.awayTeam(49), (el) => el.innerText);
 
     expect(homeTeam).toBe(clubs[3].clubName);
     expect(awayTeam).toBe(clubs[8].clubName);
@@ -74,20 +74,20 @@ describe(getRequirement(24), () => {
 
     await insertFinished(page, dadosInsert)
 
-    const rows = await database.query(select.all.matchs, { type: 'SELECT' });
+    const rows = await database.query(select.all.matches, { type: 'SELECT' });
     const [matchInserted] = normalize([lastInsert(rows)])
 
     expect(matchInserted.homeTeam).toBe(clubs[3].id);
     expect(matchInserted.awayTeam).toBe(clubs[8].id);
     expect(matchInserted.inProgress).toBe(0);
 
-    const showMatchsButton = await page.$(header.showMatchsButton);
-    await showMatchsButton.click();
+    const showMatchesButton = await page.$(header.showMatchesButton);
+    await showMatchesButton.click();
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-    const homeTeam = await page.$eval(pageMatchs.homeTeam(49), (el) => el.innerText);
-    const awayTeam = await page.$eval(pageMatchs.awayTeam(49), (el) => el.innerText);
-    const matchStatus = await page.$eval(pageMatchs.matchStatus(49), (el) => el.innerText);
+    const homeTeam = await page.$eval(pageMatches.homeTeam(49), (el) => el.innerText);
+    const awayTeam = await page.$eval(pageMatches.awayTeam(49), (el) => el.innerText);
+    const matchStatus = await page.$eval(pageMatches.matchStatus(49), (el) => el.innerText);
 
     expect(homeTeam).toBe(clubs[3].clubName);
     expect(awayTeam).toBe(clubs[8].clubName);
@@ -128,7 +128,7 @@ describe(getRequirement(26), () => {
 
     const result = await axios
       .post(
-        `${URL(containerPorts.backend).BASE_URL}/matchs`,
+        `${URL(containerPorts.backend).BASE_URL}/matches`,
         dadosInsert,
         {
           headers: {

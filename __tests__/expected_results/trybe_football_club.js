@@ -4,7 +4,7 @@ const results = {
   }, {
     email: 'user@user.com', id: 2, password: '$2a$08$Y8Abi8jXvsXyqm.rmp0B.uQBA5qUz7T6Ghlg/CvVr/gLxYj5UAZVO', role: 'user', username: 'User',
   }],
-  matchs: [
+  matches: [
     {
       id: 1,
       homeTeam: 16,

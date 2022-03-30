@@ -2,7 +2,7 @@ const { URL } = require('../utils/urls');
 const { dbReset, initSequelize, termSequelize } = require('../config/sequelize');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
 const { clubs } = require('../expected_results/trybe_football_club');
-const { pageMatchSettings, header, pageMatchs } = require('../utils/dataTestIds');
+const { pageMatchSettings, header, pageMatches } = require('../utils/dataTestIds');
 const { logAdmin } = require('../utils/logInto');
 const { select } = require('../utils/query');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
@@ -50,7 +50,7 @@ describe(getRequirement(27), () => {
 
     const testMatchId = 48;
 
-    const editMatchButton = await page.$(pageMatchs.matchStatusBtn(testMatchId));
+    const editMatchButton = await page.$(pageMatches.matchStatusBtn(testMatchId));
     await editMatchButton.click();
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
@@ -74,13 +74,13 @@ describe(getRequirement(27), () => {
       expectedRequestType: 'script',
       expectedRequestMethod: 'PATCH',
       expectedResponseStatus: 200,
-      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matchs/${testMatchId}`,
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matches/${testMatchId}`,
       timeOut: 100000
     });
 
-    const matchs = await database.query(select.all.matchs, { type: 'SELECT' });
-    const normalizeMatchs = normalize(matchs);
-    const lastInsertedRow = lastInsert(normalizeMatchs);
+    const matches = await database.query(select.all.matches, { type: 'SELECT' });
+    const normalizeMatches = normalize(matches);
+    const lastInsertedRow = lastInsert(normalizeMatches);
 
     expect(lastInsertedRow.homeTeam).toBe(clubs[12].id);
     expect(lastInsertedRow.awayTeam).toBe(clubs[1].id);
@@ -103,7 +103,7 @@ describe(getRequirement(28), () => {
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-    const editMatchButton = await page.$(pageMatchs.matchStatusBtn(48));
+    const editMatchButton = await page.$(pageMatches.matchStatusBtn(48));
     await editMatchButton.click();
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
@@ -113,18 +113,18 @@ describe(getRequirement(28), () => {
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-    const buttonShowMatchs = await page.$(header.showMatchsButton);
-    await buttonShowMatchs.click();
+    const buttonShowMatches = await page.$(header.showMatchesButton);
+    await buttonShowMatches.click();
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-    const homeTeam = await page.$eval(pageMatchs.homeTeam(48), (el) => el.innerText);
-    const awayTeam = await page.$eval(pageMatchs.awayTeam(48), (el) => el.innerText);
-    const matchStatus = await page.$eval(pageMatchs.matchStatus(48), (el) => el.innerText);
+    const homeTeam = await page.$eval(pageMatches.homeTeam(48), (el) => el.innerText);
+    const awayTeam = await page.$eval(pageMatches.awayTeam(48), (el) => el.innerText);
+    const matchStatus = await page.$eval(pageMatches.matchStatus(48), (el) => el.innerText);
 
-    const matchs = await database.query(select.all.matchs, { type: 'SELECT' });
-    const normalizeMatchs = normalize(matchs);
-    const lastInsertedRow = lastInsert(normalizeMatchs);
+    const matches = await database.query(select.all.matches, { type: 'SELECT' });
+    const normalizeMatches = normalize(matches);
+    const lastInsertedRow = lastInsert(normalizeMatches);
 
     expect(homeTeam).toBe(clubs[12].clubName);
     expect(awayTeam).toBe(clubs[1].clubName);

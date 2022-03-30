@@ -3,14 +3,14 @@ function dataTestid(dataValue) {
 }
 module.exports = {
   header: {
-    showMatchsButton: dataTestid('header__show_matchs_btn'),
+    showMatchesButton: dataTestid('header__show_matches_btn'),
     loginButton: dataTestid('header__login_btn'),
     title: dataTestid('header__title'),
     showClassificationButton: dataTestid('header__show_classification_btn'),
   },
   leaderboard: {
     loginButton: dataTestid('header__login_btn'),
-    matchsButton: dataTestid('header__show_matchs_btn'),
+    matchesButton: dataTestid('header__show_matches_btn'),
     table: {
       header: {
         classification: dataTestid('score_boarding__classification'),
@@ -50,24 +50,24 @@ module.exports = {
     buttonLogin: dataTestid('login__login_btn'),
     alertLogin: dataTestid('login__input_invalid_login_alert'),
   },
-  pageMatchs: {
-    optionShowFinishMatch: dataTestid('matchs__option_show_finish_matchs'),
-    searchMatchsBtn: dataTestid('matchs__search_match_btn'),
-    homeTeam: (sufix) => dataTestid(`matchs__home_team_${sufix}`),
-    homeTeamGoals: (sufix) => dataTestid(`matchs__home_team_goals_${sufix}`),
-    awayTeam: (sufix) => dataTestid(`matchs__away_team_${sufix}`),
-    awayTeamGoals: (sufix) => dataTestid(`matchs__away_team_goals_${sufix}`),
-    matchStatus: (sufix) => dataTestid(`matchs__match_status_${sufix}`),
-    matchStatusBtn: (sufix) => dataTestid(`matchs__match_status_btn_${sufix}`),
+  pageMatches: {
+    optionShowFinishMatch: dataTestid('matches__option_show_finish_matches'),
+    searchMatchesBtn: dataTestid('matches__search_match_btn'),
+    homeTeam: (sufix) => dataTestid(`matches__home_team_${sufix}`),
+    homeTeamGoals: (sufix) => dataTestid(`matches__home_team_goals_${sufix}`),
+    awayTeam: (sufix) => dataTestid(`matches__away_team_${sufix}`),
+    awayTeamGoals: (sufix) => dataTestid(`matches__away_team_goals_${sufix}`),
+    matchStatus: (sufix) => dataTestid(`matches__match_status_${sufix}`),
+    matchStatusBtn: (sufix) => dataTestid(`matches__match_status_btn_${sufix}`),
     addNewMatchButton: dataTestid('header__add_match_btn'),
   },
   pageMatchSettings: {
-    selectHomeTeam: dataTestid('insertion_matchs__select_home_team'),
-    selectQuantityGoalsHomeTeam: dataTestid('insertion_matchs__select_quantity_goals_home_team'),
-    selectQuantityGoalsAwayTeam: dataTestid('insertion_matchs__select_quantity_goals_away_team'),
-    selectAwayTeam: dataTestid('insertion_matchs__select_away_team'),
-    saveMatchButton: dataTestid('insertion_matchs__save_match_btn'),
-    finishMatchButton: dataTestid('insertion_matchs__finish_match_btn'),
-    editMatchButton: dataTestid('insertion_matchs__edit_match_btn'),
+    selectHomeTeam: dataTestid('insertion_matches__select_home_team'),
+    selectQuantityGoalsHomeTeam: dataTestid('insertion_matches__select_quantity_goals_home_team'),
+    selectQuantityGoalsAwayTeam: dataTestid('insertion_matches__select_quantity_goals_away_team'),
+    selectAwayTeam: dataTestid('insertion_matches__select_away_team'),
+    saveMatchButton: dataTestid('insertion_matches__save_match_btn'),
+    finishMatchButton: dataTestid('insertion_matches__finish_match_btn'),
+    editMatchButton: dataTestid('insertion_matches__edit_match_btn'),
   },
 };

@@ -51,8 +51,8 @@ describe(getRequirement(32), () => {
       awayGoals: oneGoal
     }
     await insertFinished(page, dadosInsert)
-    const showMatchsButton = await page.$(header.showMatchsButton);
-    await showMatchsButton.click();
+    const showMatchesButton = await page.$(header.showMatchesButton);
+    await showMatchesButton.click();
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     const showClassificationButton = await page.$(header.showClassificationButton)

@@ -1,4 +1,4 @@
-const allMatchs = [
+const allMatches = [
   {
     id: 1,
     home_team: 'São Paulo',
@@ -321,4 +321,4 @@ const allMatchs = [
   },
 ];
 
-module.exports = allMatchs;
+module.exports = allMatches;

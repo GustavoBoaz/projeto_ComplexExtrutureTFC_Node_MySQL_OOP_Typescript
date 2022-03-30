@@ -1,5 +1,5 @@
 const { initSequelize, termSequelize, dbReset } = require('../config/sequelize');
-const { users, clubs, matchs } = require('../expected_results/trybe_football_club');
+const { users, clubs, matches } = require('../expected_results/trybe_football_club');
 const { select } = require('../utils/query');
 const { normalize, getRequirement } = require('../utils/util');
 
@@ -22,10 +22,10 @@ describe(getRequirement(1), () => {
 });
 
 describe(getRequirement(2), () => {
-  it('O avaliador consultará os dados da tabela matchs, verificando se ela contém os dados iniciais corretos', async () => {
-    const resultQuery = await database.query(select.all.matchs, { type: 'SELECT' });
+  it('O avaliador consultará os dados da tabela matches, verificando se ela contém os dados iniciais corretos', async () => {
+    const resultQuery = await database.query(select.all.matches, { type: 'SELECT' });
     const resultQueryNormalize = normalize(resultQuery);
-    expect(resultQueryNormalize).toEqual(matchs);
+    expect(resultQueryNormalize).toEqual(matches);
   });
 });
 

@@ -42,7 +42,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [Lista de Requisitos:](#lista-de-requisitos)
     - [Sequelize](#sequelize)
       - [1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs](#1---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-clubs)
-      - [2 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs](#2---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-matchs)
+      - [2 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matches](#2---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-matches)
       - [3 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users](#3---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-users)
     - [Login](#login)
       - [4 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas](#4---tdd-desenvolva-testes-que-cubram-no-mínimo-5-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-7-linhas-cobertas)
@@ -61,18 +61,18 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
       - [16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente](#16---desenvolva-o-endpoint-clubs-no-backend-de-forma-que-ele-possa-retornar-todos-os-times-corretamente)
       - [17 - Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico](#17---desenvolva-o-endpoint-clubsid-no-backend-de-forma-que-ele-possa-retornar-dados-de-um-time-específico)
       - [18 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas](#18---tdd-desenvolva-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-80-linhas-cobertas)
-      - [19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend](#19---desenvolva-o-endpoint-matchs-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-frontend)
-      - [20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend](#20---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-frontend)
-      - [21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend](#21---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-finalizadas-na-tela-de-partidas-do-frontend)
+      - [19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no frontend](#19---desenvolva-o-endpoint-matches-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-frontend)
+      - [20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend](#20---desenvolva-o-endpoint-matches-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-frontend)
+      - [21 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend](#21---desenvolva-o-endpoint-matches-de-forma-que-seja-possível-filtrar-as-partidas-finalizadas-na-tela-de-partidas-do-frontend)
     - [Adicionar Partidas](#adicionar-partidas)
       - [22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#22---bônus-tdd-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
-      - [23 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados](#23---desenvolva-a-rota-matchs-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-true-no-banco-de-dados)
-      - [24 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados](#24---desenvolva-a-rota-matchsidfinish-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-false-no-banco-de-dados)
-      - [25 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais](#25---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-times-iguais)
-      - [26 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs](#26---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-time-que-não-existe-na-tabela-clubs)
+      - [23 - Desenvolva a rota /matches de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados](#23---desenvolva-a-rota-matches-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-true-no-banco-de-dados)
+      - [24 - Desenvolva a rota `/matches/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados](#24---desenvolva-a-rota-matchesidfinish-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-false-no-banco-de-dados)
+      - [25 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com times iguais](#25---desenvolva-o-endpoint-matches-de-forma-que-não-seja-possível-inserir-uma-partida-com-times-iguais)
+      - [26 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com time que não existe na tabela clubs](#26---desenvolva-o-endpoint-matches-de-forma-que-não-seja-possível-inserir-uma-partida-com-time-que-não-existe-na-tabela-clubs)
     - [Editar Partidas](#editar-partidas)
-      - [27 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento](#27---desenvolva-o-endpoint-matchsid-de-forma-que-seja-possível-atualizar-partidas-em-andamento)
-      - [28 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível finalizar partidas em andamento](#28---desenvolva-o-endpoint-matchsid-de-forma-que-seja-possível-finalizar-partidas-em-andamento)
+      - [27 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento](#27---desenvolva-o-endpoint-matchesid-de-forma-que-seja-possível-atualizar-partidas-em-andamento)
+      - [28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível finalizar partidas em andamento](#28---desenvolva-o-endpoint-matchesid-de-forma-que-seja-possível-finalizar-partidas-em-andamento)
   - [Leaderboards](#leaderboards)
     - [Leaderboard Home](#leaderboard-home)
       - [29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados](#29---desenvolva-o-endpoint-leaderboardhome-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-mandantes-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
@@ -124,7 +124,7 @@ O seu back-end deverá implementar regras de negócio para popular adequadamente
 
 Você deve desenvolver uma aplicação dockerizada em `Node.js + Typescript` usando o pacote `sequelize`.
 
-Para adicionar uma partida é necessário usuário e senha, portanto a pessoa deverá estar logada para fazer as alterações. Teremos um relacionamento entre as tabelas `clubs` e `matchs` para fazermos as atualizações das partidas.
+Para adicionar uma partida é necessário usuário e senha, portanto a pessoa deverá estar logada para fazer as alterações. Teremos um relacionamento entre as tabelas `clubs` e `matches` para fazermos as atualizações das partidas.
 
 ### Data de Entrega
 
@@ -450,9 +450,9 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
 
   - O avaliador consultará os dados da tabela clubs, verificando se ela contém os dados iniciais corretos
 
-#### 2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matchs`
+#### 2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
 
-  - O avaliador consultará os dados da tabela matchs, verificando se ela contém os dados iniciais corretos
+  - O avaliador consultará os dados da tabela matches, verificando se ela contém os dados iniciais corretos
 
 #### 3 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
 
@@ -615,10 +615,10 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
 #### 18 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivos back-end em `/src` com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**;`
+  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**;`
 
 
-#### 19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no front-end.
+#### 19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end.
 
   - A rota deve ser um `GET` e retorna uma lista de partidas
 
@@ -659,14 +659,14 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
     ]
     ```
 
-#### 20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
+#### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas
 
   - Será validado que ao escolher a opção de partidas em andamento serão filtradas todas as partidas em andamento
 
   - Essa requisição deverá usar `query string` para definir o parâmetro
-    ex: `matchs?inProgress=true`
+    ex: `matches?inProgress=true`
 
   Exemplo de retorno da requisição:
   ```json
@@ -702,14 +702,14 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
   ]
   ```
 
-#### 21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
+#### 21 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas
 
   - Será validado que ao escolher a opção de partidas finalizadas serão filtradas todas as partidas finalizadas
 
   - Essa requisição deverá usar `query string` para definir o parâmetro
-    ex: `matchs?inProgress=false`
+    ex: `matches?inProgress=false`
 
   Exemplo de retorno da requisição:
   ```json
@@ -752,9 +752,9 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
 #### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo back-end em `/src` com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matchs`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**;`
+  - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**;`
 
-#### 23 - Desenvolva a rota `/matchs` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+#### 23 - Desenvolva a rota `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
 
   - A rota deverá ser do tipo `POST`, e retornar a partida inserida no banco de dados
 
@@ -786,7 +786,7 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
   }
   ```
 
-#### 24 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados
+#### 24 - Desenvolva a rota `/matches/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados
 
   - A rota deve ser do tipo `PATCH`
 
@@ -795,7 +795,7 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
   - Será validado que ao finalizar uma partida é alterado no banco de dados e na página
 
 
-#### 25 - Desenvolva o endpoint `/matchs` de forma que não seja possível inserir uma partida com times iguais
+#### 25 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais
 
   - Será validado que não é possível inserir uma partida com times iguais
 
@@ -805,7 +805,7 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
   { "message": "It is not possible to create a match with two equal teams" }
   ```
 
-#### 26 - Desenvolva o endpoint `/matchs` de forma que não seja possível inserir uma partida com time que não existe na tabela clubs
+#### 26 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com time que não existe na tabela clubs
 
   - Será validado que não é possível inserir uma partida com time que não existe na tabela clubs
 
@@ -817,7 +817,7 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
 
 ### Editar Partidas
 
-#### 27 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento
+#### 27 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
 
   - O endpoint deve ser do tipo `PATCH`;
 
@@ -833,7 +833,7 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
   }
   ```
 
-#### 28 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível finalizar partidas em andamento
+#### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível finalizar partidas em andamento
 
   - O endpoint deve ser do tipo `PATCH`
 

@@ -1,5 +1,5 @@
 const { URL } = require('./urls');
-const { pageMatchSettings, header, pageMatchs } = require('../utils/dataTestIds');
+const { pageMatchSettings, header, pageMatches } = require('../utils/dataTestIds');
 const { logAdmin } = require('../utils/logInto');
 const { clubs } = require('../expected_results/trybe_football_club');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
@@ -25,7 +25,7 @@ const insertInProgress = async (page, { homeClub = 'Corinthias', awayClub = 'int
 
   await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-  const addNewMatchButton = await page.$(pageMatchs.addNewMatchButton);
+  const addNewMatchButton = await page.$(pageMatches.addNewMatchButton);
   addNewMatchButton.click();
 
   await page.waitForTimeout(puppeteerDefs.pause.brief);
@@ -53,7 +53,7 @@ const insertInProgress = async (page, { homeClub = 'Corinthias', awayClub = 'int
     expectedRequestType: 'script',
     expectedRequestMethod: 'POST',
     expectedResponseStatus,
-    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matchs`
+    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matches`
   });
 
   await page.waitForTimeout(puppeteerDefs.pause.brief);
@@ -78,7 +78,7 @@ const insertFinished = async (page, { homeClub = 'Corinthias', awayClub = 'inter
     expectedRequestType: 'script',
     expectedRequestMethod: 'PATCH',
     expectedResponseStatus: 200,
-    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matchs/${match.id}/finish`
+    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matches/${match.id}/finish`
   });
   await page.waitForTimeout(puppeteerDefs.pause.brief);
   return body
