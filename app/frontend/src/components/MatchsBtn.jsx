@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MatchsBtn = () => (
-  <Link data-testid="header__show_matchs_btn" to="/matchs">
+const MatchesBtn = () => (
+  <Link data-testid="header__show_matches_btn" to="/matches">
     Partidas
   </Link>
 );
 
-export default MatchsBtn;
+export default MatchesBtn;
