@@ -2,22 +2,22 @@ CREATE DATABASE  IF NOT EXISTS `TRYBE_FUTEBOL_CLUBE` ;
 USE `TRYBE_FUTEBOL_CLUBE`;
 
 --
--- Table structure for table `clubs`
+-- Table structure for table `teams`
 --
 
-DROP TABLE IF EXISTS `clubs`;
+DROP TABLE IF EXISTS `teams`;
 
-CREATE TABLE `clubs` (
+CREATE TABLE `teams` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `club_name` varchar(255) NOT NULL,
+  `team_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Insert values for table `clubs`
+-- Insert values for table `teams`
 --
 
-INSERT INTO `clubs` VALUES
+INSERT INTO `teams` VALUES
   (1,'Avaí/Kindermann'),(2,'Bahia'),(3,'Botafogo'),
   (4,'Corinthians'),(5,'Cruzeiro'),(6,'Ferroviária'),
   (7,'Flamengo'),(8,'Grêmio'),(9,'Internacional'),
@@ -41,8 +41,8 @@ CREATE TABLE `matches` (
   PRIMARY KEY (`id`),
   KEY `home_team` (`home_team`),
   KEY `away_team` (`away_team`),
-  CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`home_team`) REFERENCES `clubs` (`id`),
-  CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`away_team`) REFERENCES `clubs` (`id`)
+  CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`home_team`) REFERENCES `teams` (`id`),
+  CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`away_team`) REFERENCES `teams` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 

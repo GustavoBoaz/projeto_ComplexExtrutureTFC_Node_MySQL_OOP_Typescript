@@ -14,7 +14,7 @@ module.exports = {
     table: {
       header: {
         classification: dataTestid('score_boarding__classification'),
-        clubName: dataTestid('score_boarding__club_name'),
+        teamName: dataTestid('score_boarding__team_name'),
         totalPoints: dataTestid('score_boarding__total_points'),
         totalGames: dataTestid('score_boarding__total_games'),
         totalVictories: dataTestid('score_boarding__total_victories'),
@@ -27,7 +27,7 @@ module.exports = {
       },
       body: {
         classification: (sufix) => dataTestid(`score_boarding__classification_${sufix}`),
-        clubName: (sufix) => dataTestid(`score_boarding__club_name_${sufix}`),
+        teamName: (sufix) => dataTestid(`score_boarding__team_name_${sufix}`),
         totalPoints: (sufix) => dataTestid(`score_boarding__total_points_${sufix}`),
         totalGames: (sufix) => dataTestid(`score_boarding__total_games_${sufix}`),
         totalVictories: (sufix) => dataTestid(`score_boarding__total_victories_${sufix}`),

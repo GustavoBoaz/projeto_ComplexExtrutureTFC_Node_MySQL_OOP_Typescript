@@ -3,7 +3,7 @@ module.exports = {
     all: {
       users: 'SELECT * FROM users;',
       matches: 'SELECT * FROM matches;',
-      clubs: 'SELECT * FROM clubs;',
+      teams: 'SELECT * FROM teams;',
     },
     where: {
       matches: (where) => `SELECT * FROM matches WHERE ${where};`,

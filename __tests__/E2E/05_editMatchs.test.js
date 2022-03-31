@@ -1,7 +1,7 @@
 const { URL } = require('../utils/urls');
 const { dbReset, initSequelize, termSequelize } = require('../config/sequelize');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
-const { clubs } = require('../expected_results/trybe_football_club');
+const { teams } = require('../expected_results/trybe_football_club');
 const { pageMatchSettings, header, pageMatches } = require('../utils/dataTestIds');
 const { logAdmin } = require('../utils/logInto');
 const { select } = require('../utils/query');
@@ -82,8 +82,8 @@ describe(getRequirement(27), () => {
     const normalizeMatches = normalize(matches);
     const lastInsertedRow = lastInsert(normalizeMatches);
 
-    expect(lastInsertedRow.homeTeam).toBe(clubs[12].id);
-    expect(lastInsertedRow.awayTeam).toBe(clubs[1].id);
+    expect(lastInsertedRow.homeTeam).toBe(teams[12].id);
+    expect(lastInsertedRow.awayTeam).toBe(teams[1].id);
     expect(lastInsertedRow.homeTeamGoals.toString()).toBe(fiveGoals);
     expect(lastInsertedRow.awayTeamGoals.toString()).toBe(twoGoals);
     expect(lastInsertedRow.inProgress).toBe(1);
@@ -126,11 +126,11 @@ describe(getRequirement(28), () => {
     const normalizeMatches = normalize(matches);
     const lastInsertedRow = lastInsert(normalizeMatches);
 
-    expect(homeTeam).toBe(clubs[12].clubName);
-    expect(awayTeam).toBe(clubs[1].clubName);
+    expect(homeTeam).toBe(teams[12].teamName);
+    expect(awayTeam).toBe(teams[1].teamName);
     expect(matchStatus).toBe(finish);
-    expect(lastInsertedRow.homeTeam).toBe(clubs[12].id);
-    expect(lastInsertedRow.awayTeam).toBe(clubs[1].id);
+    expect(lastInsertedRow.homeTeam).toBe(teams[12].id);
+    expect(lastInsertedRow.awayTeam).toBe(teams[1].id);
     expect(lastInsertedRow.homeTeamGoals.toString()).toBe(oneGoal);
     expect(lastInsertedRow.awayTeamGoals.toString()).toBe(oneGoal);
     expect(lastInsertedRow.inProgress).toBe(0);

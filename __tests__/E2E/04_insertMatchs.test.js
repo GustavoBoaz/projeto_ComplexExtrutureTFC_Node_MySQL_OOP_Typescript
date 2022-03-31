@@ -2,7 +2,7 @@ const { URL } = require('../utils/urls');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
 const { pageMatchSettings, header, pageMatches } = require('../utils/dataTestIds');
 const { logAdmin } = require('../utils/logInto');
-const { clubs } = require('../expected_results/trybe_football_club');
+const { teams } = require('../expected_results/trybe_football_club');
 const { select } = require('../utils/query');
 const { dbReset, termSequelize, initSequelize } = require('../config/sequelize');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
@@ -36,8 +36,8 @@ afterEach(async () => {
 describe(getRequirement(23), () => {
   it('Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos', async () => {
     const dadosInsert = {
-      homeClub: clubs[3].clubName,
-      awayClub: clubs[8].clubName,
+      homeTeam: teams[3].teamName,
+      awayTeam: teams[8].teamName,
       homeGoals: twoGoals,
       awayGoals: oneGoal
     }
@@ -57,8 +57,8 @@ describe(getRequirement(23), () => {
     const homeTeam = await page.$eval(pageMatches.homeTeam(49), (el) => el.innerText);
     const awayTeam = await page.$eval(pageMatches.awayTeam(49), (el) => el.innerText);
 
-    expect(homeTeam).toBe(clubs[3].clubName);
-    expect(awayTeam).toBe(clubs[8].clubName);
+    expect(homeTeam).toBe(teams[3].teamName);
+    expect(awayTeam).toBe(teams[8].teamName);
   });
 });
 
@@ -66,8 +66,8 @@ describe(getRequirement(24), () => {
   it('Será validado que ao finalizar uma partida é alterado no banco de dados e na página', async () => {
 
     const dadosInsert = {
-      homeClub: clubs[3].clubName,
-      awayClub: clubs[8].clubName,
+      homeTeam: teams[3].teamName,
+      awayTeam: teams[8].teamName,
       homeGoals: twoGoals,
       awayGoals: oneGoal
     }
@@ -77,8 +77,8 @@ describe(getRequirement(24), () => {
     const rows = await database.query(select.all.matches, { type: 'SELECT' });
     const [matchInserted] = normalize([lastInsert(rows)])
 
-    expect(matchInserted.homeTeam).toBe(clubs[3].id);
-    expect(matchInserted.awayTeam).toBe(clubs[8].id);
+    expect(matchInserted.homeTeam).toBe(teams[3].id);
+    expect(matchInserted.awayTeam).toBe(teams[8].id);
     expect(matchInserted.inProgress).toBe(0);
 
     const showMatchesButton = await page.$(header.showMatchesButton);
@@ -89,8 +89,8 @@ describe(getRequirement(24), () => {
     const awayTeam = await page.$eval(pageMatches.awayTeam(49), (el) => el.innerText);
     const matchStatus = await page.$eval(pageMatches.matchStatus(49), (el) => el.innerText);
 
-    expect(homeTeam).toBe(clubs[3].clubName);
-    expect(awayTeam).toBe(clubs[8].clubName);
+    expect(homeTeam).toBe(teams[3].teamName);
+    expect(awayTeam).toBe(teams[8].teamName);
     expect(matchStatus).toBe('Finalizado');
   });
 });
@@ -98,8 +98,8 @@ describe(getRequirement(24), () => {
 describe(getRequirement(25), () => {
   it('Será validado que não é possivel inserir uma partida com times iguais', async () => {
     const dadosInsert = {
-      homeClub: clubs[3].clubName,
-      awayClub: clubs[3].clubName,
+      homeTeam: teams[3].teamName,
+      awayTeam: teams[3].teamName,
       homeGoals: twoGoals,
       awayGoals: oneGoal
     }
@@ -111,7 +111,7 @@ describe(getRequirement(25), () => {
 });
 
 describe(getRequirement(26), () => {
-  it('Será validado na API que não é possível inserir uma partida com time que não existe na tabela clubs', async () => {
+  it('Será validado na API que não é possível inserir uma partida com time que não existe na tabela teams', async () => {
     const dadosInsert = {
       homeTeam: 12345,
       awayTeam: 3,

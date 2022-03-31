@@ -8,7 +8,7 @@
 ## Page of classification
 
 5 - data-testid="score_boarding__classification"
-6 - data-testid="score_boarding__club_name"
+6 - data-testid="score_boarding__team_name"
 7 - data-testid="score_boarding__total_points"
 8 - data-testid="score_boarding__total_games"
 9 - data-testid="score_boarding__total_victories"
@@ -20,7 +20,7 @@
 15 - data-testid="score_boarding__efficiency"
 
 16 - data-testid="score_boarding__classification_" 
-17 - data-testid="score_boarding__club_name_"  
+17 - data-testid="score_boarding__team_name_"  
 18 - data-testid="score_boarding__total_points_"
 19 - data-testid="score_boarding__total_games_"
 20 - data-testid="score_boarding__total_victories_" 

@@ -36,73 +36,73 @@ describe(getRequirement(16), () => {
     const expectedResult = [
       {
         "id": 1,
-        "clubName": "Avaí/Kindermann"
+        "teamName": "Avaí/Kindermann"
       },
       {
         "id": 2,
-        "clubName": "Bahia"
+        "teamName": "Bahia"
       },
       {
         "id": 3,
-        "clubName": "Botafogo"
+        "teamName": "Botafogo"
       },
       {
         "id": 4,
-        "clubName": "Corinthians"
+        "teamName": "Corinthians"
       },
       {
         "id": 5,
-        "clubName": "Cruzeiro"
+        "teamName": "Cruzeiro"
       },
       {
         "id": 6,
-        "clubName": "Ferroviária"
+        "teamName": "Ferroviária"
       },
       {
         "id": 7,
-        "clubName": "Flamengo"
+        "teamName": "Flamengo"
       },
       {
         "id": 8,
-        "clubName": "Grêmio"
+        "teamName": "Grêmio"
       },
       {
         "id": 9,
-        "clubName": "Internacional"
+        "teamName": "Internacional"
       },
       {
         "id": 10,
-        "clubName": "Minas Brasília"
+        "teamName": "Minas Brasília"
       },
       {
         "id": 11,
-        "clubName": "Napoli-SC"
+        "teamName": "Napoli-SC"
       },
       {
         "id": 12,
-        "clubName": "Palmeiras"
+        "teamName": "Palmeiras"
       },
       {
         "id": 13,
-        "clubName": "Real Brasília"
+        "teamName": "Real Brasília"
       },
       {
         "id": 14,
-        "clubName": "Santos"
+        "teamName": "Santos"
       },
       {
         "id": 15,
-        "clubName": "São José-SP"
+        "teamName": "São José-SP"
       },
       {
         "id": 16,
-        "clubName": "São Paulo"
+        "teamName": "São Paulo"
       }
     ];
 
     const result = await axios
       .get(
-        `${URL(containerPorts.backend).BASE_URL}/clubs`,
+        `${URL(containerPorts.backend).BASE_URL}/teams`,
       )
       .then(({ status, data }) => ({status, data}))
       .catch(({response: { status, data }}) => ({ status, data }));
@@ -118,12 +118,12 @@ describe(getRequirement(17), () => {
   it('O avaliador verificará se tentar fazer a requisição correta na sua API, os dados corretos são retornados', async () => {
     const expectedResult = {
       "id": 5,
-      "clubName": "Cruzeiro"
+      "teamName": "Cruzeiro"
     };
 
     const result = await axios
       .get(
-        `${URL(containerPorts.backend).BASE_URL}/clubs/5`,
+        `${URL(containerPorts.backend).BASE_URL}/teams/5`,
       )
       .then(({ status, data }) => ({status, data}))
       .catch(({response: { status, data }}) => ({ status, data }));
