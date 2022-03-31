@@ -46,7 +46,7 @@ const LeaderboardTable = ({ currentFilter }) => {
         <thead>
           <tr>
             <th data-testid="score_boarding__classification">Classificação</th>
-            <th data-testid="score_boarding__club_name">Time</th>
+            <th data-testid="score_boarding__team_name">Time</th>
             <th data-testid="score_boarding__total_points">P</th>
             <th data-testid="score_boarding__total_games">J</th>
             <th data-testid="score_boarding__total_victories">V</th>
@@ -81,8 +81,8 @@ const LeaderboardTable = ({ currentFilter }) => {
                   {`${index + 1}`}
                 </td>
                 <td
-                  className="score-board-club-name"
-                  data-testid={ `score_boarding__club_name_${index + 1}` }
+                  className="score-board-team-name"
+                  data-testid={ `score_boarding__team_name_${index + 1}` }
                 >
                   {name}
                 </td>

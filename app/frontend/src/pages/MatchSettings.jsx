@@ -9,11 +9,11 @@ import api, { requestData, setToken } from '../services/requests';
 import '../styles/pages/matchSettings.css';
 
 const MatchSettings = () => {
-  const [clubs, setClubs] = useState([]);
+  const [teams, setTeams] = useState([]);
   const [homeTeamScoreboard, setHomeTeamScoreboard] = useState('0');
   const [awayTeamScoreboard, setAwayTeamScoreboard] = useState('0');
-  const [homeClub, setHomeClub] = useState('');
-  const [awayClub, setAwayClub] = useState('');
+  const [homeTeam, setHomeTeam] = useState('');
+  const [awayTeam, setAwayTeam] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const location = useLocation();
@@ -35,30 +35,30 @@ const MatchSettings = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const endpoint = '/clubs';
+    const endpoint = '/teams';
 
     const { token } = JSON.parse(localStorage.getItem('user')) || { token: '' };
     if (token !== '') {
       setToken(token);
     }
-    if (!clubs.length) {
+    if (!teams.length) {
       requestData(endpoint)
         .then((response) => {
-          setClubs(response);
+          setTeams(response);
         })
         .catch((error) => console.log(error));
     }
   });
 
-  const getClub = (club, homeOrAway) => {
-    const { id } = clubs.find(({ clubName }) => clubName === club);
-    if (homeOrAway === 'homeClub') { setHomeClub(id); } else { setAwayClub(id); }
+  const getTeam = (team, homeOrAway) => {
+    const { id } = teams.find(({ teamName }) => teamName === team);
+    if (homeOrAway === 'homeTeam') { setHomeTeam(id); } else { setAwayTeam(id); }
   };
 
   const createMatch = async (inProgress) => {
     const body = {
-      homeTeam: +homeClub,
-      awayTeam: +awayClub,
+      homeTeam: +homeTeam,
+      awayTeam: +awayTeam,
       homeTeamGoals: +homeTeamScoreboard,
       awayTeamGoals: +awayTeamScoreboard,
       inProgress,
@@ -79,9 +79,9 @@ const MatchSettings = () => {
 
   if (location.state) {
     const { id,
-      homeClub: homeClubState,
+      homeTeam: homeTeamState,
       homeTeamGoals,
-      awayClub: awayClubState,
+      awayTeam: awayTeamState,
       awayTeamGoals,
     } = location.state;
     return (
@@ -93,14 +93,14 @@ const MatchSettings = () => {
           setLogin={ setIsAuthenticated }
         />
         <EditGame
-          homeTeam={ [homeClubState] }
-          awayTeam={ [awayClubState] }
+          homeTeam={ [homeTeamState] }
+          awayTeam={ [awayTeamState] }
           homeTeamGoals={ homeTeamGoals }
           awayTeamGoals={ awayTeamGoals }
           idMatch={ id }
           updateMatch={ updateMatch }
           finishMatch={ finishMatch }
-          getClub={ getClub }
+          getTeam={ getTeam }
         />
       </>
     );
@@ -117,8 +117,8 @@ const MatchSettings = () => {
       <CreateNewGame
         setHomeTeamScoreboard={ setHomeTeamScoreboard }
         setAwayTeamScoreboard={ setAwayTeamScoreboard }
-        clubs={ clubs }
-        getClub={ getClub }
+        teams={ teams }
+        getTeam={ getTeam }
         createMatch={ createMatch }
         finishMatch={ finishMatch }
       />

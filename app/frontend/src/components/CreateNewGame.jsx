@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import ClubOption from './ClubOption';
+import TeamOption from './TeamOption';
 import Scoreboard from './Scoreboard';
 
 const CreateNewGame = ({
-  clubs,
-  setClubs,
-  getClub,
+  teams,
+  setTeams,
+  getTeam,
   homeTeamScoreboard,
   setHomeTeamScoreboard,
   awayTeamScoreboard,
@@ -23,12 +23,12 @@ const CreateNewGame = ({
     <section className="match-settings-section">
       <form className="match-settings-form">
         <div className="match-settings-form-options">
-          <ClubOption
+          <TeamOption
             testId="insertion_matches__select_home_team"
-            teams={ clubs }
-            setTeams={ setClubs }
+            teams={ teams }
+            setTeams={ setTeams }
             homeTeam
-            getClub={ getClub }
+            getTeam={ getTeam }
           />
           <Scoreboard
             testId="insertion_matches__select_quantity_goals_home_team"
@@ -46,12 +46,12 @@ const CreateNewGame = ({
             score={ awayTeamScoreboard }
             setScore={ setAwayTeamScoreboard }
           />
-          <ClubOption
+          <TeamOption
             testId="insertion_matches__select_away_team"
-            teams={ clubs }
-            setTeams={ setClubs }
+            teams={ teams }
+            setTeams={ setTeams }
             homeTeam={ false }
-            getClub={ getClub }
+            getTeam={ getTeam }
           />
         </div>
         <div className="match-settings-form-buttons">
@@ -84,9 +84,9 @@ const CreateNewGame = ({
 };
 
 CreateNewGame.propTypes = ({
-  clubs: PropTypes.arrayOf(PropTypes.object),
-  setClubs: PropTypes.func,
-  getClub: PropTypes.func,
+  teams: PropTypes.arrayOf(PropTypes.object),
+  setTeams: PropTypes.func,
+  getTeam: PropTypes.func,
   homeTeamScoreboard: PropTypes.string,
   setHomeTeamScoreboard: PropTypes.func,
   awayTeamScoreboard: PropTypes.string,

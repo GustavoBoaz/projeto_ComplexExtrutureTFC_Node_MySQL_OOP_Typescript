@@ -72,7 +72,7 @@ const GamesTable = ({ currentFilter, isAdm }) => {
                   className="games-table-tbody-home-team"
                   data-testid={ `matches__home_team_${id}` }
                 >
-                  { homeClub.clubName }
+                  { homeClub.teamName }
                 </td>
                 <td
                   className="games-table-tbody-home-team-goals"
@@ -91,7 +91,7 @@ const GamesTable = ({ currentFilter, isAdm }) => {
                   className="games-table-tbody-away-team"
                   data-testid={ `matches__away_team_${id}` }
                 >
-                  { awayClub.clubName }
+                  { awayClub.teamName }
                 </td>
                 <td className="games-table-tbody-empty-space">{ ' ' }</td>
                 <td className="games-table-tbody-status">
