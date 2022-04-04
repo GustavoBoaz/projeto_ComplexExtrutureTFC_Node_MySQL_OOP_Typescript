@@ -13,7 +13,7 @@ const { delay } = require('./util');
  * @param {expectedResponseStatus: Number} expectedResponseStatus
  * @returns {Promise<{ id: number, homeTeam: number, homeTeamGoals: number,  awayTeam: number, awayTeamGoals: number, inProgress: boolean } | {message: string}>}
  */
-const insertInProgress = async (page, { homeClub = 'Corinthias', awayClub = 'internacional', homeGoals = 2 , awayGoals = 1 }, expectedResponseStatus = 201) => {
+const insertInProgress = async (page, { homeClub = 'Corinthians', awayClub = 'internacional', homeGoals = 2 , awayGoals = 1 }, expectedResponseStatus = 201) => {
   await page.waitForTimeout(puppeteerDefs.pause.brief);
 
   const headerButtonLogin = await page.$(header.loginButton);
