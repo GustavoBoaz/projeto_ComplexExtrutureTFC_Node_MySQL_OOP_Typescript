@@ -889,7 +889,9 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
 
 
   ⚠️ **Atenção:** ⚠️
-  Por padrão, as respostas de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
+
+  - Por padrão, as respostas de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
+  - Sua tabela deverá renderizar somente as partidas que já foram finalizadas!
 
   **Os seguintes pontos serão avaliados:**
 
