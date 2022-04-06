@@ -115,8 +115,8 @@ describe(getRequirement(26), () => {
     const dadosInsert = {
       homeTeam: 12345,
       awayTeam: 3,
-      homeGoals: twoGoals,
-      awayGoals: oneGoal
+      homeTeamGoals: twoGoals,
+      awayTeamGoals: oneGoal
     }
 
     const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
