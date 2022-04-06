@@ -381,7 +381,7 @@ Alguns exemplos:
 
 > Lembre-se, você pode revisitar os conteúdos sobre Docker:
 > - [Dockerfile](https://app.betrybe.com/course/back-end/docker/manipulacao-e-criacao-de-imagens-no-docker/e92d2393-3508-43ab-8a67-2b2516d25864) (Seção Dockerfile - Comandos Básicos)
-> - [docker-compose](https://app.betrybe.com/course/back-end/docker/orquestrando-containers-com-docker-compose/6e8afaef-566a-47f2-9246-d3700db7a56a/o-que-vamos-aprender/f68de5b6-042c-4c57-b6d6-d59484db08ed?use_case=calendar) (Seção Compose File - Parte I)
+> - [docker-compose](https://app.betrybe.com/course/back-end/docker/orquestrando-containers-com-docker-compose/6e8afaef-566a-47f2-9246-d3700db7a56a) (Seção Compose File - Parte I)
 
 ``` yml
 version: '3.9'
