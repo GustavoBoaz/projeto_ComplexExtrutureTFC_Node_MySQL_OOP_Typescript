@@ -197,7 +197,7 @@ describe(getRequirement(13), () => {
 });
 
 describe(getRequirement(14), () => {
-  it('O avaliador verificará se tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
+  it('O avaliador verificará se ao tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário', async () => {
     const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
       "email": "admin@admin.com",
       "password": "secret_admin"
