@@ -151,7 +151,7 @@ describe(getRequirement(11), () => {
       trigger: () => buttonLogin.click(),
       expectedRequestType: 'script',
       expectedRequestMethod: 'POST',
-      expectedResponseStatus: 401,
+      expectedResponseStatus: 400,
       expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
@@ -181,7 +181,7 @@ describe(getRequirement(13), () => {
       trigger: () => buttonLogin.click(),
       expectedRequestType: 'script',
       expectedRequestMethod: 'POST',
-      expectedResponseStatus: 401,
+      expectedResponseStatus: 400,
       expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
