@@ -634,10 +634,10 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
         "awayTeam": 8,
         "awayTeamGoals": 1,
         "inProgress": false,
-        "homeClub": {
+        "homeTeam": {
           "teamName": "São Paulo"
         },
-        "awayClub": {
+        "awayTeam": {
           "teamName": "Grêmio"
         }
       },
@@ -649,10 +649,10 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
         "awayTeam": 9,
         "awayTeamGoals": 0,
         "inProgress": true,
-        "homeClub": {
+        "homeTeam": {
           "teamName": "São Paulo"
         },
-        "awayClub": {
+        "awayTeam": {
           "teamName": "Internacional"
         }
       }
@@ -678,10 +678,10 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
       "awayTeam": 9,
       "awayTeamGoals": 0,
       "inProgress": true,
-      "homeClub": {
+      "homeTeam": {
         "teamName": "São Paulo"
       },
-      "awayClub": {
+      "awayTeam": {
         "teamName": "Internacional"
       }
     },
@@ -692,10 +692,10 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
       "awayTeam": 1,
       "awayTeamGoals": 0,
       "inProgress": true,
-      "homeClub": {
+      "homeTeam": {
         "teamName": "Ferroviária"
       },
-      "awayClub": {
+      "awayTeam": {
         "teamName": "Avaí/Kindermann"
       }
     }
@@ -721,10 +721,10 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
       "awayTeam": 8,
       "awayTeamGoals": 1,
       "inProgress": false,
-      "homeClub": {
+      "homeTeam": {
         "teamName": "São Paulo"
       },
-      "awayClub": {
+      "awayTeam": {
         "teamName": "Grêmio"
       }
     },
@@ -735,10 +735,10 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
       "awayTeam": 14,
       "awayTeamGoals": 1,
       "inProgress": false,
-      "homeClub": {
+      "homeTeam": {
         "teamName": "Internacional"
       },
-      "awayClub": {
+      "awayTeam": {
         "teamName": "Santos"
       }
     }
