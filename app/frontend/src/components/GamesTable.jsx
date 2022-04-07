@@ -61,9 +61,9 @@ const GamesTable = ({ currentFilter, isAdm }) => {
             .sort((a, b) => b.inProgress - a.inProgress)
             .map(({
               id,
-              homeClub,
+              teamHome,
               homeTeamGoals,
-              awayClub,
+              teamAway,
               awayTeamGoals,
               inProgress,
             }) => (
@@ -72,7 +72,7 @@ const GamesTable = ({ currentFilter, isAdm }) => {
                   className="games-table-tbody-home-team"
                   data-testid={ `matches__home_team_${id}` }
                 >
-                  { homeClub.teamName }
+                  { teamHome.teamName }
                 </td>
                 <td
                   className="games-table-tbody-home-team-goals"
@@ -91,7 +91,7 @@ const GamesTable = ({ currentFilter, isAdm }) => {
                   className="games-table-tbody-away-team"
                   data-testid={ `matches__away_team_${id}` }
                 >
-                  { awayClub.teamName }
+                  { teamAway.teamName }
                 </td>
                 <td className="games-table-tbody-empty-space">{ ' ' }</td>
                 <td className="games-table-tbody-status">
@@ -128,9 +128,9 @@ const GamesTable = ({ currentFilter, isAdm }) => {
                               '/matches/settings',
                               { state: {
                                 id,
-                                homeClub,
+                                teamHome,
                                 homeTeamGoals,
-                                awayClub,
+                                teamAway,
                                 awayTeamGoals,
                                 inProgress,
                               } },

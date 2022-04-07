@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import ClubOption from './ClubOption';
+import TeamOption from './TeamOption';
 import Scoreboard from './Scoreboard';
 
 const EditGame = ({
@@ -12,7 +12,7 @@ const EditGame = ({
   idMatch,
   updateMatch,
   finishMatch,
-  getClub,
+  getTeam,
 }) => {
   const [currentHomeTeamGoals, setHomeTeamGoals] = useState(homeTeamGoals);
   const [currentAwayTeamGoals, setAwayTeamGoals] = useState(awayTeamGoals);
@@ -20,11 +20,11 @@ const EditGame = ({
     <section className="match-settings-section">
       <form className="match-settings-form">
         <div className="match-settings-form-options">
-          <ClubOption
+          <TeamOption
             testId="insertion_matches__select_home_team"
             teams={ homeTeam }
             homeTeam
-            getClub={ getClub }
+            getTeam={ getTeam }
           />
           <Scoreboard
             testId="insertion_matches__select_quantity_goals_home_team"
@@ -44,11 +44,11 @@ const EditGame = ({
             setScore={ setAwayTeamGoals }
             qtyGoal={ awayTeamGoals }
           />
-          <ClubOption
+          <TeamOption
             testId="insertion_matches__select_away_team"
             teams={ awayTeam }
             homeTeam={ false }
-            getClub={ getClub }
+            getTeam={ getTeam }
           />
         </div>
         <div className="match-settings-form-buttons">
@@ -84,7 +84,7 @@ EditGame.propTypes = ({
   homeTeamGoals: PropTypes.any,
   awayTeamGoals: PropTypes.any,
   idMatch: PropTypes.any,
-  getClub: PropTypes.any,
+  getTeam: PropTypes.any,
   finishMatc: PropTypes.any,
   updateMatch: PropTypes.any,
 }).isRequired;

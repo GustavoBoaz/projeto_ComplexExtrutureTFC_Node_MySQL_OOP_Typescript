@@ -79,9 +79,9 @@ const MatchSettings = () => {
 
   if (location.state) {
     const { id,
-      homeTeam: homeTeamState,
+      teamHome: homeTeamState,
       homeTeamGoals,
-      awayTeam: awayTeamState,
+      teamAway: awayTeamState,
       awayTeamGoals,
     } = location.state;
     return (
