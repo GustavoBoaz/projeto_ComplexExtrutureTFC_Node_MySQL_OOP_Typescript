@@ -36,54 +36,58 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
       - [Testes de cobertura](#testes-de-cobertura)
     - [Dicas](#dicas)
       - [Status HTTP](#status-http)
-  - [Configuração Docker](#configuração-docker)
+  - [Configuração Docker:](#configuração-docker)
     - [Docker e Docker-compose](#docker-e-docker-compose)
+      - [A criação do docker-compose deve acontecer somente após ter feito o terceiro requisito.](#a-criação-do-docker-compose-deve-acontecer-somente-após-ter-feito-o-terceiro-requisito)
       - [Crie os arquivos dockerfile e docker-compose](#crie-os-arquivos-dockerfile-e-docker-compose)
   - [Lista de Requisitos:](#lista-de-requisitos)
+    - [0 - Pré-requisitos](#0---pré-requisitos)
+      - [Premissas gerais](#premissas-gerais)
+      - [Inicialização do compose e verificação dos logs das aplicações](#inicialização-do-compose-e-verificação-dos-logs-das-aplicações)
     - [Sequelize](#sequelize)
-      - [1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs](#1---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-clubs)
-      - [2 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs](#2---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-matchs)
-      - [3 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users](#3---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-users)
+      - [1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `clubs`](#1---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-clubs)
+      - [2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matchs`](#2---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-de-matchs)
+      - [3 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`](#3---desenvolva-em-appbackendsrcdatabase-nas-pastas-correspondentes-uma-migration-e-um-model-para-a-tabela-users)
     - [Login](#login)
-      - [4 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas](#4---tdd-desenvolva-testes-que-cubram-no-mínimo-5-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-7-linhas-cobertas)
-      - [5 - Desenvolva o endpoint /login no backend de maneira ele permita o acesso com dados válidos no frontend](#5---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-permita-o-acesso-com-dados-válidos-no-frontend)
-      - [6 - (`TDD`) Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas](#6---tdd-desenvolva-testes-que-cubram-no-mínimo-10-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-19-linhas-cobertas)
-      - [7 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso com um email inválido no frontend](#7---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-com-um-email-inválido-no-frontend)
-      - [8 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src com um mínimo de 25 linhas cobertas](#8---tdd-desenvolva-testes-que-cubram-no-mínimo-15-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-25-linhas-cobertas)
-      - [9 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso com uma senha inválida no frontend](#9---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-com-uma-senha-inválida-no-frontend)
-      - [10 - (`TDD`) Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas](#10---tdd-desenvolva-testes-que-cubram-no-mínimo-20-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-35-linhas-cobertas)
-      - [11 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar um email no frontend](#11---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-um-email-no-frontend)
-      - [12 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas](#12---tdd-desenvolva-testes-que-cubram-no-mínimo-30-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-45-linhas-cobertas)
-      - [13 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar uma senha no frontend](#13---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-sem-informar-uma-senha-no-frontend)
-      - [14 - Desenvolva o endpoint /login/validate no backend de maneira ele retorne os dados corretamente no frontend](#14---desenvolva-o-endpoint-loginvalidate-no-backend-de-maneira-ele-retorne-os-dados-corretamente-no-frontend)
+      - [4 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivos back-end em `/src` com um mínimo de 7 linhas cobertas](#4---tdd-desenvolva-testes-que-cubram-no-mínimo-5-por-cento-dos-arquivos-back-end-em-src-com-um-mínimo-de-7-linhas-cobertas)
+      - [5 - Desenvolva o endpoint `/login` no backend de maneira ele permita o acesso com dados válidos no frontend](#5---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-permita-o-acesso-com-dados-válidos-no-frontend)
+      - [6 - (`TDD`) Desenvolva testes que cubram no mínimo 10 por cento dos arquivos back-end em `/src` com um mínimo de 19 linhas cobertas](#6---tdd-desenvolva-testes-que-cubram-no-mínimo-10-por-cento-dos-arquivos-back-end-em-src-com-um-mínimo-de-19-linhas-cobertas)
+      - [7 - Desenvolva o endpoint `/login` no backend de maneira ele não permita o acesso com um email inválido no front-end](#7---desenvolva-o-endpoint-login-no-backend-de-maneira-ele-não-permita-o-acesso-com-um-email-inválido-no-front-end)
+      - [8 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivos back-end em `/src` com um mínimo de 25 linhas cobertas](#8---tdd-desenvolva-testes-que-cubram-no-mínimo-15-por-cento-dos-arquivos-back-end-em-src-com-um-mínimo-de-25-linhas-cobertas)
+      - [9 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso com uma senha inválida no front-end](#9---desenvolva-o-endpoint-login-no-back-end-de-maneira-ele-não-permita-o-acesso-com-uma-senha-inválida-no-front-end)
+      - [10 - (`TDD`) Desenvolva testes que cubram no mínimo 20 por cento dos arquivos back-end em `/src` com um mínimo de 35 linhas cobertas](#10---tdd-desenvolva-testes-que-cubram-no-mínimo-20-por-cento-dos-arquivos-back-end-em-src-com-um-mínimo-de-35-linhas-cobertas)
+      - [11 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso sem informar um email no front-end](#11---desenvolva-o-endpoint-login-no-back-end-de-maneira-ele-não-permita-o-acesso-sem-informar-um-email-no-front-end)
+      - [12 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos back-end em `/src` com um mínimo de 45 linhas cobertas](#12---tdd-desenvolva-testes-que-cubram-no-mínimo-30-por-cento-dos-arquivos-back-end-em-src-com-um-mínimo-de-45-linhas-cobertas)
+      - [13 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso sem informar uma senha no front-end](#13---desenvolva-o-endpoint-login-no-back-end-de-maneira-ele-não-permita-o-acesso-sem-informar-uma-senha-no-front-end)
+      - [14 - Desenvolva o endpoint `/login/validate` no back-end de maneira ele retorne os dados corretamente no front-end](#14---desenvolva-o-endpoint-loginvalidate-no-back-end-de-maneira-ele-retorne-os-dados-corretamente-no-front-end)
     - [Jogos](#jogos)
-      - [15 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas](#15---tdd-desenvolva-testes-que-cubram-no-mínimo-45-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-70-linhas-cobertas)
-      - [16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente](#16---desenvolva-o-endpoint-clubs-no-backend-de-forma-que-ele-possa-retornar-todos-os-times-corretamente)
-      - [17 - Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico](#17---desenvolva-o-endpoint-clubsid-no-backend-de-forma-que-ele-possa-retornar-dados-de-um-time-específico)
-      - [18 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas](#18---tdd-desenvolva-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-80-linhas-cobertas)
-      - [19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no frontend](#19---desenvolva-o-endpoint-matchs-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-frontend)
-      - [20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend](#20---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-frontend)
-      - [21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend](#21---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-finalizadas-na-tela-de-partidas-do-frontend)
+      - [15 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivos back-end em `/src` com um mínimo de 70 linhas cobertas](#15---tdd-desenvolva-testes-que-cubram-no-mínimo-45-por-cento-dos-arquivos-back-end-em-src-com-um-mínimo-de-70-linhas-cobertas)
+      - [16 - Desenvolva o endpoint `/clubs` no back-end de forma que ele possa retornar todos os times corretamente](#16---desenvolva-o-endpoint-clubs-no-back-end-de-forma-que-ele-possa-retornar-todos-os-times-corretamente)
+      - [17 - Desenvolva o endpoint `/clubs/:id` no back-end de forma que ele possa retornar dados de um time específico](#17---desenvolva-o-endpoint-clubsid-no-back-end-de-forma-que-ele-possa-retornar-dados-de-um-time-específico)
+      - [18 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivos back-end em `/src` com um mínimo de 80 linhas cobertas](#18---tdd-desenvolva-testes-que-cubram-no-mínimo-60-por-cento-dos-arquivos-back-end-em-src-com-um-mínimo-de-80-linhas-cobertas)
+      - [19 - Desenvolva o endpoint `/matchs` de forma que os dados apareçam corretamente na tela de partidas no front-end.](#19---desenvolva-o-endpoint-matchs-de-forma-que-os-dados-apareçam-corretamente-na-tela-de-partidas-no-front-end)
+      - [20 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end](#20---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-em-andamento-na-tela-de-partidas-do-front-end)
+      - [21 - Desenvolva o endpoint `/matchs` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end](#21---desenvolva-o-endpoint-matchs-de-forma-que-seja-possível-filtrar-as-partidas-finalizadas-na-tela-de-partidas-do-front-end)
     - [Adicionar Partidas](#adicionar-partidas)
-      - [22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas](#22---bônus-tdd-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-backend-em-src-com-um-mínimo-de-100-linhas-cobertas)
-      - [23 - Desenvolva a rota /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados](#23---desenvolva-a-rota-matchs-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-true-no-banco-de-dados)
+      - [22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivo back-end em `/src` com um mínimo de 100 linhas cobertas](#22---bônus-tdd-desenvolva-testes-que-cubram-no-mínimo-80-por-cento-dos-arquivo-back-end-em-src-com-um-mínimo-de-100-linhas-cobertas)
+      - [23 - Desenvolva a rota `/matchs` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados](#23---desenvolva-a-rota-matchs-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-true-no-banco-de-dados)
       - [24 - Desenvolva a rota `/matchs/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados](#24---desenvolva-a-rota-matchsidfinish-de-modo-que-seja-possível-salvar-uma-partida-com-o-status-de-inprogress-como-false-no-banco-de-dados)
-      - [25 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais](#25---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-times-iguais)
-      - [26 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs](#26---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-time-que-não-existe-na-tabela-clubs)
+      - [25 - Desenvolva o endpoint `/matchs` de forma que não seja possível inserir uma partida com times iguais](#25---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-times-iguais)
+      - [26 - Desenvolva o endpoint `/matchs` de forma que não seja possível inserir uma partida com time que não existe na tabela clubs](#26---desenvolva-o-endpoint-matchs-de-forma-que-não-seja-possível-inserir-uma-partida-com-time-que-não-existe-na-tabela-clubs)
     - [Editar Partidas](#editar-partidas)
       - [27 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível atualizar partidas em andamento](#27---desenvolva-o-endpoint-matchsid-de-forma-que-seja-possível-atualizar-partidas-em-andamento)
       - [28 - Desenvolva o endpoint `/matchs/:id` de forma que seja possível finalizar partidas em andamento](#28---desenvolva-o-endpoint-matchsid-de-forma-que-seja-possível-finalizar-partidas-em-andamento)
   - [Leaderboards](#leaderboards)
     - [Leaderboard Home](#leaderboard-home)
       - [29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados](#29---desenvolva-o-endpoint-leaderboardhome-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-mandantes-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
-      - [30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada](#30---desenvolva-o-endpoint-leaderboardhome-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-mandantes-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-botafogo-2-x-1-grêmio-a-tabela-será-atualizada)
+      - [30 - Desenvolva o endpoint `/leaderboard/home`, de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada](#30---desenvolva-o-endpoint-leaderboardhome-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-mandantes-na-tela-de-classificação-do-front-end-e-ao-inserir-a-partida-corinthians-2-x-1-internacional-a-tabela-será-atualizada)
     - [Leaderboard away](#leaderboard-away)
-      - [31 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados](#31---desenvolva-o-endpoint-leaderboardaway-de-forma-que-seja-possível-filtrar-as-classificações-dos-times-quando-visitantes-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
-      - [32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Botafogo 2 X 1 Grêmio a tabela será atualizada](#32---desenvolva-o-endpoint-leaderboardaway-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-quando-visitantes-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-botafogo-2-x-1-grêmio-a-tabela-será-atualizada)
+      - [31 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times  na tela de classificação do front-end, com os dados iniciais do banco de dados](#31---desenvolva-o-endpoint-leaderboardaway-de-forma-que-seja-possível-filtrar-as-classificações-dos-times--na-tela-de-classificação-do-front-end-com-os-dados-iniciais-do-banco-de-dados)
+      - [32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela seja atualizada](#32---desenvolva-o-endpoint-leaderboardaway-de-forma-que-seja-possível-filtrar-a-classificações-dos-times-na-tela-de-classificação-do-front-end-e-ao-inserir-a-partida-corinthians-2-x-1-internacional-a-tabela-seja-atualizada)
     - [Leaderboard](#leaderboard)
-      - [33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados](#33---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-com-os-dados-iniciais-do-banco-de-dados)
-      - [34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada](#34---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-flamengo-3-x-0-napoli-sc-a-tabela-será-atualizada)
-      - [35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada](#35---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-frontend-e-ao-inserir-a-partida-minas-brasília-1-x-0-ferroviária-a-tabela-será-atualizada)
+      - [33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados](#33---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-front-end-com-os-dados-iniciais-do-banco-de-dados)
+      - [34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada](#34---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-front-end-e-ao-inserir-a-partida-flamengo-3-x-0-napoli-sc-a-tabela-será-atualizada)
+      - [35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada](#35---desenvolva-o-endpoint-leaderboard-de-forma-que-seja-possível-filtrar-a-classificação-geral-dos-times-na-tela-de-classificação-do-front-end-e-ao-inserir-a-partida-minas-brasília-1-x-0-ferroviária-a-tabela-será-atualizada)
   - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
     - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
@@ -441,16 +445,80 @@ services:
 
 ## Lista de Requisitos:
 
+### 0 - Pré-requisitos
+
+⚠️ Para que esse projeto faça a avaliação corretamente, **sua aplicação deve ter um funcionamento mínimo**.
+
+Isso porque, o avaliador **irá executar um teste de usabilidade E2E** *(End-to-end, ou Ponto a ponto. Leia mais sobre esse tipo de teste [nesse link](https://app.betrybe.com/course/real-life-engineer/e2e_tests_puppeteer))*, acompanhado de validações adicionais *(Compilação do TypeScript e inicialização do Sequelize)* que podem ser acompanhados pelo uso do script `npm run test:debug`;
+
+#### Premissas gerais
+
+**Considerar, que para TODO REQUISITO, EXCETO os de testes de cobertura:**
+
+- Deve existir uma aplicação de back-end **rodando em um container de nome `app_backend`**;
+  - Considere a leitura do dia de *Docker* `Manipulação e Criação de Imagens no Docker` [nesse link](https://app.betrybe.com/course/back-end/docker/manipulacao-e-criacao-de-imagens-no-docker/;e92d2393-3508-43ab-8a67-2b2516d25864).
+  - ⚠️ **Caso o nome do container não seja criado automaticamente utilizando os underlines (`_`)**, utilize o parâmetro `container_name` no seu serviço para customizar e forçar o nome do mesmo:
+``` yml
+#...
+
+  backend:
+    # ...
+    container_name: app_backend
+    # ...
+
+# ...
+```
+
+- O container `app_backend` deve ser capaz **de se comunicar com outro container rodando um banco de dados mysql**;
+  - Considere a leitura do dia de *Docker* `Orquestrando Containers com Docker Compose` [nesse link](https://app.betrybe.com/course/back-end/docker/orquestrando-containers-com-docker-compose/6e8afaef-566a-47f2-9246-d3700db7a56a).
+
+- Dentro do container `app_backend`, o avaliador irá verificar:
+  - **Que é possível rodar o `tsc` ("TypeScript Compiler") sem erros**, através do script `build`, da própria aplicação back-end;
+  - **Que o `tsc` deve gerar um arquivo `./build/database/config/database.js`** dentro do container `app_backend`;
+    - Considere a leitura da seção `Bônus: Model com Sequelize` no conteúdo de *TypeScript*: `Tipagem Estática e Generics` [nesse link](https://app.betrybe.com/course/back-end/typescript/tipagem-estatica-e-generics/68eccf60-a982-4455-837d-da31e8726be5).
+  - **Que é possível restaurar e popular o banco de dados** utilizando o `sequelize-cli`, a partir do arquivo de configuração `./build/database/config/database.js`, utilizando o script `db:reset`, da própria aplicação back-end.
+    - ⚠️ Note:
+      -  Os seeds já foram providos em `./app/backend/src/database/seeders`, **porém, precisam ser renomeados** *(remoção do underline (`_`), do final do arquivo)* para que possam ser reconhecidos pelo `sequelize-cli`, a medida que as respectivas `migrations` forem criadas;
+      -  Existe uma `migration` com nome `./app/backend/src/database/migrations/99999999999999-create-z.js` responsável por indicar que o banco foi criado corretamente e está funcionando, **não apague ou renomeie essa migration**,
+
+⚠️ **A partir do 5º requisito**, a aplicação de front-end deve estar **rodando em um container**, de forma que a mesma tentará consumir sua aplicação back-end (**que deve estar saudável**, considerando os pontos anteriores);
+
+#### Inicialização do compose e verificação dos logs das aplicações
+
+- Considerando o uso do parâmetro `healthcheck` em cada container do seu `docker-compose.yml`, a inicialização dos containers devem aguardar o comando de status de saúde (o que valida se aquele container está operacional ou não):
+  - No container `db`, representado por um comando `ping` no banco de dados;
+  - No back-end, representado por um comando `lsof` que vai procurar aplicações ativas na porta definida (por padrão, no caso `3001`);
+  - No front-end, representado por um comando `lsof` que vai procurar aplicações ativas na porta definida (por padrão, no caso `3000`);
+
+- Caso os containers respeitem as premissas anteriores, os mesmos devem ser criados, sem maiores problemas:
+![Criação dos containers concluída com sucesso!](assets/compose-status-01.png)
+
+
+- No compose, não há necessidade de parar e/ou reiniciar containers que não tiveram alterações. Em caso de alteração somente da imagem do back-end, basta utilizar, a partir da raiz, o comando `npm run compose:up`.
+  - Na prática, o comando deve rodar, a partir da pasta `./app` (onde deve residir seu `docker-compose.yml`), o comando `docker-compose up -d --build`, esse comando forçará o re-build da imagem da aplicação `back-end`. O resultado
+![Re-criação do container do back-end](assets/compose-status-02.png)
+
+- Em caso de algum problema (no back-end, por exemplo), você deve se deparar com alguma mensagem do tipo:
+![Erro no status de saúde do container do back-end](assets/compose-status-03.png)
+  - ⚠️ Lembre-se, não cabe ao avaliador de usabilidade dizer qual é o problema específico na sua aplicação, **por tanto, cabe aqui investigar o problema**, sempre considerando as premissas anteriores.
+
+- Nesse caso, a partir da pasta `./app` (onde está seu *docker-compose*), é possível rodar o comando `docker-compose logs` (Para ver todos os status) ou `docker-compose logs <nome-do-seu-serviço>` (Para mostrar somente o de um escopo específico).
+  - ⚠️ é indicado remover o parâmetro `restart: 'always'` do seu serviço, para que o mesmo não polua seus logs;
+  - No nosso contexto, rodando o comando `docker-compose logs backend`:
+![docker-compose logs backend](assets/compose-status-04.png)
+    - Aqui não houve problema com o `tsc`, porém a senha para acesso do banco pelo sequelize estava errada.
+
+
 ### Sequelize
 
-Para o desenvolvimento, o time de produto te deu uma imagem para construir a modelagem do banco de dados. Com essa imagem você já consegue saber como:
+Para o desenvolvimento, o time de produto disponibilizou um *Diagrama de Entidade-Relacionamento (DER)* para construir a modelagem do banco de dados. Com essa imagem você já consegue saber como:
   - Nomear suas tabelas e colunas
   - Quais são os tipos de suas colunas
   - Relações entre tabelas
 
     ![Exemplo banco de dados](./diagram.png)
 
-     ⚠️ **Atenção** ⚠️ para que os testes passem é necessário que a sua migration de `users` termine exatamente com `-create-user.js`.
+**Dica:** Também é possível buscar referências nas seeds providas no projeto em `./app/backend/src/database/seeders`
 
 #### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `clubs`
 
