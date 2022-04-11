@@ -491,22 +491,28 @@ Isso porque, o avaliador **irá executar um teste de usabilidade E2E** *(End-to-
   - No front-end, representado por um comando `lsof` que vai procurar aplicações ativas na porta definida (por padrão, no caso `3000`);
 
 - Caso os containers respeitem as premissas anteriores, os mesmos devem ser criados, sem maiores problemas:
+
 ![Criação dos containers concluída com sucesso!](assets/compose-status-01.png)
 
 
 - No compose, não há necessidade de parar e/ou reiniciar containers que não tiveram alterações. Em caso de alteração somente da imagem do back-end, basta utilizar, a partir da raiz, o comando `npm run compose:up`.
   - Na prática, o comando deve rodar, a partir da pasta `./app` (onde deve residir seu `docker-compose.yml`), o comando `docker-compose up -d --build`, esse comando forçará o re-build da imagem da aplicação `back-end`. O resultado
+
 ![Re-criação do container do back-end](assets/compose-status-02.png)
 
 - Em caso de algum problema (no back-end, por exemplo), você deve se deparar com alguma mensagem do tipo:
+
 ![Erro no status de saúde do container do back-end](assets/compose-status-03.png)
-  - ⚠️ Lembre-se, não cabe ao avaliador de usabilidade dizer qual é o problema específico na sua aplicação, **por tanto, cabe aqui investigar o problema**, sempre considerando as premissas anteriores.
+
+> ⚠️ Lembre-se, não cabe ao avaliador de usabilidade dizer qual é o problema específico na sua aplicação, **por tanto, cabe aqui investigar o problema**, sempre considerando as premissas anteriores.
 
 - Nesse caso, a partir da pasta `./app` (onde está seu *docker-compose*), é possível rodar o comando `docker-compose logs` (Para ver todos os status) ou `docker-compose logs <nome-do-seu-serviço>` (Para mostrar somente o de um escopo específico).
   - ⚠️ é indicado remover o parâmetro `restart: 'always'` do seu serviço, para que o mesmo não polua seus logs;
   - No nosso contexto, rodando o comando `docker-compose logs backend`:
+
 ![docker-compose logs backend](assets/compose-status-04.png)
-    - Aqui não houve problema com o `tsc`, porém a senha para acesso do banco pelo sequelize estava errada.
+
+> Aqui não houve problema com o `tsc`, porém a senha para acesso do banco pelo sequelize estava errada.
 
 
 ### Sequelize
