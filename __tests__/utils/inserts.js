@@ -13,7 +13,7 @@ const { delay } = require('./util');
  * @param {expectedResponseStatus: Number} expectedResponseStatus
  * @returns {Promise<{ id: number, homeTeam: number, homeTeamGoals: number,  awayTeam: number, awayTeamGoals: number, inProgress: boolean } | {message: string}>}
  */
-const insertInProgress = async (page, { homeTeam = 'Corinthians', awayTeam = 'internacional', homeGoals = 2 , awayGoals = 1 }, expectedResponseStatus = 201) => {
+const insertInProgress = async (page, { homeClub = 'Corinthians', awayClub = 'internacional', homeGoals = 2 , awayGoals = 1 }, expectedResponseStatus = 201) => {
   await page.waitForTimeout(puppeteerDefs.pause.brief);
 
   const headerButtonLogin = await page.$(header.loginButton);
@@ -67,7 +67,7 @@ const insertInProgress = async (page, { homeTeam = 'Corinthians', awayTeam = 'in
  * @param {{homeTeam: String, awayTeam:string, homeGoals:Number, awayGoals:number}} DadosInsert
  * @returns {Promise<{ id: number, homeTeam: number, homeTeamGoals: number,  awayTeam: number, awayTeamGoals: number, inProgress: boolean } | {message: string}>}
  */
-const insertFinished = async (page, { homeTeam = 'Corinthians', awayTeam = 'internacional', homeGoals = 2 , awayGoals = 1 }) => {
+const insertFinished = async (page, { homeClub = 'Corinthians', awayClub = 'internacional', homeGoals = 2 , awayGoals = 1 }) => {
 
   const match = await insertInProgress(page, {homeTeam, awayTeam, homeGoals, awayGoals})
   const finishMatchButton = await page.$(pageMatchSettings.finishMatchButton);

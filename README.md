@@ -272,6 +272,8 @@ module.exports = {
 
 **Com elas que iremos conseguir conectar ao banco do avaliador automático**
 
+**⚠️ Variáveis de ambiente além das especificadas acima não são suportadas, pois não são esperadas pelo avaliador do projeto. ⚠️**
+
 #### Chave JWT e criptografia de senhas:
 
 ⚠️ A sua chave `JWT` deve ser inserida em `app/backend/jwt.evaluation.key` e pode ser carregada no backend com o uso da biblioteca `fs`.
@@ -376,6 +378,10 @@ Alguns exemplos:
     Em seu projeto vai conter um arquivo docker-compose.example.yml.
     Seu service do backend no docker-compose deve ter o `depends_on` exatamente igual ao do arquivo docker-compose.example.yml.
     Use o modelo de serviço do banco de dados que está no arquivo `app/docker-compose.example.yml`, que está igual ao formato abaixo:
+
+> Lembre-se, você pode revisitar os conteúdos sobre Docker:
+> - [Dockerfile](https://app.betrybe.com/course/back-end/docker/manipulacao-e-criacao-de-imagens-no-docker/e92d2393-3508-43ab-8a67-2b2516d25864) (Seção Dockerfile - Comandos Básicos)
+> - [docker-compose](https://app.betrybe.com/course/back-end/docker/orquestrando-containers-com-docker-compose/6e8afaef-566a-47f2-9246-d3700db7a56a) (Seção Compose File - Parte I)
 
 ``` yml
 version: '3.9'
@@ -885,7 +891,9 @@ Para o desenvolvimento, o time de produto te deu uma imagem para construir a mod
 
 
   ⚠️ **Atenção:** ⚠️
-  Por padrão, as respostas de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
+
+  - Por padrão, as respostas de todos os seus endpoints deverão estar em inglês, mesmo a renderização no front-end estando em português.
+  - Sua tabela deverá renderizar somente as partidas que já foram finalizadas!
 
   **Os seguintes pontos serão avaliados:**
 
