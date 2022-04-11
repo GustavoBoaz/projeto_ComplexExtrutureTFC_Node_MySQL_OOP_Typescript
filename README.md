@@ -347,7 +347,8 @@ Para rodar testes de cobertura no seu back-end, utilize o comando: `npm run test
 - Você pode **instalar suas aplicações (front e back)** rodando o comando `npm run install:apps`;
 - Você pode rodar o avaliador **mostrando as operações que o navegador vai fazer no frontend** durante os testes E2E utilizando o comando `npm run test:browser`;
 - Você pode **debugar alguns erros do avaliador** (como por exemplo a validação do banco de dados, ou da compilação do TS), onde são *printados* na tela algumas infos adicionais, utilizando o comando `npm run test:debug`;
-- Você pode **subir ou descer uma aplicação do compose**, utilizando os scripts `compose:up`, `compose:down`
+- Você pode **subir ou descer uma aplicação do compose**, utilizando os scripts `compose:up`, `compose:down`;
+- Para criação da API com TS + POO, **recomenda-se fazer ou relembrar os exercícios** do conteúdo de POO e SOLID, especificamente o do dia `SOLID - Introdução e Princípios S, O e D`, [nesse link](https://app.betrybe.com/course/back-end/poo-solid/solid-introducao-e-principios-s-o-e-d/d63831d8-f791-447d-9227-29e3b0ad6130/exercicios/afe9bcbb-769e-4a68-9e67-9267f631f83d).
 
 #### Status HTTP
 
