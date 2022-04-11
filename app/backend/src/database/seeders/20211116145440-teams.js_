@@ -6,55 +6,55 @@ module.exports = {
      * Example:
      */
     await queryInterface.bulkInsert(
-      'clubs',
+      'teams',
       [
         {
-          club_name: 'Avaí/Kindermann',
+          team_name: 'Avaí/Kindermann',
         },
         {
-          club_name: 'Bahia',
+          team_name: 'Bahia',
         },
         {
-          club_name: 'Botafogo',
+          team_name: 'Botafogo',
         },
         {
-          club_name: 'Corinthians',
+          team_name: 'Corinthians',
         },
         {
-          club_name: 'Cruzeiro',
+          team_name: 'Cruzeiro',
         },
         {
-          club_name: 'Ferroviária',
+          team_name: 'Ferroviária',
         },
         {
-          club_name: 'Flamengo',
+          team_name: 'Flamengo',
         },
         {
-          club_name: 'Grêmio',
+          team_name: 'Grêmio',
         },
         {
-          club_name: 'Internacional',
+          team_name: 'Internacional',
         },
         {
-          club_name: 'Minas Brasília',
+          team_name: 'Minas Brasília',
         },
         {
-          club_name: 'Napoli-SC',
+          team_name: 'Napoli-SC',
         },
         {
-          club_name: 'Palmeiras',
+          team_name: 'Palmeiras',
         },
         {
-          club_name: 'Real Brasília',
+          team_name: 'Real Brasília',
         },
         {
-          club_name: 'Santos',
+          team_name: 'Santos',
         },
         {
-          club_name: 'São José-SP',
+          team_name: 'São José-SP',
         },
         {
-          club_name: 'São Paulo',
+          team_name: 'São Paulo',
         },
       ],
       {},
@@ -67,6 +67,6 @@ module.exports = {
      *
      * Example:
      */
-    await queryInterface.bulkDelete('clubs', null, {});
+    await queryInterface.bulkDelete('teams', null, {});
   },
 };

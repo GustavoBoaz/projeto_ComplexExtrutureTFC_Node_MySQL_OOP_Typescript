@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import ClubOption from './ClubOption';
+import TeamOption from './TeamOption';
 import Scoreboard from './Scoreboard';
 
 const CreateNewGame = ({
-  clubs,
-  setClubs,
-  getClub,
+  teams,
+  setTeams,
+  getTeam,
   homeTeamScoreboard,
   setHomeTeamScoreboard,
   awayTeamScoreboard,
@@ -23,15 +23,15 @@ const CreateNewGame = ({
     <section className="match-settings-section">
       <form className="match-settings-form">
         <div className="match-settings-form-options">
-          <ClubOption
-            testId="insertion_matchs__select_home_team"
-            teams={ clubs }
-            setTeams={ setClubs }
+          <TeamOption
+            testId="insertion_matches__select_home_team"
+            teams={ teams }
+            setTeams={ setTeams }
             homeTeam
-            getClub={ getClub }
+            getTeam={ getTeam }
           />
           <Scoreboard
-            testId="insertion_matchs__select_quantity_goals_home_team"
+            testId="insertion_matches__select_quantity_goals_home_team"
             homeTeam
             score={ homeTeamScoreboard }
             setScore={ setHomeTeamScoreboard }
@@ -41,22 +41,22 @@ const CreateNewGame = ({
             <span>X</span>
           </div>
           <Scoreboard
-            testId="insertion_matchs__select_quantity_goals_away_team"
+            testId="insertion_matches__select_quantity_goals_away_team"
             homeTeam={ false }
             score={ awayTeamScoreboard }
             setScore={ setAwayTeamScoreboard }
           />
-          <ClubOption
-            testId="insertion_matchs__select_away_team"
-            teams={ clubs }
-            setTeams={ setClubs }
+          <TeamOption
+            testId="insertion_matches__select_away_team"
+            teams={ teams }
+            setTeams={ setTeams }
             homeTeam={ false }
-            getClub={ getClub }
+            getTeam={ getTeam }
           />
         </div>
         <div className="match-settings-form-buttons">
           <button
-            data-testid="insertion_matchs__save_match_btn"
+            data-testid="insertion_matches__save_match_btn"
             onClick={ async () => {
               const body = await createMatch(true);
               setCreatedMatch(body);
@@ -69,7 +69,7 @@ const CreateNewGame = ({
 
           </button>
           <button
-            data-testid="insertion_matchs__finish_match_btn"
+            data-testid="insertion_matches__finish_match_btn"
             onClick={ () => { finishMatch(createdMatch.id); } }
             type="button"
             disabled={ (inProgress === notCreated) }
@@ -84,9 +84,9 @@ const CreateNewGame = ({
 };
 
 CreateNewGame.propTypes = ({
-  clubs: PropTypes.arrayOf(PropTypes.object),
-  setClubs: PropTypes.func,
-  getClub: PropTypes.func,
+  teams: PropTypes.arrayOf(PropTypes.object),
+  setTeams: PropTypes.func,
+  getTeam: PropTypes.func,
   homeTeamScoreboard: PropTypes.string,
   setHomeTeamScoreboard: PropTypes.func,
   awayTeamScoreboard: PropTypes.string,

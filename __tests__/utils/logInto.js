@@ -17,7 +17,7 @@ const logAdmin = async (page, port) => {
 
   await page.waitForTimeout(500);
 
-  expect(await page.url()).toEqual(URL(port).URL_PAGE_MATCHS);
+  expect(await page.url()).toEqual(URL(port).URL_PAGE_MATCHES);
 };
 
 const logUser = async (page, port) => {
@@ -35,7 +35,7 @@ const logUser = async (page, port) => {
 
   await page.waitForTimeout(500);
 
-  expect(await page.url()).toEqual(URL(port).URL_PAGE_MATCHS);
+  expect(await page.url()).toEqual(URL(port).URL_PAGE_MATCHES);
 };
 
 module.exports = {

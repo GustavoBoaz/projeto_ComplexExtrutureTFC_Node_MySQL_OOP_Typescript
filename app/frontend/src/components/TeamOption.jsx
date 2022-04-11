@@ -1,30 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ClubOption = ({ teams, homeTeam, getClub, testId }) => (
+const TeamOption = ({ teams, homeTeam, getTeam, testId }) => (
   <label htmlFor={ (homeTeam) ? 'home-team-scoreboard' : 'away-team-scoreboard' }>
     { (homeTeam) ? <p>Time Mandante</p> : <p>Time Visitante</p> }
     <select
       data-testid={ testId }
       onChange={ ({ target: { value } }) => {
-        const homeOrAway = (homeTeam) ? 'homeClub' : 'awayClub';
-        getClub(value, homeOrAway);
+        const homeOrAway = (homeTeam) ? 'homeTeam' : 'awayTeam';
+        getTeam(value, homeOrAway);
       } }
     >
       {
-        teams.map(({ clubName }, index) => (
-          <option key={ index } value={ clubName }>{ clubName }</option>
+        teams.map(({ teamName }, index) => (
+          <option key={ index } value={ teamName }>{ teamName }</option>
         ))
       }
     </select>
   </label>
 );
 
-ClubOption.propTypes = {
+TeamOption.propTypes = {
   teams: PropTypes.arrayOf(PropTypes.object).isRequired,
   homeTeam: PropTypes.bool.isRequired,
-  getClub: PropTypes.func.isRequired,
+  getTeam: PropTypes.func.isRequired,
   testId: PropTypes.string.isRequired,
 };
 
-export default ClubOption;
+export default TeamOption;

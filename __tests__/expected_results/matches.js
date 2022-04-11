@@ -1,4 +1,4 @@
-const matchs = [
+const matches = [
   {
     id: 1,
     home_team: 16,
@@ -321,4 +321,4 @@ const matchs = [
   },
 ];
 
-module.exports = matchs;
+module.exports = matches;

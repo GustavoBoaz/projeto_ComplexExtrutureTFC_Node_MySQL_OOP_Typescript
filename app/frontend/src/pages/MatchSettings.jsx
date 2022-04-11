@@ -3,17 +3,17 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import CreateNewGame from '../components/CreateNewGame';
 import EditGame from '../components/EditGame';
 import Header from '../components/Header';
-import MatchsBtn from '../components/MatchsBtn';
+import MatchesBtn from '../components/MatchesBtn';
 import Loading from '../components/Loading';
 import api, { requestData, setToken } from '../services/requests';
 import '../styles/pages/matchSettings.css';
 
 const MatchSettings = () => {
-  const [clubs, setClubs] = useState([]);
+  const [teams, setTeams] = useState([]);
   const [homeTeamScoreboard, setHomeTeamScoreboard] = useState('0');
   const [awayTeamScoreboard, setAwayTeamScoreboard] = useState('0');
-  const [homeClub, setHomeClub] = useState('');
-  const [awayClub, setAwayClub] = useState('');
+  const [homeTeam, setHomeTeam] = useState('');
+  const [awayTeam, setAwayTeam] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const location = useLocation();
@@ -35,72 +35,72 @@ const MatchSettings = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const endpoint = '/clubs';
+    const endpoint = '/teams';
 
     const { token } = JSON.parse(localStorage.getItem('user')) || { token: '' };
     if (token !== '') {
       setToken(token);
     }
-    if (!clubs.length) {
+    if (!teams.length) {
       requestData(endpoint)
         .then((response) => {
-          setClubs(response);
+          setTeams(response);
         })
         .catch((error) => console.log(error));
     }
   });
 
-  const getClub = (club, homeOrAway) => {
-    const { id } = clubs.find(({ clubName }) => clubName === club);
-    if (homeOrAway === 'homeClub') { setHomeClub(id); } else { setAwayClub(id); }
+  const getTeam = (team, homeOrAway) => {
+    const { id } = teams.find(({ teamName }) => teamName === team);
+    if (homeOrAway === 'homeTeam') { setHomeTeam(id); } else { setAwayTeam(id); }
   };
 
   const createMatch = async (inProgress) => {
     const body = {
-      homeTeam: +homeClub,
-      awayTeam: +awayClub,
+      homeTeam: +homeTeam,
+      awayTeam: +awayTeam,
       homeTeamGoals: +homeTeamScoreboard,
       awayTeamGoals: +awayTeamScoreboard,
       inProgress,
     };
 
-    const { data } = await api.post('/matchs', body);
+    const { data } = await api.post('/matches', body);
     return data;
   };
 
   const updateMatch = async (id, updateGoals) => {
-    await api.patch(`/matchs/${id}`, { ...updateGoals });
+    await api.patch(`/matches/${id}`, { ...updateGoals });
   };
   const finishMatch = async (id) => {
-    await api.patch(`/matchs/${id}/finish`);
+    await api.patch(`/matches/${id}/finish`);
   };
 
   if (!isAuthenticated) return <Loading />;
 
   if (location.state) {
     const { id,
-      homeClub: homeClubState,
+      teamHome: homeTeamState,
       homeTeamGoals,
-      awayClub: awayClubState,
+      teamAway: awayTeamState,
       awayTeamGoals,
     } = location.state;
     return (
       <>
         <Header
           page="EDITAR PARTIDA"
-          FirstNavigationLink={ MatchsBtn }
+          FirstNavigationLink={ MatchesBtn }
           logged={ isAuthenticated }
           setLogin={ setIsAuthenticated }
         />
         <EditGame
-          homeTeam={ [homeClubState] }
-          awayTeam={ [awayClubState] }
+          homeTeam={ [homeTeamState] }
+          awayTeam={ [awayTeamState] }
           homeTeamGoals={ homeTeamGoals }
           awayTeamGoals={ awayTeamGoals }
           idMatch={ id }
           updateMatch={ updateMatch }
           finishMatch={ finishMatch }
-          getClub={ getClub }
+          getTeam={ getTeam }
         />
       </>
     );
@@ -110,15 +110,15 @@ const MatchSettings = () => {
     <>
       <Header
         page="ADICIONAR PARTIDA"
-        FirstNavigationLink={ MatchsBtn }
+        FirstNavigationLink={ MatchesBtn }
         logged={ isAuthenticated }
         setLogin={ setIsAuthenticated }
       />
       <CreateNewGame
         setHomeTeamScoreboard={ setHomeTeamScoreboard }
         setAwayTeamScoreboard={ setAwayTeamScoreboard }
-        clubs={ clubs }
-        getClub={ getClub }
+        teams={ teams }
+        getTeam={ getTeam }
         createMatch={ createMatch }
         finishMatch={ finishMatch }
       />
