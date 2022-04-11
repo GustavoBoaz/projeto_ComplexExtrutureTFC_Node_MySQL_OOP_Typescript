@@ -94,7 +94,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 # Habilidades
 
-![Exemplo app front](./front-example.png)
+![Exemplo app front](assets/front-example.png)
 
 O `TFC` é um site informativo sobre partidas e classificações de futebol! ⚽️
 
@@ -457,7 +457,7 @@ Isso porque, o avaliador **irá executar um teste de usabilidade E2E** *(End-to-
 **Considerar, que para TODO REQUISITO, EXCETO os de testes de cobertura:**
 
 - Deve existir uma aplicação de back-end **rodando em um container de nome `app_backend`**;
-  - Considere a leitura do dia de *Docker* `Manipulação e Criação de Imagens no Docker` [nesse link](https://app.betrybe.com/course/back-end/docker/manipulacao-e-criacao-de-imagens-no-docker/;e92d2393-3508-43ab-8a67-2b2516d25864).
+  - Considere a leitura do dia de *Docker* `Manipulação e Criação de Imagens no Docker` [nesse link](https://app.betrybe.com/course/back-end/docker/manipulacao-e-criacao-de-imagens-no-docker/e92d2393-3508-43ab-8a67-2b2516d25864).
   - ⚠️ **Caso o nome do container não seja criado automaticamente utilizando os underlines (`_`)**, utilize o parâmetro `container_name` no seu serviço para customizar e forçar o nome do mesmo:
 ``` yml
 #...
@@ -523,7 +523,7 @@ Para o desenvolvimento, o time de produto disponibilizou um *Diagrama de Entidad
   - Quais são os tipos de suas colunas
   - Relações entre tabelas
 
-    ![Exemplo banco de dados](./diagram.png)
+    ![Exemplo banco de dados](assets/er-diagram.png)
 
 **Dica:** Também é possível buscar referências nas seeds providas no projeto em `./app/backend/src/database/seeders`
 
