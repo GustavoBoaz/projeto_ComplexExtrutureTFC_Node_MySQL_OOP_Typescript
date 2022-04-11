@@ -8,7 +8,7 @@ async function dbReset() {
   return condExec({
     command: docker.exec("app_backend", 'npm run db:reset'),
     validate: docker.exec("app_backend", 'npx sequelize-cli db:migrate:status'),
-    include: '-create-user.js',
+    include: 'up 99999999999999-create-z.js',
   });
 }
 
