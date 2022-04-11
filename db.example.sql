@@ -2,22 +2,22 @@ CREATE DATABASE  IF NOT EXISTS `TRYBE_FUTEBOL_CLUBE` ;
 USE `TRYBE_FUTEBOL_CLUBE`;
 
 --
--- Table structure for table `clubs`
+-- Table structure for table `teams`
 --
 
-DROP TABLE IF EXISTS `clubs`;
+DROP TABLE IF EXISTS `teams`;
 
-CREATE TABLE `clubs` (
+CREATE TABLE `teams` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `club_name` varchar(255) NOT NULL,
+  `team_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Insert values for table `clubs`
+-- Insert values for table `teams`
 --
 
-INSERT INTO `clubs` VALUES
+INSERT INTO `teams` VALUES
   (1,'Avaí/Kindermann'),(2,'Bahia'),(3,'Botafogo'),
   (4,'Corinthians'),(5,'Cruzeiro'),(6,'Ferroviária'),
   (7,'Flamengo'),(8,'Grêmio'),(9,'Internacional'),
@@ -26,12 +26,12 @@ INSERT INTO `clubs` VALUES
   (16,'São Paulo');
 
 --
--- Table structure for table `matchs`
+-- Table structure for table `matches`
 --
 
-DROP TABLE IF EXISTS `matchs`;
+DROP TABLE IF EXISTS `matches`;
 
-CREATE TABLE `matchs` (
+CREATE TABLE `matches` (
   `id` int NOT NULL AUTO_INCREMENT,
   `home_team` int NOT NULL,
   `home_team_goals` int NOT NULL,
@@ -41,16 +41,16 @@ CREATE TABLE `matchs` (
   PRIMARY KEY (`id`),
   KEY `home_team` (`home_team`),
   KEY `away_team` (`away_team`),
-  CONSTRAINT `matchs_ibfk_1` FOREIGN KEY (`home_team`) REFERENCES `clubs` (`id`),
-  CONSTRAINT `matchs_ibfk_2` FOREIGN KEY (`away_team`) REFERENCES `clubs` (`id`)
+  CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`home_team`) REFERENCES `teams` (`id`),
+  CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`away_team`) REFERENCES `teams` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 --
--- Insert values for table `matchs`
+-- Insert values for table `matches`
 --
 
-INSERT INTO `matchs` VALUES
+INSERT INTO `matches` VALUES
   (1,16,1,8,1,0),(2,9,1,14,1,0),(3,4,3,11,0,0),(4,3,0,2,0,0),(5,7,1,10,1,0),
   (6,5,1,13,1,0),(7,12,2,6,2,0),(8,15,0,1,1,0),(9,1,0,12,3,0),(10,2,0,9,2,0),
   (11,13,1,3,0,0),(12,6,0,4,1,0),(13,8,2,5,1,0),(14,14,2,16,1,0),(15,10,0,15,1,0),

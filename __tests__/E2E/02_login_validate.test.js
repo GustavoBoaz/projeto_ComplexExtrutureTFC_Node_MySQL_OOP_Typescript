@@ -68,7 +68,7 @@ describe(getRequirement(5), () => {
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-    expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_MATCHS);
+    expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_MATCHES);
   });
 });
 

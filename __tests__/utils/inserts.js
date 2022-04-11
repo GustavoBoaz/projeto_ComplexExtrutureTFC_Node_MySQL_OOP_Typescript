@@ -1,7 +1,7 @@
 const { URL } = require('./urls');
-const { pageMatchSettings, header, pageMatchs } = require('../utils/dataTestIds');
+const { pageMatchSettings, header, pageMatches } = require('../utils/dataTestIds');
 const { logAdmin } = require('../utils/logInto');
-const { clubs } = require('../expected_results/trybe_football_club');
+const { teams } = require('../expected_results/trybe_football_club');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const waitForResponse = require('../utils/waitForResponse');
 const puppeteer = require('puppeteer');
@@ -9,7 +9,7 @@ const { delay } = require('./util');
 
 /**
  * @param {puppeteer.page} page
- * @param {{homeClub: String, awayClub:string, homeGoals:Number, awayGoals:number}} DadosInsert
+ * @param {{homeTeam: String, awayTeam:string, homeGoals:Number, awayGoals:number}} DadosInsert
  * @param {expectedResponseStatus: Number} expectedResponseStatus
  * @returns {Promise<{ id: number, homeTeam: number, homeTeamGoals: number,  awayTeam: number, awayTeamGoals: number, inProgress: boolean } | {message: string}>}
  */
@@ -25,14 +25,14 @@ const insertInProgress = async (page, { homeClub = 'Corinthians', awayClub = 'in
 
   await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-  const addNewMatchButton = await page.$(pageMatchs.addNewMatchButton);
+  const addNewMatchButton = await page.$(pageMatches.addNewMatchButton);
   addNewMatchButton.click();
 
   await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-  await page.select(pageMatchSettings.selectHomeTeam, homeClub);
+  await page.select(pageMatchSettings.selectHomeTeam, homeTeam);
 
-  await page.select(pageMatchSettings.selectAwayTeam, awayClub);
+  await page.select(pageMatchSettings.selectAwayTeam, awayTeam);
 
   const selectQuantityGoalsHomeTeam = await page.$(
     pageMatchSettings.selectQuantityGoalsHomeTeam,
@@ -53,7 +53,7 @@ const insertInProgress = async (page, { homeClub = 'Corinthians', awayClub = 'in
     expectedRequestType: 'script',
     expectedRequestMethod: 'POST',
     expectedResponseStatus,
-    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matchs`
+    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matches`
   });
 
   await page.waitForTimeout(puppeteerDefs.pause.brief);
@@ -64,12 +64,12 @@ const insertInProgress = async (page, { homeClub = 'Corinthians', awayClub = 'in
 /**
  *
  * @param {puppeteer.page} page
- * @param {{homeClub: String, awayClub:string, homeGoals:Number, awayGoals:number}} DadosInsert
+ * @param {{homeTeam: String, awayTeam:string, homeGoals:Number, awayGoals:number}} DadosInsert
  * @returns {Promise<{ id: number, homeTeam: number, homeTeamGoals: number,  awayTeam: number, awayTeamGoals: number, inProgress: boolean } | {message: string}>}
  */
 const insertFinished = async (page, { homeClub = 'Corinthians', awayClub = 'internacional', homeGoals = 2 , awayGoals = 1 }) => {
 
-  const match = await insertInProgress(page, {homeClub, awayClub, homeGoals, awayGoals})
+  const match = await insertInProgress(page, {homeTeam, awayTeam, homeGoals, awayGoals})
   const finishMatchButton = await page.$(pageMatchSettings.finishMatchButton);
 
   const { body } = await waitForResponse({
@@ -78,7 +78,7 @@ const insertFinished = async (page, { homeClub = 'Corinthians', awayClub = 'inte
     expectedRequestType: 'script',
     expectedRequestMethod: 'PATCH',
     expectedResponseStatus: 200,
-    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matchs/${match.id}/finish`
+    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matches/${match.id}/finish`
   });
   await page.waitForTimeout(puppeteerDefs.pause.brief);
   return body

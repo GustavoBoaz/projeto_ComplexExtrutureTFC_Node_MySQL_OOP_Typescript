@@ -1,11 +1,11 @@
 {
   "requirements": [
     {
-      "description": "1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de clubs",
+      "description": "1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de teams",
       "bonus": false
     },
     {
-      "description": "2 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matchs",
+      "description": "2 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matches",
       "bonus": false
     },
     {
@@ -61,11 +61,11 @@
       "bonus": false
     },
     {
-      "description": "16 - Desenvolva o endpoint /clubs no backend de forma que ele possa retornar todos os times corretamente",
+      "description": "16 - Desenvolva o endpoint /teams no backend de forma que ele possa retornar todos os times corretamente",
       "bonus": false
     },
     {
-      "description": "17 - Desenvolva o endpoint /clubs/:id no backend de forma que ele possa retornar dados de um time específico",
+      "description": "17 - Desenvolva o endpoint /teams/:id no backend de forma que ele possa retornar dados de um time específico",
       "bonus": false
     },
     {
@@ -73,15 +73,15 @@
       "bonus": false
     },
     {
-      "description": "19 - Desenvolva o endpoint /matchs de forma que os dados apareçam corretamente na tela de partidas no frontend",
+      "description": "19 - Desenvolva o endpoint /matches de forma que os dados apareçam corretamente na tela de partidas no frontend",
       "bonus": false
     },
     {
-      "description": "20 - Desenvolva o endpoint /matchs de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend",
+      "description": "20 - Desenvolva o endpoint /matches de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend",
       "bonus": false
     },
     {
-      "description": "21 - Desenvolva o endpoint /matchs de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend",
+      "description": "21 - Desenvolva o endpoint /matches de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend",
       "bonus": false
     },
     {
@@ -89,27 +89,27 @@
       "bonus": true
     },
     {
-      "description": "23 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com times iguais",
+      "description": "23 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com times iguais",
       "bonus": false
     },
     {
-      "description": "24 - Desenvolva o endpoint /matchs de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados",
+      "description": "24 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados",
       "bonus": false
     },
     {
-      "description": "25 - Desenvolva o endpoint /matchs de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados",
+      "description": "25 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados",
       "bonus": false
     },
     {
-      "description": "26 - Desenvolva o endpoint /matchs de forma que não seja possível inserir uma partida com time que não existe na tabela clubs",
+      "description": "26 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com time que não existe na tabela teams",
       "bonus": false
     },
     {
-      "description": "27 - Desenvolva o endpoint /matchs de forma que seja possível atualizar partidas em andamento",
+      "description": "27 - Desenvolva o endpoint /matches de forma que seja possível atualizar partidas em andamento",
       "bonus": false
     },
     {
-      "description": "28 - Desenvolva o endpoint /matchs de forma que seja possível finalizar partidas em andamento",
+      "description": "28 - Desenvolva o endpoint /matches de forma que seja possível finalizar partidas em andamento",
       "bonus": false
     },
     {

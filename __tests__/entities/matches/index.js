@@ -1,9 +1,9 @@
-const allMatchs = require('./allMatchs');
+const allMatches = require('./allMatches');
 const onlyInProgress = require('./onlyInProgress');
 const onlyFinished = require('./onlyFinished');
 
 module.exports = {
-  allMatchs,
+  allMatches,
   onlyInProgress,
   onlyFinished,
 };
