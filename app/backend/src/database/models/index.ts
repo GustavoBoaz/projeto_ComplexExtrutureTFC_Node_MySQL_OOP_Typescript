@@ -1,5 +1,4 @@
 import { Sequelize } from 'sequelize';
+import * as config from '../config/database';
 
-const databaseConfig = require('../config/database');
-
-export default new Sequelize(databaseConfig);
+export default new Sequelize(config);

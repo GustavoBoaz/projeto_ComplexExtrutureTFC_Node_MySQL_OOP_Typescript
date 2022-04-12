@@ -5,7 +5,7 @@ const { state01, state02, state03 } = require('../entities/leaderboard');
 const { leaderboard, header } = require('../utils/dataTestIds');
 const { URL } = require('../utils/urls');
 const { insertFinished } = require('../utils/inserts');
-const { clubs } = require('../expected_results/trybe_football_club');
+const { teams } = require('../expected_results/trybe_football_club');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const { getRequirement } = require('../utils/util');
 
@@ -43,15 +43,15 @@ describe(getRequirement(33), () => {
 describe(getRequirement(34), () => {
   it('Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
-      homeClub: clubs[6].clubName,
-      awayClub: clubs[10].clubName,
+      homeTeam: teams[6].teamName,
+      awayTeam: teams[10].teamName,
       homeGoals: number.three,
       awayGoals: number.zero
     }
     await insertFinished(page, dadosInsert)
 
-    const showMatchsButton = await page.$(header.showMatchsButton);
-    await showMatchsButton.click();
+    const showMatchesButton = await page.$(header.showMatchesButton);
+    await showMatchesButton.click();
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     const showClassificationButton = await page.$(header.showClassificationButton)
@@ -65,15 +65,15 @@ describe(getRequirement(34), () => {
 describe(getRequirement(35), () => {
   it('Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
-      homeClub: clubs[9].clubName,
-      awayClub: clubs[5].clubName,
+      homeTeam: teams[9].teamName,
+      awayTeam: teams[5].teamName,
       homeGoals: number.one,
       awayGoals: number.zero
     }
     await insertFinished(page, dadosInsert)
 
-    const showMatchsButton = await page.$(header.showMatchsButton);
-    await showMatchsButton.click();
+    const showMatchesButton = await page.$(header.showMatchesButton);
+    await showMatchesButton.click();
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     const showClassificationButton = await page.$(header.showClassificationButton)

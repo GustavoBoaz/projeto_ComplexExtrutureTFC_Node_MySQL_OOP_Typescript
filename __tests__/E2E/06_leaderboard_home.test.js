@@ -5,7 +5,7 @@ const { homeResult1, homeResult2 } = require('../entities/leaderboard/homeResult
 const { leaderboard, header } = require('../utils/dataTestIds');
 const { URL } = require('../utils/urls');
 const { insertFinished } = require('../utils/inserts');
-const { clubs } = require('../expected_results/trybe_football_club');
+const { teams } = require('../expected_results/trybe_football_club');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const { getRequirement } = require('../utils/util');
 
@@ -43,14 +43,14 @@ describe(getRequirement(29), () => {
 describe(getRequirement(30), () => {
   it('Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint /leaderboard/home será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
-      homeClub: clubs[3].clubName,
-      awayClub: clubs[8].clubName,
+      homeTeam: teams[3].teamName,
+      awayTeam: teams[8].teamName,
       homeGoals: twoGoals,
       awayGoals: oneGoal
     }
     await insertFinished(page, dadosInsert)
-    const showMatchsButton = await page.$(header.showMatchsButton);
-    await showMatchsButton.click();
+    const showMatchesButton = await page.$(header.showMatchesButton);
+    await showMatchesButton.click();
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     const showClassificationButton = await page.$(header.showClassificationButton)

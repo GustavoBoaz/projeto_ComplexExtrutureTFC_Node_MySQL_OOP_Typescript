@@ -11,7 +11,7 @@ const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
   const scoreBoardTableHeaderMock = ['Classificação', 'Time', 'P', 'J', 'V', 'E', 'D', 'GP', 'GC', 'SG', '%'];
 
   const classification = await page.$eval(header.classification, (el) => el.innerText);
-  const clubName = await page.$eval(header.clubName, (el) => el.innerText);
+  const teamName = await page.$eval(header.teamName, (el) => el.innerText);
   const totalPoints = await page.$eval(header.totalPoints, (el) => el.innerText);
   const totalGames = await page.$eval(header.totalGames, (el) => el.innerText);
   const totalVictories = await page.$eval(header.totalVictories, (el) => el.innerText);
@@ -23,7 +23,7 @@ const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
   const efficiency = await page.$eval(header.efficiency, (el) => el.innerText);
 
   expect(classification).toEqual(scoreBoardTableHeaderMock[0]);
-  expect(clubName).toEqual(scoreBoardTableHeaderMock[1]);
+  expect(teamName).toEqual(scoreBoardTableHeaderMock[1]);
   expect(totalPoints).toEqual(scoreBoardTableHeaderMock[2]);
   expect(totalGames).toEqual(scoreBoardTableHeaderMock[3]);
   expect(totalVictories).toEqual(scoreBoardTableHeaderMock[4]);
@@ -51,36 +51,36 @@ const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTests
 
   expect(newScoreBoardTableResponse).toEqual(scoreBoardTableBodyMock);
 
-  const clubs = scoreBoardTableBodyMock.map((el, index) => ({ id: `${index + 1}`, ...el }));
+  const teams = scoreBoardTableBodyMock.map((el, index) => ({ id: `${index + 1}`, ...el }));
 
   const { table: { body } } = leaderboardTestsIds;
 
-  for (const club of clubs) {
+  for (const team of teams) {
     await page.waitForTimeout(500);
 
-    const clubId = await page.$eval(body.classification(club.id), (el) => el.innerText);
-    const clubName = await page.$eval(body.clubName(club.id), (el) => el.innerText);
-    const clubPoints = await page.$eval(body.totalPoints(club.id), (el) => el.innerText);
-    const clubGames = await page.$eval(body.totalGames(club.id), (el) => el.innerText);
-    const clubVictories = await page.$eval(body.totalVictories(club.id), (el) => el.innerText);
-    const clubDraws = await page.$eval(body.totalDraws(club.id), (el) => el.innerText);
-    const clubLooses = await page.$eval(body.totalLosses(club.id), (el) => el.innerText);
-    const clubGoalsFavor = await page.$eval(body.goalsFavor(club.id), (el) => el.innerText);
-    const clubGoalsOwn = await page.$eval(body.goalsOwn(club.id), (el) => el.innerText);
-    const clubGoalsBalance = await page.$eval(body.goalsBalance(club.id), (el) => el.innerText);
-    const clubEfficiency = await page.$eval(body.efficiency(club.id), (el) => el.innerText);
+    const teamId = await page.$eval(body.classification(team.id), (el) => el.innerText);
+    const teamName = await page.$eval(body.teamName(team.id), (el) => el.innerText);
+    const teamPoints = await page.$eval(body.totalPoints(team.id), (el) => el.innerText);
+    const teamGames = await page.$eval(body.totalGames(team.id), (el) => el.innerText);
+    const teamVictories = await page.$eval(body.totalVictories(team.id), (el) => el.innerText);
+    const teamDraws = await page.$eval(body.totalDraws(team.id), (el) => el.innerText);
+    const teamLooses = await page.$eval(body.totalLosses(team.id), (el) => el.innerText);
+    const teamGoalsFavor = await page.$eval(body.goalsFavor(team.id), (el) => el.innerText);
+    const teamGoalsOwn = await page.$eval(body.goalsOwn(team.id), (el) => el.innerText);
+    const teamGoalsBalance = await page.$eval(body.goalsBalance(team.id), (el) => el.innerText);
+    const teamEfficiency = await page.$eval(body.efficiency(team.id), (el) => el.innerText);
 
-    expect(clubId).toEqual(club.id);
-    expect(clubName).toEqual(club.name);
-    expect(clubPoints).toEqual(club.totalPoints);
-    expect(clubGames).toEqual(club.totalGames);
-    expect(clubVictories).toEqual(club.totalVictories);
-    expect(clubDraws).toEqual(club.totalDraws);
-    expect(clubLooses).toEqual(club.totalLosses);
-    expect(clubGoalsFavor).toEqual(club.goalsFavor);
-    expect(clubGoalsOwn).toEqual(club.goalsOwn);
-    expect(clubGoalsBalance).toEqual(club.goalsBalance);
-    expect(clubEfficiency).toEqual(club.efficiency);
+    expect(teamId).toEqual(team.id);
+    expect(teamName).toEqual(team.name);
+    expect(teamPoints).toEqual(team.totalPoints);
+    expect(teamGames).toEqual(team.totalGames);
+    expect(teamVictories).toEqual(team.totalVictories);
+    expect(teamDraws).toEqual(team.totalDraws);
+    expect(teamLooses).toEqual(team.totalLosses);
+    expect(teamGoalsFavor).toEqual(team.goalsFavor);
+    expect(teamGoalsOwn).toEqual(team.goalsOwn);
+    expect(teamGoalsBalance).toEqual(team.goalsBalance);
+    expect(teamEfficiency).toEqual(team.efficiency);
   }
 };
 

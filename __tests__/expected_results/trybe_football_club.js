@@ -4,7 +4,7 @@ const results = {
   }, {
     email: 'user@user.com', id: 2, password: '$2a$08$Y8Abi8jXvsXyqm.rmp0B.uQBA5qUz7T6Ghlg/CvVr/gLxYj5UAZVO', role: 'user', username: 'User',
   }],
-  matchs: [
+  matches: [
     {
       id: 1,
       homeTeam: 16,
@@ -390,23 +390,23 @@ const results = {
       inProgress: 1,
     },
   ],
-  clubs: [
-    { id: 1, clubName: 'Avaí/Kindermann' },
-    { id: 2, clubName: 'Bahia' },
-    { id: 3, clubName: 'Botafogo' },
-    { id: 4, clubName: 'Corinthians' },
-    { id: 5, clubName: 'Cruzeiro' },
-    { id: 6, clubName: 'Ferroviária' },
-    { id: 7, clubName: 'Flamengo' },
-    { id: 8, clubName: 'Grêmio' },
-    { id: 9, clubName: 'Internacional' },
-    { id: 10, clubName: 'Minas Brasília' },
-    { id: 11, clubName: 'Napoli-SC' },
-    { id: 12, clubName: 'Palmeiras' },
-    { id: 13, clubName: 'Real Brasília' },
-    { id: 14, clubName: 'Santos' },
-    { id: 15, clubName: 'São José-SP' },
-    { id: 16, clubName: 'São Paulo' },
+  teams: [
+    { id: 1, teamName: 'Avaí/Kindermann' },
+    { id: 2, teamName: 'Bahia' },
+    { id: 3, teamName: 'Botafogo' },
+    { id: 4, teamName: 'Corinthians' },
+    { id: 5, teamName: 'Cruzeiro' },
+    { id: 6, teamName: 'Ferroviária' },
+    { id: 7, teamName: 'Flamengo' },
+    { id: 8, teamName: 'Grêmio' },
+    { id: 9, teamName: 'Internacional' },
+    { id: 10, teamName: 'Minas Brasília' },
+    { id: 11, teamName: 'Napoli-SC' },
+    { id: 12, teamName: 'Palmeiras' },
+    { id: 13, teamName: 'Real Brasília' },
+    { id: 14, teamName: 'Santos' },
+    { id: 15, teamName: 'São José-SP' },
+    { id: 16, teamName: 'São Paulo' },
   ],
 };
 
