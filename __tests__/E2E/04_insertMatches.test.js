@@ -141,7 +141,7 @@ describe(getRequirement(26), () => {
 
     expect(result).toHaveProperty("status");
     expect(result).toHaveProperty("message");
-    expect(result.status).toBe(401);
+    expect(result.status).toBe(404);
     expect(result.message).toBe("There is no team with such id!");
   });
 });
