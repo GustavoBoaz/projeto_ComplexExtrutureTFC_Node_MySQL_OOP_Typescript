@@ -621,7 +621,7 @@ Para o desenvolvimento, o time de produto disponibilizou um *Diagrama de Entidad
 
   - O avaliador verificará se ao tentar fazer o login sem um email retornará status não-autorizado
 
-  Se o login não tiver o campo "email", o resultado retornado deverá ser a mensagem abaixo, com um status http `401`:
+  Se o login não tiver o campo "email", o resultado retornado deverá ser a mensagem abaixo, com um status http `400`:
   ```json
     { "message": "All fields must be filled" }
   ```
@@ -635,7 +635,7 @@ Para o desenvolvimento, o time de produto disponibilizou um *Diagrama de Entidad
 
   - O avaliador verificará se ao tentar fazer login sem senha retornará status não-autorizado
 
-  Se o login não tiver o campo "password" o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
+  Se o login não tiver o campo "password" o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
   ```json
     { "message": "All fields must be filled" }
   ```
