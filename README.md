@@ -31,7 +31,6 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     - [👀 Observações importantes:](#-observações-importantes)
       - [⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️](#️-inicie-seu-docker-compose-antes-de-testar-localmente-️)
       - [Variáveis de ambiente](#variáveis-de-ambiente)
-      - [Variáveis:](#variáveis)
       - [Chave JWT e criptografia de senhas:](#chave-jwt-e-criptografia-de-senhas)
       - [Testes de cobertura](#testes-de-cobertura)
     - [Dicas](#dicas)
@@ -246,33 +245,47 @@ Os testes vão utilizar sua aplicação do compose para fazer as validações, p
 
 **Você irá precisar configurar as variáveis globais do MySQL.** Você pode usar esse [Conteúdo de variáveis de ambiente com NodeJS](https://blog.rocketseat.com.br/variaveis-ambiente-nodejs/) como referência.
 
-**Faça essas configurações também para as variáveis de ambiente usadas nesses arquivo:**
+**As variáveis de ambiente do projeto, são majoritariamente utilizadas nesse arquivo:**
 
 `sd-0x-trybe-futebol-clube/app/backend/src/database/config/database.ts`
 
 ```
-module.exports = {
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: TRYBE_FUTEBOL_CLUBE,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: 'mysql',
-};
+import 'dotenv/config';
+import { Options } from 'sequelize';
 
+const config: Options = {
+  username: process.env.DB_USER || 'root',
+  password: process.env.DB_PASS || '123456',
+  database: process.env.DB_NAME || 'TRYBE_FUTEBOL_CLUBE',
+  host: process.env.DB_HOST || 'localhost',
+  port: Number(process.env.DB_PORT) || 3002,
+  dialect: 'mysql',
+  dialectOptions: {
+    timezone: 'Z',
+  },
+  logging: false,
+}
+
+module.exports = config;
 ```
+
+⚠️ **Esse arquivo é fundamental para o projeto e não deve ser apagado em nenhuma hipótese**
 
 **(Neste arquivo é obrigatório deixar o nome do database como `"database": 'TRYBE_FUTEBOL_CLUBE'`)**
 
-**É essencial usar essas 3 variáveis no arquivo acima:**
+**As variáveis de ambiente necessárias ao projeto estão descritas no arquivo `app/docker-compose.example.yml`, são elas:**
 
-#### Variáveis:
-
-`host: process.env.DB_HOST`
-
-`user: process.env.DB_USER`
-
-`password: process.env.DB_PASS`
+```yml
+  backend:
+    # ...
+    environment:
+      - PORT=3001
+      - DB_USER=root
+      - DB_PASS=123456
+      - DB_HOST=db
+      - DB_NAME=TRYBE_FUTEBOL_CLUBE
+      - DB_PORT=3306
+```
 
 **Com elas que iremos conseguir conectar ao banco do avaliador automático**
 
