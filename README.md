@@ -267,6 +267,8 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
     - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`.
 
+    - Quando solicitado algo que não existe no banco, deve retornar um código de `status 404`.
+
 </details>
 
 <details>
@@ -815,7 +817,12 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   - Será recebido o `id` pelo parâmetro da URL;
 
   - Será validado que ao finalizar uma partida é alterado no banco de dados e na página.
+	
+  - Deve-se retornar, com um status `200`, a seguinte mensagem:
 
+  ```json
+  { "message": "Finished" }
+  ```
 
 ## 25 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais
 
@@ -875,7 +882,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     - `E`: Total de Empates;
     - `D`: Total de Derrotas;
     - `GP`: Gols marcados a favor;
-    - `GC`: Gols marcados contra;
+    - `GC`: Gols sofridos;
     - `SG`: Saldo total de gols;
     - `%`: Aproveitamento do time.
 
@@ -903,7 +910,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   1º Total de Vitórias;
   2º Saldo de gols;
   3º Gols a favor;
-  4º Gols contra.
+  4º Gols sofridos.
 
 
   ⚠️ **Atenção:** ⚠️
@@ -966,11 +973,13 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 ### Leaderboard Home
 
-## 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados
+## 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times, quando mandantes, na tela de classificação do frontend com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
+	
+  - OBS: Um time `mandante` é quando o mesmo é o time da casa.
 
 ## 30 - Desenvolva o endpoint `/leaderboard/home`, de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
 
