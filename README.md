@@ -128,6 +128,11 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
 </details>
 
+details>
+  <summary><strong>⚠️ Configurações mínimas nas máquinas locais para rodar o projeto</strong></summary><br />
+  
+</details>
+
 <details>
   <summary><strong>⚠️ Informações importantes sobre o projeto</strong></summary><br />
 
