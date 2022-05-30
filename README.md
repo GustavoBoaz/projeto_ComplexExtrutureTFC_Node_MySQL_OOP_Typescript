@@ -825,7 +825,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   }
   ```
 
-  - caso a partida seja inserida com sucesso, deve-se retornar os dados da partida:
+  - caso a partida seja inserida com sucesso, deve-se retornar os dados da partida, com _status_ `201`:
 
   ```json
   {
