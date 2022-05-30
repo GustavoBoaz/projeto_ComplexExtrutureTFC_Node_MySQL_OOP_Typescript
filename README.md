@@ -212,6 +212,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   ```typescript
   import * as sinon from 'sinon';
   import * as chai from 'chai';
+  // @ts-ignore
   import chaiHttp = require('chai-http');
 
   import { app } from '../app';
