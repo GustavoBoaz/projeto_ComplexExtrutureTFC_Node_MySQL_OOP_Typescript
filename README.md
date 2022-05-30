@@ -140,7 +140,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
 <details>
   <summary><strong>⚠️ Configurações mínimas nas máquinas locais para rodar o projeto</strong></summary><br />
-  
+
   - Sistema Operacional Distribuição Unix
   - Node versão 16  
   - Docker
@@ -281,15 +281,15 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
   Alguns exemplos:
 
-    - Requisições que precisam de token mas não o receberam devem retornar um código de `status 401`;
+  - Requisições que precisam de token mas não o receberam devem retornar um código de `status 401`;
 
-    - Requisições que não seguem o formato pedido pelo servidor devem retornar um código de `status 400`;
+  - Requisições que não seguem o formato pedido pelo servidor devem retornar um código de `status 400`;
 
-    - Um problema inesperado no servidor deve retornar um código de `status 500`;
+  - Um problema inesperado no servidor deve retornar um código de `status 500`;
 
-    - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`.
+  - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`.
 
-    - Quando solicitado algo que não existe no banco, deve retornar um código de `status 404`.
+  - Quando solicitado algo que não existe no banco, deve retornar um código de `status 404`.
 
 </details>
 
