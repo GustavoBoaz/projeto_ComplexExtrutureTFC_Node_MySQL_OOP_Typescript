@@ -95,6 +95,19 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 <details>
   <summary><strong>⌨️ Durante o desenvolvimento</strong></summary><br />
 
+* ⚠️ **As alterações que você fizer no arquivo `app/backend/packages.json` serão descartadas no momento da avaliação.**
+
+* ⚠️ **Para adicionar pacotes adicionais ao back-end, utilize o arquivo `app/backend/packages.npm`, separando os pacotes adicionais por espaços ou quebras de linha.** Exemplo:
+
+  ```text
+  cors
+  @types/cors
+  ```
+
+</br>
+
+* Versione seu projeto
+
   * Faça `commits` das alterações que você fizer no código regularmente;
 
   * Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto.
@@ -105,9 +118,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
     3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_;
     4. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_;
     5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_.
-
-* ⚠️ **Para adicionar pacotes adicionais ao back-end, utilize o arquivo `app/backend/packages.npm`, separando os pacotes adicionais por espaços ou quebras de linha.**
-* ⚠️ **Não altere o arquivo `app/backend/packages.json`, pois o mesmo está travado para essa avaliação**
 
 </details>
 
@@ -128,9 +138,17 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
 </details>
 
-details>
+<details>
   <summary><strong>⚠️ Configurações mínimas nas máquinas locais para rodar o projeto</strong></summary><br />
+  <input type='checkbox'>Sistema Operacional Distribuição Unix</input>
+
+  <input type='checkbox'>Node versão 16</input>
   
+  <input type='checkbox'>Docker</input> 
+
+  <input type='checkbox'>Docker-compose versão 1.29.2</input> 
+
+
 </details>
 
 <details>
@@ -185,7 +203,7 @@ details>
 
   #### Chave JWT e criptografia de senhas:
 
-  ⚠️ A sua chave `JWT` deve ser inserida em `app/backend/jwt.evaluation.key` e pode ser carregada no back-end com o uso da biblioteca `fs`.
+  ⚠️ A sua chave `JWT` deve ser inserida em `app/backend/jwt.evaluation.key` e deve ser carregada no back-end com o uso da biblioteca `fs`.
 
   ⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs). Utilize essa biblioteca, ela pode ser colocada como dependência em `app/backend/package.json` para depois instalar todos os pacotes. ⚠️
 
@@ -249,7 +267,8 @@ details>
 <details>
   <summary><strong>👀 Dicas</strong></summary><br />
 
-  - Você pode **instalar suas aplicações (front e back)** rodando o comando `npm run install:apps`;
+  - Ao rodar o comando `npm install` na pasta raiz do projeto você automaticamente estará **instalando suas aplicações (front e back)**;
+  - Você pode **instalar suas aplicações (front e back)** rodando o comando `npm run install:apps` na pasta raiz do projeto;
   - Você pode rodar o avaliador **mostrando as operações que o navegador vai fazer no front-end** durante os testes E2E utilizando o comando `npm run test:browser`;
   - Você pode **debugar alguns erros do avaliador** (como por exemplo a validação do banco de dados, ou da compilação do TS), onde são *printados* na tela algumas infos adicionais, utilizando o comando `npm run test:debug`;
   - Você pode **subir ou descer uma aplicação do compose**, utilizando os scripts `compose:up`, `compose:down`;
@@ -286,9 +305,10 @@ details>
   ⚠ O seu docker-compose precisa estar na versão 1.29 ou superior. [Veja aqui a documentação para atualizar o docker-compose.](https://docs.docker.com/compose/install/) ⚠
 
   #### Crie os arquivos dockerfile e docker-compose
-    - As pastas `frontend/` e `backend/` devem possuir um arquivo dockerfile;
-    - A pasta `app/` deve possuir um arquivo docker-compose;
-    - Os arquivos dockerfile e docker-compose devem estar configurados corretamente.
+
+  - As pastas `frontend/` e `backend/` devem possuir um arquivo dockerfile;
+  - A pasta `app/` deve possuir um arquivo docker-compose;
+  - Os arquivos dockerfile e docker-compose devem estar configurados corretamente.
 
     **Observação**
       Em seu projeto vai conter um arquivo docker-compose.example.yml.
@@ -350,6 +370,8 @@ details>
   ```
 
   ⚠️ Só o seu docker-compose não vai ser suficiente para gerar os containers. Também será necessário criar os models e as migrations para que seu projeto seja executável via Docker. **Por isso implemente os 3 primeiros requisitos para começar a testar o projeto usando o Docker e docker-compose.**
+
+  ⚠️ O avaliador utiliza os mesmos valores das variáveis de ambiente contidas no docker-compose, por exemplo `DB_USER`, `DB_PASS`, `DB_HOST` e as portas que os containers devem utilizar. **Por mais que seja possível alterar algumas delas e ajustar os testes para continuarem funcionais, recomendamos fortemente a não alterá-las.**
 
 </details>
 
@@ -463,11 +485,11 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   ### Sequelize
 
   Para o desenvolvimento, o time de produto disponibilizou um *Diagrama de Entidade-Relacionamento (DER)* para construir a modelagem do banco de dados. Com essa imagem você já consegue saber como:
-    - Nomear suas tabelas e colunas;
-    - Quais são os tipos de suas colunas;
-    - Relações entre tabelas.
+  - Nomear suas tabelas e colunas;
+  - Quais são os tipos de suas colunas;
+  - Relações entre tabelas.
 
-      ![Exemplo banco de dados](assets/er-diagram.png)
+    ![Exemplo banco de dados](assets/er-diagram.png)
 
   **Dica:** Também é possível buscar referências nas seeds providas no projeto em `./app/backend/src/database/seeders`
 
