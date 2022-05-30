@@ -497,10 +497,10 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 ## Database
 
+  - Mantenha o arquivo `/app/backend/src/database/migrations/99999999999999-create-z.js`, este é necessário para a avaliação dos requisitos dessa sessão.
 ### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `teams`
 
   - O avaliador consultará os dados da tabela teams, verificando se ela contém os dados iniciais corretos.
-
 ### 2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
 
   - O avaliador consultará os dados da tabela matches, verificando se ela contém os dados iniciais corretos.
@@ -535,7 +535,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
   - Para tanto, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`.
 
-### 5 - Desenvolva o endpoint `/login` no back-end de maneira ele permita o acesso com dados válidos no fron-tend
+### 5 - Desenvolva o endpoint `/login` no back-end de maneira ele permita o acesso com dados válidos no front-end
 
   - A rota de ser do tipo `POST`;
 
@@ -855,7 +855,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
   - Será validado que não é possível inserir uma partida com times iguais;
 
-  - Não deve ser possível criar uma partida com o mesmo time, exemplo: Barcelona x Barcelona, caso contrário, deve-se retornar o seguinte erro:
+  - Não deve ser possível criar uma partida com o mesmo time, exemplo: Barcelona x Barcelona, caso contrário, deve-se retornar, com um status `401`, a seguinte mensagem::
 
   ```json
   { "message": "It is not possible to create a match with two equal teams" }
@@ -865,10 +865,10 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
   - Será validado que não é possível inserir uma partida com time que não existe na tabela teams;
 
-  - caso algum dos times não esteja cadastrado no banco de dados, deve-se retornar o seguinte erro:
+  - caso algum dos times não esteja cadastrado no banco de dados, deve-se retornar, com um status `401,` a seguinte mensagem:
 
   ```json
-  { "message": "Team not found" }
+  { "message": "There is no team with such id!" }
   ```
 
 ## Editar Partidas
@@ -888,6 +888,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     "awayTeamGoals": 1
   }
   ```
+  - Será avaliado que é o endpoint responde a requisição com um status `200` e qualquer corpo.
 
 ### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível finalizar partidas em andamento
 
@@ -896,6 +897,8 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   - Será recebido o `id` pelo parâmetro da url;
 
   - Será avaliado que é possível finalizar uma partida em andamento.
+
+  - Será avaliado que é o endpoint responde a requisição com um status `200` e qualquer corpo.
 
 ## Leaderboards
 
@@ -943,13 +946,12 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   ⚠️ **Atenção:** ⚠️
 
   - Por padrão, as respostas de todos os seus endpoints deverão estar em inglês, mesmo que a renderização no front-end seja em português.
-  - A sua tabela deverá renderizar somente as partidas que já foram finalizadas!
-
+  - A sua tabela deverá renderizar **somente** as PARTIDAS que já foram FINALIZADAS!
   **Os seguintes pontos serão avaliados:**
 
   ```
   - Se a lista de classificação está correta;
-  - Se a regra de classificação se mantem mesmo com mudanças na classificação;
+  - Se a regra de classificação se mantém mesmo com mudanças na classificação;
   - Se a tabela de classificação tem 10 colunas;
   - Se a tabela tem uma linha para cada time.
   ```
