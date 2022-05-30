@@ -140,6 +140,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
 <details>
   <summary><strong>⚠️ Configurações mínimas nas máquinas locais para rodar o projeto</strong></summary><br />
+  
   - Sistema Operacional Distribuição Unix
   - Node versão 16  
   - Docker
