@@ -89,15 +89,15 @@
       "bonus": true
     },
     {
-      "description": "23 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com times iguais",
+      "description": "23 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados",
       "bonus": false
     },
     {
-      "description": "24 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados",
+      "description": "24 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados",
       "bonus": false
     },
     {
-      "description": "25 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados",
+      "description": "25 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com times iguais",
       "bonus": false
     },
     {

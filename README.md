@@ -95,6 +95,19 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 <details>
   <summary><strong>⌨️ Durante o desenvolvimento</strong></summary><br />
 
+* ⚠️ **As alterações que você fizer no arquivo `app/backend/packages.json` serão descartadas no momento da avaliação.**
+
+* ⚠️ **Para adicionar pacotes adicionais ao back-end, utilize o arquivo `app/backend/packages.npm`, separando os pacotes adicionais por espaços ou quebras de linha.** Exemplo:
+
+  ```text
+  cors
+  @types/cors
+  ```
+
+</br>
+
+* Versione seu projeto
+
   * Faça `commits` das alterações que você fizer no código regularmente;
 
   * Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto.
@@ -105,9 +118,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
     3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_;
     4. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_;
     5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_.
-
-* ⚠️ **Para adicionar pacotes adicionais ao back-end, utilize o arquivo `app/backend/packages.npm`, separando os pacotes adicionais por espaços ou quebras de linha.**
-* ⚠️ **Não altere o arquivo `app/backend/packages.json`, pois o mesmo está travado para essa avaliação**
 
 </details>
 
@@ -125,6 +135,17 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   Você também pode instalar o plugin do `ESLint` no `VSCode`: bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
   ⚠ PULL REQUESTS COM ISSUES DE LINTER NÃO SERÃO AVALIADAS. ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO! ⚠
+
+</details>
+
+<details>
+  <summary><strong>⚠️ Configurações mínimas nas máquinas locais para rodar o projeto</strong></summary><br />
+
+  - Sistema Operacional Distribuição Unix
+  - Node versão 16  
+  - Docker
+  - Docker-compose versão 1.29.2
+
 
 </details>
 
@@ -180,9 +201,9 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
   #### Chave JWT e criptografia de senhas:
 
-  ⚠️ A sua chave `JWT` deve ser inserida em `app/backend/jwt.evaluation.key` e pode ser carregada no back-end com o uso da biblioteca `fs`.
+  ⚠️ A sua chave `JWT` deve ser inserida em `app/backend/jwt.evaluation.key` e deve ser carregada no back-end com o uso da biblioteca `fs`.
 
-  ⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs). Utilize essa biblioteca, ela pode ser colocada como dependência em `app/backend/package.json` para depois instalar todos os pacotes. ⚠️
+  ⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs). Utilize especificamente essa biblioteca, ela pode ser colocada como dependência em `app/backend/package.json`, mas lembre-se de adicioná-la depois em `app/backend/packages.npm` para que o avaliador realize a instalação dela no projeto para avaliação. ⚠️
 
   #### Testes de cobertura
 
@@ -191,6 +212,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   ```typescript
   import * as sinon from 'sinon';
   import * as chai from 'chai';
+  // @ts-ignore
   import chaiHttp = require('chai-http');
 
   import { app } from '../app';
@@ -244,7 +266,8 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 <details>
   <summary><strong>👀 Dicas</strong></summary><br />
 
-  - Você pode **instalar suas aplicações (front e back)** rodando o comando `npm run install:apps`;
+  - Ao rodar o comando `npm install` na pasta raiz do projeto você automaticamente estará **instalando suas aplicações (front e back)**;
+  - Você pode **instalar suas aplicações (front e back)** rodando o comando `npm run install:apps` na pasta raiz do projeto;
   - Você pode rodar o avaliador **mostrando as operações que o navegador vai fazer no front-end** durante os testes E2E utilizando o comando `npm run test:browser`;
   - Você pode **debugar alguns erros do avaliador** (como por exemplo a validação do banco de dados, ou da compilação do TS), onde são *printados* na tela algumas infos adicionais, utilizando o comando `npm run test:debug`;
   - Você pode **subir ou descer uma aplicação do compose**, utilizando os scripts `compose:up`, `compose:down`;
@@ -259,15 +282,15 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
   Alguns exemplos:
 
-    - Requisições que precisam de token mas não o receberam devem retornar um código de `status 401`;
+  - Requisições que precisam de token mas não o receberam devem retornar um código de `status 401`;
 
-    - Requisições que não seguem o formato pedido pelo servidor devem retornar um código de `status 400`;
+  - Requisições que não seguem o formato pedido pelo servidor devem retornar um código de `status 400`;
 
-    - Um problema inesperado no servidor deve retornar um código de `status 500`;
+  - Um problema inesperado no servidor deve retornar um código de `status 500`;
 
-    - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`.
+  - Um acesso ao criar um recurso, no nosso caso usuário ou partida, deve retornar um código de `status 201`.
 
-    - Quando solicitado algo que não existe no banco, deve retornar um código de `status 404`.
+  - Quando solicitado algo que não existe no banco, deve retornar um código de `status 404`.
 
 </details>
 
@@ -281,9 +304,10 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   ⚠ O seu docker-compose precisa estar na versão 1.29 ou superior. [Veja aqui a documentação para atualizar o docker-compose.](https://docs.docker.com/compose/install/) ⚠
 
   #### Crie os arquivos dockerfile e docker-compose
-    - As pastas `frontend/` e `backend/` devem possuir um arquivo dockerfile;
-    - A pasta `app/` deve possuir um arquivo docker-compose;
-    - Os arquivos dockerfile e docker-compose devem estar configurados corretamente.
+
+  - As pastas `frontend/` e `backend/` devem possuir um arquivo dockerfile;
+  - A pasta `app/` deve possuir um arquivo docker-compose;
+  - Os arquivos dockerfile e docker-compose devem estar configurados corretamente.
 
     **Observação**
       Em seu projeto vai conter um arquivo docker-compose.example.yml.
@@ -345,6 +369,8 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   ```
 
   ⚠️ Só o seu docker-compose não vai ser suficiente para gerar os containers. Também será necessário criar os models e as migrations para que seu projeto seja executável via Docker. **Por isso implemente os 3 primeiros requisitos para começar a testar o projeto usando o Docker e docker-compose.**
+
+  ⚠️ O avaliador utiliza os mesmos valores das variáveis de ambiente contidas no docker-compose, por exemplo `DB_USER`, `DB_PASS`, `DB_HOST` e as portas que os containers devem utilizar. **Por mais que seja possível alterar algumas delas e ajustar os testes para continuarem funcionais, recomendamos fortemente a não alterá-las.**
 
 </details>
 
@@ -458,11 +484,11 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   ### Sequelize
 
   Para o desenvolvimento, o time de produto disponibilizou um *Diagrama de Entidade-Relacionamento (DER)* para construir a modelagem do banco de dados. Com essa imagem você já consegue saber como:
-    - Nomear suas tabelas e colunas;
-    - Quais são os tipos de suas colunas;
-    - Relações entre tabelas.
+  - Nomear suas tabelas e colunas;
+  - Quais são os tipos de suas colunas;
+  - Relações entre tabelas.
 
-      ![Exemplo banco de dados](assets/er-diagram.png)
+    ![Exemplo banco de dados](assets/er-diagram.png)
 
   **Dica:** Também é possível buscar referências nas seeds providas no projeto em `./app/backend/src/database/seeders`
 
@@ -470,19 +496,21 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 # Requisitos
 
-## 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `teams`
+## Database
+
+  - Mantenha o arquivo `/app/backend/src/database/migrations/99999999999999-create-z.js`, este é necessário para a avaliação dos requisitos dessa sessão.
+### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `teams`
 
   - O avaliador consultará os dados da tabela teams, verificando se ela contém os dados iniciais corretos.
-
-## 2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
+### 2 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
 
   - O avaliador consultará os dados da tabela matches, verificando se ela contém os dados iniciais corretos.
 
-## 3 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
+### 3 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
 
   - O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos.
 
-### Login
+## Login
 
 - A rota deve ser (`/login`);
 
@@ -501,14 +529,14 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   }
   ```
 
-## 4 - (`TDD`) Desenvolva testes que cubram no mínimo 5% dos arquivos back-end em `/src` com um mínimo de 7 linhas cobertas
+### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 5% dos arquivos back-end em `/src` com um mínimo de 7 linhas cobertas
 
   **Sugestões:**
   - Baseando-se no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD`, que passará a seguir, com a implementação do requisito seguinte;
   - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
   - Para tanto, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`.
 
-## 5 - Desenvolva o endpoint `/login` no back-end de maneira ele permita o acesso com dados válidos no fron-tend
+### 5 - Desenvolva o endpoint `/login` no back-end de maneira ele permita o acesso com dados válidos no front-end
 
   - A rota de ser do tipo `POST`;
 
@@ -527,12 +555,12 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   }
   ```
 
-## 6 - (`TDD`) Desenvolva testes que cubram no mínimo 10% dos arquivos back-end em `/src` com um mínimo de 19 linhas cobertas
+### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 10% dos arquivos back-end em `/src` com um mínimo de 19 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
 
-## 7 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email inválido no front-end
+### 7 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email inválido no front-end
 
   - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado.
 
@@ -541,12 +569,12 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     { "message": "Incorrect email or password" }
   ```
 
-## 8 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src` com um mínimo de 25 linhas cobertas
+### 8 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src` com um mínimo de 25 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
 
-## 9 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso com uma senha inválida no front-end
+### 9 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso com uma senha inválida no front-end
 
   - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado.
 
@@ -555,12 +583,12 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     { "message": "Incorrect email or password" }
   ```
 
-## 10 - (`TDD`) Desenvolva testes que cubram no mínimo 20% dos arquivos back-end em `/src` com um mínimo de 35 linhas cobertas
+### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 20% dos arquivos back-end em `/src` com um mínimo de 35 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
 
-## 11 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso sem informar um email no front-end
+### 11 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso sem informar um email no front-end
 
   - O avaliador verificará se ao tentar fazer o login sem um email retornará status não-autorizado.
 
@@ -569,12 +597,12 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     { "message": "All fields must be filled" }
   ```
 
-## 12 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src` com um mínimo de 45 linhas cobertas
+### 12 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src` com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
 
-## 13 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso sem informar uma senha no front-end
+### 13 - Desenvolva o endpoint `/login` no back-end de maneira ele não permita o acesso sem informar uma senha no front-end
 
   - O avaliador verificará se ao tentar fazer login sem senha retornará status não-autorizado.
 
@@ -583,7 +611,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     { "message": "All fields must be filled" }
   ```
 
-## 14 - Desenvolva o endpoint `/login/validate` no back-end de maneira ele retorne os dados corretamente no front-end
+### 14 - Desenvolva o endpoint `/login/validate` no back-end de maneira ele retorne os dados corretamente no front-end
 
   - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization` onde ficará armazenado o token gerado no login;
 
@@ -594,16 +622,16 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     "admin"
   ```
 
-### Jogos
+## Jogos
 
  - Os requisitos a seguir consideram o consumo da rota `/teams` para retornar os nomes dos times associados à partida na renderização do front-end
 
-## 15 - (`TDD`) Desenvolva testes que cubram no mínimo 45% dos arquivos back-end em `/src` com um mínimo de 70 linhas cobertas
+### 15 - (`TDD`) Desenvolva testes que cubram no mínimo 45% dos arquivos back-end em `/src` com um mínimo de 70 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/teams`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**.
 
-## 16 - Desenvolva o endpoint `/teams` no back-end de forma que ele possa retornar todos os times corretamente
+### 16 - Desenvolva o endpoint `/teams` no back-end de forma que ele possa retornar todos os times corretamente
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -625,7 +653,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 ]
 ```
 
-## 17 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico
+### 17 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -636,13 +664,13 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 }
 ```
 
-## 18 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src` com um mínimo de 80 linhas cobertas
+### 18 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src` com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
 
 
-## 19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end.
+### 19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end.
 
   - A rota deve ser um `GET` e retorna uma lista de partidas;
 
@@ -683,7 +711,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     ]
     ```
 
-## 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
+### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
@@ -726,7 +754,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   ]
   ```
 
-## 21 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
+### 21 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
@@ -769,16 +797,16 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   ]
   ```
 
-### Adicionar Partidas
+## Adicionar Partidas
 
   - Para os requisitos de criação de partidas, é necessário que a rota `/teams` funcione corretamente.
 
-## 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivo back-end em `/src` com um mínimo de 100 linhas cobertas
+### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivo back-end em `/src` com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
 
-## 23 - Desenvolva a rota `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+### 23 - Desenvolva a rota `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
 
   - A rota deverá ser do tipo `POST`, e retornar a partida inserida no banco de dados;
 
@@ -797,7 +825,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   }
   ```
 
-  - caso a partida seja inserida com sucesso, deve-se retornar os dados da partida:
+  - caso a partida seja inserida com sucesso, deve-se retornar os dados da partida, com _status_ `201`:
 
   ```json
   {
@@ -810,7 +838,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   }
   ```
 
-## 24 - Desenvolva a rota `/matches/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados
+### 24 - Desenvolva a rota `/matches/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados
 
   - A rota deve ser do tipo `PATCH`;
 
@@ -824,29 +852,29 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   { "message": "Finished" }
   ```
 
-## 25 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais
+### 25 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais
 
   - Será validado que não é possível inserir uma partida com times iguais;
 
-  - Não deve ser possível criar uma partida com o mesmo time, exemplo: Barcelona x Barcelona, caso contrário, deve-se retornar o seguinte erro:
+  - Não deve ser possível criar uma partida com o mesmo time, exemplo: Barcelona x Barcelona, caso contrário, deve-se retornar, com um status `401`, a seguinte mensagem::
 
   ```json
   { "message": "It is not possible to create a match with two equal teams" }
   ```
 
-## 26 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com time que não existe na tabela teams
+### 26 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com time que não existe na tabela teams
 
   - Será validado que não é possível inserir uma partida com time que não existe na tabela teams;
 
-  - caso algum dos times não esteja cadastrado no banco de dados, deve-se retornar o seguinte erro:
+  - caso algum dos times não esteja cadastrado no banco de dados, deve-se retornar, com um status `401,` a seguinte mensagem:
 
   ```json
-  { "message": "Team not found" }
+  { "message": "There is no team with such id!" }
   ```
 
-### Editar Partidas
+## Editar Partidas
 
-## 27 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
+### 27 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
 
   - O endpoint deve ser do tipo `PATCH`;
 
@@ -861,14 +889,17 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     "awayTeamGoals": 1
   }
   ```
+  - Será avaliado que é o endpoint responde a requisição com um status `200` e qualquer corpo.
 
-## 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível finalizar partidas em andamento
+### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível finalizar partidas em andamento
 
   - O endpoint deve ser do tipo `PATCH`;
 
   - Será recebido o `id` pelo parâmetro da url;
 
   - Será avaliado que é possível finalizar uma partida em andamento.
+
+  - Será avaliado que é o endpoint responde a requisição com um status `200` e qualquer corpo.
 
 ## Leaderboards
 
@@ -916,13 +947,12 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   ⚠️ **Atenção:** ⚠️
 
   - Por padrão, as respostas de todos os seus endpoints deverão estar em inglês, mesmo que a renderização no front-end seja em português.
-  - A sua tabela deverá renderizar somente as partidas que já foram finalizadas!
-
+  - A sua tabela deverá renderizar **somente** as PARTIDAS que já foram FINALIZADAS!
   **Os seguintes pontos serão avaliados:**
 
   ```
   - Se a lista de classificação está correta;
-  - Se a regra de classificação se mantem mesmo com mudanças na classificação;
+  - Se a regra de classificação se mantém mesmo com mudanças na classificação;
   - Se a tabela de classificação tem 10 colunas;
   - Se a tabela tem uma linha para cada time.
   ```
@@ -971,9 +1001,9 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   ]
   ```
 
-### Leaderboard Home
+## Leaderboard Home
 
-## 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times, quando mandantes, na tela de classificação do frontend com os dados iniciais do banco de dados
+### 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar a classificações dos times, quando mandantes, na tela de classificação do frontend com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
@@ -981,28 +1011,28 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 	
   - OBS: Um time `mandante` é quando o mesmo é o time da casa.
 
-## 30 - Desenvolva o endpoint `/leaderboard/home`, de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
+### 30 - Desenvolva o endpoint `/leaderboard/home`, de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
   - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos
 
-### Leaderboard away
+## Leaderboard away
 
-## 31 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times  na tela de classificação do front-end, com os dados iniciais do banco de dados
+### 31 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times  na tela de classificação do front-end, com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
 
-## 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela seja atualizada
+### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela seja atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação
 
   - Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint `/leaderboard/away` serão retornados os campos e valores corretos
 
 
-### Leaderboard
+## Leaderboard
 
   - Esse endpoint irá alimentar no front-end uma tabela idêntica ao exemplo abaixo:
 
@@ -1011,19 +1041,19 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     |      1        |Corinthians| 38 | 15 | 12 | 2 | 1 | 44 | 13 | 31 | 84.4 |
 
 
-## 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
+### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards);
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados.
 
-## 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
+### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação;
 
   - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard serão retornados os campos e valores corretos.
 
-## 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada
+### 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e ao inserir a partida Minas Brasília 1 X 0 Ferroviária a tabela será atualizada
 
   - O retorno deve continuar como no [leaderboard](#leaderboards) e ordenar corretamente como na explicação;
 

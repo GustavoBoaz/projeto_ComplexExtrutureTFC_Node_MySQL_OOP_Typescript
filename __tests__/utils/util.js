@@ -34,7 +34,7 @@ const condExec = async ({
     }
 
     if(current >= rounds) {
-      throw new Error(`Não foi possivel executar a função com os parametros: ${JSON.stringify(report)}`);
+      throw new Error(`Não foi possivel executar a função com os parametros: ${JSON.stringify(report, null, '\t')}`);
     }
 
     await delay(customDelay);

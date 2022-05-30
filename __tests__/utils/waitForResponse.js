@@ -63,7 +63,7 @@ const waitForResponse = async ({
           expectedResponseUrl,
           expectedResponseStatus,
           timeOut
-        })}`);
+        }, null, '\t')}`);
       }, timeOut)
 
       await trigger(page)
