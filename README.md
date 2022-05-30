@@ -140,13 +140,10 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
 
 <details>
   <summary><strong>⚠️ Configurações mínimas nas máquinas locais para rodar o projeto</strong></summary><br />
-  <input type='checkbox'>Sistema Operacional Distribuição Unix</input>
-
-  <input type='checkbox'>Node versão 16</input>
-  
-  <input type='checkbox'>Docker</input> 
-
-  <input type='checkbox'>Docker-compose versão 1.29.2</input> 
+  - Sistema Operacional Distribuição Unix
+  - Node versão 16  
+  - Docker
+  - Docker-compose versão 1.29.2
 
 
 </details>
