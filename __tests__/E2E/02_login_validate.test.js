@@ -55,9 +55,6 @@ describe(getRequirement(3), () => {
       !!jwt.verify(token, jwtSecret),
     ).toEqual(true);
 
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_MATCHES);
   });
 });
 
