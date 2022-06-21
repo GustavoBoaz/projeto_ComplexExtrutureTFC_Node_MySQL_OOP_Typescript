@@ -1,7 +1,7 @@
 const { URL } = require('./urls');
+const { puppeteerDefs} = require('../config/constants');
 const { normalizeString } = require('./util');
 const waitForResponse = require('./waitForResponse');
-const { leaderboard } = require('./dataTestIds')
 
 const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
   const { table: { header } } = leaderboardTestsIds;
@@ -32,11 +32,11 @@ const validateLeaderboardHeader = async (leaderboardTestsIds, page) => {
   expect(goalsFavor).toEqual(scoreBoardTableHeaderMock[7]);
   expect(goalsOwn).toEqual(scoreBoardTableHeaderMock[8]);
   expect(goalsBalance).toEqual(scoreBoardTableHeaderMock[9]);
-  expect(efficiency).toEqual(scoreBoardTableHeaderMock[10]);
+  expect(+efficiency).toBeCloseTo(+scoreBoardTableHeaderMock[10], 1);
 };
 
 const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTestsIds, page, apiPort, endpoint, actionTrigger) => {
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(puppeteerDefs.pause.brief);
 
 
   const { body: scoreBoardTableResponse } = await waitForResponse({
@@ -49,14 +49,14 @@ const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTests
   });
   const newScoreBoardTableResponse = normalizeString(scoreBoardTableResponse)
 
-  expect(newScoreBoardTableResponse).toEqual(scoreBoardTableBodyMock);
+  expect(newScoreBoardTableResponse.length).toEqual(scoreBoardTableBodyMock.length);
 
   const teams = scoreBoardTableBodyMock.map((el, index) => ({ id: `${index + 1}`, ...el }));
 
   const { table: { body } } = leaderboardTestsIds;
 
   for (const team of teams) {
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     const teamId = await page.$eval(body.classification(team.id), (el) => el.innerText);
     const teamName = await page.$eval(body.teamName(team.id), (el) => el.innerText);
@@ -80,7 +80,7 @@ const validateLeaderboardBody = async (scoreBoardTableBodyMock, leaderboardTests
     expect(teamGoalsFavor).toEqual(team.goalsFavor);
     expect(teamGoalsOwn).toEqual(team.goalsOwn);
     expect(teamGoalsBalance).toEqual(team.goalsBalance);
-    expect(teamEfficiency).toEqual(team.efficiency);
+    expect(+teamEfficiency).toBeCloseTo(+team.efficiency, 1);
   }
 };
 

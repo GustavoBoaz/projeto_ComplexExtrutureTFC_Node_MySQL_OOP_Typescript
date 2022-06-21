@@ -10,10 +10,8 @@ const { normalize, getRequirement, delay } = require('../utils/util');
 const waitForResponse = require('../utils/waitForResponse');
 
 
-const oneGoal = '1';
-const twoGoals = '2';
-const fiveGoals = '5';
-const finish = 'Finalizado';
+const twoGoals = 2;
+const fiveGoals = 5;
 const lastInsert = (list) => list[list.length - 1];
 
 let database, browser, page;
@@ -35,7 +33,7 @@ afterEach(async () => {
 });
 
 
-describe(getRequirement(27), () => {
+describe(getRequirement(28), () => {
   it('Será avaliado que é possível alterar o resultado de uma partida', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -87,52 +85,5 @@ describe(getRequirement(27), () => {
     expect(lastInsertedRow.homeTeamGoals.toString()).toBe(fiveGoals);
     expect(lastInsertedRow.awayTeamGoals.toString()).toBe(twoGoals);
     expect(lastInsertedRow.inProgress).toBe(1);
-  });
-});
-
-describe(getRequirement(28), () => {
-  it('Será avaliado que é possível finalizar uma partida em andamento', async () => {
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const headerButtonLogin = await page.$(header.loginButton);
-    await headerButtonLogin.click();
-
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    await logAdmin(page, containerPorts.frontend);
-
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const editMatchButton = await page.$(pageMatches.matchStatusBtn(48));
-    await editMatchButton.click();
-
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const finishMatchButton = await page.$(pageMatchSettings.finishMatchButton);
-    await finishMatchButton.click();
-
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const buttonShowMatches = await page.$(header.showMatchesButton);
-    await buttonShowMatches.click();
-
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const homeTeam = await page.$eval(pageMatches.homeTeam(48), (el) => el.innerText);
-    const awayTeam = await page.$eval(pageMatches.awayTeam(48), (el) => el.innerText);
-    const matchStatus = await page.$eval(pageMatches.matchStatus(48), (el) => el.innerText);
-
-    const matches = await database.query(select.all.matches, { type: 'SELECT' });
-    const normalizeMatches = normalize(matches);
-    const lastInsertedRow = lastInsert(normalizeMatches);
-
-    expect(homeTeam).toBe(teams[12].teamName);
-    expect(awayTeam).toBe(teams[1].teamName);
-    expect(matchStatus).toBe(finish);
-    expect(lastInsertedRow.homeTeam).toBe(teams[12].id);
-    expect(lastInsertedRow.awayTeam).toBe(teams[1].id);
-    expect(lastInsertedRow.homeTeamGoals.toString()).toBe(oneGoal);
-    expect(lastInsertedRow.awayTeamGoals.toString()).toBe(oneGoal);
-    expect(lastInsertedRow.inProgress).toBe(0);
   });
 });

@@ -14,7 +14,8 @@ const Header = ({
   const navigate = useNavigate();
 
   const logoff = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
     setLogin(false);
     navigate('/leaderboard');
   };

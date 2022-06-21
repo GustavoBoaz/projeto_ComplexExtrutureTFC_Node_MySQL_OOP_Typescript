@@ -11,11 +11,8 @@ const Leaderboard = () => {
   const [currentFilter, setCurrentFilter] = useState('Classificação Geral');
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-
-    if (!user) return setLogin(false);
-
-    if (JSON.parse(user).token) return setLogin(true);
+    const token = localStorage.getItem('token');
+    setLogin(!!token);
   }, [logged, setLogin]);
 
   return (

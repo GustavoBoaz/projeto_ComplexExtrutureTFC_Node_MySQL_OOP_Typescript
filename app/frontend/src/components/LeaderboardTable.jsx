@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { requestData } from '../services/requests';
 import Loading from './Loading';
+import { v4 as uuidv4 } from 'uuid';
 import '../styles/components/leaderboardTable.css';
 
 const LeaderboardTable = ({ currentFilter }) => {
@@ -73,7 +74,7 @@ const LeaderboardTable = ({ currentFilter }) => {
               efficiency,
             },
             index) => (
-              <tr key={ name }>
+              <tr key={ uuidv4() }>
                 <td
                   className="score-board-classification"
                   data-testid={ `score_boarding__classification_${index + 1}` }

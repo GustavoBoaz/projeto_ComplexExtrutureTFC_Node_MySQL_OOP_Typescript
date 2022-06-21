@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import Header from '../components/Header';
 import LeaderboardBtn from '../components/LeaderboardBtn';
 import MatchesBtn from '../components/MatchesBtn';
-import { requestLogin } from '../services/requests';
+import { requestLogin, setToken, requestData } from '../services/requests';
 import { positiveLogo } from '../images';
 import '../styles/pages/login.css';
 
@@ -17,11 +17,15 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const endpoint = '/login';
+      const { token } = await requestLogin('/login', { email, password });
 
-      const { token, user } = await requestLogin(endpoint, { email, password });
+      setToken(token);
 
-      localStorage.setItem('user', JSON.stringify({ token, ...user }));
+      const { role } = await requestData('/login/validate', { email, password });
+
+      localStorage.setItem('token',  token);
+      localStorage.setItem('role',  role);
+
       setIsLogged(true);
     } catch (error) {
       setFailedTryLogin(true);

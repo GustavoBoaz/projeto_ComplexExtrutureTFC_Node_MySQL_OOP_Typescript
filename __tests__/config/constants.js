@@ -8,6 +8,7 @@ module.exports = {
     backend: 3001,
     database: 3002,
   },
+  jwtSecret: process.env.JWT_SECRET || "jwt_secret",
   defaultDelay: 5000,
   defaultRounds: 30,
   puppeteerDefs: {
@@ -16,6 +17,7 @@ module.exports = {
     baseUrl: "http://localhost",
     pause: {
       brief: 500,
+      medium: 2000,
       long: 5000
     }
   },

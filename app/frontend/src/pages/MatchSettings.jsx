@@ -21,14 +21,13 @@ const MatchSettings = () => {
 
   useEffect(() => {
     (async () => {
-      const storage = JSON.parse(localStorage.getItem('user'));
+      const token = localStorage.getItem('token') || '';
 
-      if (!storage) return navigate('/');
-
-      const { token } = storage;
+      if (!token) return navigate('/');
 
       setToken(token);
-      api.get('/login/validate')
+
+      requestData('/login/validate')
         .then(() => setIsAuthenticated(true))
         .catch(() => navigate('/'));
     })();
@@ -37,7 +36,7 @@ const MatchSettings = () => {
   useEffect(() => {
     const endpoint = '/teams';
 
-    const { token } = JSON.parse(localStorage.getItem('user')) || { token: '' };
+    const token = localStorage.getItem('token') || '';
     if (token !== '') {
       setToken(token);
     }

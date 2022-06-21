@@ -19,7 +19,6 @@ beforeAll(async () => {
 afterAll(async () => termSequelize(database));
 
 beforeEach(async () => {
-  await dbReset();
   [browser, page] = await initBrowser();
   await page.goto(URL(containerPorts.frontend).BASE_URL);
 });
@@ -43,7 +42,7 @@ describe(getRequirement(31), () => {
 });
 
 describe(getRequirement(32), () => {
-  it('Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint /leaderboard/away será retonado os campos e valores corretos', async () => {
+  it('Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint /leaderboard/away será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
       homeTeam: teams[3].teamName,
       awayTeam: teams[8].teamName,

@@ -49,7 +49,18 @@ const waitForResponse = async ({
             status,
             body,
           });
-        }
+        };
+        if (method !== 'OPTIONS' && type === 'script') return reject({
+          typeExpected:expectedRequestType,
+          typeReceived: type,
+          methodExpected: expectedRequestMethod,
+          methodReceived:method,
+          urlExpected: expectedResponseUrl,
+          urlReceived: url,
+          statusExpected:expectedResponseStatus ,
+          statusReceived: status,
+          receivedBody: JSON.stringify(body),
+        });
       };
 
       page.on('response', onResponse);

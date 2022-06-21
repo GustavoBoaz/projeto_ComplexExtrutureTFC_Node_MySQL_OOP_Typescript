@@ -20,3 +20,4 @@ ignore_files:
   - ./app/backend/package.json
   - ./app/backend/tsc_eval.sh
   - ./app/backend/jwt.evaluation.key
+  - ./app/docker-compose.yml

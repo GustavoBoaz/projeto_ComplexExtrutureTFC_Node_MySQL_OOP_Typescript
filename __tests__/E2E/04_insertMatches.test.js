@@ -1,7 +1,6 @@
 const { URL } = require('../utils/urls');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
-const { pageMatchSettings, header, pageMatches } = require('../utils/dataTestIds');
-const { logAdmin } = require('../utils/logInto');
+const { header, pageMatches } = require('../utils/dataTestIds');
 const { teams } = require('../expected_results/trybe_football_club');
 const { select } = require('../utils/query');
 const { dbReset, termSequelize, initSequelize } = require('../config/sequelize');
@@ -11,8 +10,8 @@ const { insertInProgress, insertFinished } = require('../utils/inserts');
 const { StatusCodes } = require('http-status-codes');
 const axios = require('axios').default;
 
-const twoGoals = '2';
-const oneGoal = '1';
+const twoGoals = 2;
+const oneGoal = 1;
 const lastInsert = (list) => list[list.length - 1];
 
 let database, browser, page;
@@ -43,7 +42,7 @@ describe(getRequirement(23), () => {
     }
 
     const body = await insertInProgress(page, dadosInsert)
-    const newBody = {...body, inProgress: Number(body.inProgress)}
+    const newBody = { ...body, inProgress: Number(body.inProgress) }
 
     const rows = await database.query(select.all.matches, { type: 'SELECT' });
     const [matchInserted] = normalize([lastInsert(rows)])
@@ -136,12 +135,41 @@ describe(getRequirement(26), () => {
           }
         }
       )
-      .then(({ status, data: { message } }) => ({status, message}))
-      .catch(({response: { status, data: { message } }}) => ({status, message}));
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
 
     expect(result).toHaveProperty("status");
     expect(result).toHaveProperty("message");
     expect(result.status).toBe(404);
     expect(result.message).toBe("There is no team with such id!");
+  });
+});
+
+describe(getRequirement(27), () => {
+  it('Será validado na API que não é possível inserir uma partida com um token inválido', async () => {
+    const dadosInsert = {
+      homeTeam: 1,
+      awayTeam: 3,
+      homeTeamGoals: twoGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const result = await axios
+      .post(
+        `${URL(containerPorts.backend).BASE_URL}/matches`,
+        dadosInsert,
+        {
+          headers: {
+            authorization: 'token'
+          }
+        }
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token must be a valid token");
   });
 });

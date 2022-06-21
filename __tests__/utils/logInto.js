@@ -1,9 +1,10 @@
 const { URL } = require('./urls');
 const { pageLogin } = require('./dataTestIds');
 const { user: { validUser }, admin: { validAdmin } } = require('./users');
+const { puppeteerDefs} = require('../config/constants');
 
 const logAdmin = async (page, port) => {
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(puppeteerDefs.pause.brief);
 
   const inputLogin = await page.$(pageLogin.inputEmail);
   await inputLogin.type(validAdmin.email);
@@ -15,13 +16,13 @@ const logAdmin = async (page, port) => {
 
   await buttonLogin.click();
 
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(puppeteerDefs.pause.brief);
 
   expect(await page.url()).toEqual(URL(port).URL_PAGE_MATCHES);
 };
 
 const logUser = async (page, port) => {
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(puppeteerDefs.pause.brief);
 
   const inputLogin = await page.$(pageLogin.inputEmail);
   await inputLogin.type(validUser.email);
@@ -33,7 +34,7 @@ const logUser = async (page, port) => {
 
   await buttonLogin.click();
 
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(puppeteerDefs.pause.brief);
 
   expect(await page.url()).toEqual(URL(port).URL_PAGE_MATCHES);
 };

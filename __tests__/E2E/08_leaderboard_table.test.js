@@ -18,7 +18,6 @@ beforeAll(async () => {
 afterAll(async () => termSequelize(database));
 
 beforeEach(async () => {
-  await dbReset();
   [browser, page] = await initBrowser();
   await page.goto(URL(containerPorts.frontend).BASE_URL);
 });
@@ -48,6 +47,9 @@ describe(getRequirement(34), () => {
       homeGoals: number.three,
       awayGoals: number.zero
     }
+
+    await dbReset();
+
     await insertFinished(page, dadosInsert)
 
     const showMatchesButton = await page.$(header.showMatchesButton);
@@ -70,6 +72,9 @@ describe(getRequirement(35), () => {
       homeGoals: number.one,
       awayGoals: number.zero
     }
+
+    await dbReset();
+
     await insertFinished(page, dadosInsert)
 
     const showMatchesButton = await page.$(header.showMatchesButton);

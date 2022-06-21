@@ -1,10 +1,9 @@
 const { URL } = require('../utils/urls');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
-const { pageMatches, header } = require('../utils/dataTestIds');
-const { logAdmin, logUser } = require('../utils/logInto');
+const { header } = require('../utils/dataTestIds');
 const { allMatches, onlyInProgress, onlyFinished } = require('../entities/matches');
 const { validateMatches } = require('../utils/validateMatches');
-const { dbReset, initSequelize, termSequelize } = require('../config/sequelize');
+const { initSequelize, termSequelize } = require('../config/sequelize');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const { getRequirement } = require('../utils/util');
 const axios = require('axios').default;
@@ -22,7 +21,6 @@ beforeAll(async () => {
 afterAll(async () => termSequelize(database));
 
 beforeEach(async () => {
-  await dbReset();
   [browser, page] = await initBrowser();
   await page.goto(URL(containerPorts.frontend).BASE_URL);
 });
@@ -31,7 +29,7 @@ afterEach(async () => {
   await termBrowser(browser);
 });
 
-describe(getRequirement(16), () => {
+describe(getRequirement(15), () => {
   it('O avaliador verificará se tentar fazer a requisição correta na sua API, os dados corretos são retornados', async () => {
     const expectedResult = [
       {
@@ -104,8 +102,8 @@ describe(getRequirement(16), () => {
       .get(
         `${URL(containerPorts.backend).BASE_URL}/teams`,
       )
-      .then(({ status, data }) => ({status, data}))
-      .catch(({response: { status, data }}) => ({ status, data }));
+      .then(({ status, data }) => ({ status, data }))
+      .catch(({ response: { status, data } }) => ({ status, data }));
 
     expect(result).toHaveProperty("status");
     expect(result).toHaveProperty("data");
@@ -114,7 +112,7 @@ describe(getRequirement(16), () => {
   });
 });
 
-describe(getRequirement(17), () => {
+describe(getRequirement(16), () => {
   it('O avaliador verificará se tentar fazer a requisição correta na sua API, os dados corretos são retornados', async () => {
     const expectedResult = {
       "id": 5,
@@ -125,8 +123,8 @@ describe(getRequirement(17), () => {
       .get(
         `${URL(containerPorts.backend).BASE_URL}/teams/5`,
       )
-      .then(({ status, data }) => ({status, data}))
-      .catch(({response: { status, data }}) => ({ status, data }));
+      .then(({ status, data }) => ({ status, data }))
+      .catch(({ response: { status, data } }) => ({ status, data }));
 
     expect(result).toHaveProperty("status");
     expect(result).toHaveProperty("data");

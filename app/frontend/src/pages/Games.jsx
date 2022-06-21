@@ -13,9 +13,11 @@ const Games = () => {
   const [logged, setLogin] = useState(false);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user')) || {};
-    if (user.token) setLogin(true);
-    if (user.role === 'admin') setIsAdm(true);
+    const token = localStorage.getItem('token') || false;
+    const role = localStorage.getItem('role') || false;
+    if (token) setLogin(true);
+    
+    setIsAdm(role === 'admin');
   }, []);
 
   return (

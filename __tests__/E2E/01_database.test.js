@@ -11,9 +11,15 @@ beforeAll(async () => {
 
 afterAll(async () => termSequelize(database));
 
-beforeEach(async () => dbReset());
-
 describe(getRequirement(1), () => {
+  it('O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos', async () => {
+    const resultQuery = await database.query(select.all.users, { type: 'SELECT' });
+    const resultQueryNormalize = normalize(resultQuery);
+    expect(resultQueryNormalize).toEqual(users);
+  });
+});
+
+describe(getRequirement(14), () => {
   it('O avaliador consultará os dados da tabela teams, verificando se ela contém os dados iniciais corretos', async () => {
     const resultQuery = await database.query(select.all.teams, { type: 'SELECT' });
     const resultQueryNormalize = normalize(resultQuery);
@@ -21,18 +27,10 @@ describe(getRequirement(1), () => {
   });
 });
 
-describe(getRequirement(2), () => {
+describe(getRequirement(18), () => {
   it('O avaliador consultará os dados da tabela matches, verificando se ela contém os dados iniciais corretos', async () => {
     const resultQuery = await database.query(select.all.matches, { type: 'SELECT' });
     const resultQueryNormalize = normalize(resultQuery);
     expect(resultQueryNormalize).toEqual(matches);
-  });
-});
-
-describe(getRequirement(3), () => {
-  it('O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos', async () => {
-    const resultQuery = await database.query(select.all.users, { type: 'SELECT' });
-    const resultQueryNormalize = normalize(resultQuery);
-    expect(resultQueryNormalize).toEqual(users);
   });
 });
