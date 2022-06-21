@@ -32,8 +32,8 @@ const twoGoals = '2';
 const oneGoal = '1';
 
 describe(getRequirement(29), () => {
-  await page.waitForTimeout(puppeteerDefs.pause.brief);
   it('Será avaliado que ao fazer a requisição ao endpoint /leaderboard/home será retonado os campos e valores corretos considerando os dados iniciais do banco de dados', async () => {
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
     await page.select(leaderboard.table.filter.select, 'Classificação Mandantes')
     const classificationButton = await page.$(leaderboard.table.filter.button)
     const actionTrigger = () => classificationButton.click()
