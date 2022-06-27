@@ -5,7 +5,7 @@ services:
     ports:
       - 3000:3000
     platform: linux/x86_64
-    working_dir: app-frontend
+    working_dir: /app-frontend
     depends_on:
       backend:
         condition: service_healthy
@@ -21,7 +21,7 @@ services:
     ports:
       - 3001:3001
     platform: linux/x86_64
-    working_dir: app-backend
+    working_dir: /app-backend
     depends_on:
       db:
         condition: service_healthy
