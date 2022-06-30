@@ -10,8 +10,8 @@ const { normalize, getRequirement, delay } = require('../utils/util');
 const waitForResponse = require('../utils/waitForResponse');
 
 
-const twoGoals = 2;
-const fiveGoals = 5;
+const twoGoals = "2";
+const fiveGoals = "5";
 const lastInsert = (list) => list[list.length - 1];
 
 let database, browser, page;
