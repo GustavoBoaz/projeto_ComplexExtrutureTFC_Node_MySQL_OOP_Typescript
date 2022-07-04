@@ -37,12 +37,12 @@ const insertInProgress = async (page, { homeTeam = 'Corinthians', awayTeam = 'in
   const selectQuantityGoalsHomeTeam = await page.$(
     pageMatchSettings.selectQuantityGoalsHomeTeam,
   );
-  await selectQuantityGoalsHomeTeam.type(homeGoals);
+  await selectQuantityGoalsHomeTeam.type(homeGoals.toString());
 
   const selectQuantityGoalsAwayTeam = await page.$(
     pageMatchSettings.selectQuantityGoalsAwayTeam,
   );
-  await selectQuantityGoalsAwayTeam.type(awayGoals);
+  await selectQuantityGoalsAwayTeam.type(awayGoals.toString());
   await page.waitForTimeout(puppeteerDefs.pause.brief);
 
   const saveMatchButton = await page.$(pageMatchSettings.saveMatchButton);
