@@ -826,7 +826,7 @@ Esse projeto é composto de 4 seções principais:
   }
   ```
 
-### 24 - Desenvolva a rota `/matches/:id/finish` de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados
+### 24 - Desenvolva a rota `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
 
   - A rota deve ser do tipo `PATCH`;
 
