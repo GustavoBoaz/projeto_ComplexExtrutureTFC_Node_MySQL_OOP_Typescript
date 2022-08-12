@@ -679,7 +679,7 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Introdução </strong></summary>
 
-  - Para os requisitos de criação de partidas, é necessário que a rota `/teams` funcione corretamente.
+  - Para os requisitos de criação de partidas, é necessário que a rota `/matches` funcione corretamente.
 
 </details>
 
