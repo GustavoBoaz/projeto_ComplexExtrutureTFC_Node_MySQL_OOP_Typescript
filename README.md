@@ -640,19 +640,19 @@ Esse projeto é composto de 4 seções principais:
 
 ```json
 [
-	{
-		"id": 1,
-		"teamName": "Avaí/Kindermann"
-	},
-	{
-		"id": 2,
-		"teamName": "Bahia"
-	},
-	{
-		"id": 3,
-		"teamName": "Botafogo"
-	},
-	...
+  {
+    "id": 1,
+    "teamName": "Avaí/Kindermann"
+  },
+  {
+    "id": 2,
+    "teamName": "Bahia"
+  },
+  {
+    "id": 3,
+    "teamName": "Botafogo"
+  },
+  ...
 ]
 ```
 
@@ -984,47 +984,47 @@ Esse projeto é composto de 4 seções principais:
 
 **Exemplo de retorno esperado:**
 
-  ```json
-  [
-    {
-      "name": "Palmeiras",
-      "totalPoints": 13,
-      "totalGames": 5,
-      "totalVictories": 4,
-      "totalDraws": 1,
-      "totalLosses": 0,
-      "goalsFavor": 17,
-      "goalsOwn": 5,
-      "goalsBalance": 12,
-      "efficiency": 86.67
-    },
-    {
-      "name": "Corinthians",
-      "totalPoints": 12,
-      "totalGames": 5,
-      "totalVictories": 4,
-      "totalDraws": 0,
-      "totalLosses": 1,
-      "goalsFavor": 12,
-      "goalsOwn": 3,
-      "goalsBalance": 9,
-      "efficiency": 80
-    },
-    {
-      "name": "Santos",
-      "totalPoints": 11,
-      "totalGames": 5,
-      "totalVictories": 3,
-      "totalDraws": 2,
-      "totalLosses": 0,
-      "goalsFavor": 12,
-      "goalsOwn": 6,
-      "goalsBalance": 6,
-      "efficiency": 73.33
-    },
-    ...
-  ]
-  ```
+```json
+[
+  {
+    "name": "Palmeiras",
+    "totalPoints": 13,
+    "totalGames": 5,
+    "totalVictories": 4,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 17,
+    "goalsOwn": 5,
+    "goalsBalance": 12,
+    "efficiency": 86.67
+  },
+  {
+    "name": "Corinthians",
+    "totalPoints": 12,
+    "totalGames": 5,
+    "totalVictories": 4,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 12,
+    "goalsOwn": 3,
+    "goalsBalance": 9,
+    "efficiency": 80
+  },
+  {
+    "name": "Santos",
+    "totalPoints": 11,
+    "totalGames": 5,
+    "totalVictories": 3,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 12,
+    "goalsOwn": 6,
+    "goalsBalance": 6,
+    "efficiency": 73.33
+  },
+  ...
+]
+```
 
 </details>
 
@@ -1033,413 +1033,415 @@ Esse projeto é composto de 4 seções principais:
 
 ## Leaderboard Home
 
-### 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end com os dados iniciais do banco de dados
+### 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times `da casa` na tela de classificação do front-end com os dados iniciais do banco de dados
 
-  - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards);
+  - O endpoint deverá ser do tipo `GET`;
 
-  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados.
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - ⚠️ **Atenção:** Partidas que estiverem em andamento (`in_progress: true`) não devem ser consideradas.
 
  <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
 
-```js
+```json
 [
-    {
-      name: 'Santos',
-      totalPoints: '9',
-      totalGames: '3',
-      totalVictories: '3',
-      totalDraws: '0',
-      totalLosses: '0',
-      goalsFavor: '9',
-      goalsOwn: '3',
-      goalsBalance: '6',
-      efficiency: '100'
-    },
-    {
-      name: 'Palmeiras',
-      totalPoints: '7',
-      totalGames: '3',
-      totalVictories: '2',
-      totalDraws: '1',
-      totalLosses: '0',
-      goalsFavor: '10',
-      goalsOwn: '5',
-      goalsBalance: '5',
-      efficiency: '77.78'
-    },
-    {
-      name: 'Corinthians',
-      totalPoints: '6',
-      totalGames: '2',
-      totalVictories: '2',
-      totalDraws: '0',
-      totalLosses: '0',
-      goalsFavor: '6',
-      goalsOwn: '1',
-      goalsBalance: '5',
-      efficiency: '100'
-    },
-    {
-      name: 'Grêmio',
-      totalPoints: '6',
-      totalGames: '2',
-      totalVictories: '2',
-      totalDraws: '0',
-      totalLosses: '0',
-      goalsFavor: '4',
-      goalsOwn: '1',
-      goalsBalance: '3',
-      efficiency: '100'
-    },
-    {
-      name: 'Real Brasília',
-      totalPoints: '6',
-      totalGames: '2',
-      totalVictories: '2',
-      totalDraws: '0',
-      totalLosses: '0',
-      goalsFavor: '2',
-      goalsOwn: '0',
-      goalsBalance: '2',
-      efficiency: '100'
-    },
-    {
-      name: 'São Paulo',
-      totalPoints: '4',
-      totalGames: '2',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '0',
-      goalsFavor: '4',
-      goalsOwn: '1',
-      goalsBalance: '3',
-      efficiency: '66.67'
-    },
-    {
-      name: 'Internacional',
-      totalPoints: '4',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '4',
-      goalsOwn: '6',
-      goalsBalance: '-2',
-      efficiency: '44.44'
-    },
-    {
-      name: 'Botafogo',
-      totalPoints: '4',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '2',
-      goalsOwn: '4',
-      goalsBalance: '-2',
-      efficiency: '44.44'
-    },
-    {
-      name: 'Ferroviária',
-      totalPoints: '3',
-      totalGames: '2',
-      totalVictories: '1',
-      totalDraws: '0',
-      totalLosses: '1',
-      goalsFavor: '3',
-      goalsOwn: '2',
-      goalsBalance: '1',
-      efficiency: '50'
-    },
-    {
-      name: 'Napoli-SC',
-      totalPoints: '2',
-      totalGames: '2',
-      totalVictories: '0',
-      totalDraws: '2',
-      totalLosses: '0',
-      goalsFavor: '2',
-      goalsOwn: '2',
-      goalsBalance: '0',
-      efficiency: '33.33'
-    },
-    {
-      name: 'Cruzeiro',
-      totalPoints: '1',
-      totalGames: '2',
-      totalVictories: '0',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '2',
-      goalsOwn: '3',
-      goalsBalance: '-1',
-      efficiency: '16.67'
-    },
-    {
-      name: 'Flamengo',
-      totalPoints: '1',
-      totalGames: '2',
-      totalVictories: '0',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '1',
-      goalsOwn: '2',
-      goalsBalance: '-1',
-      efficiency: '16.67'
-    },
-    {
-      name: 'Minas Brasília',
-      totalPoints: '1',
-      totalGames: '3',
-      totalVictories: '0',
-      totalDraws: '1',
-      totalLosses: '2',
-      goalsFavor: '3',
-      goalsOwn: '6',
-      goalsBalance: '-3',
-      efficiency: '11.11'
-    },
-    {
-      name: 'Avaí/Kindermann',
-      totalPoints: '1',
-      totalGames: '3',
-      totalVictories: '0',
-      totalDraws: '1',
-      totalLosses: '2',
-      goalsFavor: '3',
-      goalsOwn: '7',
-      goalsBalance: '-4',
-      efficiency: '11.11'
-    },
-    {
-      name: 'São José-SP',
-      totalPoints: '0',
-      totalGames: '3',
-      totalVictories: '0',
-      totalDraws: '0',
-      totalLosses: '3',
-      goalsFavor: '2',
-      goalsOwn: '5',
-      goalsBalance: '-3',
-      efficiency: '0'
-    },
-    {
-      name: 'Bahia',
-      totalPoints: '0',
-      totalGames: '3',
-      totalVictories: '0',
-      totalDraws: '0',
-      totalLosses: '3',
-      goalsFavor: '0',
-      goalsOwn: '4',
-      goalsBalance: '-4',
-      efficiency: '0'
-    }
+  {
+    "name": "Santos",
+    "totalPoints": 9,
+    "totalGames": 3,
+    "totalVictories": 3,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 9,
+    "goalsOwn": 3,
+    "goalsBalance": 6,
+    "efficiency": "100.00"
+  },
+  {
+    "name": "Palmeiras",
+    "totalPoints": 7,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 10,
+    "goalsOwn": 5,
+    "goalsBalance": 5,
+    "efficiency": "77.78"
+  },
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 6,
+    "goalsOwn": 1,
+    "goalsBalance": 5,
+    "efficiency": "100.00"
+  },
+  {
+    "name": "Grêmio",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 4,
+    "goalsOwn": 1,
+    "goalsBalance": 3,
+    "efficiency": "100.00"
+  },
+  {
+    "name": "Real Brasília",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 2,
+    "goalsOwn": 0,
+    "goalsBalance": 2,
+    "efficiency": "100.00"
+  },
+  {
+    "name": "São Paulo",
+    "totalPoints": 4,
+    "totalGames": 2,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 4,
+    "goalsOwn": 1,
+    "goalsBalance": 3,
+    "efficiency": "66.67"
+  },
+  {
+    "name": "Internacional",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 4,
+    "goalsOwn": 6,
+    "goalsBalance": -2,
+    "efficiency": "44.44"
+  },
+  {
+    "name": "Botafogo",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 2,
+    "goalsOwn": 4,
+    "goalsBalance": -2,
+    "efficiency": "44.44"
+  },
+  {
+    "name": "Ferroviária",
+    "totalPoints": 3,
+    "totalGames": 2,
+    "totalVictories": 1,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 3,
+    "goalsOwn": 2,
+    "goalsBalance": 1,
+    "efficiency": "50.00"
+  },
+  {
+    "name": "Napoli-SC",
+    "totalPoints": 2,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 2,
+    "goalsOwn": 2,
+    "goalsBalance": 0,
+    "efficiency": "33.33"
+  },
+  {
+    "name": "Cruzeiro",
+    "totalPoints": 1,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 2,
+    "goalsOwn": 3,
+    "goalsBalance": -1,
+    "efficiency": "16.67"
+  },
+  {
+    "name": "Flamengo",
+    "totalPoints": 1,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 2,
+    "goalsBalance": -1,
+    "efficiency": "16.67"
+  },
+  {
+    "name": "Minas Brasília",
+    "totalPoints": 1,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 2,
+    "goalsFavor": 3,
+    "goalsOwn": 6,
+    "goalsBalance": -3,
+    "efficiency": "11.11"
+  },
+  {
+    "name": "Avaí/Kindermann",
+    "totalPoints": 1,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 2,
+    "goalsFavor": 3,
+    "goalsOwn": 7,
+    "goalsBalance": -4,
+    "efficiency": "11.11"
+  },
+  {
+    "name": "São José-SP",
+    "totalPoints": 0,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 3,
+    "goalsFavor": 2,
+    "goalsOwn": 5,
+    "goalsBalance": -3,
+    "efficiency": "0.00"
+  },
+  {
+    "name": "Bahia",
+    "totalPoints": 0,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 3,
+    "goalsFavor": 0,
+    "goalsOwn": 4,
+    "goalsBalance": -4,
+    "efficiency": "0.00"
+  }
 ]
 ```
 </details>
 
 ### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
-  - O retorno deve continuar como no [leaderboard](#leaderboards), ordenando corretamente como na explicação;
-
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/home`, serão retornados os campos e valores corretos.
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
 
-```js
+```json
 [
   {
-    name: 'Santos',
-    totalPoints: '9',
-    totalGames: '3',
-    totalVictories: '3',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '9',
-    goalsOwn: '3',
-    goalsBalance: '6',
-    efficiency: '100'
+    "name": "Santos",
+    "totalPoints": 9,
+    "totalGames": 3,
+    "totalVictories": 3,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 9,
+    "goalsOwn": 3,
+    "goalsBalance": 6,
+    "efficiency": "100.00"
   },
   {
-    name: 'Corinthians',
-    totalPoints: '9',
-    totalGames: '3',
-    totalVictories: '3',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '8',
-    goalsOwn: '2',
-    goalsBalance: '6',
-    efficiency: '100'
+    "name": "Corinthians",
+    "totalPoints": 9,
+    "totalGames": 3,
+    "totalVictories": 3,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 8,
+    "goalsOwn": 2,
+    "goalsBalance": 6,
+    "efficiency": "100.00"
   },
   {
-    name: 'Palmeiras',
-    totalPoints: '7',
-    totalGames: '3',
-    totalVictories: '2',
-    totalDraws: '1',
-    totalLosses: '0',
-    goalsFavor: '10',
-    goalsOwn: '5',
-    goalsBalance: '5',
-    efficiency: '77.78'
+    "name": "Palmeiras",
+    "totalPoints": 7,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 10,
+    "goalsOwn": 5,
+    "goalsBalance": 5,
+    "efficiency": "77.78"
   },
   {
-    name: 'Grêmio',
-    totalPoints: '6',
-    totalGames: '2',
-    totalVictories: '2',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '4',
-    goalsOwn: '1',
-    goalsBalance: '3',
-    efficiency: '100'
+    "name": "Grêmio",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 4,
+    "goalsOwn": 1,
+    "goalsBalance": 3,
+    "efficiency": "100.00"
   },
   {
-    name: 'Real Brasília',
-    totalPoints: '6',
-    totalGames: '2',
-    totalVictories: '2',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '2',
-    goalsOwn: '0',
-    goalsBalance: '2',
-    efficiency: '100'
+    "name": "Real Brasília",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 2,
+    "goalsOwn": 0,
+    "goalsBalance": 2,
+    "efficiency": "100.00"
   },
   {
-    name: 'São Paulo',
-    totalPoints: '4',
-    totalGames: '2',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '0',
-    goalsFavor: '4',
-    goalsOwn: '1',
-    goalsBalance: '3',
-    efficiency: '66.67'
+    "name": "São Paulo",
+    "totalPoints": 4,
+    "totalGames": 2,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 4,
+    "goalsOwn": 1,
+    "goalsBalance": 3,
+    "efficiency": "66.67"
   },
   {
-    name: 'Internacional',
-    totalPoints: '4',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '4',
-    goalsOwn: '6',
-    goalsBalance: '-2',
-    efficiency: '44.44'
+    "name": "Internacional",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 4,
+    "goalsOwn": 6,
+    "goalsBalance": -2,
+    "efficiency": "44.44"
   },
   {
-    name: 'Botafogo',
-    totalPoints: '4',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '2',
-    goalsOwn: '4',
-    goalsBalance: '-2',
-    efficiency: '44.44'
+    "name": "Botafogo",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 2,
+    "goalsOwn": 4,
+    "goalsBalance": -2,
+    "efficiency": "44.44"
   },
   {
-    name: 'Ferroviária',
-    totalPoints: '3',
-    totalGames: '2',
-    totalVictories: '1',
-    totalDraws: '0',
-    totalLosses: '1',
-    goalsFavor: '3',
-    goalsOwn: '2',
-    goalsBalance: '1',
-    efficiency: '50'
+    "name": "Ferroviária",
+    "totalPoints": 3,
+    "totalGames": 2,
+    "totalVictories": 1,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 3,
+    "goalsOwn": 2,
+    "goalsBalance": 1,
+    "efficiency": "50.00"
   },
   {
-    name: 'Napoli-SC',
-    totalPoints: '2',
-    totalGames: '2',
-    totalVictories: '0',
-    totalDraws: '2',
-    totalLosses: '0',
-    goalsFavor: '2',
-    goalsOwn: '2',
-    goalsBalance: '0',
-    efficiency: '33.33'
+    "name": "Napoli-SC",
+    "totalPoints": 2,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 2,
+    "goalsOwn": 2,
+    "goalsBalance": 0,
+    "efficiency": "33.33"
   },
   {
-    name: 'Cruzeiro',
-    totalPoints: '1',
-    totalGames: '2',
-    totalVictories: '0',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '2',
-    goalsOwn: '3',
-    goalsBalance: '-1',
-    efficiency: '16.67'
+    "name": "Cruzeiro",
+    "totalPoints": 1,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 2,
+    "goalsOwn": 3,
+    "goalsBalance": -1,
+    "efficiency": "16.67"
   },
   {
-    name: 'Flamengo',
-    totalPoints: '1',
-    totalGames: '2',
-    totalVictories: '0',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '1',
-    goalsOwn: '2',
-    goalsBalance: '-1',
-    efficiency: '16.67'
+    "name": "Flamengo",
+    "totalPoints": 1,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 2,
+    "goalsBalance": -1,
+    "efficiency": "16.67"
   },
   {
-    name: 'Minas Brasília',
-    totalPoints: '1',
-    totalGames: '3',
-    totalVictories: '0',
-    totalDraws: '1',
-    totalLosses: '2',
-    goalsFavor: '3',
-    goalsOwn: '6',
-    goalsBalance: '-3',
-    efficiency: '11.11'
+    "name": "Minas Brasília",
+    "totalPoints": 1,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 2,
+    "goalsFavor": 3,
+    "goalsOwn": 6,
+    "goalsBalance": -3,
+    "efficiency": "11.11"
   },
   {
-    name: 'Avaí/Kindermann',
-    totalPoints: '1',
-    totalGames: '3',
-    totalVictories: '0',
-    totalDraws: '1',
-    totalLosses: '2',
-    goalsFavor: '3',
-    goalsOwn: '7',
-    goalsBalance: '-4',
-    efficiency: '11.11'
+    "name": "Avaí/Kindermann",
+    "totalPoints": 1,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 2,
+    "goalsFavor": 3,
+    "goalsOwn": 7,
+    "goalsBalance": -4,
+    "efficiency": "11.11"
   },
   {
-    name: 'São José-SP',
-    totalPoints: '0',
-    totalGames: '3',
-    totalVictories: '0',
-    totalDraws: '0',
-    totalLosses: '3',
-    goalsFavor: '2',
-    goalsOwn: '5',
-    goalsBalance: '-3',
-    efficiency: '0'
+    "name": "São José-SP",
+    "totalPoints": 0,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 3,
+    "goalsFavor": 2,
+    "goalsOwn": 5,
+    "goalsBalance": -3,
+    "efficiency": "0.00"
   },
   {
-    name: 'Bahia',
-    totalPoints: '0',
-    totalGames: '3',
-    totalVictories: '0',
-    goalsFavor: '0',
-    goalsOwn: '4',
-    goalsBalance: '-4',
-    efficiency: '0'
+    "name": "Bahia",
+    "totalPoints": 0,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 3,
+    "goalsFavor": 0,
+    "goalsOwn": 4,
+    "goalsBalance": -4,
+    "efficiency": "0.00"
   }
 ]
 ```
@@ -1449,413 +1451,415 @@ Esse projeto é composto de 4 seções principais:
 
 ### 31 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end, com os dados iniciais do banco de dados
 
-  - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards);
+  - O endpoint deverá ser do tipo `GET`;
 
-  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados.
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados;
+
+  - ⚠️ **Atenção:** Partidas que estiverem em andamento (`in_progress: true`) não devem ser consideradas.
+
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
 
-```js
+```json
 [
   {
-    name: 'Palmeiras',
-    totalPoints: '6',
-    totalGames: '2',
-    totalVictories: '2',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '7',
-    goalsOwn: '0',
-    goalsBalance: '7',
-    efficiency: '100'
+    "name": "Palmeiras",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 7,
+    "goalsOwn": 0,
+    "goalsBalance": 7,
+    "efficiency": "100.00"
   },
   {
-    name: 'Corinthians',
-    totalPoints: '6',
-    totalGames: '3',
-    totalVictories: '2',
-    totalDraws: '0',
-    totalLosses: '1',
-    goalsFavor: '6',
-    goalsOwn: '2',
-    goalsBalance: '4',
-    efficiency: '66.67'
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 6,
+    "goalsOwn": 2,
+    "goalsBalance": 4,
+    "efficiency": "66.67"
   },
   {
-    name: 'Internacional',
-    totalPoints: '6',
-    totalGames: '2',
-    totalVictories: '2',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '3',
-    goalsOwn: '0',
-    goalsBalance: '3',
-    efficiency: '100'
+    "name": "Internacional",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 3,
+    "goalsOwn": 0,
+    "goalsBalance": 3,
+    "efficiency": "100.00"
   },
   {
-    name: 'São José-SP',
-    totalPoints: '6',
-    totalGames: '2',
-    totalVictories: '2',
-    totalDraws: '0',
-    totalLosses: '0',
-    goalsFavor: '3',
-    goalsOwn: '1',
-    goalsBalance: '2',
-    efficiency: '100'
+    "name": "São José-SP",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 3,
+    "goalsOwn": 1,
+    "goalsBalance": 2,
+    "efficiency": "100.00"
   },
   {
-    name: 'São Paulo',
-    totalPoints: '4',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '5',
-    goalsOwn: '5',
-    goalsBalance: '0',
-    efficiency: '44.44'
+    "name": "São Paulo",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 5,
+    "goalsOwn": 5,
+    "goalsBalance": 0,
+    "efficiency": "44.44"
   },
   {
-    name: 'Ferroviária',
-    totalPoints: '4',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '4',
-    goalsOwn: '5',
-    goalsBalance: '-1',
-    efficiency: '44.44'
+    "name": "Ferroviária",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 4,
+    "goalsOwn": 5,
+    "goalsBalance": -1,
+    "efficiency": "44.44"
   },
   {
-    name: 'Real Brasília',
-    totalPoints: '4',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '3',
-    goalsOwn: '4',
-    goalsBalance: '-1',
-    efficiency: '44.44'
+    "name": "Real Brasília",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 3,
+    "goalsOwn": 4,
+    "goalsBalance": -1,
+    "efficiency": "44.44"
   },
   {
-    name: 'Grêmio',
-    totalPoints: '4',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '5',
-    goalsOwn: '7',
-    goalsBalance: '-2',
-    efficiency: '44.44'
+    "name": "Grêmio",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 5,
+    "goalsOwn": 7,
+    "goalsBalance": -2,
+    "efficiency": "44.44"
   },
   {
-    name: 'Flamengo',
-    totalPoints: '4',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '1',
-    goalsOwn: '3',
-    goalsBalance: '-2',
-    efficiency: '44.44'
+    "name": "Flamengo",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 3,
+    "goalsBalance": -2,
+    "efficiency": "44.44"
   },
   {
-    name: 'Avaí/Kindermann',
-    totalPoints: '3',
-    totalGames: '2',
-    totalVictories: '1',
-    totalDraws: '0',
-    totalLosses: '1',
-    goalsFavor: '1',
-    goalsOwn: '1',
-    goalsBalance: '0',
-    efficiency: '50'
+    "name": "Avaí/Kindermann",
+    "totalPoints": 3,
+    "totalGames": 2,
+    "totalVictories": 1,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 1,
+    "goalsBalance": 0,
+    "efficiency": "50.00"
   },
   {
-    name: 'Cruzeiro',
-    totalPoints: '3',
-    totalGames: '3',
-    totalVictories: '1',
-    totalDraws: '0',
-    totalLosses: '2',
-    goalsFavor: '6',
-    goalsOwn: '7',
-    goalsBalance: '-1',
-    efficiency: '33.33'
+    "name": "Cruzeiro",
+    "totalPoints": 3,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 0,
+    "totalLosses": 2,
+    "goalsFavor": 6,
+    "goalsOwn": 7,
+    "goalsBalance": -1,
+    "efficiency": "33.33"
   },
   {
-    name: 'Santos',
-    totalPoints: '2',
-    totalGames: '2',
-    totalVictories: '0',
-    totalDraws: '2',
-    totalLosses: '0',
-    goalsFavor: '3',
-    goalsOwn: '3',
-    goalsBalance: '0',
-    efficiency: '33.33'
+    "name": "Santos",
+    "totalPoints": 2,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 3,
+    "goalsOwn": 3,
+    "goalsBalance": 0,
+    "efficiency": "33.33"
   },
   {
-    name: 'Bahia',
-    totalPoints: '2',
-    totalGames: '2',
-    totalVictories: '0',
-    totalDraws: '2',
-    totalLosses: '0',
-    goalsFavor: '2',
-    goalsOwn: '2',
-    goalsBalance: '0',
-    efficiency: '33.33'
+    "name": "Bahia",
+    "totalPoints": 2,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 2,
+    "goalsOwn": 2,
+    "goalsBalance": 0,
+    "efficiency": "33.33"
   },
   {
-    name: 'Minas Brasília',
-    totalPoints: '1',
-    totalGames: '2',
-    totalVictories: '0',
-    totalDraws: '1',
-    totalLosses: '1',
-    goalsFavor: '1',
-    goalsOwn: '3',
-    goalsBalance: '-2',
-    efficiency: '16.67'
+    "name": "Minas Brasília",
+    "totalPoints": 1,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 3,
+    "goalsBalance": -2,
+    "efficiency": "16.67"
   },
   {
-    name: 'Botafogo',
-    totalPoints: '0',
-    totalGames: '2',
-    totalVictories: '0',
-    totalDraws: '0',
-    totalLosses: '2',
-    goalsFavor: '1',
-    goalsOwn: '4',
-    goalsBalance: '-3',
-    efficiency: '0'
+    "name": "Botafogo",
+    "totalPoints": 0,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 2,
+    "goalsFavor": 1,
+    "goalsOwn": 4,
+    "goalsBalance": -3,
+    "efficiency": "0.00"
   },
   {
-    name: 'Napoli-SC',
-    totalPoints: '0',
-    totalGames: '3',
-    totalVictories: '0',
-    totalDraws: '0',
-    totalLosses: '3',
-    goalsFavor: '1',
-    goalsOwn: '10',
-    goalsBalance: '-9',
-    efficiency: '0'
+    "name": "Napoli-SC",
+    "totalPoints": 0,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 3,
+    "goalsFavor": 1,
+    "goalsOwn": 10,
+    "goalsBalance": -9,
+    "efficiency": "0.00"
   }
-  ]
+]
 ```
 </details>
 
 ### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
-  - O retorno deve continuar como no [leaderboard](#leaderboards);
-
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos.
+
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
 
-```js
+```json
 [
-    {
-      name: 'Palmeiras',
-      totalPoints: '6',
-      totalGames: '2',
-      totalVictories: '2',
-      totalDraws: '0',
-      totalLosses: '0',
-      goalsFavor: '7',
-      goalsOwn: '0',
-      goalsBalance: '7',
-      efficiency: '100'
-    },
-    {
-      name: 'Corinthians',
-      totalPoints: '6',
-      totalGames: '3',
-      totalVictories: '2',
-      totalDraws: '0',
-      totalLosses: '1',
-      goalsFavor: '6',
-      goalsOwn: '2',
-      goalsBalance: '4',
-      efficiency: '66.67'
-    },
-    {
-      name: 'Internacional',
-      totalPoints: '6',
-      totalGames: '3',
-      totalVictories: '2',
-      totalDraws: '0',
-      totalLosses: '1',
-      goalsFavor: '4',
-      goalsOwn: '2',
-      goalsBalance: '2',
-      efficiency: '66.67'
-    },
-    {
-      name: 'São José-SP',
-      totalPoints: '6',
-      totalGames: '2',
-      totalVictories: '2',
-      totalDraws: '0',
-      totalLosses: '0',
-      goalsFavor: '3',
-      goalsOwn: '1',
-      goalsBalance: '2',
-      efficiency: '100'
-    },
-    {
-      name: 'São Paulo',
-      totalPoints: '4',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '5',
-      goalsOwn: '5',
-      goalsBalance: '0',
-      efficiency: '44.44'
-    },
-    {
-      name: 'Ferroviária',
-      totalPoints: '4',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '4',
-      goalsOwn: '5',
-      goalsBalance: '-1',
-      efficiency: '44.44'
-    },
-    {
-      name: 'Real Brasília',
-      totalPoints: '4',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '3',
-      goalsOwn: '4',
-      goalsBalance: '-1',
-      efficiency: '44.44'
-    },
-    {
-      name: 'Grêmio',
-      totalPoints: '4',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '5',
-      goalsOwn: '7',
-      goalsBalance: '-2',
-      efficiency: '44.44'
-    },
-    {
-      name: 'Flamengo',
-      totalPoints: '4',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '1',
-      goalsOwn: '3',
-      goalsBalance: '-2',
-      efficiency: '44.44'
-    },
-    {
-      name: 'Avaí/Kindermann',
-      totalPoints: '3',
-      totalGames: '2',
-      totalVictories: '1',
-      totalDraws: '0',
-      totalLosses: '1',
-      goalsFavor: '1',
-      goalsOwn: '1',
-      goalsBalance: '0',
-      efficiency: '50'
-    },
-    {
-      name: 'Cruzeiro',
-      totalPoints: '3',
-      totalGames: '3',
-      totalVictories: '1',
-      totalDraws: '0',
-      totalLosses: '2',
-      goalsFavor: '6',
-      goalsOwn: '7',
-      goalsBalance: '-1',
-      efficiency: '33.33'
-    },
-    {
-      name: 'Santos',
-      totalPoints: '2',
-      totalGames: '2',
-      totalVictories: '0',
-      totalDraws: '2',
-      totalLosses: '0',
-      goalsFavor: '3',
-      goalsOwn: '3',
-      goalsBalance: '0',
-      efficiency: '33.33'
-    },
-    {
-      name: 'Bahia',
-      totalPoints: '2',
-      totalGames: '2',
-      totalVictories: '0',
-      totalDraws: '2',
-      totalLosses: '0',
-      goalsFavor: '2',
-      goalsOwn: '2',
-      goalsBalance: '0',
-      efficiency: '33.33'
-    },
-    {
-      name: 'Minas Brasília',
-      totalPoints: '1',
-      totalGames: '2',
-      totalVictories: '0',
-      totalDraws: '1',
-      totalLosses: '1',
-      goalsFavor: '1',
-      goalsOwn: '3',
-      goalsBalance: '-2',
-      efficiency: '16.67'
-    },
-    {
-      name: 'Botafogo',
-      totalPoints: '0',
-      totalGames: '2',
-      totalVictories: '0',
-      totalDraws: '0',
-      totalLosses: '2',
-      goalsFavor: '1',
-      goalsOwn: '4',
-      goalsBalance: '-3',
-      efficiency: '0'
-    },
-    {
-      name: 'Napoli-SC',
-      totalPoints: '0',
-      totalGames: '3',
-      totalVictories: '0',
-      totalDraws: '0',
-      totalLosses: '3',
-      goalsFavor: '1',
-      goalsOwn: '10',
-      goalsBalance: '-9',
-      efficiency: '0'
-    }
-  ]
+  {
+    "name": "Palmeiras",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 7,
+    "goalsOwn": 0,
+    "goalsBalance": 7,
+    "efficiency": "100.00"
+  },
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 6,
+    "goalsOwn": 2,
+    "goalsBalance": 4,
+    "efficiency": "66.67"
+  },
+  {
+    "name": "Internacional",
+    "totalPoints": 6,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 4,
+    "goalsOwn": 2,
+    "goalsBalance": 2,
+    "efficiency": "66.67"
+  },
+  {
+    "name": "São José-SP",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 3,
+    "goalsOwn": 1,
+    "goalsBalance": 2,
+    "efficiency": "100.00"
+  },
+  {
+    "name": "São Paulo",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 5,
+    "goalsOwn": 5,
+    "goalsBalance": 0,
+    "efficiency": "44.44"
+  },
+  {
+    "name": "Ferroviária",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 4,
+    "goalsOwn": 5,
+    "goalsBalance": -1,
+    "efficiency": "44.44"
+  },
+  {
+    "name": "Real Brasília",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 3,
+    "goalsOwn": 4,
+    "goalsBalance": -1,
+    "efficiency": "44.44"
+  },
+  {
+    "name": "Grêmio",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 5,
+    "goalsOwn": 7,
+    "goalsBalance": -2,
+    "efficiency": "44.44"
+  },
+  {
+    "name": "Flamengo",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 3,
+    "goalsBalance": -2,
+    "efficiency": "44.44"
+  },
+  {
+    "name": "Avaí/Kindermann",
+    "totalPoints": 3,
+    "totalGames": 2,
+    "totalVictories": 1,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 1,
+    "goalsBalance": 0,
+    "efficiency": "50.00"
+  },
+  {
+    "name": "Cruzeiro",
+    "totalPoints": 3,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 0,
+    "totalLosses": 2,
+    "goalsFavor": 6,
+    "goalsOwn": 7,
+    "goalsBalance": -1,
+    "efficiency": "33.33"
+  },
+  {
+    "name": "Santos",
+    "totalPoints": 2,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 3,
+    "goalsOwn": 3,
+    "goalsBalance": 0,
+    "efficiency": "33.33"
+  },
+  {
+    "name": "Bahia",
+    "totalPoints": 2,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 2,
+    "goalsOwn": 2,
+    "goalsBalance": 0,
+    "efficiency": "33.33"
+  },
+  {
+    "name": "Minas Brasília",
+    "totalPoints": 1,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 3,
+    "goalsBalance": -2,
+    "efficiency": "16.67"
+  },
+  {
+    "name": "Botafogo",
+    "totalPoints": 0,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 2,
+    "goalsFavor": 1,
+    "goalsOwn": 4,
+    "goalsBalance": -3,
+    "efficiency": "0.00"
+  },
+  {
+    "name": "Napoli-SC",
+    "totalPoints": 0,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 3,
+    "goalsFavor": 1,
+    "goalsOwn": 10,
+    "goalsBalance": -9,
+    "efficiency": "0.00"
+  }
+]
 ```
 </details>
 
@@ -1870,9 +1874,10 @@ Esse projeto é composto de 4 seções principais:
 
 ### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
 
-  - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards);
+  - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard`, serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados.
+
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
 
