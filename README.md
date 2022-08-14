@@ -1026,7 +1026,7 @@ Esse projeto é composto de 4 seções principais:
 ]
 ```
 
-  - Esse endpoint vai alimentar uma tabela idêntica ao exemplo abaixo no front-end:
+  - Os endpoints dessa seção, irão alimentar uma tabela idêntica ao exemplo abaixo no front-end:
 
     | Classificação | Time        | P   | J   | V   | E   | D   | GP  | GC  | SG  | %    |
     | ------------- | ----------- | --- | --- | --- | --- | --- | --- | --- | --- | ---- |
