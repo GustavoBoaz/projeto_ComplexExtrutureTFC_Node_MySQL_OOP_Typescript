@@ -86,7 +86,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: betrybe/store-evaluation-action
-          ref: v5
+          ref: v6
           token: ${{ secrets.GIT_HUB_PAT }}
           path: .github/actions/store-evaluation
 
