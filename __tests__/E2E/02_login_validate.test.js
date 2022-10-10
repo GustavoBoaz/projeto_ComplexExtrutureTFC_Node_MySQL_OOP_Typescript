@@ -127,7 +127,7 @@ describe(getRequirement(9), () => {
     const inputLogin = await page.$(pageLogin.inputEmail);
     await inputLogin.type(invalidAdmin.email);
     const inputPassword = await page.$(pageLogin.inputPassword);
-    await inputPassword.type(invalidAdmin.password);
+    await inputPassword.type(validAdmin.password);
     const buttonLogin = await page.$(pageLogin.buttonLogin);
 
     const { body: { message } } = await waitForResponse({
@@ -157,7 +157,7 @@ describe(getRequirement(11), () => {
     expect(await page.$(pageLogin.alertLogin)).toBeNull();
 
     const inputLogin = await page.$(pageLogin.inputEmail);
-    await inputLogin.type(invalidAdmin.email);
+    await inputLogin.type(validAdmin.email);
     const inputPassword = await page.$(pageLogin.inputPassword);
     await inputPassword.type(invalidAdmin.password);
     const buttonLogin = await page.$(pageLogin.buttonLogin);
