@@ -871,9 +871,9 @@ Esse projeto é composto de 4 seções principais:
 
 ### 25 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais
 
-  - Será validado que não é possível inserir uma partida com times iguais;
+  - Será validado que não é possível inserir uma partida em que o `homeTeam` e o `awayTeam` sejam iguais, por exemplo: Barcelona x Barcelona;
 
-  - Não deve ser possível criar uma partida com o mesmo time, por exemplo: Barcelona x Barcelona. Caso isso ocorra, deve-se retornar, com um status `401`, a seguinte mensagem::
+  - Caso isso ocorra, deve-se retornar, com um status `422`, a seguinte mensagem::
 
   ```json
   { "message": "It is not possible to create a match with two equal teams" }

@@ -102,7 +102,7 @@ describe(getRequirement(25), () => {
       homeGoals: twoGoals,
       awayGoals: oneGoal
     }
-    const { message } = await insertInProgress(page, dadosInsert, StatusCodes.UNAUTHORIZED);
+    const { message } = await insertInProgress(page, dadosInsert, StatusCodes.UNPROCESSABLE_ENTITY);
     const messageExpect = 'It is not possible to create a match with two equal teams';
 
     expect(messageExpect).toBe(message);
