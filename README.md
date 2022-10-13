@@ -947,7 +947,7 @@ Esse projeto é composto de 4 seções principais:
     - O time `perdedor`: marcará 0 pontos;
     - Em caso de `empate`: ambos os times marcam +1 ponto.
 
-  - Para o campo `Aproveitamento do time (%)`, que é a porcentagem de jogos ganhos, use a seguinte fórmula: `P/(J*3)*100`, onde:
+  - Para o campo `Aproveitamento do time (%)`, que é a porcentagem de jogos ganhos, use a seguinte fórmula: `(P/(J*3))*100`, onde:
 
     - `P`: Total de Pontos;
     - `J`: Total de Jogos.
