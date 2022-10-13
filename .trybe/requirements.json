@@ -186,7 +186,7 @@
     },
     {
       "bonus": false,
-      "description": "24 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como false no banco de dados",
+      "description": "24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados",
       "enabled": true,
       "identifier": null,
       "order": 24,
