@@ -839,7 +839,6 @@ Esse projeto é composto de 4 seções principais:
     "awayTeam": 8, // O valor deve ser o id do time
     "homeTeamGoals": 2,
     "awayTeamGoals": 2,
-    "inProgress": true,
   }
   ```
 
