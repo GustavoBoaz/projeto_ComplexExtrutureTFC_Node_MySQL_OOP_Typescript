@@ -54,13 +54,12 @@ const MatchSettings = () => {
     if (homeOrAway === 'homeTeam') { setHomeTeam(id); } else { setAwayTeam(id); }
   };
 
-  const createMatch = async (inProgress) => {
+  const createMatch = async () => {
     const body = {
       homeTeam: +homeTeam,
       awayTeam: +awayTeam,
       homeTeamGoals: +homeTeamScoreboard,
       awayTeamGoals: +awayTeamScoreboard,
-      inProgress,
     };
 
     const { data } = await api.post('/matches', body);
