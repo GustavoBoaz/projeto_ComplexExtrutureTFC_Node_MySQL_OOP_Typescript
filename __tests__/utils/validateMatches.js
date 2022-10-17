@@ -8,6 +8,11 @@ const validateMatches = async (page, optionShowFinishMatch, expectedResult, isAd
   const searchMatchesBtn = await page.$(pageMatches.searchMatchesBtn);
   await searchMatchesBtn.click();
 
+  await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+  const homeTeams = await page.$$('[data-testid^=matches__home_team_goals]');
+  expect(homeTeams.length).toEqual(expectedResult.length);
+
   for (const matches of expectedResult) {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
