@@ -58,7 +58,7 @@ const CreateNewGame = ({
           <button
             data-testid="insertion_matches__save_match_btn"
             onClick={ async () => {
-              const body = await createMatch(true);
+              const body = await createMatch();
               setCreatedMatch(body);
               setInProgress('In-Progress');
             } }
