@@ -420,6 +420,27 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 
 </details>
 
+<details>
+  <summary><strong>🛠 Execução de testes localmente</strong></summary>
+
+> :information_source: IMPORTANTE
+
+ Para que seus testes do projeto localmente é necessário que todos os seus containers estejam no ar e saudaveis.
+
+### :eyes: executando os testes localmente
+
+Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudaveis:
+ - Para executar todos os testes, execute na raiz do seu projeto:
+ `npm test`
+
+- Para executar apenas parte dos requisitos, basta colocar no final do comando anterior o nome do arquivo de teste. Execute na raiz do seu projeto:
+ `npm test 01_datanase.test.js`
+
+
+  <br />
+
+</details>
+
 
 <details>
   <summary><strong> 👀 Dicas e comandos úteis </strong></summary><br />
