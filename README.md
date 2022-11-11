@@ -425,16 +425,16 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 
 > :information_source: IMPORTANTE
 
- Para que seus testes do projeto localmente é necessário que todos os seus containers estejam no ar e saudaveis.
+Para que os testes do projeto sejam executados localmente é necessário que todos os seus containers estejam no ar e saudáveis.
 
 ### :eyes: executando os testes localmente
 
-Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudaveis:
+Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudáveis:
  - Para executar todos os testes, execute na raiz do seu projeto:
  `npm test`
 
-- Para executar apenas parte dos requisitos, basta colocar no final do comando anterior o nome do arquivo de teste. Execute na raiz do seu projeto:
- `npm test 01_datanase.test.js`
+- Para executar apenas um arquivo específico de testes, e seus respectivos requisitos, basta colocar no final do comando anterior o nome do arquivo de teste. Os arquivos de teste podem ser localizados no diretório `./__tests__/E2E/`. Execute na raiz do seu projeto, por exemplo:
+ `npm test 01_database.test.js`
 
 
   <br />
