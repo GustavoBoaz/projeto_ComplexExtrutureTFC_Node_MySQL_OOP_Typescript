@@ -545,7 +545,7 @@ Esse projeto é composto de 4 seções principais:
   **Sugestões:**
   - Baseando-se no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;
   - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
-  - Para tanto, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`;
+  - Para tanto, utilize/altere o arquivo de referência `app/backend/src/tests/change.me.test.ts`;
   - Veja a seção de [Testes de cobertura](#testes-de-cobertura) para mais detalhes.
 
 ### 3 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
