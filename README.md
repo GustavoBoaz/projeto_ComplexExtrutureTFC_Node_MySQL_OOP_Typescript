@@ -958,7 +958,6 @@ Esse projeto é composto de 4 seções principais:
     - `SG`: Saldo total de gols;
     - `%`: Aproveitamento do time.
 
-    <br/>
 
   - Todas as regras de negócio e cálculos necessários deverão ser realizados no seu back-end. A aplicação front-end apenas renderizará essas informações.
 
