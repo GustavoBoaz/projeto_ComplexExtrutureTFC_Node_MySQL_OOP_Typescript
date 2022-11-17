@@ -3,12 +3,14 @@ import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
 
-import { app } from '../app';
+import App from '../app';
 import Example from '../database/models/ExampleModel';
 
 import { Response } from 'superagent';
 
 chai.use(chaiHttp);
+
+const { app } = new App();
 
 const { expect } = chai;
 

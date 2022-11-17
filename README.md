@@ -354,12 +354,14 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
   // @ts-ignore
   import chaiHttp = require('chai-http');
 
-  import { app } from '../app';
+  import App from '../app';
   import Example from '../database/models/ExampleModel';
 
   import { Response } from 'superagent';
 
   chai.use(chaiHttp);
+
+  const { app } = new App();
 
   const { expect } = chai;
 
@@ -398,7 +400,11 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 
   Os testes devem cobrir todos os arquivos contidos em `app/backend/src`, com exceção daqueles que já foram entregues com o projeto.
 
-  Para rodar testes de cobertura no seu back-end, utilize o comando: `npm run test:coverage`.
+  Para rodar os testes de cobertura desenvolvidos por você, no seu back-end, utilize o comando: `npm run test:coverage`.
+
+  :warning:
+  Para que o comando acima funcione localmente (fora do container) você deverá configurar na raiz do _back-end_ o seu arquivo _.env_. Como explicado na Seção [⚙️ Variáveis de ambiente](#Variaveis-de-ambiente).
+
 
 </details>
 
