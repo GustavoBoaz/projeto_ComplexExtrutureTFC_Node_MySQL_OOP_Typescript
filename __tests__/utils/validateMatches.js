@@ -22,9 +22,9 @@ const validateMatches = async (page, optionShowFinishMatch, expectedResult, isAd
     const awayTeamGoals = await page.$eval(pageMatches.awayTeamGoals(matches.id), (el) => el.innerText);
     const matchStatus = await page.$eval(pageMatches.matchStatus(matches.id), (el) => el.innerText);
 
-    expect(homeTeam).toEqual(matches.home_team);
+    expect(homeTeam).toEqual(matches.home_team_id);
     expect(homeTeamGoals).toEqual(matches.home_team_goals);
-    expect(awayTeam).toEqual(matches.away_team);
+    expect(awayTeam).toEqual(matches.away_team_id);
     expect(awayTeamGoals).toEqual(matches.away_team_goals);
 
     if (matches.in_progress) {

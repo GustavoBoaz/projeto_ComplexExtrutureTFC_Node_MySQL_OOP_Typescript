@@ -80,8 +80,8 @@ describe(getRequirement(28), () => {
     const normalizeMatches = normalize(matches);
     const lastInsertedRow = lastInsert(normalizeMatches);
 
-    expect(lastInsertedRow.homeTeam).toBe(teams[12].id);
-    expect(lastInsertedRow.awayTeam).toBe(teams[1].id);
+    expect(lastInsertedRow.homeTeamId).toBe(teams[12].id);
+    expect(lastInsertedRow.awayTeamId).toBe(teams[1].id);
     expect(lastInsertedRow.homeTeamGoals.toString()).toBe(fiveGoals);
     expect(lastInsertedRow.awayTeamGoals.toString()).toBe(twoGoals);
     expect(lastInsertedRow.inProgress).toBe(1);

@@ -12,8 +12,8 @@ const MatchSettings = () => {
   const [teams, setTeams] = useState([]);
   const [homeTeamScoreboard, setHomeTeamScoreboard] = useState('0');
   const [awayTeamScoreboard, setAwayTeamScoreboard] = useState('0');
-  const [homeTeam, setHomeTeam] = useState('');
-  const [awayTeam, setAwayTeam] = useState('');
+  const [homeTeamId, setHomeTeamId] = useState(0);
+  const [awayTeamId, setAwayTeamId] = useState(0);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const location = useLocation();
@@ -51,13 +51,13 @@ const MatchSettings = () => {
 
   const getTeam = (team, homeOrAway) => {
     const { id } = teams.find(({ teamName }) => teamName === team);
-    if (homeOrAway === 'homeTeam') { setHomeTeam(id); } else { setAwayTeam(id); }
+    if (homeOrAway === 'homeTeam') { setHomeTeamId(id); } else { setAwayTeamId(id); }
   };
 
   const createMatch = async () => {
     const body = {
-      homeTeam: +homeTeam,
-      awayTeam: +awayTeam,
+      homeTeamId,
+      awayTeamId,
       homeTeamGoals: +homeTeamScoreboard,
       awayTeamGoals: +awayTeamScoreboard,
     };
@@ -77,9 +77,9 @@ const MatchSettings = () => {
 
   if (location.state) {
     const { id,
-      teamHome: homeTeamState,
+      homeTeam: homeTeamState,
       homeTeamGoals,
-      teamAway: awayTeamState,
+      awayTeam: awayTeamState,
       awayTeamGoals,
     } = location.state;
     return (

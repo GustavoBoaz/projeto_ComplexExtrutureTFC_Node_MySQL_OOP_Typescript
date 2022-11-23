@@ -76,8 +76,8 @@ describe(getRequirement(24), () => {
     const rows = await database.query(select.all.matches, { type: 'SELECT' });
     const [matchInserted] = normalize([lastInsert(rows)])
 
-    expect(matchInserted.homeTeam).toBe(teams[3].id);
-    expect(matchInserted.awayTeam).toBe(teams[8].id);
+    expect(matchInserted.homeTeamId).toBe(teams[3].id);
+    expect(matchInserted.awayTeamId).toBe(teams[8].id);
     expect(matchInserted.inProgress).toBe(0);
 
     const showMatchesButton = await page.$(header.showMatchesButton);
