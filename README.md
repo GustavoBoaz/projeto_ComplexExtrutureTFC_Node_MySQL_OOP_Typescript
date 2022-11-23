@@ -71,7 +71,7 @@ O projeto é composto de 4 entidades importantes para sua estrutura:
   <summary><strong> 🗓 Data de Entrega</strong></summary><br />
 
   * Projeto individual;
-  * Serão `5` dias de projeto;
+  * Serão `x` dias de projeto;
   * Data de entrega para avaliação final do projeto: `XX/XX/XXXX 14:00`.
 
 </details>
@@ -100,7 +100,7 @@ Leia essa parte atentamente, pois aqui você encontrará informações important
 - Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
 
 - Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-  * Exemplo: `git checkout -b maria-sd-000-trybe-futebol-clube-2022-11-11-15-28-36`
+  * Exemplo: `git checkout -b maria-sd-0x-trybe-futebol-clube`
 
   4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
 - Verifique que as mudanças ainda não estão no _stage_
@@ -115,7 +115,7 @@ Leia essa parte atentamente, pois aqui você encontrará informações important
           * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
   5. Adicione a sua branch com o novo `commit` ao repositório remoto
-- Usando o exemplo anterior: `git push -u origin joaozinho-sd-000-trybe-futebol-clube-2022-11-11-15-28-36`
+- Usando o exemplo anterior: `git push -u origin joaozinho-sd-0x-trybe-futebol-clube`
 
   6. Crie um novo `Pull Request` _(PR)_
 - Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-[nome-do-projeto]/pulls)
@@ -134,7 +134,7 @@ Para garantir a qualidade do código, usaremos o [ESLint](https://eslint.org/) p
 
 Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
 
-- `sd-000-trybe-futebol-clube-2022-11-11-15-28-36/app/backend/package.json`
+- `sd-0x-trybe-futebol-clube/app/backend/package.json`
 
 Para rodar o `ESLint` em um projeto, basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
 
@@ -180,13 +180,14 @@ Na sua máquina você deve ter:
 ⚠️ **Crie os arquivos dockerfile:**
 
   - As pastas `frontend/` e `backend/` devem possuir um arquivo `Dockerfile` cada, configurados corretamente para a aplicação começar a rodar. Sem essa etapa concluída o _docker-compose_ não irá funcionar.
+  - ⚠ Procure usar as boas práticas no _Dockerfile_. Para isso lembre-se dos casos de uso dos comandos [**RUN**, **ENTRYPOINT** e **CMD**.](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/5987fa2d-0d04-45b2-9d91-1c2ffce09862/day/da25fd46-8818-4234-8603-a442b047370f/lesson/93c74629-1ea8-4fbd-9c2a-5db417249348)
 
 ⚠️ **Atenção:**
 
 - Seu projeto vai conter um arquivo `docker-compose.yml` que será utilizado pelo avaliador para realizar o _build_ da aplicação, você **não** deve alterá-lo ou excluí-lo.
 - O arquivo `docker-compose.yml` também pode ser utilizado para executar a aplicação na sua máquina local, para isso é necessário executar o comando `npm run compose:up` na raiz do projeto.
 - Recomendamos que enquanto desenvolve o projeto prefira o usar o comando `npm run compose:up:dev` pois, diferente do comando anterior, este comando está configurado para compartilhar volumes com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao fazer modificações no _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá realizar o re-build do seu compose, pois o volume está mapeando somente alterações dentro da pasta `src` Você pode verificar essas configurações explorando o arquivo `docker-compose.dev.yml` e comparar com `docker-compose.yml`
-
+- obs.: Se você quiser fazer o build da sua aplicação usando o `docker-compose.dev.yml`, você pode usar o comando: `npm run compose:up:dev -- --build`.
 
 >  👀 **De olho na dica:**
 > Lembre-se, você pode revisitar os conteúdos sobre Docker:
@@ -353,10 +354,12 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
   // @ts-ignore
   import chaiHttp = require('chai-http');
 
-  import { app } from '../app';
+  import App from '../app';
   import Example from '../database/models/ExampleModel';
 
   import { Response } from 'superagent';
+
+  const { app } = new App();
 
   chai.use(chaiHttp);
 
@@ -398,6 +401,9 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
   Os testes devem cobrir todos os arquivos contidos em `app/backend/src`, com exceção daqueles que já foram entregues com o projeto.
 
   Para rodar testes de cobertura no seu back-end, utilize o comando: `npm run test:coverage`.
+
+  :warning:
+  Para que o comando acima funcione localmente (fora do container) você deverá configurar na raiz do _back-end_ o seu arquivo _.env_. Como explicado na Seção [⚙️ Variáveis de ambiente](#Variaveis-de-ambiente).
 
 </details>
 
@@ -468,7 +474,7 @@ Aqui você encontra orientações opcionais para seguir após o desenvolvimento 
   - Vá até a página DO SEU Pull Request, adicione a label de "code-review" e marque seus colegas
     - No menu à direita, clique no *link* "Labels" e escolha a label code-review
     - No menu à direita, clique no *link* "Assignees" e escolha o seu usuário
-    - No menu à direita, clique no *link* "Reviewers" e digite students, selecione o time tryber/students-sd-000
+    - No menu à direita, clique no *link* "Reviewers" e digite students, selecione o time tryber/students-sd-0x
 
  ➡️ Se ainda houver alguma dúvida sobre como entregar seu projeto, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
@@ -545,7 +551,7 @@ Esse projeto é composto de 4 seções principais:
   **Sugestões:**
   - Baseando-se no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;
   - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
-  - Para tanto, utilize/altere o arquivo de referência `app/backend`/src`/tests/change.me.test.ts`;
+  - Para tanto, utilize/altere o arquivo de referência `app/backend/src/tests/change.me.test.ts`;
   - Veja a seção de [Testes de cobertura](#testes-de-cobertura) para mais detalhes.
 
 ### 3 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
