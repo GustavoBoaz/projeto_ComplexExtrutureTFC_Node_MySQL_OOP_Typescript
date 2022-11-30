@@ -33,16 +33,16 @@ DROP TABLE IF EXISTS `matches`;
 
 CREATE TABLE `matches` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `home_team` int NOT NULL,
+  `home_team_id` int NOT NULL,
   `home_team_goals` int NOT NULL,
-  `away_team` int NOT NULL,
+  `away_team_id` int NOT NULL,
   `away_team_goals` int NOT NULL,
   `in_progress` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `home_team` (`home_team`),
-  KEY `away_team` (`away_team`),
-  CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`home_team`) REFERENCES `teams` (`id`),
-  CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`away_team`) REFERENCES `teams` (`id`)
+  KEY `home_team_id` (`home_team_id`),
+  KEY `away_team_id` (`away_team_id`),
+  CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`home_team_id`) REFERENCES `teams` (`id`),
+  CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`away_team_id`) REFERENCES `teams` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 

@@ -186,9 +186,8 @@ Na sua máquina você deve ter:
 
 - Seu projeto vai conter um arquivo `docker-compose.yml` que será utilizado pelo avaliador para realizar o _build_ da aplicação, você **não** deve alterá-lo ou excluí-lo.
 - O arquivo `docker-compose.yml` também pode ser utilizado para executar a aplicação na sua máquina local, para isso é necessário executar o comando `npm run compose:up` na raiz do projeto.
-- Recomendamos que, enquanto desenvolve o projeto, prefira o usar o comando `npm run compose:up:dev` pois, diferente do comando anterior, este está configurado para compartilhar volumes com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao modificar o código do _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá parar o docker-compose com o comando `npm run compose:down:dev` e executar novamente `npm run compose:up:dev`, pois o volume está mapeando somente alterações dentro da pasta `src`. Você pode verificar essas configurações explorando o arquivo `docker-compose.dev.yml` e comparar com `docker-compose.yml`.
-obs.: Se você quiser fazer o build da sua aplicação usando o `docker-compose.dev.yml`, você pode usar o comando: `npm run compose:up:dev -- --build`.
-
+- Recomendamos que enquanto desenvolve o projeto prefira o usar o comando `npm run compose:up:dev` pois, diferente do comando anterior, este comando está configurado para compartilhar volumes com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao fazer modificações no _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá realizar o re-build do seu compose, pois o volume está mapeando somente alterações dentro da pasta `src`. Você pode verificar essas configurações explorando o arquivo `docker-compose.dev.yml` e comparar com `docker-compose.yml`
+- Obs.: Se você quiser fazer o build da sua aplicação usando o `docker-compose.dev.yml`, você pode usar o comando: `npm run compose:up:dev -- --build`.
 
 >  👀 **De olho na dica:**
 > Lembre-se, você pode revisitar os conteúdos sobre Docker:
@@ -360,9 +359,9 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 
   import { Response } from 'superagent';
 
-  chai.use(chaiHttp);
-
   const { app } = new App();
+
+  chai.use(chaiHttp);
 
   const { expect } = chai;
 
@@ -401,11 +400,10 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 
   Os testes devem cobrir todos os arquivos contidos em `app/backend/src`, com exceção daqueles que já foram entregues com o projeto.
 
-  Para rodar os testes de cobertura desenvolvidos por você, no seu back-end, utilize o comando: `npm run test:coverage`.
+  Para rodar testes de cobertura no seu back-end, utilize o comando: `npm run test:coverage`.
 
   :warning:
   Para que o comando acima funcione localmente (fora do container) você deverá configurar na raiz do _back-end_ o seu arquivo _.env_. Como explicado na Seção [⚙️ Variáveis de ambiente](#Variaveis-de-ambiente).
-
 
 </details>
 
@@ -730,37 +728,37 @@ Esse projeto é composto de 4 seções principais:
     [
       {
         "id": 1,
-        "homeTeam": 16,
+        "homeTeamId": 16,
         "homeTeamGoals": 1,
-        "awayTeam": 8,
+        "awayTeamId": 8,
         "awayTeamGoals": 1,
         "inProgress": false,
-        "teamHome": {
+        "homeTeam": {
           "teamName": "São Paulo"
         },
-        "teamAway": {
+        "awayTeam": {
           "teamName": "Grêmio"
         }
       },
       ...
       {
         "id": 41,
-        "homeTeam": 16,
+        "homeTeamId": 16,
         "homeTeamGoals": 2,
-        "awayTeam": 9,
+        "awayTeamId": 9,
         "awayTeamGoals": 0,
         "inProgress": true,
-        "teamHome": {
+        "homeTeam": {
           "teamName": "São Paulo"
         },
-        "teamAway": {
+        "awayTeam": {
           "teamName": "Internacional"
         }
       }
     ]
     ```
 
-  - **OBS:** Você deverá definir os relacionamentos para ```teamHome``` e ```teamAway``` somente na model de partidas.
+  - **OBS:** Você deverá definir os relacionamentos para ```homeTeam``` e ```awayTeam``` somente na model de partidas.
 
 ### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
 
@@ -776,29 +774,29 @@ Esse projeto é composto de 4 seções principais:
   [
     {
       "id": 41,
-      "homeTeam": 16,
+      "homeTeamId": 16,
       "homeTeamGoals": 2,
-      "awayTeam": 9,
+      "awayTeamId": 9,
       "awayTeamGoals": 0,
       "inProgress": true,
-      "teamHome": {
+      "homeTeam": {
         "teamName": "São Paulo"
       },
-      "teamAway": {
+      "awayTeam": {
         "teamName": "Internacional"
       }
     },
     {
       "id": 42,
-      "homeTeam": 6,
+      "homeTeamId": 6,
       "homeTeamGoals": 1,
-      "awayTeam": 1,
+      "awayTeamId": 1,
       "awayTeamGoals": 0,
       "inProgress": true,
-      "teamHome": {
+      "homeTeam": {
         "teamName": "Ferroviária"
       },
-      "teamAway": {
+      "awayTeam": {
         "teamName": "Avaí/Kindermann"
       }
     }
@@ -819,29 +817,29 @@ Esse projeto é composto de 4 seções principais:
   [
     {
       "id": 1,
-      "homeTeam": 16,
+      "homeTeamId": 16,
       "homeTeamGoals": 1,
-      "awayTeam": 8,
+      "awayTeamId": 8,
       "awayTeamGoals": 1,
       "inProgress": false,
-      "teamHome": {
+      "homeTeam": {
         "teamName": "São Paulo"
       },
-      "teamAway": {
+      "awayTeam": {
         "teamName": "Grêmio"
       }
     },
     {
       "id": 2,
-      "homeTeam": 9,
+      "homeTeamId": 9,
       "homeTeamGoals": 1,
-      "awayTeam": 14,
+      "awayTeamId": 14,
       "awayTeamGoals": 1,
       "inProgress": false,
-      "teamHome": {
+      "homeTeam": {
         "teamName": "Internacional"
       },
-      "teamAway": {
+      "awayTeam": {
         "teamName": "Santos"
       }
     }
@@ -864,8 +862,8 @@ Esse projeto é composto de 4 seções principais:
   - O corpo da requisição terá o seguinte formato:
   ```json
   {
-    "homeTeam": 16, // O valor deve ser o id do time
-    "awayTeam": 8, // O valor deve ser o id do time
+    "homeTeamId": 16, // O valor deve ser o id do time
+    "awayTeamId": 8, // O valor deve ser o id do time
     "homeTeamGoals": 2,
     "awayTeamGoals": 2,
   }
@@ -876,9 +874,9 @@ Esse projeto é composto de 4 seções principais:
   ```json
   {
     "id": 1,
-    "homeTeam": 16,
+    "homeTeamId": 16,
     "homeTeamGoals": 2,
-    "awayTeam": 8,
+    "awayTeamId": 8,
     "awayTeamGoals": 2,
     "inProgress": true,
   }
@@ -966,6 +964,7 @@ Esse projeto é composto de 4 seções principais:
     - `SG`: Saldo total de gols;
     - `%`: Aproveitamento do time.
 
+    <br/>
 
   - Todas as regras de negócio e cálculos necessários deverão ser realizados no seu back-end. A aplicação front-end apenas renderizará essas informações.
 
@@ -2519,3 +2518,4 @@ Esse projeto é composto de 4 seções principais:
 </details>
 
 </details>
+
