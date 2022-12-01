@@ -112,8 +112,8 @@ describe(getRequirement(25), () => {
 describe(getRequirement(26), () => {
   it('Será validado na API que não é possível inserir uma partida com time que não existe na tabela teams', async () => {
     const dadosInsert = {
-      homeTeam: 12345,
-      awayTeam: 3,
+      homeTeamId: 12345,
+      awayTeamId: 3,
       homeTeamGoals: twoGoals,
       awayTeamGoals: oneGoal
     }
@@ -148,8 +148,8 @@ describe(getRequirement(26), () => {
 describe(getRequirement(27), () => {
   it('Será validado na API que não é possível inserir uma partida com um token inválido', async () => {
     const dadosInsert = {
-      homeTeam: 1,
-      awayTeam: 3,
+      homeTeamId: 1,
+      awayTeamId: 3,
       homeTeamGoals: twoGoals,
       awayTeamGoals: oneGoal
     }
