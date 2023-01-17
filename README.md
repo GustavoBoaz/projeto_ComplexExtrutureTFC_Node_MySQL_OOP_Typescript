@@ -354,12 +354,10 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
   // @ts-ignore
   import chaiHttp = require('chai-http');
 
-  import App from '../app';
+  import { app } from '../app';
   import Example from '../database/models/ExampleModel';
 
   import { Response } from 'superagent';
-
-  const { app } = new App();
 
   chai.use(chaiHttp);
 
