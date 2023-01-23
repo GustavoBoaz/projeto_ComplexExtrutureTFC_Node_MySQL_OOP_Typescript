@@ -70,6 +70,7 @@ const MatchSettings = () => {
     await api.patch(`/matches/${id}`, { ...updateGoals });
   };
   const finishMatch = async (id) => {
+    console.log('finishMatch ----->', id);
     await api.patch(`/matches/${id}/finish`);
   };
 
