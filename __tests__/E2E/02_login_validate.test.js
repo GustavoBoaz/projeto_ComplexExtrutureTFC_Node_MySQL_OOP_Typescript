@@ -56,9 +56,7 @@ describe(getRequirement(3), () => {
     ).toEqual(true);
 
   });
-});
 
-describe(getRequirement(5), () => {
   it('O avaliador verificará se tentar fazer o login sem e-mail retornará status não-autorizado', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -86,9 +84,7 @@ describe(getRequirement(5), () => {
     expect(alertLogin).toBe('O endereço de e-mail ou a senha não estão corretos. Por favor, tente novamente.');
     expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_LOGIN);
   });
-});
 
-describe(getRequirement(7), () => {
   it('O avaliador verificará se tentar fazer o login sem senha retornará status não-autorizado', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
