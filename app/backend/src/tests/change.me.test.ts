@@ -3,36 +3,43 @@ import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
 
-import App from '../app';
+import { app } from '../app';
+import Example from '../database/models/ExampleModel';
 
-import Server, { PORT } from '../server'
-
+import { Response } from 'superagent';
 
 chai.use(chaiHttp);
 
-const { app } = new App();
+const { expect } = chai;
 
-// const { expect } = chai;
+describe('Seu teste', () => {
+  /**
+   * Exemplo do uso de stubs com tipos
+   */
 
-describe('Testes do APP', () => {
-  beforeEach(() => sinon.restore())
-  describe('Testa rota default do projeto', () => {
-    it('deve retornar um status 200', async () => {
-      const httpResponse = await chai.request(app).get('/');
-      chai.expect(httpResponse.status).to.equal(200)
-    });
+  // let chaiHttpResponse: Response;
 
-    it('deve retonar mensagem "ok"', async () => {
-      const httpResponse = await chai.request(app).get('/');
-      chai.expect(httpResponse.body).to.deep.equal({ ok: true })
-    });
-  });
+  // before(async () => {
+  //   sinon
+  //     .stub(Example, "findOne")
+  //     .resolves({
+  //       ...<Seu mock>
+  //     } as Example);
+  // });
 
+  // after(()=>{
+  //   (Example.findOne as sinon.SinonStub).restore();
+  // })
 
-  describe('Erros não tratados', () => {
-    it('devem ser captados pelo middleware de erro com status 500', async () => {
-      const httpResponse = await chai.request(app).get('/internal-error');
-      chai.expect(httpResponse.status).to.equal(500);
-    });
+  // it('...', async () => {
+  //   chaiHttpResponse = await chai
+  //      .request(app)
+  //      ...
+
+  //   expect(...)
+  // });
+
+  it('Seu sub-teste', () => {
+    expect(false).to.be.eq(true);
   });
 });
