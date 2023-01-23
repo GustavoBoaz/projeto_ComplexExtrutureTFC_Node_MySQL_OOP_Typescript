@@ -9,7 +9,6 @@ const waitForResponse = require('../utils/waitForResponse');
 const { getRequirement } = require('../utils/util');
 const axios = require('axios').default;
 
-
 let database, browser, page;
 
 beforeAll(async () => {
