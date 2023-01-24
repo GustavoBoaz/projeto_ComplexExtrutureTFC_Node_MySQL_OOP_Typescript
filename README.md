@@ -758,7 +758,7 @@ Esse projeto é composto de 4 seções principais:
 
   - **OBS:** Você deverá definir os relacionamentos para ```homeTeam``` e ```awayTeam``` somente na model de partidas.
 
-### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
+### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
@@ -800,10 +800,6 @@ Esse projeto é composto de 4 seções principais:
     }
   ]
   ```
-
-### 21 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
-
-  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
   - Será validado que,ao escolher a opção de partidas finalizadas, serão filtradas todas as partidas finalizadas;
 
