@@ -55,9 +55,7 @@ describe(getRequirement(20), () => {
 
     await validateMatches(page, IN_PROGRESS, onlyInProgress, false);
   });
-});
 
-describe(getRequirement(21), () => {
   it('Será validado que ao escolher a opção de partidas finalizadas será filtrado todas as partidas finalizadas', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
