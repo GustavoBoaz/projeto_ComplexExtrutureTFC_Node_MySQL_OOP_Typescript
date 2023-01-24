@@ -154,18 +154,10 @@
     },
     {
       "bonus": false,
-      "description": "20 - Desenvolva o endpoint /matches de forma que seja possível filtrar as partidas em andamento na tela de partidas do frontend",
+      "description": "20 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend",
       "enabled": true,
       "identifier": null,
       "order": 20,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
-      "description": "21 - Desenvolva o endpoint /matches de forma que seja possível filtrar as partidas finalizadas na tela de partidas do frontend",
-      "enabled": true,
-      "identifier": null,
-      "order": 21,
       "skill_ids": []
     },
     {
