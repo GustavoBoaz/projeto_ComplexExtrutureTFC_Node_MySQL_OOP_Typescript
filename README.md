@@ -681,84 +681,11 @@ Esse projeto é composto de 4 seções principais:
 ]
 ```
 
-### 16 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico
-
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
-
-```json
-{
-  "id": 5,
-  "teamName": "Cruzeiro"
-}
-```
-
-### 17 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src`, com um mínimo de 80 linhas cobertas
-
-  **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
-
 </details>
 
 ## Seção 3: Partidas
 
-<details>
-  <summary><strong> Introdução </strong></summary>
-
-  - Para os requisitos de criação de partidas, será necessário implementar o model e algumas rotas relacionadas a entidade Match.
-
-</details>
-
-<details>
-  <summary><strong> Requisitos </strong></summary>
-
-### 18 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
-
-  - O avaliador consultará os dados da tabela `matches`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
-
-### 19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end.
-
-  - A rota deve ser um `GET` e retorna uma lista de partidas;
-
-  - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro.
-
-    Exemplo de retorno:
-    ```json
-    [
-      {
-        "id": 1,
-        "homeTeamId": 16,
-        "homeTeamGoals": 1,
-        "awayTeamId": 8,
-        "awayTeamGoals": 1,
-        "inProgress": false,
-        "homeTeam": {
-          "teamName": "São Paulo"
-        },
-        "awayTeam": {
-          "teamName": "Grêmio"
-        }
-      },
-      ...
-      {
-        "id": 41,
-        "homeTeamId": 16,
-        "homeTeamGoals": 2,
-        "awayTeamId": 9,
-        "awayTeamGoals": 0,
-        "inProgress": true,
-        "homeTeam": {
-          "teamName": "São Paulo"
-        },
-        "awayTeam": {
-          "teamName": "Internacional"
-        }
-      }
-    ]
-    ```
-
-  - **OBS:** Você deverá definir os relacionamentos para ```homeTeam``` e ```awayTeam``` somente na model de partidas.
-
-### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend
+### 16 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
@@ -839,6 +766,68 @@ Esse projeto é composto de 4 seções principais:
     }
   ]
   ```
+
+### 17 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src`, com um mínimo de 80 linhas cobertas
+
+  **Sugestão:**
+  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
+
+<details>
+  <summary><strong> Introdução </strong></summary>
+
+  - Para os requisitos de criação de partidas, será necessário implementar o model e algumas rotas relacionadas a entidade Match.
+
+</details>
+
+<details>
+  <summary><strong> Requisitos </strong></summary>
+
+### 18 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
+
+  - O avaliador consultará os dados da tabela `matches`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
+
+### 19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end.
+
+  - A rota deve ser um `GET` e retorna uma lista de partidas;
+
+  - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro.
+
+    Exemplo de retorno:
+    ```json
+    [
+      {
+        "id": 1,
+        "homeTeamId": 16,
+        "homeTeamGoals": 1,
+        "awayTeamId": 8,
+        "awayTeamGoals": 1,
+        "inProgress": false,
+        "homeTeam": {
+          "teamName": "São Paulo"
+        },
+        "awayTeam": {
+          "teamName": "Grêmio"
+        }
+      },
+      ...
+      {
+        "id": 41,
+        "homeTeamId": 16,
+        "homeTeamGoals": 2,
+        "awayTeamId": 9,
+        "awayTeamGoals": 0,
+        "inProgress": true,
+        "homeTeam": {
+          "teamName": "São Paulo"
+        },
+        "awayTeam": {
+          "teamName": "Internacional"
+        }
+      }
+    ]
+    ```
+
+  - **OBS:** Você deverá definir os relacionamentos para ```homeTeam``` e ```awayTeam``` somente na model de partidas.
 
 ### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
 
