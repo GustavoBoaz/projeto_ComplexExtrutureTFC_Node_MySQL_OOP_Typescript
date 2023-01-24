@@ -34,26 +34,10 @@
     },
     {
       "bonus": false,
-      "description": "5 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar um email no frontend",
-      "enabled": true,
-      "identifier": null,
-      "order": 5,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
       "description": "6 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 6,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
-      "description": "7 - Desenvolva o endpoint /login no backend de maneira ele não permita o acesso sem informar uma senha no frontend",
-      "enabled": true,
-      "identifier": null,
-      "order": 7,
       "skill_ids": []
     },
     {
