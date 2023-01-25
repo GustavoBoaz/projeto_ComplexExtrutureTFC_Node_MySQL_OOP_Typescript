@@ -882,6 +882,13 @@ Esse projeto é composto de 4 seções principais:
 
   - Será recebido o `id` pelo parâmetro da URL;
 
+  - Será validado que não é possível alterar uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+
   - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
 
   - Deve-se retornar, com um status `200`, a seguinte mensagem:
@@ -905,6 +912,13 @@ Esse projeto é composto de 4 seções principais:
   - O endpoint deve ser do tipo `PATCH`;
 
   - Será recebido o `id` pelo parâmetro da URL;
+
+  - Será validado que não é possível alterar uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
 
   - Será avaliado que é possível alterar o resultado de uma partida.
 
