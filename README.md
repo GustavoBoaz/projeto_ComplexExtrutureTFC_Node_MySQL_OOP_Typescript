@@ -593,6 +593,16 @@ Esse projeto é composto de 4 seções principais:
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
 
+### 5 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end
+
+- O avaliador verificará se fazer o login com um email ou senha incorretos retornará status não-autorizado.
+
+- Se o login tiver o "email" **inválido** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
+
+  ```json
+    { "message": "Incorrect email or password" }
+  ```
+
 ### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
 
   **Sugestão:**
@@ -603,29 +613,10 @@ Esse projeto é composto de 4 seções principais:
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
 
-### 9 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email inválido no front-end
-
-  - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado.
-
-  - Se o login tiver o "email" **inválido**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
-  ```json
-    { "message": "Incorrect email or password" }
-  ```
-
-
 ### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src`, com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
-
-### 11 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com uma senha inválida no front-end
-
-  - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado.
-
-  - Se o login tiver a "senha" **inválida**, o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
-  ```json
-    { "message": "Incorrect email or password" }
-  ```
 
 ### 12 - Desenvolva o endpoint `/login/validate` no back-end de maneira que ele retorne os dados corretamente no front-end
 
