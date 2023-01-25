@@ -678,6 +678,16 @@ Esse projeto é composto de 4 seções principais:
 
 ## Seção 3: Partidas
 
+<details>
+  <summary><strong> Introdução </strong></summary>
+
+  - Para os requisitos de criação de partidas, será necessário implementar o model e algumas rotas relacionadas a entidade Match.
+
+</details>
+
+<details>
+  <summary><strong> Requisitos </strong></summary>
+
 ### 16 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
@@ -764,16 +774,6 @@ Esse projeto é composto de 4 seções principais:
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
-
-<details>
-  <summary><strong> Introdução </strong></summary>
-
-  - Para os requisitos de criação de partidas, será necessário implementar o model e algumas rotas relacionadas a entidade Match.
-
-</details>
-
-<details>
-  <summary><strong> Requisitos </strong></summary>
 
 ### 18 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
 
