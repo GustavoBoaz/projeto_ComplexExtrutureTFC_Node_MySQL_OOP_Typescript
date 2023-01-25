@@ -162,14 +162,6 @@
     },
     {
       "bonus": false,
-      "description": "25 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com times iguais",
-      "enabled": true,
-      "identifier": null,
-      "order": 25,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
       "description": "27 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida sem um token válido",
       "enabled": true,
       "identifier": null,
