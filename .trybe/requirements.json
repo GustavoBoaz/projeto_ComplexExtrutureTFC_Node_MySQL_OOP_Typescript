@@ -137,6 +137,14 @@
       "skill_ids": []
     },
     {
+      "bonus": false,
+      "description": "21 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com times iguais nem com um time que não existe na tabela teams",
+      "enabled": true,
+      "identifier": null,
+      "order": 21,
+      "skill_ids": []
+    },
+    {
       "bonus": true,
       "description": "22 - Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas",
       "enabled": true,
@@ -166,14 +174,6 @@
       "enabled": true,
       "identifier": null,
       "order": 25,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
-      "description": "26 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com time que não existe na tabela teams",
-      "enabled": true,
-      "identifier": null,
-      "order": 26,
       "skill_ids": []
     },
     {
