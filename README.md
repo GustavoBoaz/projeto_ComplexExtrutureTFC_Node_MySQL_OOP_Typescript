@@ -849,9 +849,15 @@ Esse projeto é composto de 4 seções principais:
 
   - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 
-  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
+  - Será validado que não é possível inserir uma partida com um token inválido;
 
-  - A partida só pode ser criada com token JWT validado;
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
 
   - O corpo da requisição terá o seguinte formato:
   ```json
@@ -888,6 +894,7 @@ Esse projeto é composto de 4 seções principais:
 
   ```json
   { "message": "Token must be a valid token" }
+  ```
 
   - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
 
@@ -919,10 +926,12 @@ Esse projeto é composto de 4 seções principais:
 
   ```json
   { "message": "Token must be a valid token" }
+  ```
 
   - Será avaliado que é possível alterar o resultado de uma partida.
 
   - O corpo da requisição terá o seguinte formato:
+
   ```json
   {
     "homeTeamGoals": 3,
