@@ -231,6 +231,14 @@
       "identifier": null,
       "order": 35,
       "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "36 - Desenvolva o endpoint /teams/:id no backend de forma que ele possa retornar dados de um time específico",
+      "enabled": true,
+      "identifier": null,
+      "order": 36,
+      "skill_ids": []
     }
   ]
 }

@@ -2493,3 +2493,13 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
+### 36 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico <!-- Antigo 16 - Está aqui temporariamente -->
+
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
+
+```json
+{
+  "id": 5,
+  "teamName": "Cruzeiro"
+}
+```
