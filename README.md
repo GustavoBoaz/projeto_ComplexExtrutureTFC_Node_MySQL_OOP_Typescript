@@ -505,10 +505,11 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 # Sobre os Requisitos
 
 Esse projeto é composto de 4 seções principais:
-1. Users e Login
-2. Times
-3. Partidas
-4. Placar
+
+1. Users (Usuárias/os) e Login
+2. Teams (Times)
+3. Matches (Partidas)
+4. Leaderboards (Placares)
 
 ## Database
   - Comece rodando o comando `npm run build` na pasta do `back-end` para fazer o _build_ da aplicação;
@@ -516,7 +517,7 @@ Esse projeto é composto de 4 seções principais:
   - Mantenha o arquivo `/app/backend/src/database/migrations/99999999999999-create-z.js`, pois ele é necessário para a avaliação dos requisitos dessa seção;
   - A leitura da seção `Model com Sequelize` no conteúdo de `TypeScript: Tipagem Estática e Generics`, contido [nesse link](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/4e3b7d3a-94a1-4fce-9545-0f2b04f8ccd9/day/55580b57-6754-49bc-83bf-465967e0d2a1/lesson/70a59622-f05f-44cc-b3ce-6e5c28435f25), é recomendável!
 
-## Seção 1: Users e Login
+## Seção 1: Users (Usuárias/os) e Login
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -638,7 +639,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 2: Times
+## Seção 2: Teams (Times)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -699,7 +700,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 3: Partidas
+## Seção 3: Matches (Partidas)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -943,7 +944,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 4: Leaderboards (placares)
+## Seção 4: Leaderboards (Placares)
 
 <details>
   <summary><strong> Introdução </strong></summary>
