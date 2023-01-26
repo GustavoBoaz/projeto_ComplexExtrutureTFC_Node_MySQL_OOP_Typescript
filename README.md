@@ -674,25 +674,96 @@ Esse projeto é composto de 4 seções principais:
 ]
 ```
 
-### 16 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico
+</details>
 
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
+## Seção 3: Partidas
 
-```json
-{
-  "id": 5,
-  "teamName": "Cruzeiro"
-}
-```
+### 16 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend
+
+  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
+
+  - Será validado que, ao escolher a opção de partidas em andamento, serão filtradas todas as partidas em andamento;
+
+  - Essa requisição deverá usar `query string` para definir o parâmetro:
+    ex: `matches?inProgress=true`
+
+  Exemplo de retorno da requisição:
+  ```json
+  [
+    {
+      "id": 41,
+      "homeTeamId": 16,
+      "homeTeamGoals": 2,
+      "awayTeamId": 9,
+      "awayTeamGoals": 0,
+      "inProgress": true,
+      "homeTeam": {
+        "teamName": "São Paulo"
+      },
+      "awayTeam": {
+        "teamName": "Internacional"
+      }
+    },
+    {
+      "id": 42,
+      "homeTeamId": 6,
+      "homeTeamGoals": 1,
+      "awayTeamId": 1,
+      "awayTeamGoals": 0,
+      "inProgress": true,
+      "homeTeam": {
+        "teamName": "Ferroviária"
+      },
+      "awayTeam": {
+        "teamName": "Avaí/Kindermann"
+      }
+    }
+  ]
+  ```
+
+  - Será validado que,ao escolher a opção de partidas finalizadas, serão filtradas todas as partidas finalizadas;
+
+  - Essa requisição deverá usar `query string` para definir o parâmetro.
+    ex: `matches?inProgress=false`
+
+  Exemplo de retorno da requisição:
+  ```json
+  [
+    {
+      "id": 1,
+      "homeTeamId": 16,
+      "homeTeamGoals": 1,
+      "awayTeamId": 8,
+      "awayTeamGoals": 1,
+      "inProgress": false,
+      "homeTeam": {
+        "teamName": "São Paulo"
+      },
+      "awayTeam": {
+        "teamName": "Grêmio"
+      }
+    },
+    {
+      "id": 2,
+      "homeTeamId": 9,
+      "homeTeamGoals": 1,
+      "awayTeamId": 14,
+      "awayTeamGoals": 1,
+      "inProgress": false,
+      "homeTeam": {
+        "teamName": "Internacional"
+      },
+      "awayTeam": {
+        "teamName": "Santos"
+      }
+    }
+  ]
+  ```
 
 ### 17 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src`, com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
-
-</details>
-
-## Seção 3: Partidas
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -750,92 +821,6 @@ Esse projeto é composto de 4 seções principais:
     ```
 
   - **OBS:** Você deverá definir os relacionamentos para ```homeTeam``` e ```awayTeam``` somente na model de partidas.
-
-### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
-
-  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
-
-  - Será validado que, ao escolher a opção de partidas em andamento, serão filtradas todas as partidas em andamento;
-
-  - Essa requisição deverá usar `query string` para definir o parâmetro:
-    ex: `matches?inProgress=true`
-
-  Exemplo de retorno da requisição:
-  ```json
-  [
-    {
-      "id": 41,
-      "homeTeamId": 16,
-      "homeTeamGoals": 2,
-      "awayTeamId": 9,
-      "awayTeamGoals": 0,
-      "inProgress": true,
-      "homeTeam": {
-        "teamName": "São Paulo"
-      },
-      "awayTeam": {
-        "teamName": "Internacional"
-      }
-    },
-    {
-      "id": 42,
-      "homeTeamId": 6,
-      "homeTeamGoals": 1,
-      "awayTeamId": 1,
-      "awayTeamGoals": 0,
-      "inProgress": true,
-      "homeTeam": {
-        "teamName": "Ferroviária"
-      },
-      "awayTeam": {
-        "teamName": "Avaí/Kindermann"
-      }
-    }
-  ]
-  ```
-
-### 21 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
-
-  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
-
-  - Será validado que,ao escolher a opção de partidas finalizadas, serão filtradas todas as partidas finalizadas;
-
-  - Essa requisição deverá usar `query string` para definir o parâmetro.
-    ex: `matches?inProgress=false`
-
-  Exemplo de retorno da requisição:
-  ```json
-  [
-    {
-      "id": 1,
-      "homeTeamId": 16,
-      "homeTeamGoals": 1,
-      "awayTeamId": 8,
-      "awayTeamGoals": 1,
-      "inProgress": false,
-      "homeTeam": {
-        "teamName": "São Paulo"
-      },
-      "awayTeam": {
-        "teamName": "Grêmio"
-      }
-    },
-    {
-      "id": 2,
-      "homeTeamId": 9,
-      "homeTeamGoals": 1,
-      "awayTeamId": 14,
-      "awayTeamGoals": 1,
-      "inProgress": false,
-      "homeTeam": {
-        "teamName": "Internacional"
-      },
-      "awayTeam": {
-        "teamName": "Santos"
-      }
-    }
-  ]
-  ```
 
 ### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
 
