@@ -317,7 +317,7 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 <details id='Criptografia-de-senhas'>
 <summary><strong>🔐 Criptografia de senhas </strong></summary><br />
 
-⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs) e que já vem instalada no projeto e não deve ser alterada ou substituída. Recomendamos que explore os recursos da biblioteca na documentação para implementar no projeto ao cadastrar um usuário e ao realizar login ⚠️
+⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://github.com/dcodeIO/bcrypt.js) e que já vem instalada no projeto e não deve ser alterada ou substituída. Recomendamos que explore os recursos da biblioteca na documentação para implementar no projeto ao cadastrar um usuário e ao realizar login ⚠️
 
 </details>
 
