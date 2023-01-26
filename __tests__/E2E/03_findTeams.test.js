@@ -105,3 +105,24 @@ describe(getRequirement(15), () => {
     expect(result.data).toMatchObject(expectedResult);
   });
 });
+
+describe(getRequirement(36), () => {
+  it('O avaliador verificará se tentar fazer a requisição correta na sua API, os dados corretos são retornados', async () => {
+    const expectedResult = {
+      "id": 5,
+      "teamName": "Cruzeiro"
+    };
+
+    const result = await axios
+      .get(
+        `${URL(containerPorts.backend).BASE_URL}/teams/5`,
+      )
+      .then(({ status, data }) => ({ status, data }))
+      .catch(({ response: { status, data } }) => ({ status, data }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("data");
+    expect(result.status).toBe(200);
+    expect(result.data).toMatchObject(expectedResult);
+  });
+});
