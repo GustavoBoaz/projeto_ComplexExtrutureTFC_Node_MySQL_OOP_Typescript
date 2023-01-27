@@ -524,7 +524,7 @@ Esse projeto é composto de 4 seções principais:
 - A rota utilizada deve ser (`/login`);
 
 - A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados:
-  - O campo `email` deve receber um email válido;
+  - O campo `email` deve receber um email válido. Ex: `tfc@projeto.com`;
   - O Campo `password` deve ter mais de 6 caracteres.
 
 - O body da requisição deve conter o seguinte formato:
