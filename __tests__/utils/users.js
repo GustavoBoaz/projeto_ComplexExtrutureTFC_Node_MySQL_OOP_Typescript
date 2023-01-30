@@ -53,12 +53,21 @@ module.exports = {
         password: 'secret_user',
       },
     ],
-    invalidPasswordUser: {
-      id: 2,
-      username: 'User',
-      role: 'user',
-      email: 'user@user.com',
-      password: 'secre',
-    },
+    invalidPasswordUsers: [
+      {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: 'user@user.com',
+        password: 'secre',
+      },
+      {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: 'user@user.com',
+        password: '      ',
+      },
+    ]
   },
 };
