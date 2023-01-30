@@ -692,7 +692,7 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 16 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend
+### 16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do frontend
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
