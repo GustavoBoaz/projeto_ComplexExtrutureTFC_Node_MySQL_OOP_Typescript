@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { URL } = require('../utils/urls');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
 const { pageLogin } = require('../utils/dataTestIds');
-const { admin: { validAdmin, invalidAdmin }, user: { invalidEmailUsers, invalidPasswordUser } } = require('../utils/users');
+const { admin: { validAdmin, invalidAdmin }, user: { invalidEmailUsers, invalidPasswordUsers } } = require('../utils/users');
 const { termSequelize, initSequelize } = require('../config/sequelize');
 const { puppeteerDefs, containerPorts, jwtSecret } = require('../config/constants');
 const waitForResponse = require('../utils/waitForResponse');
@@ -207,7 +207,7 @@ describe(getRequirement(5), () => {
     expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_LOGIN);
   });
 
-  it('O avaliador verificará se tentar fazer o login com uma senha inválida retornará status não-autorizado', async () => {
+  it.each(invalidPasswordUsers)('O avaliador verificará se tentar fazer o login com uma senha inválida retornará status não-autorizado', async (invalidPasswordUser) => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     expect(await page.$(pageLogin.alertLogin)).toBeNull();
