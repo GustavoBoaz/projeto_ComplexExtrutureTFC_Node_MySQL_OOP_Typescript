@@ -110,6 +110,35 @@ describe(getRequirement(23), () => {
   });
 });
 
+describe(getRequirement(27), () => {
+  it('Será validado na API que não é possível inserir uma partida com um token inválido', async () => {
+    const dadosInsert = {
+      homeTeamId: 1,
+      awayTeamId: 3,
+      homeTeamGoals: twoGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const result = await axios
+      .post(
+        `${URL(containerPorts.backend).BASE_URL}/matches`,
+        dadosInsert,
+        {
+          headers: {
+            authorization: 'token'
+          }
+        }
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token must be a valid token");
+  });
+});
+
 describe(getRequirement(24), () => {
   it('Será validado que ao finalizar uma partida é alterado no banco de dados e na página', async () => {
 
@@ -140,34 +169,5 @@ describe(getRequirement(24), () => {
     expect(homeTeam).toBe(teams[3].teamName);
     expect(awayTeam).toBe(teams[8].teamName);
     expect(matchStatus).toBe('Finalizado');
-  });
-});
-
-describe(getRequirement(27), () => {
-  it('Será validado na API que não é possível inserir uma partida com um token inválido', async () => {
-    const dadosInsert = {
-      homeTeamId: 1,
-      awayTeamId: 3,
-      homeTeamGoals: twoGoals,
-      awayTeamGoals: oneGoal
-    }
-
-    const result = await axios
-      .post(
-        `${URL(containerPorts.backend).BASE_URL}/matches`,
-        dadosInsert,
-        {
-          headers: {
-            authorization: 'token'
-          }
-        }
-      )
-      .then(({ status, data: { message } }) => ({ status, message }))
-      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
-
-    expect(result).toHaveProperty("status");
-    expect(result).toHaveProperty("message");
-    expect(result.status).toBe(401);
-    expect(result.message).toBe("Token must be a valid token");
   });
 });
