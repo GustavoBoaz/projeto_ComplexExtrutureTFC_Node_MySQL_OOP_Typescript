@@ -595,7 +595,7 @@ Esse projeto é composto de 4 seções principais:
 
 ### 5 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end
 
-- O avaliador verificará se fazer o login com um email ou senha incorretos retornará status não-autorizado.
+- O avaliador verificará se, ao fazer o login com um email ou senha incorretos, retornará status não-autorizado.
 
 - Se o login tiver o "email" **inválido** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
 
