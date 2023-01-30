@@ -603,6 +603,10 @@ Esse projeto é composto de 4 seções principais:
     { "message": "Incorrect email or password" }
   ```
 
+- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`;
+
+- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`;
+
 ### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
 
   **Sugestão:**
