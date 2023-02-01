@@ -849,6 +849,14 @@ Esse projeto é composto de 4 seções principais:
 
   - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 
+  - Será validado que não é possível inserir uma partida sem um token;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
   - Será validado que não é possível inserir uma partida com um token inválido;
 
   - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
@@ -888,6 +896,14 @@ Esse projeto é composto de 4 seções principais:
 
   - Será recebido o `id` pelo parâmetro da URL;
 
+  - Será validado que não é possível alterar uma partida sem um token;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
   - Será validado que não é possível alterar uma partida com um token inválido;
 
   - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
@@ -919,6 +935,14 @@ Esse projeto é composto de 4 seções principais:
   - O endpoint deve ser do tipo `PATCH`;
 
   - Será recebido o `id` pelo parâmetro da URL;
+
+  - Será validado que não é possível alterar uma partida sem um token;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
 
   - Será validado que não é possível alterar uma partida com um token inválido;
 
