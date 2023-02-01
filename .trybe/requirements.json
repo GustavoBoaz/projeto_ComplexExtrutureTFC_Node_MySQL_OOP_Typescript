@@ -90,7 +90,7 @@
     },
     {
       "bonus": false,
-      "description": "12 - Desenvolva o endpoint /login/validate no backend de maneira ele retorne os dados corretamente no frontend",
+      "description": "12 - Desenvolva um middleware de validação para o token, verificando se ele é válido, e desenvolva o endpoint `/login/role` no back-end de maneira que ele retorne os dados corretamente no front-end",
       "enabled": true,
       "identifier": null,
       "order": 12,
@@ -158,14 +158,6 @@
       "enabled": true,
       "identifier": null,
       "order": 23,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
-      "description": "27 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida sem um token válido",
-      "enabled": true,
-      "identifier": null,
-      "order": 27,
       "skill_ids": []
     },
     {
