@@ -36,7 +36,7 @@ afterEach(async () => {
 
 
 describe(getRequirement(28), () => {
-  it('Será validado na API que não é possível alterar o resultado de uma partida sem um token válido', async () => {
+  it('Será validado na API que não é possível alterar o resultado de uma partida sem um token', async () => {
     const dadosInsert = {
       homeTeam: teams[1].teamName,
       awayTeam: teams[3].teamName,
@@ -55,6 +55,40 @@ describe(getRequirement(28), () => {
       .patch(
         `${URL(containerPorts.backend).BASE_URL}/matches/2`,
         dadosInsert,
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token not found");
+  });
+
+  it('Será validado na API que não é possível alterar o resultado de uma partida com um token inválido', async () => {
+    const dadosInsert = {
+      homeTeam: teams[1].teamName,
+      awayTeam: teams[3].teamName,
+      homeTeamGoals: threeGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .patch(
+        `${URL(containerPorts.backend).BASE_URL}/matches/2`,
+        dadosInsert,
+        {
+          headers: {
+            authorization: 'token'
+          }
+        }
       )
       .then(({ status, data: { message } }) => ({ status, message }))
       .catch(({ response: { status, data: { message } } }) => ({ status, message }));
