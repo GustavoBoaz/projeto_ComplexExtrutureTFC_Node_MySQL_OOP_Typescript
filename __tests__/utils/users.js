@@ -31,4 +31,19 @@ module.exports = {
       password: 'senha_invalida',
     },
   },
+  usersToLogin: [
+    {
+      id: 1,
+      username: 'Admin',
+      role: 'admin',
+      email: 'admin@admin.com',
+      password: 'secret_admin',
+    }, {
+      id: 2,
+      username: 'User',
+      role: 'user',
+      email: 'user@user.com',
+      password: 'secret_user',
+    },
+  ]
 };
