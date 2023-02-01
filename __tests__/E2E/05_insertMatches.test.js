@@ -143,7 +143,6 @@ describe(getRequirement(23), () => {
     expect(result).toHaveProperty("message");
     expect(result.status).toBe(401);
     expect(result.message).toBe("Token must be a valid token");
-
   });
 
   it('Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos', async () => {
@@ -174,34 +173,7 @@ describe(getRequirement(23), () => {
   });
 });
 
-describe(getRequirement(27), () => {
-  it('Será validado na API que não é possível inserir uma partida com um token inválido', async () => {
-    const dadosInsert = {
-      homeTeamId: 1,
-      awayTeamId: 3,
-      homeTeamGoals: twoGoals,
-      awayTeamGoals: oneGoal
-    }
-
-    const result = await axios
-      .post(
-        `${URL(containerPorts.backend).BASE_URL}/matches`,
-        dadosInsert,
-        {
-          headers: {
-            authorization: 'token'
-          }
-        }
-      )
-      .then(({ status, data: { message } }) => ({ status, message }))
-      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
-
-    expect(result).toHaveProperty("status");
-    expect(result).toHaveProperty("message");
-    expect(result.status).toBe(401);
-    expect(result.message).toBe("Token must be a valid token");
-  });
-});
+// describe(getRequirement(27), () => {});
 
 describe(getRequirement(24), () => {
   it('Será validado na API que não é possível alterar uma partida sem um token', async () => {
