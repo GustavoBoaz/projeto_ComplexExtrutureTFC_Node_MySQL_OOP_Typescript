@@ -837,7 +837,7 @@ Esse projeto é composto de 4 seções principais:
 
   - Será validado que não é possível inserir uma partida em que o `homeTeam` e o `awayTeam` sejam iguais, por exemplo: Barcelona x Barcelona;
 
-  - Caso isso ocorra, deve-se retornar, com um status `422`, a seguinte mensagem::
+  - Caso isso ocorra, deve-se retornar, com um status `422`, a seguinte mensagem:
 
   ```json
   { "message": "It is not possible to create a match with two equal teams" }
@@ -860,9 +860,23 @@ Esse projeto é composto de 4 seções principais:
 
   - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 
-  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
+  - Será validado que não é possível inserir uma partida sem um token;
 
-  - A partida só pode ser criada com token JWT validado;
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível inserir uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
 
   - O corpo da requisição terá o seguinte formato:
   ```json
@@ -903,6 +917,22 @@ Esse projeto é composto de 4 seções principais:
 
   - Será recebido o `id` pelo parâmetro da URL;
 
+  - Será validado que não é possível alterar uma partida sem um token;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível alterar uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
   - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
 
   - Deve-se retornar, com um status `200`, a seguinte mensagem:
@@ -917,9 +947,26 @@ Esse projeto é composto de 4 seções principais:
 
   - Será recebido o `id` pelo parâmetro da URL;
 
+  - Será validado que não é possível alterar uma partida sem um token;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível alterar uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
   - Será avaliado que é possível alterar o resultado de uma partida.
 
   - O corpo da requisição terá o seguinte formato:
+
   ```json
   {
     "homeTeamGoals": 3,
