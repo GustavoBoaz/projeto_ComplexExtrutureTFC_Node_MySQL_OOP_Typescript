@@ -59,7 +59,7 @@ module.exports = {
         username: 'User',
         role: 'user',
         email: 'user@user.com',
-        password: 'secre',
+        password: 'secret_users',
       },
        {
         id: 2,
