@@ -845,7 +845,8 @@ Esse projeto é composto de 4 seções principais:
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
 
-### 23 - Desenvolva o endpoint `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+
+<!-- ### 23 - Desenvolva o endpoint `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
 
   - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 
@@ -874,19 +875,9 @@ Esse projeto é composto de 4 seções principais:
     "awayTeamGoals": 2,
     "inProgress": true,
   }
-  ```
+  ``` -->
 
-### 27 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida sem um token válido
-
-- Será validado que não é possível inserir uma partida com um token inválido;
-
-- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
+<!-- ### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
 
   - A rota deve ser do tipo `PATCH`;
 
@@ -898,7 +889,7 @@ Esse projeto é composto de 4 seções principais:
 
   ```json
   { "message": "Finished" }
-  ```
+  ``` -->
 
 ### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
 
@@ -1040,7 +1031,183 @@ Esse projeto é composto de 4 seções principais:
 
 ## Leaderboard Home
 
-### 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times `da casa` na tela de classificação do front-end com os dados iniciais do banco de dados
+ ### 23 - Desenvolva o endpoint `/leaderboard/home` de forma que retorne as informações do desempenho dos times da casa com as seguintes propriedades: "name", "totalPoints", "totalGames", "totalVictories", "totalDraws", "totalLosses", "goalsFavor" e "goalsOwn"
+
+ - O endpoint deverá ser do tipo `GET`;
+
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+   <details>
+<summary><strong> Retorno esperado: </strong></summary> <br/>
+
+```json
+[
+  {
+    "name": "Santos",
+    "totalPoints": 9,
+    "totalGames": 3,
+    "totalVictories": 3,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 9,
+    "goalsOwn": 3,
+  },
+  {
+    "name": "Palmeiras",
+    "totalPoints": 7,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 10,
+    "goalsOwn": 5,
+  },
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 6,
+    "goalsOwn": 1,
+  },
+  {
+    "name": "Grêmio",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 4,
+    "goalsOwn": 1,
+  },
+  {
+    "name": "Real Brasília",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 2,
+    "goalsOwn": 0,
+  },
+  {
+    "name": "São Paulo",
+    "totalPoints": 4,
+    "totalGames": 2,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 4,
+    "goalsOwn": 1,
+  },
+  {
+    "name": "Internacional",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 4,
+    "goalsOwn": 6,
+  },
+  {
+    "name": "Botafogo",
+    "totalPoints": 4,
+    "totalGames": 3,
+    "totalVictories": 1,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 2,
+    "goalsOwn": 4,
+  },
+  {
+    "name": "Ferroviária",
+    "totalPoints": 3,
+    "totalGames": 2,
+    "totalVictories": 1,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 3,
+    "goalsOwn": 2,
+  },
+  {
+    "name": "Napoli-SC",
+    "totalPoints": 2,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 2,
+    "totalLosses": 0,
+    "goalsFavor": 2,
+    "goalsOwn": 2,
+  },
+  {
+    "name": "Cruzeiro",
+    "totalPoints": 1,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 2,
+    "goalsOwn": 3,
+  },
+  {
+    "name": "Flamengo",
+    "totalPoints": 1,
+    "totalGames": 2,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 1,
+    "goalsFavor": 1,
+    "goalsOwn": 2,
+  },
+  {
+    "name": "Minas Brasília",
+    "totalPoints": 1,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 2,
+    "goalsFavor": 3,
+    "goalsOwn": 6,
+  },
+  {
+    "name": "Avaí/Kindermann",
+    "totalPoints": 1,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 1,
+    "totalLosses": 2,
+    "goalsFavor": 3,
+    "goalsOwn": 7,
+  },
+  {
+    "name": "São José-SP",
+    "totalPoints": 0,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 3,
+    "goalsFavor": 2,
+    "goalsOwn": 5,
+  },
+  {
+    "name": "Bahia",
+    "totalPoints": 0,
+    "totalGames": 3,
+    "totalVictories": 0,
+    "totalDraws": 0,
+    "totalLosses": 3,
+    "goalsFavor": 0,
+    "goalsOwn": 4,
+  }
+]
+```
+
+### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times `da casa` na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades "goalsBalance" e "efficiency"
 
   - O endpoint deverá ser do tipo `GET`;
 
