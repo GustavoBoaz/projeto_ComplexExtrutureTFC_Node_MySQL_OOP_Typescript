@@ -61,6 +61,13 @@ module.exports = {
         email: 'user@user.com',
         password: 'secre',
       },
+       {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: 'user@user.com',
+        password: '12345',
+      },
       {
         id: 2,
         username: 'User',
