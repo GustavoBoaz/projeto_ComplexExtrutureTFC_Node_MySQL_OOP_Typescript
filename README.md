@@ -525,7 +525,8 @@ Esse projeto é composto de 4 seções principais:
 
 - A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados:
   - O campo `email` deve receber um email válido. Ex: `tfc@projeto.com`;
-  - O Campo `password` deve ter mais de 6 caracteres.
+  - O campo `password` deve ter mais de 6 caracteres.
+  - Além de válidos, é necessário que o email e a senha estejam cadastrados no banco para ser feito o login;
 
 - O body da requisição deve conter o seguinte formato:
   ```json
@@ -603,9 +604,9 @@ Esse projeto é composto de 4 seções principais:
     { "message": "Incorrect email or password" }
   ```
 
-- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`;
+- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`, emails não cadastrados no banco;
 
-- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`;
+- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`, senhas não cadastradas no banco;
 
 ### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
 
