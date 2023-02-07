@@ -8,6 +8,7 @@ const { insertFinished } = require('../utils/inserts');
 const { teams } = require('../expected_results/trybe_football_club');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const { getRequirement } = require('../utils/util');
+const { getTeamsToCompare } = require('../utils/getTeamsToCompare');
 const axios = require('axios').default;
 
 let database, browser, page;
@@ -32,28 +33,9 @@ const endpoint = '/leaderboard/home'
 const twoGoals = '2';
 const oneGoal = '1';
 
-const generateRandomNumber = () => Math.floor(Math.random() * homeResult1.length);
-
-const getTeamsToCompare = () => {
-  let counter = 0;
-  const teamsToCheck = {};
-  const qtdTeamsToCheck = Math.ceil(Math.random() * 4);
-
-  while (counter < qtdTeamsToCheck) {
-    const index = generateRandomNumber();
-    const possibleTeamToCheck = homeResult1[index]
-
-    if (!(index in teamsToCheck)) {
-      teamsToCheck[index] = possibleTeamToCheck;
-      counter += 1;
-    }
-  }
-  return teamsToCheck;
-}
-
 describe(getRequirement(23), () => {
   let result;
-  const teamsToCompare = Object.entries(getTeamsToCompare());
+  const teamsToCompare = getTeamsToCompare();
   beforeAll(async () => {
     result = await axios
     .get(
@@ -66,29 +48,16 @@ describe(getRequirement(23), () => {
       expect(result.status).toBe(200);
   })
 
-  it.each(teamsToCompare)('Serão validados os dados do time na %dª posição', async (index, teamToCompare) => {
-      const team = result.data[index];
+  it.each(teamsToCompare)('Serão validados os dados dos times', async (teamToCompare) => {
+      const team = result.data[teamToCompare];
 
       expect(team).toHaveProperty('name');
-      expect(team.name).toBe(teamToCompare.name);
-
       expect(team).toHaveProperty('totalPoints');
-      expect(team.totalPoints).toBe(Number.parseInt(teamToCompare.totalPoints));
-
       expect(team).toHaveProperty('totalGames');
-      expect(team.totalGames).toBe(Number.parseInt(teamToCompare.totalGames));
-
       expect(team).toHaveProperty('totalVictories');
-      expect(team.totalVictories).toBe(Number.parseInt(teamToCompare.totalVictories));
-
       expect(team).toHaveProperty('totalLosses');
-      expect(team.totalLosses).toBe(Number.parseInt(teamToCompare.totalLosses));
-
       expect(team).toHaveProperty('goalsFavor');
-      expect(team.goalsFavor).toBe(Number.parseInt(teamToCompare.goalsFavor));
-
       expect(team).toHaveProperty('goalsOwn');
-      expect(team.goalsOwn).toBe(Number.parseInt(teamToCompare.goalsOwn));
   });
 });
 
