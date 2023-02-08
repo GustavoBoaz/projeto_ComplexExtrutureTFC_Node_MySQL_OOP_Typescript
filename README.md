@@ -1547,7 +1547,54 @@ Esse projeto é composto de 4 seções principais:
 
 ## Leaderboard away
 
-### 31 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end, com os dados iniciais do banco de dados
+### 26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times da casa com as seguintes propriedades: "name", "totalPoints", "totalGames", "totalVictories", "totalDraws", "totalLosses", "goalsFavor" e "goalsOwn"
+
+ - O endpoint deverá ser do tipo `GET`;
+
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+   <details>
+<summary><strong> Exemplo de retorno: </strong></summary> <br/>
+
+```json
+[
+  {
+    "name": "Palmeiras",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 7,
+    "goalsOwn": 0,
+  },
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 6,
+    "goalsOwn": 2,
+  },
+  {
+    "name": "Internacional",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 3,
+    "goalsOwn": 0,
+  },
+  ...
+]
+```
+
+### 27 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados, incluindo as propriedades "goalsBalance" e "efficiency", além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
@@ -2583,14 +2630,3 @@ Esse projeto é composto de 4 seções principais:
 </details>
 
 </details>
-
-### 36 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico <!-- Antigo 16 - Está aqui temporariamente -->
-
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
-
-```json
-{
-  "id": 5,
-  "teamName": "Cruzeiro"
-}
-```
