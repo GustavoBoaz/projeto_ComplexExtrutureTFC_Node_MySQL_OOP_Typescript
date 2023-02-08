@@ -525,8 +525,9 @@ Esse projeto é composto de 4 seções principais:
 - A rota utilizada deve ser (`/login`);
 
 - A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados:
-  - O campo `email` deve receber um email válido;
-  - O Campo `password` deve ter mais de 6 caracteres.
+  - O campo `email` deve receber um email válido. Ex: `tfc@projeto.com`;
+  - O campo `password` deve ter mais de 6 caracteres.
+  - Além de válidos, é necessário que o email e a senha estejam cadastrados no banco para ser feito o login;
 
 - O body da requisição deve conter o seguinte formato:
   ```json
@@ -596,13 +597,17 @@ Esse projeto é composto de 4 seções principais:
 
 ### 5 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end
 
-- O avaliador verificará se fazer o login com um email ou senha incorretos retornará status não-autorizado.
+- O avaliador verificará se, ao fazer o login com um email ou senha incorretos, retornará status não-autorizado.
 
 - Se o login tiver o "email" **inválido** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
 
   ```json
     { "message": "Incorrect email or password" }
   ```
+
+- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`, emails não cadastrados no banco;
+
+- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`, senhas não cadastradas no banco;
 
 ### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
 
@@ -689,7 +694,7 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 16 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend
+### 16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do frontend
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
