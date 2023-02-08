@@ -154,7 +154,7 @@
     },
     {
       "bonus": false,
-      "description": "24 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados, incluindo as propriedades \"goalsBalance\" e \"efficiency\"",
+      "description": "24 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados, incluindo as propriedades \"goalsBalance\" e \"efficiency\", além das propriedades do requisito anterior",
       "enabled": true,
       "identifier": null,
       "order": 24,
