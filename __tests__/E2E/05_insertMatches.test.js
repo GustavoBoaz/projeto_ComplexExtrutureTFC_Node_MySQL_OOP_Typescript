@@ -250,56 +250,7 @@ describe(getRequirement(18), () => {
   });
 });
 
-describe(getRequirement(21), () => {
-  it('Será validado que não é possível inserir uma partida com times iguais', async () => {
-    const dadosInsert = {
-      homeTeam: teams[3].teamName,
-      awayTeam: teams[3].teamName,
-      homeGoals: twoGoals,
-      awayGoals: oneGoal
-    }
-    const { message } = await insertInProgress(page, dadosInsert, StatusCodes.UNPROCESSABLE_ENTITY);
-    const messageExpect = 'It is not possible to create a match with two equal teams';
-
-    expect(messageExpect).toBe(message);
-  });
-
-  it('Será validado na API que não é possível inserir uma partida com time que não existe na tabela teams', async () => {
-    const dadosInsert = {
-      homeTeamId: 12345,
-      awayTeamId: 3,
-      homeTeamGoals: twoGoals,
-      awayTeamGoals: oneGoal
-    }
-
-    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
-      "email": "admin@admin.com",
-      "password": "secret_admin"
-    });
-
-    expect(token).not.toBeNull();
-
-    const result = await axios
-      .post(
-        `${URL(containerPorts.backend).BASE_URL}/matches`,
-        dadosInsert,
-        {
-          headers: {
-            authorization: token
-          }
-        }
-      )
-      .then(({ status, data: { message } }) => ({ status, message }))
-      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
-
-    expect(result).toHaveProperty("status");
-    expect(result).toHaveProperty("message");
-    expect(result.status).toBe(404);
-    expect(result.message).toBe("There is no team with such id!");
-  });
-});
-
-describe(getRequirement(23), () => {
+describe(getRequirement(20), () => {
   it('Será validado na API que não é possível inserir uma partida sem um token', async () => {
     const dadosInsert = {
       homeTeam: teams[1].teamName,
@@ -388,6 +339,55 @@ describe(getRequirement(23), () => {
 
     expect(homeTeam).toBe(teams[3].teamName);
     expect(awayTeam).toBe(teams[8].teamName);
+  });
+});
+
+describe(getRequirement(21), () => {
+  it('Será validado que não é possível inserir uma partida com times iguais', async () => {
+    const dadosInsert = {
+      homeTeam: teams[3].teamName,
+      awayTeam: teams[3].teamName,
+      homeGoals: twoGoals,
+      awayGoals: oneGoal
+    }
+    const { message } = await insertInProgress(page, dadosInsert, StatusCodes.UNPROCESSABLE_ENTITY);
+    const messageExpect = 'It is not possible to create a match with two equal teams';
+
+    expect(messageExpect).toBe(message);
+  });
+
+  it('Será validado na API que não é possível inserir uma partida com time que não existe na tabela teams', async () => {
+    const dadosInsert = {
+      homeTeamId: 12345,
+      awayTeamId: 3,
+      homeTeamGoals: twoGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .post(
+        `${URL(containerPorts.backend).BASE_URL}/matches`,
+        dadosInsert,
+        {
+          headers: {
+            authorization: token
+          }
+        }
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(404);
+    expect(result.message).toBe("There is no team with such id!");
   });
 });
 
