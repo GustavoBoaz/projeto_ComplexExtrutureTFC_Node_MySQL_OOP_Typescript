@@ -98,7 +98,7 @@
     },
     {
       "bonus": false,
-      "description": "16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend",
+      "description": "16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do frontend",
       "enabled": true,
       "identifier": null,
       "order": 16,

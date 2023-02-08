@@ -30,5 +30,51 @@ module.exports = {
       email: 'user@xablau.com',
       password: 'senha_invalida',
     },
+    invalidEmailUsers: [
+      {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: '@user.com',
+        password: 'secret_user',
+      },
+      {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: 'user@.com',
+        password: 'secret_user',
+      },
+      {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: 'user@user',
+        password: 'secret_user',
+      },
+    ],
+    invalidPasswordUsers: [
+      {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: 'user@user.com',
+        password: 'secret_users',
+      },
+       {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: 'user@user.com',
+        password: '12345',
+      },
+      {
+        id: 2,
+        username: 'User',
+        role: 'user',
+        email: 'user@user.com',
+        password: '      ',
+      },
+    ]
   },
 };
