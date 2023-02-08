@@ -1078,7 +1078,7 @@ Esse projeto é composto de 4 seções principais:
 ]
 ```
 
-### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times `da casa` na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades "goalsBalance" e "efficiency"
+### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times `da casa` na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades "goalsBalance" e "efficiency", além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
