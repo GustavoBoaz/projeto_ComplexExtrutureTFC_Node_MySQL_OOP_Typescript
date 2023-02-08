@@ -542,9 +542,9 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
+### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `teams`
 
-  - O avaliador consultará os dados da tabela `users`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades;
+  - O avaliador consultará os dados da tabela `teams`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
 ### 2 - (`TDD`) Desenvolva testes que cubram no mínimo 5% dos arquivos back-end em `/src`, com um mínimo de 7 linhas cobertas
 
@@ -554,7 +554,54 @@ Esse projeto é composto de 4 seções principais:
   - Para tanto, utilize/altere o arquivo de referência `app/backend/src/tests/change.me.test.ts`;
   - Veja a seção de [Testes de cobertura](#testes-de-cobertura) para mais detalhes.
 
-### 3 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
+### 3 - Desenvolva o endpoint `/teams` no back-end de forma que ele possa retornar todos os times corretamente
+
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
+
+```json
+[
+  {
+    "id": 1,
+    "teamName": "Avaí/Kindermann"
+  },
+  {
+    "id": 2,
+    "teamName": "Bahia"
+  },
+  {
+    "id": 3,
+    "teamName": "Botafogo"
+  },
+  ...
+]
+```
+
+### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 10% dos arquivos back-end em `/src`, com um mínimo de 19 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
+
+### 5 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico <!-- Antigo 16 - Está aqui temporariamente -->
+
+  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
+
+```json
+{
+  "id": 5,
+  "teamName": "Cruzeiro"
+}
+```
+
+### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
+
+### 7 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
+
+  - O avaliador consultará os dados da tabela `users`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades;
+
+### 8 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
 
   - A rota de ser do tipo `POST`;
 
@@ -590,12 +637,12 @@ Esse projeto é composto de 4 seções principais:
     { "message": "All fields must be filled" }
     ```
 
-### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 10% dos arquivos back-end em `/src`, com um mínimo de 19 linhas cobertas
+### 9 - (`TDD`) Desenvolva testes que cubram no mínimo 20% dos arquivos back-end em `/src`, com um mínimo de 35 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
 
-### 5 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end
+### 10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end
 
 - O avaliador verificará se, ao fazer o login com um email ou senha incorretos, retornará status não-autorizado.
 
@@ -605,21 +652,7 @@ Esse projeto é composto de 4 seções principais:
     { "message": "Incorrect email or password" }
   ```
 
-- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`, emails não cadastrados no banco;
-
-- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`, senhas não cadastradas no banco;
-
-### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
-
-### 8 - (`TDD`) Desenvolva testes que cubram no mínimo 20% dos arquivos back-end em `/src`, com um mínimo de 35 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
-
-### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src`, com um mínimo de 45 linhas cobertas
+### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src`, com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
@@ -653,32 +686,6 @@ Esse projeto é composto de 4 seções principais:
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/teams`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**. [Nessa seção](#sequelize) temos o diagrama de entidades.
-
-### 14 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `teams`
-
-  - O avaliador consultará os dados da tabela `teams`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
-
-### 15 - Desenvolva o endpoint `/teams` no back-end de forma que ele possa retornar todos os times corretamente
-
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
-
-```json
-[
-  {
-    "id": 1,
-    "teamName": "Avaí/Kindermann"
-  },
-  {
-    "id": 2,
-    "teamName": "Bahia"
-  },
-  {
-    "id": 3,
-    "teamName": "Botafogo"
-  },
-  ...
-]
-```
 
 </details>
 
@@ -2545,14 +2552,3 @@ Esse projeto é composto de 4 seções principais:
 </details>
 
 </details>
-
-### 36 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico <!-- Antigo 16 - Está aqui temporariamente -->
-
-  - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
-
-```json
-{
-  "id": 5,
-  "teamName": "Cruzeiro"
-}
-```
