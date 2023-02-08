@@ -194,7 +194,7 @@
       "skill_ids": []
     },
     {
-      "bonus": false,
+      "bonus": true,
       "description": "30 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada",
       "enabled": true,
       "identifier": null,
