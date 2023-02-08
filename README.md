@@ -852,7 +852,72 @@ Esse projeto é composto de 4 seções principais:
   ]
   ```
 
-### 17 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src`, com um mínimo de 80 linhas cobertas
+### 17 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
+
+- A rota deve ser do tipo `PATCH`;
+
+- Será recebido o `id` pelo parâmetro da URL;
+
+- Será validado que não é possível alterar uma partida sem um token;
+
+- Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+- Será validado que não é possível alterar uma partida com um token inválido;
+
+- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+- Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
+
+- Deve-se retornar, com um status `200`, a seguinte mensagem:
+
+  ```json
+  { "message": "Finished" }
+  ```
+
+### 18 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
+
+- O endpoint deve ser do tipo `PATCH`;
+
+- Será recebido o `id` pelo parâmetro da URL;
+
+- Será validado que não é possível alterar uma partida sem um token;
+
+- Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+- Será validado que não é possível alterar uma partida com um token inválido;
+
+- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+- Será avaliado que é possível alterar o resultado de uma partida.
+
+- O corpo da requisição terá o seguinte formato:
+
+  ```json
+  {
+    "homeTeamGoals": 3,
+    "awayTeamGoals": 1
+  }
+  ```
+
+- Será avaliado que é o endpoint responde à requisição com um status `200` e qualquer corpo.
+
+### 19 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src`, com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
@@ -934,70 +999,6 @@ Esse projeto é composto de 4 seções principais:
   ```json
   { "message": "Token must be a valid token" }
   ```
-
-### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
-
-  - A rota deve ser do tipo `PATCH`;
-
-  - Será recebido o `id` pelo parâmetro da URL;
-
-  - Será validado que não é possível alterar uma partida sem um token;
-
-  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token not found" }
-  ```
-
-  - Será validado que não é possível alterar uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-  - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
-
-  - Deve-se retornar, com um status `200`, a seguinte mensagem:
-
-  ```json
-  { "message": "Finished" }
-  ```
-
-### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
-
-  - O endpoint deve ser do tipo `PATCH`;
-
-  - Será recebido o `id` pelo parâmetro da URL;
-
-  - Será validado que não é possível alterar uma partida sem um token;
-
-  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token not found" }
-  ```
-
-  - Será validado que não é possível alterar uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-  - Será avaliado que é possível alterar o resultado de uma partida.
-
-  - O corpo da requisição terá o seguinte formato:
-
-  ```json
-  {
-    "homeTeamGoals": 3,
-    "awayTeamGoals": 1
-  }
-  ```
-  - Será avaliado que é o endpoint responde à requisição com um status `200` e qualquer corpo.
 
 </details>
 
