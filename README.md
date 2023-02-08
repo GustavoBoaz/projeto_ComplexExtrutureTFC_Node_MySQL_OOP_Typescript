@@ -702,11 +702,6 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 13 - (`TDD`) Desenvolva testes que cubram no mínimo 45% dos arquivos back-end em `/src`, com um mínimo de 70 linhas cobertas
-
-  **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**. [Nessa seção](#sequelize) temos o diagrama de entidades.
-
 </details>
 
 ## Seção 3: Matches (Partidas)
@@ -720,6 +715,12 @@ Esse projeto é composto de 4 seções principais:
 
 <details>
   <summary><strong> Requisitos </strong></summary>
+
+### 14 - (`TDD`) Desenvolva testes que cubram no mínimo 45% dos arquivos back-end em `/src`, com um mínimo de 70 linhas cobertas
+
+  **Sugestão:**
+
+- Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
 ### 16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do frontend
 
