@@ -162,13 +162,21 @@
     },
     {
       "bonus": false,
-      "description": "27 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida sem um token válido",
+      "description": "26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times da casa com as seguintes propriedades: \"name\", \"totalPoints\", \"totalGames\", \"totalVictories\", \"totalDraws\", \"totalLosses\", \"goalsFavor\" e \"goalsOwn\"",
+      "enabled": true,
+      "identifier": null,
+      "order": 26,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "27 - Desenvolva o endpoint /leaderboard/away de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados, incluindo as propriedades \"goalsBalance\" e \"efficiency\", além das propriedades do requisito anterior",
       "enabled": true,
       "identifier": null,
       "order": 27,
       "skill_ids": []
     },
-      {
+    {
       "bonus": false,
       "description": "28 - Desenvolva o endpoint /matches de forma que seja possível atualizar partidas em andamento",
       "enabled": true,
@@ -178,18 +186,18 @@
     },
     {
       "bonus": false,
-      "description": "30 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada",
+      "description": "29 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados",
       "enabled": true,
       "identifier": null,
-      "order": 30,
+      "order": 29,
       "skill_ids": []
     },
     {
       "bonus": false,
-      "description": "31 - Desenvolva o endpoint /leaderboard/away de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do frontend com os dados iniciais do banco de dados",
+      "description": "30 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada",
       "enabled": true,
       "identifier": null,
-      "order": 31,
+      "order": 30,
       "skill_ids": []
     },
     {
