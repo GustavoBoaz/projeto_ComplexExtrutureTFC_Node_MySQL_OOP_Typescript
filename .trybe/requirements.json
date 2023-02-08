@@ -146,10 +146,18 @@
     },
     {
       "bonus": false,
-      "description": "23 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados",
+      "description": "23 - Desenvolva o endpoint `/leaderboard/home` de forma que retorne as informações do desempenho dos times da casa com as seguintes propriedades: \"name\", \"totalPoints\", \"totalGames\", \"totalVictories\", \"totalDraws\", \"totalLosses\", \"goalsFavor\" e \"goalsOwn\"",
       "enabled": true,
       "identifier": null,
       "order": 23,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "24 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados, incluindo as propriedades \"goalsBalance\" e \"efficiency\", além das propriedades do requisito anterior",
+      "enabled": true,
+      "identifier": null,
+      "order": 24,
       "skill_ids": []
     },
     {
@@ -160,29 +168,12 @@
       "order": 27,
       "skill_ids": []
     },
-    {
-      "bonus": false,
-      "description": "24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados",
-      "enabled": true,
-      "identifier": null,
-      "order": 24,
-      "skill_ids": []
-    },
-
-    {
+      {
       "bonus": false,
       "description": "28 - Desenvolva o endpoint /matches de forma que seja possível atualizar partidas em andamento",
       "enabled": true,
       "identifier": null,
       "order": 28,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
-      "description": "29 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados",
-      "enabled": true,
-      "identifier": null,
-      "order": 29,
       "skill_ids": []
     },
     {
