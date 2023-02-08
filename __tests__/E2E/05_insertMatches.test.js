@@ -13,6 +13,7 @@ const { StatusCodes } = require('http-status-codes');
 const axios = require('axios').default;
 
 const twoGoals = 2;
+const twoGoalsText = "2";
 const oneGoal = 1;
 const threeGoals = 3;
 const fiveGoals = "5";
@@ -224,7 +225,7 @@ describe(getRequirement(18), () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     await selectQuantityGoalsAwayTeam.click({ clickCount: 3 });
-    await selectQuantityGoalsAwayTeam.type(twoGoals);
+    await selectQuantityGoalsAwayTeam.type(twoGoalsText);
 
     const SaveEditMatchButton = await page.$(pageMatchSettings.editMatchButton);
 
@@ -245,7 +246,7 @@ describe(getRequirement(18), () => {
     expect(lastInsertedRow.homeTeamId).toBe(teams[12].id);
     expect(lastInsertedRow.awayTeamId).toBe(teams[1].id);
     expect(lastInsertedRow.homeTeamGoals.toString()).toBe(fiveGoals);
-    expect(lastInsertedRow.awayTeamGoals.toString()).toBe(twoGoals);
+    expect(lastInsertedRow.awayTeamGoals.toString()).toBe(twoGoalsText);
     expect(lastInsertedRow.inProgress).toBe(1);
   });
 });
