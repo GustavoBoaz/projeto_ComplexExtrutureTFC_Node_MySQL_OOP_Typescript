@@ -317,7 +317,7 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 <details id='Criptografia-de-senhas'>
 <summary><strong>🔐 Criptografia de senhas </strong></summary><br />
 
-⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs) e que já vem instalada no projeto e não deve ser alterada ou substituída. Recomendamos que explore os recursos da biblioteca na documentação para implementar no projeto ao cadastrar um usuário e ao realizar login ⚠️
+⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://github.com/dcodeIO/bcrypt.js) e que já vem instalada no projeto e não deve ser alterada ou substituída. Recomendamos que explore os recursos da biblioteca na documentação para implementar no projeto ao cadastrar um usuário e ao realizar login ⚠️
 
 </details>
 
@@ -505,10 +505,11 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 # Sobre os Requisitos
 
 Esse projeto é composto de 4 seções principais:
-1. Users e Login
-2. Times
-3. Partidas
-4. Placar
+
+1. Users/ Login (Pessoas/ Credenciais de acesso)
+2. Teams (Times)
+3. Matches (Partidas)
+4. Leaderboards (Placares)
 
 ## Database
   - Comece rodando o comando `npm run build` na pasta do `back-end` para fazer o _build_ da aplicação;
@@ -516,7 +517,7 @@ Esse projeto é composto de 4 seções principais:
   - Mantenha o arquivo `/app/backend/src/database/migrations/99999999999999-create-z.js`, pois ele é necessário para a avaliação dos requisitos dessa seção;
   - A leitura da seção `Model com Sequelize` no conteúdo de `TypeScript: Tipagem Estática e Generics`, contido [nesse link](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/4e3b7d3a-94a1-4fce-9545-0f2b04f8ccd9/day/55580b57-6754-49bc-83bf-465967e0d2a1/lesson/70a59622-f05f-44cc-b3ce-6e5c28435f25), é recomendável!
 
-## Seção 1: Users e Login
+## Seção 1: Users/ Login (Pessoas/ Credenciais de acesso)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -524,8 +525,9 @@ Esse projeto é composto de 4 seções principais:
 - A rota utilizada deve ser (`/login`);
 
 - A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados:
-  - O campo `email` deve receber um email válido;
-  - O Campo `password` deve ter mais de 6 caracteres.
+  - O campo `email` deve receber um email válido. Ex: `tfc@projeto.com`;
+  - O campo `password` deve ter mais de 6 caracteres.
+  - Além de válidos, é necessário que o email e a senha estejam cadastrados no banco para ser feito o login;
 
 - O body da requisição deve conter o seguinte formato:
   ```json
@@ -642,7 +644,7 @@ Esse projeto é composto de 4 seções principais:
 
 ### 10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end
 
-- O avaliador verificará se fazer o login com um email ou senha incorretos retornará status não-autorizado.
+- O avaliador verificará se, ao fazer o login com um email ou senha incorretos, retornará status não-autorizado.
 
 - Se o login tiver o "email" **inválido** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
 
@@ -651,6 +653,10 @@ Esse projeto é composto de 4 seções principais:
   ```
 
 ### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src`, com um mínimo de 45 linhas cobertas
+
+- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`, emails não cadastrados no banco;
+
+- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`, senhas não cadastradas no banco;
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
@@ -684,7 +690,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 2: Times
+## Seção 2: Teams (Times)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -703,7 +709,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 3: Partidas
+## Seção 3: Matches (Partidas)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -715,7 +721,7 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 16 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend
+### 16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do frontend
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
@@ -917,6 +923,16 @@ Esse projeto é composto de 4 seções principais:
   }
   ```
 
+### 27 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida sem um token válido
+
+- Será validado que não é possível inserir uma partida com um token inválido;
+
+- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
 ### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
 
   - A rota deve ser do tipo `PATCH`;
@@ -983,7 +999,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 4: Leaderboards (placares)
+## Seção 4: Leaderboards (Placares)
 
 <details>
   <summary><strong> Introdução </strong></summary>

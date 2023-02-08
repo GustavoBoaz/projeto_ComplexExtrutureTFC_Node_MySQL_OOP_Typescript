@@ -106,7 +106,7 @@
     },
     {
       "bonus": false,
-      "description": "16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend",
+      "description": "16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do frontend",
       "enabled": true,
       "identifier": null,
       "order": 16,
@@ -168,7 +168,6 @@
       "order": 24,
       "skill_ids": []
     },
-
     {
       "bonus": false,
       "description": "28 - Desenvolva o endpoint /matches de forma que seja possível atualizar partidas em andamento",
@@ -231,6 +230,14 @@
       "enabled": true,
       "identifier": null,
       "order": 35,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "36 - Desenvolva o endpoint /teams/:id no backend de forma que ele possa retornar dados de um time específico",
+      "enabled": true,
+      "identifier": null,
+      "order": 36,
       "skill_ids": []
     }
   ]
