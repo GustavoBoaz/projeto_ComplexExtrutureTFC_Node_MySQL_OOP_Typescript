@@ -27,7 +27,7 @@ const MatchSettings = () => {
 
       setToken(token);
 
-      requestData('/login/validate')
+      requestData('/login/role')
         .then(() => setIsAuthenticated(true))
         .catch(() => navigate('/'));
     })();
