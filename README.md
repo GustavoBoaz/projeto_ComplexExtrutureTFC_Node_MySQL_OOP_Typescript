@@ -991,15 +991,114 @@ Esse projeto é composto de 4 seções principais:
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
 
-### 27 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida sem um token válido
+### 23 - Desenvolva o endpoint `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
 
-- Será validado que não é possível inserir uma partida com um token inválido;
+  - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 
-- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+  - Será validado que não é possível inserir uma partida sem um token;
+
+  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível inserir uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
 
   ```json
   { "message": "Token must be a valid token" }
   ```
+
+  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
+
+  - O corpo da requisição terá o seguinte formato:
+  ```json
+  {
+    "homeTeamId": 16, // O valor deve ser o id do time
+    "awayTeamId": 8, // O valor deve ser o id do time
+    "homeTeamGoals": 2,
+    "awayTeamGoals": 2,
+  }
+  ```
+
+  - Caso a partida seja inserida com sucesso, deve-se retornar os dados da partida, com _status_ `201`:
+
+  ```json
+  {
+    "id": 1,
+    "homeTeamId": 16,
+    "homeTeamGoals": 2,
+    "awayTeamId": 8,
+    "awayTeamGoals": 2,
+    "inProgress": true,
+  }
+  ```
+
+### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
+
+  - A rota deve ser do tipo `PATCH`;
+
+  - Será recebido o `id` pelo parâmetro da URL;
+
+  - Será validado que não é possível alterar uma partida sem um token;
+
+  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível alterar uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+  - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
+
+  - Deve-se retornar, com um status `200`, a seguinte mensagem:
+
+  ```json
+  { "message": "Finished" }
+  ```
+
+### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
+
+  - O endpoint deve ser do tipo `PATCH`;
+
+  - Será recebido o `id` pelo parâmetro da URL;
+
+  - Será validado que não é possível alterar uma partida sem um token;
+
+  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível alterar uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+  - Será avaliado que é possível alterar o resultado de uma partida.
+
+  - O corpo da requisição terá o seguinte formato:
+
+  ```json
+  {
+    "homeTeamGoals": 3,
+    "awayTeamGoals": 1
+  }
+  ```
+  - Será avaliado que é o endpoint responde à requisição com um status `200` e qualquer corpo.
 
 </details>
 
