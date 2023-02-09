@@ -317,7 +317,7 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 <details id='Criptografia-de-senhas'>
 <summary><strong>🔐 Criptografia de senhas </strong></summary><br />
 
-⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs) e que já vem instalada no projeto e não deve ser alterada ou substituída. Recomendamos que explore os recursos da biblioteca na documentação para implementar no projeto ao cadastrar um usuário e ao realizar login ⚠️
+⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://github.com/dcodeIO/bcrypt.js) e que já vem instalada no projeto e não deve ser alterada ou substituída. Recomendamos que explore os recursos da biblioteca na documentação para implementar no projeto ao cadastrar um usuário e ao realizar login ⚠️
 
 </details>
 
@@ -505,10 +505,15 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 # Sobre os Requisitos
 
 Esse projeto é composto de 4 seções principais:
-1. Times
-2. Users e Login
-3. Partidas
-4. Placar
+1. Teams (Times)
+2. Users e Login (Pessoas e Credenciais de acesso)
+3. Matches (Partidas)
+4. Leaderboards (Placares)
+
+1. Users/ Login (Pessoas/ Credenciais de acesso)
+2. Teams (Times)
+3. Matches (Partidas)
+4. Leaderboards (Placares)
 
 ## Database
   - Comece rodando o comando `npm run build` na pasta do `back-end` para fazer o _build_ da aplicação;
@@ -580,7 +585,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 2: Users e Login
+## Seção 2: Users e Login (Pessoas e Credenciais de acesso)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -588,8 +593,9 @@ Esse projeto é composto de 4 seções principais:
 - A rota utilizada deve ser (`/login`);
 
 - A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados:
-  - O campo `email` deve receber um email válido;
-  - O Campo `password` deve ter mais de 6 caracteres.
+  - O campo `email` deve receber um email válido. Ex: `tfc@projeto.com`;
+  - O campo `password` deve ter mais de 6 caracteres.
+  - Além de válidos, é necessário que o email e a senha estejam cadastrados no banco para ser feito o login;
 
 - O body da requisição deve conter o seguinte formato:
   ```json
@@ -656,7 +662,7 @@ Esse projeto é composto de 4 seções principais:
 
 ### 10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end
 
-- O avaliador verificará se fazer o login com um email ou senha incorretos retornará status não-autorizado.
+- O avaliador verificará se, ao fazer o login com um email ou senha incorretos, retornará status não-autorizado.
 
 - Se o login tiver o "email" **inválido** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
 
@@ -682,7 +688,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 3: Partidas
+## Seção 3: Matches (Partidas)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -837,7 +843,7 @@ Esse projeto é composto de 4 seções principais:
 
   - Será validado que não é possível inserir uma partida em que o `homeTeam` e o `awayTeam` sejam iguais, por exemplo: Barcelona x Barcelona;
 
-  - Caso isso ocorra, deve-se retornar, com um status `422`, a seguinte mensagem::
+  - Caso isso ocorra, deve-se retornar, com um status `422`, a seguinte mensagem:
 
   ```json
   { "message": "It is not possible to create a match with two equal teams" }
@@ -860,9 +866,23 @@ Esse projeto é composto de 4 seções principais:
 
   - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 
-  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
+  - Será validado que não é possível inserir uma partida sem um token;
 
-  - A partida só pode ser criada com token JWT validado;
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível inserir uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
 
   - O corpo da requisição terá o seguinte formato:
   ```json
@@ -903,6 +923,22 @@ Esse projeto é composto de 4 seções principais:
 
   - Será recebido o `id` pelo parâmetro da URL;
 
+  - Será validado que não é possível alterar uma partida sem um token;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível alterar uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
   - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
 
   - Deve-se retornar, com um status `200`, a seguinte mensagem:
@@ -917,9 +953,26 @@ Esse projeto é composto de 4 seções principais:
 
   - Será recebido o `id` pelo parâmetro da URL;
 
+  - Será validado que não é possível alterar uma partida sem um token;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado que não é possível alterar uma partida com um token inválido;
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
   - Será avaliado que é possível alterar o resultado de uma partida.
 
   - O corpo da requisição terá o seguinte formato:
+
   ```json
   {
     "homeTeamGoals": 3,
@@ -930,7 +983,7 @@ Esse projeto é composto de 4 seções principais:
 
 </details>
 
-## Seção 4: Leaderboards (placares)
+## Seção 4: Leaderboards (Placares)
 
 <details>
   <summary><strong> Introdução </strong></summary>

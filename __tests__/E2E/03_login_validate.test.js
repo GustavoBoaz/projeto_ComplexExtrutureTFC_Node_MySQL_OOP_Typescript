@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { URL } = require('../utils/urls');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
 const { pageLogin } = require('../utils/dataTestIds');
-const { admin: { validAdmin, invalidAdmin } } = require('../utils/users');
+const { admin: { validAdmin, invalidAdmin }, user: { invalidEmailUsers, invalidPasswordUsers } } = require('../utils/users');
 const { termSequelize, initSequelize } = require('../config/sequelize');
 const { puppeteerDefs, containerPorts, jwtSecret } = require('../config/constants');
 const waitForResponse = require('../utils/waitForResponse');
@@ -145,6 +145,38 @@ describe(getRequirement(10), () => {
     expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_LOGIN);
   });
 
+  it.each(invalidEmailUsers)('O avaliador verificará se tentar fazer o login com um e-mail inválido retornará status não-autorizado', async (invalidEmailUser) => {
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    expect(await page.$(pageLogin.alertLogin)).toBeNull();
+
+    const inputLogin = await page.$(pageLogin.inputEmail);
+    await inputLogin.type(invalidEmailUser.email);
+
+    const inputPassword = await page.$(pageLogin.inputPassword);
+    await inputPassword.type(invalidEmailUser.password);
+
+    const buttonLogin = await page.$(pageLogin.buttonLogin);
+
+    const { body: { message } } = await waitForResponse({
+      page,
+      trigger: () => buttonLogin.click(),
+      expectedRequestType: 'script',
+      expectedRequestMethod: 'POST',
+      expectedResponseStatus: 401,
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
+    });
+
+    expect(message).toBe('Incorrect email or password');
+
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    const alertLogin = await page.$eval(pageLogin.alertLogin, (el) => el.innerText);
+
+    expect(alertLogin).toBe('O endereço de e-mail ou a senha não estão corretos. Por favor, tente novamente.');
+    expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_LOGIN);
+  });
+
   it('O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -154,6 +186,38 @@ describe(getRequirement(10), () => {
     await inputLogin.type(validAdmin.email);
     const inputPassword = await page.$(pageLogin.inputPassword);
     await inputPassword.type(invalidAdmin.password);
+    const buttonLogin = await page.$(pageLogin.buttonLogin);
+
+    const { body: { message } } = await waitForResponse({
+      page,
+      trigger: () => buttonLogin.click(),
+      expectedRequestType: 'script',
+      expectedRequestMethod: 'POST',
+      expectedResponseStatus: 401,
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
+    });
+
+    expect(message).toBe('Incorrect email or password');
+
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    const alertLogin = await page.$eval(pageLogin.alertLogin, (el) => el.innerText);
+
+    expect(alertLogin).toBe('O endereço de e-mail ou a senha não estão corretos. Por favor, tente novamente.');
+    expect(await page.url()).toEqual(URL(containerPorts.frontend).URL_PAGE_LOGIN);
+  });
+
+  it.each(invalidPasswordUsers)('O avaliador verificará se tentar fazer o login com uma senha inválida retornará status não-autorizado', async (invalidPasswordUser) => {
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    expect(await page.$(pageLogin.alertLogin)).toBeNull();
+
+    const inputLogin = await page.$(pageLogin.inputEmail);
+    await inputLogin.type(invalidPasswordUser.email);
+
+    const inputPassword = await page.$(pageLogin.inputPassword);
+    await inputPassword.type(invalidPasswordUser.password);
+
     const buttonLogin = await page.$(pageLogin.buttonLogin);
 
     const { body: { message } } = await waitForResponse({
