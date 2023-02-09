@@ -675,9 +675,25 @@ Esse projeto é composto de 4 seções principais:
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
 
-### 12 - Desenvolva o endpoint `/login/validate` no back-end de maneira que ele retorne os dados corretamente no front-end
+### 12 - Desenvolva um middleware de validação para o token, verificando se ele é válido, e desenvolva o endpoint `/login/role` no back-end de maneira que ele retorne os dados corretamente no front-end
 
   - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization`, onde ficará armazenado o token gerado no login;
+
+  - Será validado na API que não é possível retornar um objeto com o tipo de usuário, sem um token;
+
+  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado na API que não é possível retornar um objeto com o tipo de usuário, com um token inválido
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
 
   - O avaliador verificará se ao tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário.
 
@@ -868,7 +884,7 @@ Esse projeto é composto de 4 seções principais:
 
   - Será validado que não é possível inserir uma partida sem um token;
 
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
 
   ```json
   { "message": "Token not found" }
@@ -907,16 +923,6 @@ Esse projeto é composto de 4 seções principais:
   }
   ```
 
-### 27 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida sem um token válido
-
-- Será validado que não é possível inserir uma partida com um token inválido;
-
-- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
 ### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
 
   - A rota deve ser do tipo `PATCH`;
@@ -925,7 +931,7 @@ Esse projeto é composto de 4 seções principais:
 
   - Será validado que não é possível alterar uma partida sem um token;
 
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
 
   ```json
   { "message": "Token not found" }
@@ -955,7 +961,7 @@ Esse projeto é composto de 4 seções principais:
 
   - Será validado que não é possível alterar uma partida sem um token;
 
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
 
   ```json
   { "message": "Token not found" }

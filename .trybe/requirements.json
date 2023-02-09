@@ -90,7 +90,7 @@
     },
     {
       "bonus": false,
-      "description": "12 - Desenvolva o endpoint /login/validate no backend de maneira ele retorne os dados corretamente no frontend",
+      "description": "12 - Desenvolva um middleware de validação para o token, verificando se ele é válido, e desenvolva o endpoint `/login/role` no back-end de maneira que ele retorne os dados corretamente no front-end",
       "enabled": true,
       "identifier": null,
       "order": 12,
@@ -106,7 +106,7 @@
     },
     {
       "bonus": false,
-      "description": "16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e que seja possível também filtrar somente as partidas finalizadas, na tela de partidas do frontend",
+      "description": "16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do frontend",
       "enabled": true,
       "identifier": null,
       "order": 16,
@@ -162,21 +162,12 @@
     },
     {
       "bonus": false,
-      "description": "27 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida sem um token válido",
-      "enabled": true,
-      "identifier": null,
-      "order": 27,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
       "description": "24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados",
       "enabled": true,
       "identifier": null,
       "order": 24,
       "skill_ids": []
     },
-
     {
       "bonus": false,
       "description": "28 - Desenvolva o endpoint /matches de forma que seja possível atualizar partidas em andamento",
@@ -239,6 +230,14 @@
       "enabled": true,
       "identifier": null,
       "order": 35,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "36 - Desenvolva o endpoint /teams/:id no backend de forma que ele possa retornar dados de um time específico",
+      "enabled": true,
+      "identifier": null,
+      "order": 36,
       "skill_ids": []
     }
   ]
