@@ -98,10 +98,26 @@
     },
     {
       "bonus": false,
-      "description": "13 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src, com um mínimo de 70 linhas cobertas",
+      "description": "13 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matches",
       "enabled": true,
       "identifier": null,
       "order": 13,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "14 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src, com um mínimo de 70 linhas cobertas",
+      "enabled": true,
+      "identifier": null,
+      "order": 14,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "15 - Desenvolva o endpoint /matches de forma que os dados apareçam corretamente na tela de partidas no frontend",
+      "enabled": true,
+      "identifier": null,
+      "order": 15,
       "skill_ids": []
     },
     {
@@ -114,7 +130,7 @@
     },
     {
       "bonus": false,
-      "description": "17 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src, com um mínimo de 80 linhas cobertas",
+      "description": "17 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados",
       "enabled": true,
       "identifier": null,
       "order": 17,
@@ -122,7 +138,7 @@
     },
     {
       "bonus": false,
-      "description": "18 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de matches",
+      "description": "18 - Desenvolva o endpoint /matches de forma que seja possível atualizar partidas em andamento",
       "enabled": true,
       "identifier": null,
       "order": 18,
@@ -130,10 +146,18 @@
     },
     {
       "bonus": false,
-      "description": "19 - Desenvolva o endpoint /matches de forma que os dados apareçam corretamente na tela de partidas no frontend",
+      "description": "19 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src, com um mínimo de 80 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 19,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "20 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados",
+      "enabled": true,
+      "identifier": null,
+      "order": 20,
       "skill_ids": []
     },
     {
@@ -150,30 +174,6 @@
       "enabled": true,
       "identifier": null,
       "order": 22,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
-      "description": "23 - Desenvolva o endpoint /matches de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados",
-      "enabled": true,
-      "identifier": null,
-      "order": 23,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
-      "description": "24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados",
-      "enabled": true,
-      "identifier": null,
-      "order": 24,
-      "skill_ids": []
-    },
-    {
-      "bonus": false,
-      "description": "28 - Desenvolva o endpoint /matches de forma que seja possível atualizar partidas em andamento",
-      "enabled": true,
-      "identifier": null,
-      "order": 28,
       "skill_ids": []
     },
     {
