@@ -12,18 +12,18 @@ beforeAll(async () => {
 afterAll(async () => termSequelize(database));
 
 describe(getRequirement(1), () => {
-  it('O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos', async () => {
-    const resultQuery = await database.query(select.all.users, { type: 'SELECT' });
-    const resultQueryNormalize = normalize(resultQuery);
-    expect(resultQueryNormalize).toEqual(users);
-  });
-});
-
-describe(getRequirement(14), () => {
   it('O avaliador consultará os dados da tabela teams, verificando se ela contém os dados iniciais corretos', async () => {
     const resultQuery = await database.query(select.all.teams, { type: 'SELECT' });
     const resultQueryNormalize = normalize(resultQuery);
     expect(resultQueryNormalize).toEqual(teams);
+  });
+});
+
+describe(getRequirement(7), () => {
+  it('O avaliador consultará os dados da tabela users, verificando se ela contém os dados iniciais corretos', async () => {
+    const resultQuery = await database.query(select.all.users, { type: 'SELECT' });
+    const resultQueryNormalize = normalize(resultQuery);
+    expect(resultQueryNormalize).toEqual(users);
   });
 });
 
