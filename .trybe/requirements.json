@@ -10,7 +10,7 @@
     },
     {
       "bonus": false,
-      "description": "2 - Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src com um mínimo de 7 linhas cobertas",
+      "description": "2 - Desenvolva testes que cubram no mínimo 5 por cento dos arquivo backend em /src, com um mínimo de 7 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 2,
@@ -26,7 +26,7 @@
     },
     {
       "bonus": false,
-      "description": "4 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas",
+      "description": "4 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src, com um mínimo de 19 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 4,
@@ -42,18 +42,18 @@
     },
     {
       "bonus": false,
-      "description": "6 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src com um mínimo de 19 linhas cobertas",
+      "description": "6 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users",
       "enabled": true,
       "identifier": null,
-      "order": 6,
+      "order": 7,
       "skill_ids": []
     },
     {
       "bonus": false,
-      "description": "7 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users",
+      "description": "7 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src, com um mínimo de 19 linhas cobertas",
       "enabled": true,
       "identifier": null,
-      "order": 7,
+      "order": 6,
       "skill_ids": []
     },
     {
@@ -66,7 +66,7 @@
     },
     {
       "bonus": false,
-      "description": "9 - Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src com um mínimo de 35 linhas cobertas",
+      "description": "9 - Desenvolva testes que cubram no mínimo 20 por cento dos arquivo backend em /src, com um mínimo de 35 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 9,
@@ -82,7 +82,7 @@
     },
     {
       "bonus": false,
-      "description": "11 - Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src com um mínimo de 45 linhas cobertas",
+      "description": "11 - Desenvolva testes que cubram no mínimo 30 por cento dos arquivo backend em /src, com um mínimo de 45 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 11,
@@ -98,7 +98,7 @@
     },
     {
       "bonus": false,
-      "description": "13 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src com um mínimo de 70 linhas cobertas",
+      "description": "13 - Desenvolva testes que cubram no mínimo 45 por cento dos arquivo backend em /src, com um mínimo de 70 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 13,
@@ -114,7 +114,7 @@
     },
     {
       "bonus": false,
-      "description": "17 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src com um mínimo de 80 linhas cobertas",
+      "description": "17 - Desenvolva testes que cubram no mínimo 60 por cento dos arquivo backend em /src, com um mínimo de 80 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 17,
@@ -146,7 +146,7 @@
     },
     {
       "bonus": true,
-      "description": "22 - Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src com um mínimo de 100 linhas cobertas",
+      "description": "22 - Desenvolva testes que cubram no mínimo 80 por cento dos arquivo backend em /src, com um mínimo de 100 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 22,
