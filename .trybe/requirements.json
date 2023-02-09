@@ -50,7 +50,7 @@
     },
     {
       "bonus": false,
-      "description": "7 - Desenvolva testes que cubram no mínimo 10 por cento dos arquivo backend em /src, com um mínimo de 19 linhas cobertas",
+      "description": "7 - Desenvolva testes que cubram no mínimo 15 por cento dos arquivo backend em /src, com um mínimo de 25 linhas cobertas",
       "enabled": true,
       "identifier": null,
       "order": 6,
