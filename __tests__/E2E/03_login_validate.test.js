@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { URL } = require('../utils/urls');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
 const { pageLogin } = require('../utils/dataTestIds');
-const { admin: { validAdmin, invalidAdmin }, user: { invalidEmailUsers, invalidPasswordUsers } } = require('../utils/users');
+const { admin: { validAdmin, invalidAdmin }, user: { invalidEmailUsers, invalidPasswordUsers }, usersToLogin } = require('../utils/users');
 const { termSequelize, initSequelize } = require('../config/sequelize');
 const { puppeteerDefs, containerPorts, jwtSecret } = require('../config/constants');
 const waitForResponse = require('../utils/waitForResponse');
@@ -241,8 +241,21 @@ describe(getRequirement(10), () => {
 });
 
 describe(getRequirement(12), () => {
-  it('O avaliador verificará se ao tentar enviar um token válido no header authorization, o endpoint retornará um objeto com o tipo de usuário', async () => {
-    const expectedResult = { "role": "admin" }
+  it('Será validado na API que não é possível retornar um objeto com o tipo de usuário, sem um token', async () => {
+    const result = await axios
+      .get(
+        `${URL(containerPorts.backend).BASE_URL}/login/role`,
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token not found");
+  });
+
+  it('Será validado na API que não é possível retornar um objeto com o tipo de usuário, com um token inválido', async () => {
     const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
       "email": "admin@admin.com",
       "password": "secret_admin"
@@ -252,7 +265,36 @@ describe(getRequirement(12), () => {
 
     const result = await axios
       .get(
-        `${URL(containerPorts.backend).BASE_URL}/login/validate`,
+        `${URL(containerPorts.backend).BASE_URL}/login/role`,
+        {
+          headers: {
+            authorization: 'token'
+          }
+        }
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token must be a valid token");
+  });
+
+  it('O avaliador verificará se ao tentar enviar um token válido no header authorization, o endpoint retornará um objeto com o tipo de usuário', async () => {
+    const randomPosition = () => Math.floor(Math.random() * 2);
+    const userToLogin = usersToLogin[randomPosition()]
+    const expectedResult = { "role": userToLogin.role }
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": userToLogin.email,
+      "password": userToLogin.password
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .get(
+        `${URL(containerPorts.backend).BASE_URL}/login/role`,
         {
           headers: {
             authorization: token

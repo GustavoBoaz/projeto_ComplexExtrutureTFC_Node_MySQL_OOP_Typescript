@@ -29,6 +29,20 @@ afterEach(async () => {
   await termBrowser(browser);
 });
 
+describe(getRequirement(15), () => {
+  it('Será validado que a página apresentará todos os dados de partidas sem nenhum filtro', async () => {
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    const headerButtonShowMatches = await page.$(header.showMatchesButton);
+    await headerButtonShowMatches.click();
+
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    await validateMatches(page, ALL_MATCHES, allMatches, false);
+  });
+});
+
+
 describe(getRequirement(16), () => {
   it('Será validado que ao escolher a opção de partidas em andamento será filtrado todas as partidas em andamento', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
@@ -50,18 +64,5 @@ describe(getRequirement(16), () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     await validateMatches(page, FINISH, onlyFinished, false);
-  });
-});
-
-describe(getRequirement(19), () => {
-  it('Será validado que a página apresentará todos os dados de partidas sem nenhum filtro', async () => {
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const headerButtonShowMatches = await page.$(header.showMatchesButton);
-    await headerButtonShowMatches.click();
-
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    await validateMatches(page, ALL_MATCHES, allMatches, false);
   });
 });
