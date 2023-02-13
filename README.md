@@ -981,120 +981,6 @@ Esse projeto é composto de 4 fluxos principais:
   { "message": "There is no team with such id!" }
   ```
 
-### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
-
-### 23 - Desenvolva o endpoint `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
-
-  - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
-
-  - Será validado que não é possível inserir uma partida sem um token;
-
-  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token not found" }
-  ```
-
-  - Será validado que não é possível inserir uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
-
-  - O corpo da requisição terá o seguinte formato:
-  ```json
-  {
-    "homeTeamId": 16, // O valor deve ser o id do time
-    "awayTeamId": 8, // O valor deve ser o id do time
-    "homeTeamGoals": 2,
-    "awayTeamGoals": 2,
-  }
-  ```
-
-  - Caso a partida seja inserida com sucesso, deve-se retornar os dados da partida, com _status_ `201`:
-
-  ```json
-  {
-    "id": 1,
-    "homeTeamId": 16,
-    "homeTeamGoals": 2,
-    "awayTeamId": 8,
-    "awayTeamGoals": 2,
-    "inProgress": true,
-  }
-  ```
-
-### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
-
-  - A rota deve ser do tipo `PATCH`;
-
-  - Será recebido o `id` pelo parâmetro da URL;
-
-  - Será validado que não é possível alterar uma partida sem um token;
-
-  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token not found" }
-  ```
-
-  - Será validado que não é possível alterar uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-  - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
-
-  - Deve-se retornar, com um status `200`, a seguinte mensagem:
-
-  ```json
-  { "message": "Finished" }
-  ```
-
-### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
-
-  - O endpoint deve ser do tipo `PATCH`;
-
-  - Será recebido o `id` pelo parâmetro da URL;
-
-  - Será validado que não é possível alterar uma partida sem um token;
-
-  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token not found" }
-  ```
-
-  - Será validado que não é possível alterar uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-  - Será avaliado que é possível alterar o resultado de uma partida.
-
-  - O corpo da requisição terá o seguinte formato:
-
-  ```json
-  {
-    "homeTeamGoals": 3,
-    "awayTeamGoals": 1
-  }
-  ```
-  - Será avaliado que é o endpoint responde à requisição com um status `200` e qualquer corpo.
-
 </details>
 
 ## Fluxo 4: Leaderboards (Placares)
@@ -1215,6 +1101,11 @@ Esse projeto é composto de 4 fluxos principais:
 
 <details>
   <summary><strong> Requisitos </strong></summary>
+
+  ### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/leaderboard`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
 
 ## Leaderboard Home
 
@@ -1427,7 +1318,7 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/home`, serão retornados os campos e valores corretos.
 
@@ -1843,7 +1734,7 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos.
 
@@ -2050,7 +1941,7 @@ Esse projeto é composto de 4 fluxos principais:
 
 ## Leaderboard
 
-### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
+### 29 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET`;
 
@@ -2259,7 +2150,7 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
+### 30 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
 
   - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard, serão retornados os campos e valores corretos.
 
@@ -2462,211 +2353,4 @@ Esse projeto é composto de 4 fluxos principais:
   }
 ]
 ```
-</details>
-
-### 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Minas Brasília 1 X 0 Ferroviária
-
-  - Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard, serão retornados os campos e valores corretos.
-
-<details>
-<summary><strong> Retorno esperado: </strong></summary> <br/>
-
-```json
-[
-  {
-    "name": "Palmeiras",
-    "totalPoints": 13,
-    "totalGames": 5,
-    "totalVictories": 4,
-    "totalDraws": 1,
-    "totalLosses": 0,
-    "goalsFavor": 17,
-    "goalsOwn": 5,
-    "goalsBalance": 12,
-    "efficiency": "86.67"
-  },
-  {
-    "name": "Corinthians",
-    "totalPoints": 12,
-    "totalGames": 5,
-    "totalVictories": 4,
-    "totalDraws": 0,
-    "totalLosses": 1,
-    "goalsFavor": 12,
-    "goalsOwn": 3,
-    "goalsBalance": 9,
-    "efficiency": "80.00"
-  },
-  {
-    "name": "Santos",
-    "totalPoints": 11,
-    "totalGames": 5,
-    "totalVictories": 3,
-    "totalDraws": 2,
-    "totalLosses": 0,
-    "goalsFavor": 12,
-    "goalsOwn": 6,
-    "goalsBalance": 6,
-    "efficiency": "73.33"
-  },
-  {
-    "name": "Grêmio",
-    "totalPoints": 10,
-    "totalGames": 5,
-    "totalVictories": 3,
-    "totalDraws": 1,
-    "totalLosses": 1,
-    "goalsFavor": 9,
-    "goalsOwn": 8,
-    "goalsBalance": 1,
-    "efficiency": "66.67"
-  },
-  {
-    "name": "Internacional",
-    "totalPoints": 10,
-    "totalGames": 5,
-    "totalVictories": 3,
-    "totalDraws": 1,
-    "totalLosses": 1,
-    "goalsFavor": 7,
-    "goalsOwn": 6,
-    "goalsBalance": 1,
-    "efficiency": "66.67"
-  },
-  {
-    "name": "Real Brasília",
-    "totalPoints": 10,
-    "totalGames": 5,
-    "totalVictories": 3,
-    "totalDraws": 1,
-    "totalLosses": 1,
-    "goalsFavor": 5,
-    "goalsOwn": 4,
-    "goalsBalance": 1,
-    "efficiency": "66.67"
-  },
-  {
-    "name": "São Paulo",
-    "totalPoints": 8,
-    "totalGames": 5,
-    "totalVictories": 2,
-    "totalDraws": 2,
-    "totalLosses": 1,
-    "goalsFavor": 9,
-    "goalsOwn": 6,
-    "goalsBalance": 3,
-    "efficiency": "53.33"
-  },
-  {
-    "name": "Ferroviária",
-    "totalPoints": 7,
-    "totalGames": 6,
-    "totalVictories": 2,
-    "totalDraws": 1,
-    "totalLosses": 3,
-    "goalsFavor": 7,
-    "goalsOwn": 8,
-    "goalsBalance": -1,
-    "efficiency": "38.89"
-  },
-  {
-    "name": "São José-SP",
-    "totalPoints": 6,
-    "totalGames": 5,
-    "totalVictories": 2,
-    "totalDraws": 0,
-    "totalLosses": 3,
-    "goalsFavor": 5,
-    "goalsOwn": 6,
-    "goalsBalance": -1,
-    "efficiency": "40.00"
-  },
-  {
-    "name": "Flamengo",
-    "totalPoints": 5,
-    "totalGames": 5,
-    "totalVictories": 1,
-    "totalDraws": 2,
-    "totalLosses": 2,
-    "goalsFavor": 2,
-    "goalsOwn": 5,
-    "goalsBalance": -3,
-    "efficiency": "33.33"
-  },
-  {
-    "name": "Minas Brasília",
-    "totalPoints": 5,
-    "totalGames": 6,
-    "totalVictories": 1,
-    "totalDraws": 2,
-    "totalLosses": 3,
-    "goalsFavor": 5,
-    "goalsOwn": 9,
-    "goalsBalance": -4,
-    "efficiency": "27.78"
-  },
-  {
-    "name": "Cruzeiro",
-    "totalPoints": 4,
-    "totalGames": 5,
-    "totalVictories": 1,
-    "totalDraws": 1,
-    "totalLosses": 3,
-    "goalsFavor": 8,
-    "goalsOwn": 10,
-    "goalsBalance": -2,
-    "efficiency": "26.67"
-  },
-  {
-    "name": "Avaí/Kindermann",
-    "totalPoints": 4,
-    "totalGames": 5,
-    "totalVictories": 1,
-    "totalDraws": 1,
-    "totalLosses": 3,
-    "goalsFavor": 4,
-    "goalsOwn": 8,
-    "goalsBalance": -4,
-    "efficiency": "26.67"
-  },
-  {
-    "name": "Botafogo",
-    "totalPoints": 4,
-    "totalGames": 5,
-    "totalVictories": 1,
-    "totalDraws": 1,
-    "totalLosses": 3,
-    "goalsFavor": 3,
-    "goalsOwn": 8,
-    "goalsBalance": -5,
-    "efficiency": "26.67"
-  },
-  {
-    "name": "Bahia",
-    "totalPoints": 2,
-    "totalGames": 5,
-    "totalVictories": 0,
-    "totalDraws": 2,
-    "totalLosses": 3,
-    "goalsFavor": 2,
-    "goalsOwn": 6,
-    "goalsBalance": -4,
-    "efficiency": "13.33"
-  },
-  {
-    "name": "Napoli-SC",
-    "totalPoints": 2,
-    "totalGames": 5,
-    "totalVictories": 0,
-    "totalDraws": 2,
-    "totalLosses": 3,
-    "goalsFavor": 3,
-    "goalsOwn": 12,
-    "goalsBalance": -9,
-    "efficiency": "13.33"
-  }
-]
-```
-</details>
-
 </details>
