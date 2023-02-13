@@ -33,13 +33,13 @@ const number = {
   one: '1',
 }
 
-describe(getRequirement(33), () => {
+describe(getRequirement(29), () => {
   it('Será avaliado que ao fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos considerando os dados iniciais do banco de dados', async () => {
     await validateLeaderboardBody(state01, leaderboard, page, containerPorts.backend, endpoint, actionTriger);
   });
 });
 
-describe(getRequirement(34), () => {
+describe(getRequirement(30), () => {
   it('Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
       homeTeam: teams[6].teamName,
@@ -61,30 +61,5 @@ describe(getRequirement(34), () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
     await validateLeaderboardBody(state02, leaderboard, page, containerPorts.backend, endpoint, actionTriger);
-  });
-});
-
-describe(getRequirement(35), () => {
-  it('Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos', async () => {
-    const dadosInsert = {
-      homeTeam: teams[9].teamName,
-      awayTeam: teams[5].teamName,
-      homeGoals: number.one,
-      awayGoals: number.zero
-    }
-
-    await dbReset();
-
-    await insertFinished(page, dadosInsert)
-
-    const showMatchesButton = await page.$(header.showMatchesButton);
-    await showMatchesButton.click();
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const showClassificationButton = await page.$(header.showClassificationButton)
-    await showClassificationButton.click()
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    await validateLeaderboardBody(state03, leaderboard, page, containerPorts.backend, endpoint, actionTriger);
   });
 });
