@@ -8,6 +8,8 @@ const { insertFinished } = require('../utils/inserts');
 const { teams } = require('../expected_results/trybe_football_club');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const { getRequirement } = require('../utils/util');
+const { getTeamsToCompare } = require('../utils/getTeamsToCompare');
+const axios = require('axios').default;
 
 let database, browser, page;
 
@@ -31,8 +33,36 @@ const endpoint = '/leaderboard/home'
 const twoGoals = '2';
 const oneGoal = '1';
 
-describe(getRequirement(29), () => {
-  it('Será avaliado que ao fazer a requisição ao endpoint /leaderboard/home será retonado os campos e valores corretos considerando os dados iniciais do banco de dados', async () => {
+describe(getRequirement(23), () => {
+  let result;
+  const teamsToCompare = getTeamsToCompare();
+  beforeAll(async () => {
+    result = await axios
+    .get(
+      `${URL(containerPorts.backend).BASE_URL}${endpoint}`,
+      )
+      .then((response) => response)
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+      expect(result).toHaveProperty("status");
+      expect(result.status).toBe(200);
+  })
+
+  it.each(teamsToCompare)('Serão validados os dados dos times', async (teamToCompare) => {
+      const team = result.data[teamToCompare];
+
+      expect(team).toHaveProperty('name');
+      expect(team).toHaveProperty('totalPoints');
+      expect(team).toHaveProperty('totalGames');
+      expect(team).toHaveProperty('totalVictories');
+      expect(team).toHaveProperty('totalLosses');
+      expect(team).toHaveProperty('goalsFavor');
+      expect(team).toHaveProperty('goalsOwn');
+  });
+});
+
+describe(getRequirement(24), () => {
+  it('Será avaliado que ao fazer a requisição ao endpoint /leaderboard/home será retornado os campos e valores corretos considerando os dados iniciais do banco de dados', async () => {
     await page.waitForTimeout(puppeteerDefs.pause.brief);
     await page.select(leaderboard.table.filter.select, 'Classificação Mandantes')
     const classificationButton = await page.$(leaderboard.table.filter.button)
