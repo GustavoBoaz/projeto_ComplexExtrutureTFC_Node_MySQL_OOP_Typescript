@@ -41,7 +41,7 @@ describe(getRequirement(31), () => {
   });
 });
 
-describe(getRequirement(32), () => {
+describe(getRequirement(28), () => {
   it('Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint /leaderboard/away será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
       homeTeam: teams[3].teamName,
