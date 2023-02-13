@@ -21,7 +21,7 @@ const Login = () => {
 
       setToken(token);
 
-      const { role } = await requestData('/login/validate', { email, password });
+      const { role } = await requestData('/login/role', { email, password });
 
       localStorage.setItem('token',  token);
       localStorage.setItem('role',  role);

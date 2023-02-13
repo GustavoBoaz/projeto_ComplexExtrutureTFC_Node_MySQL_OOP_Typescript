@@ -1,17 +1,22 @@
 const { URL } = require('../utils/urls');
 const { initBrowser, termBrowser } = require('../config/puppeteer');
-const { header, pageMatches } = require('../utils/dataTestIds');
+const { pageMatchSettings, header, pageMatches } = require('../utils/dataTestIds');
 const { teams } = require('../expected_results/trybe_football_club');
 const { select } = require('../utils/query');
 const { dbReset, termSequelize, initSequelize } = require('../config/sequelize');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
-const { normalize, getRequirement } = require('../utils/util');
+const { normalize, getRequirement, delay } = require('../utils/util');
 const { insertInProgress, insertFinished } = require('../utils/inserts');
+const waitForResponse = require('../utils/waitForResponse');
+const { logAdmin } = require('../utils/logInto');
 const { StatusCodes } = require('http-status-codes');
 const axios = require('axios').default;
 
 const twoGoals = 2;
+const twoGoalsText = "2";
 const oneGoal = 1;
+const threeGoals = 3;
+const fiveGoals = "5";
 const lastInsert = (list) => list[list.length - 1];
 
 let database, browser, page;
@@ -32,7 +37,284 @@ afterEach(async () => {
   await termBrowser(browser);
 });
 
-describe(getRequirement(23), () => {
+describe(getRequirement(17), () => {
+  it('Será validado na API que não é possível alterar uma partida sem um token', async () => {
+    const dadosInsert = {
+      homeTeam: teams[1].teamName,
+      awayTeam: teams[3].teamName,
+      homeTeamGoals: twoGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .patch(
+        `${URL(containerPorts.backend).BASE_URL}/matches/2/finish`,
+        dadosInsert,
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token not found");
+  });
+
+  it('Será validado na API que não é possível alterar uma partida com um token inválido', async () => {
+    const dadosInsert = {
+      homeTeam: teams[1].teamName,
+      awayTeam: teams[3].teamName,
+      homeTeamGoals: twoGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .patch(
+        `${URL(containerPorts.backend).BASE_URL}/matches/2/finish`,
+        dadosInsert,
+        {
+          headers: {
+            authorization: 'token'
+          }
+        }
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token must be a valid token");
+  });
+
+  it('Será validado que ao finalizar uma partida é alterado no banco de dados e na página', async () => {
+
+    const dadosInsert = {
+      homeTeam: teams[3].teamName,
+      awayTeam: teams[8].teamName,
+      homeGoals: twoGoals,
+      awayGoals: oneGoal
+    }
+
+    await insertFinished(page, dadosInsert)
+
+    const rows = await database.query(select.all.matches, { type: 'SELECT' });
+    const [matchInserted] = normalize([lastInsert(rows)])
+
+    expect(matchInserted.homeTeamId).toBe(teams[3].id);
+    expect(matchInserted.awayTeamId).toBe(teams[8].id);
+    expect(matchInserted.inProgress).toBe(0);
+
+    const showMatchesButton = await page.$(header.showMatchesButton);
+    await showMatchesButton.click();
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    const homeTeam = await page.$eval(pageMatches.homeTeam(49), (el) => el.innerText);
+    const awayTeam = await page.$eval(pageMatches.awayTeam(49), (el) => el.innerText);
+    const matchStatus = await page.$eval(pageMatches.matchStatus(49), (el) => el.innerText);
+
+    expect(homeTeam).toBe(teams[3].teamName);
+    expect(awayTeam).toBe(teams[8].teamName);
+    expect(matchStatus).toBe('Finalizado');
+  });
+});
+
+describe(getRequirement(18), () => {
+  it('Será validado na API que não é possível alterar o resultado de uma partida sem um token', async () => {
+    const dadosInsert = {
+      homeTeam: teams[1].teamName,
+      awayTeam: teams[3].teamName,
+      homeTeamGoals: threeGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .patch(
+        `${URL(containerPorts.backend).BASE_URL}/matches/2`,
+        dadosInsert,
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token not found");
+  });
+
+  it('Será validado na API que não é possível alterar o resultado de uma partida com um token inválido', async () => {
+    const dadosInsert = {
+      homeTeam: teams[1].teamName,
+      awayTeam: teams[3].teamName,
+      homeTeamGoals: threeGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .patch(
+        `${URL(containerPorts.backend).BASE_URL}/matches/2`,
+        dadosInsert,
+        {
+          headers: {
+            authorization: 'token'
+          }
+        }
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token must be a valid token");
+  });
+
+  it('Será avaliado que é possível alterar o resultado de uma partida', async () => {
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    const headerButtonLogin = await page.$(header.loginButton);
+    await headerButtonLogin.click();
+
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    await logAdmin(page, containerPorts.frontend);
+
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    const testMatchId = 48;
+
+    const editMatchButton = await page.$(pageMatches.matchStatusBtn(testMatchId));
+    await editMatchButton.click();
+
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    const selectQuantityGoalsHomeTeam = await page.$(pageMatchSettings.selectQuantityGoalsHomeTeam);
+    const selectQuantityGoalsAwayTeam = await page.$(pageMatchSettings.selectQuantityGoalsAwayTeam);
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    await selectQuantityGoalsHomeTeam.click({ clickCount: 3 });
+    await selectQuantityGoalsHomeTeam.type(fiveGoals);
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+    await selectQuantityGoalsAwayTeam.click({ clickCount: 3 });
+    await selectQuantityGoalsAwayTeam.type(twoGoalsText);
+
+    const SaveEditMatchButton = await page.$(pageMatchSettings.editMatchButton);
+
+    await waitForResponse({
+      page,
+      trigger: () => SaveEditMatchButton.click(),
+      expectedRequestType: 'script',
+      expectedRequestMethod: 'PATCH',
+      expectedResponseStatus: 200,
+      expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matches/${testMatchId}`,
+      timeOut: 100000
+    });
+
+    const matches = await database.query(select.all.matches, { type: 'SELECT' });
+    const normalizeMatches = normalize(matches);
+    const lastInsertedRow = lastInsert(normalizeMatches);
+
+    expect(lastInsertedRow.homeTeamId).toBe(teams[12].id);
+    expect(lastInsertedRow.awayTeamId).toBe(teams[1].id);
+    expect(lastInsertedRow.homeTeamGoals.toString()).toBe(fiveGoals);
+    expect(lastInsertedRow.awayTeamGoals.toString()).toBe(twoGoalsText);
+    expect(lastInsertedRow.inProgress).toBe(1);
+  });
+});
+
+describe(getRequirement(20), () => {
+  it('Será validado na API que não é possível inserir uma partida sem um token', async () => {
+    const dadosInsert = {
+      homeTeam: teams[1].teamName,
+      awayTeam: teams[3].teamName,
+      homeTeamGoals: twoGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .post(
+        `${URL(containerPorts.backend).BASE_URL}/matches`,
+        dadosInsert,
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token not found");
+  });
+
+  it('Será validado na API que não é possível inserir uma partida com um token inválido', async () => {
+    const dadosInsert = {
+      homeTeam: teams[1].teamName,
+      awayTeam: teams[3].teamName,
+      homeTeamGoals: twoGoals,
+      awayTeamGoals: oneGoal
+    }
+
+    const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
+      "email": "admin@admin.com",
+      "password": "secret_admin"
+    });
+
+    expect(token).not.toBeNull();
+
+    const result = await axios
+      .post(
+        `${URL(containerPorts.backend).BASE_URL}/matches`,
+        dadosInsert,
+        {
+          headers: {
+            authorization: 'token'
+          }
+        }
+      )
+      .then(({ status, data: { message } }) => ({ status, message }))
+      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
+
+    expect(result).toHaveProperty("status");
+    expect(result).toHaveProperty("message");
+    expect(result.status).toBe(401);
+    expect(result.message).toBe("Token must be a valid token");
+  });
+
   it('Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos', async () => {
     const dadosInsert = {
       homeTeam: teams[3].teamName,
@@ -61,41 +343,8 @@ describe(getRequirement(23), () => {
   });
 });
 
-describe(getRequirement(24), () => {
-  it('Será validado que ao finalizar uma partida é alterado no banco de dados e na página', async () => {
-
-    const dadosInsert = {
-      homeTeam: teams[3].teamName,
-      awayTeam: teams[8].teamName,
-      homeGoals: twoGoals,
-      awayGoals: oneGoal
-    }
-
-    await insertFinished(page, dadosInsert)
-
-    const rows = await database.query(select.all.matches, { type: 'SELECT' });
-    const [matchInserted] = normalize([lastInsert(rows)])
-
-    expect(matchInserted.homeTeam).toBe(teams[3].id);
-    expect(matchInserted.awayTeam).toBe(teams[8].id);
-    expect(matchInserted.inProgress).toBe(0);
-
-    const showMatchesButton = await page.$(header.showMatchesButton);
-    await showMatchesButton.click();
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const homeTeam = await page.$eval(pageMatches.homeTeam(49), (el) => el.innerText);
-    const awayTeam = await page.$eval(pageMatches.awayTeam(49), (el) => el.innerText);
-    const matchStatus = await page.$eval(pageMatches.matchStatus(49), (el) => el.innerText);
-
-    expect(homeTeam).toBe(teams[3].teamName);
-    expect(awayTeam).toBe(teams[8].teamName);
-    expect(matchStatus).toBe('Finalizado');
-  });
-});
-
-describe(getRequirement(25), () => {
-  it('Será validado que não é possivel inserir uma partida com times iguais', async () => {
+describe(getRequirement(21), () => {
+  it('Será validado que não é possível inserir uma partida com times iguais', async () => {
     const dadosInsert = {
       homeTeam: teams[3].teamName,
       awayTeam: teams[3].teamName,
@@ -107,13 +356,11 @@ describe(getRequirement(25), () => {
 
     expect(messageExpect).toBe(message);
   });
-});
 
-describe(getRequirement(26), () => {
   it('Será validado na API que não é possível inserir uma partida com time que não existe na tabela teams', async () => {
     const dadosInsert = {
-      homeTeam: 12345,
-      awayTeam: 3,
+      homeTeamId: 12345,
+      awayTeamId: 3,
       homeTeamGoals: twoGoals,
       awayTeamGoals: oneGoal
     }
@@ -145,31 +392,4 @@ describe(getRequirement(26), () => {
   });
 });
 
-describe(getRequirement(27), () => {
-  it('Será validado na API que não é possível inserir uma partida com um token inválido', async () => {
-    const dadosInsert = {
-      homeTeam: 1,
-      awayTeam: 3,
-      homeTeamGoals: twoGoals,
-      awayTeamGoals: oneGoal
-    }
-
-    const result = await axios
-      .post(
-        `${URL(containerPorts.backend).BASE_URL}/matches`,
-        dadosInsert,
-        {
-          headers: {
-            authorization: 'token'
-          }
-        }
-      )
-      .then(({ status, data: { message } }) => ({ status, message }))
-      .catch(({ response: { status, data: { message } } }) => ({ status, message }));
-
-    expect(result).toHaveProperty("status");
-    expect(result).toHaveProperty("message");
-    expect(result.status).toBe(401);
-    expect(result.message).toBe("Token must be a valid token");
-  });
-});
+// describe(getRequirement(27), () => {});
