@@ -981,121 +981,6 @@ Esse projeto é composto de 4 fluxos principais:
   { "message": "There is no team with such id!" }
   ```
 
-### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivos em `/backend/src`, com um mínimo de 100 linhas cobertas
-
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
-
-### 23 - Desenvolva o endpoint `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
-
-  - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
-
-  - Será validado que não é possível inserir uma partida sem um token;
-
-  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token not found" }
-  ```
-
-  - Será validado que não é possível inserir uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
-
-  - O corpo da requisição terá o seguinte formato:
-  ```json
-  {
-    "homeTeamId": 16, // O valor deve ser o id do time
-    "awayTeamId": 8, // O valor deve ser o id do time
-    "homeTeamGoals": 2,
-    "awayTeamGoals": 2,
-  }
-  ```
-
-  - Caso a partida seja inserida com sucesso, deve-se retornar os dados da partida, com _status_ `201`:
-
-  ```json
-  {
-    "id": 1,
-    "homeTeamId": 16,
-    "homeTeamGoals": 2,
-    "awayTeamId": 8,
-    "awayTeamGoals": 2,
-    "inProgress": true,
-  }
-  ```
-
-### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
-
-  - A rota deve ser do tipo `PATCH`;
-
-  - Será recebido o `id` pelo parâmetro da URL;
-
-  - Será validado que não é possível alterar uma partida sem um token;
-
-  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token not found" }
-  ```
-
-  - Será validado que não é possível alterar uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-  - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
-
-  - Deve-se retornar, com um status `200`, a seguinte mensagem:
-
-  ```json
-  { "message": "Finished" }
-  ```
-
-### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
-
-  - O endpoint deve ser do tipo `PATCH`;
-
-  - Será recebido o `id` pelo parâmetro da URL;
-
-  - Será validado que não é possível alterar uma partida sem um token;
-
-  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token not found" }
-  ```
-
-  - Será validado que não é possível alterar uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-  - Será avaliado que é possível alterar o resultado de uma partida.
-
-  - O corpo da requisição terá o seguinte formato:
-
-  ```json
-  {
-    "homeTeamGoals": 3,
-    "awayTeamGoals": 1
-  }
-  ```
-  - Será avaliado que é o endpoint responde à requisição com um status `200` e qualquer corpo.
-
 </details>
 
 ## Fluxo 4: Leaderboards (Placares)
@@ -1219,7 +1104,61 @@ Esse projeto é composto de 4 fluxos principais:
 
 ## Leaderboard Home
 
-### 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times `da casa` na tela de classificação do front-end com os dados iniciais do banco de dados
+  ### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/leaderboard`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
+
+ ### 23 - Desenvolva o endpoint `/leaderboard/home` de forma que retorne as informações do desempenho dos times da casa com as seguintes propriedades: "name", "totalPoints", "totalGames", "totalVictories", "totalDraws", "totalLosses", "goalsFavor" e "goalsOwn"
+
+ - O endpoint deverá ser do tipo `GET`;
+
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+   <details>
+<summary><strong> Exemplo de retorno: </strong></summary> <br/>
+
+```json
+[
+  {
+    "name": "Santos",
+    "totalPoints": 9,
+    "totalGames": 3,
+    "totalVictories": 3,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 9,
+    "goalsOwn": 3,
+  },
+  {
+    "name": "Palmeiras",
+    "totalPoints": 7,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 10,
+    "goalsOwn": 5,
+  },
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 6,
+    "goalsOwn": 1,
+  },
+  ...
+]
+```
+
+</details>
+
+### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times `da casa` na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades "goalsBalance" e "efficiency", além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
