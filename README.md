@@ -528,11 +528,11 @@ Esse projeto é composto de 4 fluxos principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `teams`
+### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de times
 
   - O avaliador consultará os dados da tabela `teams`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
-### 2 - (`TDD`) Desenvolva testes que cubram no mínimo 5% dos arquivos back-end em `/src`, com um mínimo de 7 linhas cobertas
+### 2 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivos em `/backend/src`, com um mínimo de 7 linhas cobertas
 
   **Sugestões:**
   - Baseando-se no contrato do endpoint `/teams` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;
@@ -562,12 +562,12 @@ Esse projeto é composto de 4 fluxos principais:
 ]
 ```
 
-### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 10% dos arquivos back-end em `/src`, com um mínimo de 19 linhas cobertas
+### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 10 por cento dos arquivos em `/backend/src`, com um mínimo de 19 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/teams`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
 
-### 5 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico <!-- Antigo 16 - Está aqui temporariamente -->
+### 5 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -605,11 +605,11 @@ Esse projeto é composto de 4 fluxos principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 6 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
+### 6 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de pessoas usuárias
 
   - O avaliador consultará os dados da tabela `users`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades;
 
-### 7 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
+### 7 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivos em `/backend/src`, com um mínimo de 25 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
@@ -650,7 +650,7 @@ Esse projeto é composto de 4 fluxos principais:
     { "message": "All fields must be filled" }
     ```
 
-### 9 - (`TDD`) Desenvolva testes que cubram no mínimo 20% dos arquivos back-end em `/src`, com um mínimo de 35 linhas cobertas
+### 9 - (`TDD`) Desenvolva testes que cubram no mínimo 20 por cento dos arquivos em `/backend/src`, com um mínimo de 35 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
@@ -665,12 +665,12 @@ Esse projeto é composto de 4 fluxos principais:
     { "message": "Incorrect email or password" }
   ```
 
-### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src`, com um mínimo de 45 linhas cobertas
+### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos em `/backend/src`, com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
 
-### 12 - Desenvolva um middleware de validação para o token, verificando se ele é válido, e desenvolva o endpoint `/login/role` no back-end de maneira que ele retorne os dados corretamente no front-end
+### 12 - Desenvolva um middleware de validação para o `token`, verificando se ele é válido, e desenvolva o endpoint `/login/role` no back-end de maneira que ele retorne os dados corretamente no front-end
 
   - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization`, onde ficará armazenado o token gerado no login;
 
@@ -711,11 +711,11 @@ Esse projeto é composto de 4 fluxos principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 13 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
+### 13 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de partidas
 
 - O avaliador consultará os dados da tabela `matches`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
-### 14 - (`TDD`) Desenvolva testes que cubram no mínimo 45% dos arquivos back-end em `/src`, com um mínimo de 70 linhas cobertas
+### 14 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivos em `/backend/src`, com um mínimo de 70 linhas cobertas
 
   **Sugestão:**
 
@@ -765,7 +765,7 @@ Esse projeto é composto de 4 fluxos principais:
 
 - **OBS:** Você deverá definir os relacionamentos para ```homeTeam``` e ```awayTeam``` somente na model de partidas.
 
-### 16 - Desenvolva o endpoint /matches de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do frontend
+### 16 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do front-end
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
@@ -847,7 +847,7 @@ Esse projeto é composto de 4 fluxos principais:
   ]
   ```
 
-### 17 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
+### 17 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível finalizar uma partida no banco de dados
 
 - A rota deve ser do tipo `PATCH`;
 
@@ -912,12 +912,12 @@ Esse projeto é composto de 4 fluxos principais:
 
 - Será avaliado que é o endpoint responde à requisição com um status `200` e qualquer corpo.
 
-### 19 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src`, com um mínimo de 80 linhas cobertas
+### 19 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivos em `/backend/src`, com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
 
-### 20 - Desenvolva o endpoint `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+### 20 - Desenvolva o endpoint `/matches` de modo que seja possível cadastrar uma nova partida em progresso no banco de dados
 
 - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 
@@ -963,7 +963,7 @@ Esse projeto é composto de 4 fluxos principais:
   }
   ```
 
-### 21 - Desenvolva o endpoint /matches de forma que não seja possível inserir uma partida com times iguais nem com um time que não existe na tabela teams
+### 21 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais nem com um time que não existe na tabela de times
 
   - Será validado que não é possível inserir uma partida em que o `homeTeam` e o `awayTeam` sejam iguais, por exemplo: Barcelona x Barcelona;
 
@@ -981,7 +981,8 @@ Esse projeto é composto de 4 fluxos principais:
   { "message": "There is no team with such id!" }
   ```
 
-### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
+### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivos em `/backend/src`, com um mínimo de 100 linhas cobertas
+
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
