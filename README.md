@@ -917,7 +917,7 @@ Esse projeto é composto de 4 fluxos principais:
   **Sugestão:**
   - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
 
-### 20 - Desenvolva o endpoint `/matches` de modo que seja possível cadastrar uma nova partida em progresso no banco de dados
+### 20 - Desenvolva o endpoint `/matches` de modo que seja possível cadastrar uma nova partida em andamento no banco de dados
 
 - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 

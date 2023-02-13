@@ -154,7 +154,7 @@
     },
     {
       "bonus": false,
-      "description": "20 - Desenvolva o endpoint `/matches` de modo que seja possível cadastrar uma nova partida em progresso no banco de dados",
+      "description": "20 - Desenvolva o endpoint `/matches` de modo que seja possível cadastrar uma nova partida em andamento no banco de dados",
       "enabled": true,
       "identifier": null,
       "order": 20,
