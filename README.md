@@ -1104,7 +1104,7 @@ Esse projeto é composto de 4 fluxos principais:
 
 ## Leaderboard Home
 
-  ### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
+  ### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivos em `/backend/src`, com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/leaderboard`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
