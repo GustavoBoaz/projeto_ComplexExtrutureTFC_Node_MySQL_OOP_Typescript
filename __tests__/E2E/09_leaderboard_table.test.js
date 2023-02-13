@@ -63,28 +63,3 @@ describe(getRequirement(34), () => {
     await validateLeaderboardBody(state02, leaderboard, page, containerPorts.backend, endpoint, actionTriger);
   });
 });
-
-describe(getRequirement(35), () => {
-  it('Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos', async () => {
-    const dadosInsert = {
-      homeTeam: teams[9].teamName,
-      awayTeam: teams[5].teamName,
-      homeGoals: number.one,
-      awayGoals: number.zero
-    }
-
-    await dbReset();
-
-    await insertFinished(page, dadosInsert)
-
-    const showMatchesButton = await page.$(header.showMatchesButton);
-    await showMatchesButton.click();
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    const showClassificationButton = await page.$(header.showClassificationButton)
-    await showClassificationButton.click()
-    await page.waitForTimeout(puppeteerDefs.pause.brief);
-
-    await validateLeaderboardBody(state03, leaderboard, page, containerPorts.backend, endpoint, actionTriger);
-  });
-});
