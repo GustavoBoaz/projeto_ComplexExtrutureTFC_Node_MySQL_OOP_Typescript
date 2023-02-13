@@ -74,7 +74,7 @@
     },
     {
       "bonus": false,
-      "description": "10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end",
+      "description": "10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email não cadastrado ou senha incorreta no front-end",
       "enabled": true,
       "identifier": null,
       "order": 10,

@@ -620,7 +620,7 @@ Esse projeto é composto de 4 fluxos principais:
 
   - O avaliador verificará se é possível fazer o login com dados corretos e que, após o acesso, será redirecionado para a tela de jogos.
 
-  - O endpoint `/login` no back-end não deve permitir o acesso sem informar um email no front-end
+  - O endpoint `/login` no back-end não deve permitir o acesso sem informar um email com formato válido no front-end
 
   - O endpoint `/login` no back-end não deve permitir o acesso sem informar uma senha no front-end
 
@@ -655,11 +655,11 @@ Esse projeto é composto de 4 fluxos principais:
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
 
-### 10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email ou senha inválidos no front-end
+### 10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email não cadastrado ou senha incorreta no front-end
 
-- O avaliador verificará se, ao fazer o login com um email ou senha incorretos, retornará status não-autorizado.
+- O avaliador verificará se, ao fazer o login com um email não cadastrado ou senha incorreta, retornará status não-autorizado.
 
-- Se o login tiver o "email" **inválido** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
+- Se o login tiver o "email" **não cadastrado no banco de dados** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
 
   ```json
     { "message": "Incorrect email or password" }
