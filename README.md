@@ -186,7 +186,7 @@ Na sua máquina você deve ter:
 
 - Seu projeto vai conter um arquivo `docker-compose.yml` que será utilizado pelo avaliador para realizar o _build_ da aplicação, você **não** deve alterá-lo ou excluí-lo.
 - O arquivo `docker-compose.yml` também pode ser utilizado para executar a aplicação na sua máquina local, para isso é necessário executar o comando `npm run compose:up` na raiz do projeto.
-- Recomendamos que enquanto desenvolve o projeto, descomentar as linhas 26 e 27 do arquivo `docker-compose.yml` pois, estas linhas configuram o compartilhamento de [volumes](https://docs.docker.com/storage/volumes/) com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao fazer modificações no _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá realizar o re-build do seu compose, pois o volume está mapeando somente alterações dentro da pasta `src`. Você pode verificar essas configurações explorando o arquivo `docker-compose.yml`
+- Recomendamos que enquanto desenvolve o projeto, descomentar as linhas 26, 27 e 28 do arquivo `docker-compose.yml` pois, estas linhas configuram o compartilhamento de [volumes](https://docs.docker.com/storage/volumes/) com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao fazer modificações no _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá realizar o re-build do seu compose, pois o volume está mapeando somente alterações dentro da pasta `src`. Você pode verificar essas configurações explorando o arquivo `docker-compose.yml`
 
 >  👀 **De olho na dica:**
 > Lembre-se, você pode revisitar os conteúdos sobre Docker:
