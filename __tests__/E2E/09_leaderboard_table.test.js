@@ -33,13 +33,13 @@ const number = {
   one: '1',
 }
 
-describe(getRequirement(33), () => {
+describe(getRequirement(29), () => {
   it('Será avaliado que ao fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos considerando os dados iniciais do banco de dados', async () => {
     await validateLeaderboardBody(state01, leaderboard, page, containerPorts.backend, endpoint, actionTriger);
   });
 });
 
-describe(getRequirement(34), () => {
+describe(getRequirement(30), () => {
   it('Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
       homeTeam: teams[6].teamName,
