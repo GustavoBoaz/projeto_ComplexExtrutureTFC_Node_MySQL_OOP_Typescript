@@ -221,7 +221,7 @@
       "description": "28 - Desenvolva o endpoint /leaderboard/away de forma que seja possível filtrar a classificações dos times quando visitantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada",
       "enabled": true,
       "identifier": null,
-      "order": 34,
+      "order": 28,
       "skill_ids": []
     },
     {
@@ -229,7 +229,7 @@
       "description": "29 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend com os dados iniciais do banco de dados",
       "enabled": true,
       "identifier": null,
-      "order": 35,
+      "order": 29,
       "skill_ids": []
     },
     {
@@ -237,7 +237,7 @@
       "description": "30 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do frontend e ao inserir a partida Flamengo 3 X 0 Napoli-SC a tabela será atualizada",
       "enabled": true,
       "identifier": null,
-      "order": 36,
+      "order": 30,
       "skill_ids": []
     }
   ]
