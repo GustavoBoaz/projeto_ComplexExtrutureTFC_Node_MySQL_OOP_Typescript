@@ -186,8 +186,7 @@ Na sua máquina você deve ter:
 
 - Seu projeto vai conter um arquivo `docker-compose.yml` que será utilizado pelo avaliador para realizar o _build_ da aplicação, você **não** deve alterá-lo ou excluí-lo.
 - O arquivo `docker-compose.yml` também pode ser utilizado para executar a aplicação na sua máquina local, para isso é necessário executar o comando `npm run compose:up` na raiz do projeto.
-- Recomendamos que enquanto desenvolve o projeto prefira o usar o comando `npm run compose:up:dev` pois, diferente do comando anterior, este comando está configurado para compartilhar volumes com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao fazer modificações no _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá realizar o re-build do seu compose, pois o volume está mapeando somente alterações dentro da pasta `src`. Você pode verificar essas configurações explorando o arquivo `docker-compose.dev.yml` e comparar com `docker-compose.yml`
-- Obs.: Se você quiser fazer o build da sua aplicação usando o `docker-compose.dev.yml`, você pode usar o comando: `npm run compose:up:dev -- --build`.
+- Recomendamos que enquanto desenvolve o projeto, descomentar as linhas 26, 27 e 28 do arquivo `docker-compose.yml` pois, estas linhas configuram o compartilhamento de [volumes](https://docs.docker.com/storage/volumes/) com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao fazer modificações no _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá realizar o re-build do seu compose, pois o volume está mapeando somente alterações dentro da pasta `src`. Você pode verificar essas configurações explorando o arquivo `docker-compose.yml`
 
 >  👀 **De olho na dica:**
 > Lembre-se, você pode revisitar os conteúdos sobre Docker:
@@ -276,26 +275,6 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 
   - Para isso, garanta que as aplicações, tanto do back, quanto do front-end, possuem arquivos `Dockerfile` válidos;
   - Utilize os scripts de apoio `npm run compose:up` / `npm run compose:down`, para facilitar a execução do seu *compose*.
-
-</details>
-
-<details id='Variaveis-de-ambiente'>
-<summary><strong> ⚙️ Variáveis de ambiente </strong></summary><br />
-
-  **No diretório `app/backend/` renomeie o arquivo `.env.example` para `.env` e configure os valores de acordo com o cenário do seu ambiente (credenciais de banco de dados, secrets desejadas e etc)**. Isso vai permitir que você inicialize a aplicação fora do _container_ e ela se conecte com seu banco local caso deseje.
- > `./app/backend/.env.example`
-  ```txt
-  JWT_SECRET=jwt_secret
-  APP_PORT=3001
-  DB_USER=seu_user
-  DB_PASS=sua_senha
-  DB_HOST=localhost
-  DB_PORT=3306
-  ```
-
-  **⚠️ Variáveis de ambiente além das especificadas acima não são suportadas, pois não são esperadas pelo avaliador do projeto. ⚠️**
-
-  **⚠️ Não defina variável de ambiente para o nome do banco, o mesmo deve se manter com o nome `TRYBE_FUTEBOL_CLUBE`. ⚠️**
 
 </details>
 
@@ -425,11 +404,11 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 </details>
 
 <details>
-  <summary><strong>🛠 Execução de testes localmente</strong></summary>
+  <summary><strong>🛠 Execução de testes em sua máquina</strong></summary>
 
 > :information_source: IMPORTANTE
 
-Para que os testes do projeto sejam executados localmente é necessário que todos os seus containers estejam no ar e saudáveis.
+Para que os testes do projeto sejam executados na sua máquina, é necessário que todos os seus containers estejam no ar e saudáveis.
 
 ### :eyes: executando os testes localmente
 
@@ -445,7 +424,6 @@ Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudá
 
 </details>
 
-
 <details>
   <summary><strong> 👀 Dicas e comandos úteis </strong></summary><br />
 
@@ -457,6 +435,10 @@ Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudá
   - Você pode **subir ou descer uma aplicação do compose**, utilizando `npm run` com os scripts `compose:up`, `compose:down`, ou `compose:up:dev`, `compose:down:dev`;
   - Os comando de _compose_ anteriores estão configurados para executar o _docker-compose_ com o terminal desanexado (detached mode `-d`). Caso queira acompanhar os logs de um serviço em tempo real pelo terminal, basta executar `npm run logs [nome_do_servico]` onde _nome_do_servico_ é opcional e pode receber os serviços _backend_, _frontend_ ou _db_
   - Para criação da API com TS + POO, **recomenda-se fazer ou relembrar os exercícios** do conteúdo de POO e SOLID, especificamente o do dia de `SOLID - Introdução e Princípios S, O e D`, [nesse link](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/62c97d81-c729-445d-9e9f-f636a5c24231/day/d5d5de7d-7f64-4317-928c-1981fe076cd9/lesson/397a316e-f4a4-4516-9b61-389af92b019a).
+  - Para inicializar a aplicação fora do _container_ e conectá-la com seu banco local:
+    - No diretório `app/backend/` renomeie o arquivo `.env.example` para `.env`
+    - Configure os valores de acordo com o cenário do seu ambiente (credenciais de banco de dados, secrets desejadas e etc).
+    > Lembrando que para testar o projeto, é necessário que as aplicações estejam rodando dentro do Docker.
 
 </details>
 
@@ -532,7 +514,11 @@ Esse projeto é composto de 4 fluxos principais:
 
   - O avaliador consultará os dados da tabela `teams`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
-### 2 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivos em `/backend/src`, com um mínimo de 7 linhas cobertas
+  > 👀 **De olho na dica:**
+  > Lembre-se você pode revisitar os conteúdos sobre Model com Sequelize:
+  > - [Model com Sequelize](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/4e3b7d3a-94a1-4fce-9545-0f2b04f8ccd9/day/55580b57-6754-49bc-83bf-465967e0d2a1/lesson/70a59622-f05f-44cc-b3ce-6e5c28435f25)
+
+### 2 - (`TDD`) Desenvolva testes que cubram no mínimo 5% dos arquivos back-end em `/src`, com um mínimo de 7 linhas cobertas
 
   **Sugestões:**
   - Baseando-se no contrato do endpoint `/teams` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;
@@ -1102,12 +1088,13 @@ Esse projeto é composto de 4 fluxos principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-## Leaderboard Home
 
-  ### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivos em `/backend/src`, com um mínimo de 100 linhas cobertas
+### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivos em `/backend/src`, com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
   - Evolua os testes de integração da sua rota `/leaderboard`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
+
+## Leaderboard Home
 
  ### 23 - Desenvolva o endpoint `/leaderboard/home` de forma que retorne as informações do desempenho dos times da casa com as seguintes propriedades: "name", "totalPoints", "totalGames", "totalVictories", "totalDraws", "totalLosses", "goalsFavor" e "goalsOwn"
 
@@ -1367,7 +1354,7 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/home`, serão retornados os campos e valores corretos.
 
@@ -1621,6 +1608,8 @@ Esse projeto é composto de 4 fluxos principais:
 ]
 ```
 
+</details>
+
 ### 27 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend com os dados iniciais do banco de dados, incluindo as propriedades "goalsBalance" e "efficiency", além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
@@ -1830,7 +1819,7 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos.
 
@@ -2037,7 +2026,7 @@ Esse projeto é composto de 4 fluxos principais:
 
 ## Leaderboard
 
-### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
+### 29 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET`;
 
@@ -2246,7 +2235,7 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 34 - (`Bônus`) Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
+### 30 - (`Bônus`) Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
 
   - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard, serão retornados os campos e valores corretos.
 
@@ -2449,6 +2438,4 @@ Esse projeto é composto de 4 fluxos principais:
   }
 ]
 ```
-</details>
-
 </details>
