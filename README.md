@@ -598,7 +598,7 @@ Esse projeto é composto de 4 fluxos principais:
 ### 7 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivos em `/app/backend/src`, com um mínimo de 25 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
+  - Baseando-se no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;
 
 ### 8 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
 
@@ -654,7 +654,8 @@ Esse projeto é composto de 4 fluxos principais:
 ### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos em `/app/backend/src`, com um mínimo de 45 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
+
+- Baseando-se no contrato do endpoint `/login/role` **do próximo requisito**, inicie um teste de integração utilizando a metodologia TDD com a implementação do requisito seguinte;
 
 ### 12 - Desenvolva um middleware de validação para o `token`, verificando se ele é válido, e desenvolva o endpoint `/login/role` no back-end de maneira que ele retorne os dados corretamente no front-end
 
@@ -705,7 +706,7 @@ Esse projeto é composto de 4 fluxos principais:
 
   **Sugestão:**
 
-- Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**. [Nessa seção](#sequelize) temos o diagrama de entidades.
+- Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, considerando **os contratos dos próximos requisitos**. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
 ### 15 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end
 
@@ -901,7 +902,7 @@ Esse projeto é composto de 4 fluxos principais:
 ### 19 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivos em `/app/backend/src`, com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
+  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
 
 ### 20 - Desenvolva o endpoint `/matches` de modo que seja possível cadastrar uma nova partida em andamento no banco de dados
 
@@ -1092,7 +1093,7 @@ Esse projeto é composto de 4 fluxos principais:
 ### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivos em `/app/backend/src`, com um mínimo de 100 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/leaderboard`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
+  - Crie os testes de integração para a rota `/leaderboard`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
 
 ## Leaderboard Home
 
