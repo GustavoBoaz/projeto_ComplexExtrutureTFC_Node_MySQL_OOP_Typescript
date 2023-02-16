@@ -1145,7 +1145,7 @@ Esse projeto é composto de 4 fluxos principais:
 
 </details>
 
-### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times "da casa" na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
+### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
@@ -1354,7 +1354,7 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times "da casa" na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/home`, serão retornados os campos e valores corretos.
 
@@ -1561,7 +1561,7 @@ Esse projeto é composto de 4 fluxos principais:
 
 ## Leaderboard away
 
-### 26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times "visitantes" com as seguintes propriedades: `name`, `totalPoints`, `totalGames`, `totalVictories`, `totalDraws`, `totalLosses`, `goalsFavor` e `goalsOwn`
+### 26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times visitantes com as seguintes propriedades: `name`, `totalPoints`, `totalGames`, `totalVictories`, `totalDraws`, `totalLosses`, `goalsFavor` e `goalsOwn`
 
  - O endpoint deverá ser do tipo `GET`;
 
@@ -1610,7 +1610,7 @@ Esse projeto é composto de 4 fluxos principais:
 
 </details>
 
-### 27 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando "visitantes" na tela de classificação do front-end, com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
+### 27 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end, com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
@@ -1819,7 +1819,7 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando "visitantes" na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos.
 
