@@ -645,10 +645,16 @@ Esse projeto é composto de 4 fluxos principais:
 
 - O avaliador verificará se, ao fazer o login com um email não cadastrado ou senha incorreta, retornará status não-autorizado.
 
-- Se o login tiver o "email" **não cadastrado no banco de dados** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
+- Se o login tiver o "email" ou a "senha" **não cadastrados no banco de dados**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
 
   ```json
     { "message": "Incorrect email or password" }
+  ```
+
+- Se o login tiver o "email" ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
+
+  ```json
+    { "message": "Invalid email or password" }
   ```
 
 - Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`, emails não cadastrados no banco;
@@ -1105,7 +1111,7 @@ Esse projeto é composto de 4 fluxos principais:
  - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
-  
+
   - **Não** será avaliada a ordenação dos dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
