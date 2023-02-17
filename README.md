@@ -606,7 +606,7 @@ Esse projeto é composto de 4 fluxos principais:
 
   - O avaliador verificará se é possível fazer o login com dados corretos e que, após o acesso, será redirecionado para a tela de jogos.
 
-  - O endpoint `/login` no back-end não deve permitir o acesso sem informar um email com formato válido no front-end
+  - O endpoint `/login` no back-end não deve permitir o acesso sem informar um email no front-end
 
   - O endpoint `/login` no back-end não deve permitir o acesso sem informar uma senha no front-end
 
@@ -650,6 +650,10 @@ Esse projeto é composto de 4 fluxos principais:
   ```json
     { "message": "Incorrect email or password" }
   ```
+
+- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`, emails não cadastrados no banco;
+
+- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`, senhas não cadastradas no banco;
 
 ### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos em `/app/backend/src`, com um mínimo de 45 linhas cobertas
 
