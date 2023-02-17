@@ -62,7 +62,7 @@ O projeto é composto de 4 entidades importantes para sua estrutura:
   - Recomendamos que sempre que implementar um requisito no back-end acesse a página no front-end que consome a implementação para validar se está funcionando como esperado.
 
 4️⃣ **Docker:**
-  - O `docker-compose` tem a responsabilidade de unir todos os serviços conteinerizados (backend, frontend e db) e subir o projeto completo com o comando `npm run compose:up` ou `npm run compose:up:dev`;
+  - O `docker-compose` tem a responsabilidade de unir todos os serviços conteinerizados (backend, frontend e db) e subir o projeto completo com o comando `npm run compose:up`;
   - Você **deve** configurar as `Dockerfiles` corretamente nas raízes do `front-end` e `back-end`, para conseguir inicializar a aplicação;
 
 </details>
@@ -432,7 +432,7 @@ Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudá
   - Você pode **instalar suas aplicações (front e back)** rodando o comando `npm run install:apps` na pasta raiz do projeto;
   - Você pode rodar o avaliador **mostrando as operações que o navegador vai fazer no front-end** durante os testes E2E utilizando o comando `npm run test:browser`;
   - Você pode **debugar alguns erros do avaliador** (como por exemplo a validação do banco de dados, ou da compilação do TS), onde são *printadas* na tela algumas infos adicionais, utilizando o comando `npm run test:debug`;
-  - Você pode **subir ou descer uma aplicação do compose**, utilizando `npm run` com os scripts `compose:up`, `compose:down`, ou `compose:up:dev`, `compose:down:dev`;
+  - Você pode **subir ou descer uma aplicação do compose**, utilizando `npm run` com os scripts `compose:up`, `compose:down`;
   - Os comando de _compose_ anteriores estão configurados para executar o _docker-compose_ com o terminal desanexado (detached mode `-d`). Caso queira acompanhar os logs de um serviço em tempo real pelo terminal, basta executar `npm run logs [nome_do_servico]` onde _nome_do_servico_ é opcional e pode receber os serviços _backend_, _frontend_ ou _db_
   - Para criação da API com TS + POO, **recomenda-se fazer ou relembrar os exercícios** do conteúdo de POO e SOLID, especificamente o do dia de `SOLID - Introdução e Princípios S, O e D`, [nesse link](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/62c97d81-c729-445d-9e9f-f636a5c24231/day/d5d5de7d-7f64-4317-928c-1981fe076cd9/lesson/397a316e-f4a4-4516-9b61-389af92b019a).
   - Para inicializar a aplicação fora do _container_ e conectá-la com seu banco local:
@@ -606,7 +606,7 @@ Esse projeto é composto de 4 fluxos principais:
 
   - O avaliador verificará se é possível fazer o login com dados corretos e que, após o acesso, será redirecionado para a tela de jogos.
 
-  - O endpoint `/login` no back-end não deve permitir o acesso sem informar um email com formato válido no front-end
+  - O endpoint `/login` no back-end não deve permitir o acesso sem informar um email no front-end
 
   - O endpoint `/login` no back-end não deve permitir o acesso sem informar uma senha no front-end
 
@@ -650,6 +650,10 @@ Esse projeto é composto de 4 fluxos principais:
   ```json
     { "message": "Incorrect email or password" }
   ```
+
+- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`, emails não cadastrados no banco;
+
+- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`, senhas não cadastradas no banco;
 
 ### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos em `/app/backend/src`, com um mínimo de 45 linhas cobertas
 
@@ -1101,6 +1105,8 @@ Esse projeto é composto de 4 fluxos principais:
  - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+  
+  - **Não** será avaliada a ordenação dos dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1109,6 +1115,16 @@ Esse projeto é composto de 4 fluxos principais:
 
 ```json
 [
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 6,
+    "goalsOwn": 1,
+  },
   {
     "name": "Santos",
     "totalPoints": 9,
@@ -1129,27 +1145,19 @@ Esse projeto é composto de 4 fluxos principais:
     "goalsFavor": 10,
     "goalsOwn": 5,
   },
-  {
-    "name": "Corinthians",
-    "totalPoints": 6,
-    "totalGames": 2,
-    "totalVictories": 2,
-    "totalDraws": 0,
-    "totalLosses": 0,
-    "goalsFavor": 6,
-    "goalsOwn": 1,
-  },
   ...
 ]
 ```
 
 </details>
 
-### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times "da casa" na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
+### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1354,9 +1362,11 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times "da casa" na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/home`, serão retornados os campos e valores corretos.
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
@@ -1561,11 +1571,13 @@ Esse projeto é composto de 4 fluxos principais:
 
 ## Leaderboard away
 
-### 26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times "visitantes" com as seguintes propriedades: `name`, `totalPoints`, `totalGames`, `totalVictories`, `totalDraws`, `totalLosses`, `goalsFavor` e `goalsOwn`
+### 26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times visitantes com as seguintes propriedades: `name`, `totalPoints`, `totalGames`, `totalVictories`, `totalDraws`, `totalLosses`, `goalsFavor` e `goalsOwn`
 
  - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - **Não** será avaliada a ordenação dos dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1575,16 +1587,6 @@ Esse projeto é composto de 4 fluxos principais:
 ```json
 [
   {
-    "name": "Palmeiras",
-    "totalPoints": 6,
-    "totalGames": 2,
-    "totalVictories": 2,
-    "totalDraws": 0,
-    "totalLosses": 0,
-    "goalsFavor": 7,
-    "goalsOwn": 0,
-  },
-  {
     "name": "Corinthians",
     "totalPoints": 6,
     "totalGames": 3,
@@ -1593,6 +1595,16 @@ Esse projeto é composto de 4 fluxos principais:
     "totalLosses": 1,
     "goalsFavor": 6,
     "goalsOwn": 2,
+  },
+  {
+    "name": "Palmeiras",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 7,
+    "goalsOwn": 0,
   },
   {
     "name": "Internacional",
@@ -1610,13 +1622,15 @@ Esse projeto é composto de 4 fluxos principais:
 
 </details>
 
-### 27 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando "visitantes" na tela de classificação do front-end, com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
+### 27 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end, com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
@@ -1819,9 +1833,11 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando "visitantes" na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos.
+
+- Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
