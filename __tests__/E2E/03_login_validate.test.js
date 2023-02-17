@@ -167,7 +167,7 @@ describe(getRequirement(10), () => {
       expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
-    expect(message).toBe('Incorrect email or password');
+    expect(message).toBe('Invalid email or password');
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -229,7 +229,7 @@ describe(getRequirement(10), () => {
       expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
-    expect(message).toBe('Incorrect email or password');
+    expect(message).toBe('Invalid email or password');
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
