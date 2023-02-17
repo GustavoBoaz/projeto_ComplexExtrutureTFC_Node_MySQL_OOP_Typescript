@@ -1105,6 +1105,8 @@ Esse projeto é composto de 4 fluxos principais:
  - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+  
+  - **Não** será avaliada a ordenação dos dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1113,6 +1115,16 @@ Esse projeto é composto de 4 fluxos principais:
 
 ```json
 [
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 6,
+    "goalsOwn": 1,
+  },
   {
     "name": "Santos",
     "totalPoints": 9,
@@ -1133,27 +1145,19 @@ Esse projeto é composto de 4 fluxos principais:
     "goalsFavor": 10,
     "goalsOwn": 5,
   },
-  {
-    "name": "Corinthians",
-    "totalPoints": 6,
-    "totalGames": 2,
-    "totalVictories": 2,
-    "totalDraws": 0,
-    "totalLosses": 0,
-    "goalsFavor": 6,
-    "goalsOwn": 1,
-  },
   ...
 ]
 ```
 
 </details>
 
-### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times "da casa" na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
+### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1358,9 +1362,11 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times "da casa" na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/home`, serão retornados os campos e valores corretos.
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
@@ -1565,11 +1571,13 @@ Esse projeto é composto de 4 fluxos principais:
 
 ## Leaderboard away
 
-### 26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times "visitantes" com as seguintes propriedades: `name`, `totalPoints`, `totalGames`, `totalVictories`, `totalDraws`, `totalLosses`, `goalsFavor` e `goalsOwn`
+### 26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times visitantes com as seguintes propriedades: `name`, `totalPoints`, `totalGames`, `totalVictories`, `totalDraws`, `totalLosses`, `goalsFavor` e `goalsOwn`
 
  - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - **Não** será avaliada a ordenação dos dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1579,16 +1587,6 @@ Esse projeto é composto de 4 fluxos principais:
 ```json
 [
   {
-    "name": "Palmeiras",
-    "totalPoints": 6,
-    "totalGames": 2,
-    "totalVictories": 2,
-    "totalDraws": 0,
-    "totalLosses": 0,
-    "goalsFavor": 7,
-    "goalsOwn": 0,
-  },
-  {
     "name": "Corinthians",
     "totalPoints": 6,
     "totalGames": 3,
@@ -1597,6 +1595,16 @@ Esse projeto é composto de 4 fluxos principais:
     "totalLosses": 1,
     "goalsFavor": 6,
     "goalsOwn": 2,
+  },
+  {
+    "name": "Palmeiras",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 7,
+    "goalsOwn": 0,
   },
   {
     "name": "Internacional",
@@ -1614,13 +1622,15 @@ Esse projeto é composto de 4 fluxos principais:
 
 </details>
 
-### 27 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando "visitantes" na tela de classificação do front-end, com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
+### 27 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end, com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
@@ -1823,9 +1833,11 @@ Esse projeto é composto de 4 fluxos principais:
 ```
 </details>
 
-### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando "visitantes" na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos.
+
+- Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
