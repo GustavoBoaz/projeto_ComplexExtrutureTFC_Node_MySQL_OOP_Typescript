@@ -1101,6 +1101,8 @@ Esse projeto é composto de 4 fluxos principais:
  - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+  
+  - **Não** será avaliada a ordenação dos dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1109,6 +1111,16 @@ Esse projeto é composto de 4 fluxos principais:
 
 ```json
 [
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 6,
+    "goalsOwn": 1,
+  },
   {
     "name": "Santos",
     "totalPoints": 9,
@@ -1129,16 +1141,6 @@ Esse projeto é composto de 4 fluxos principais:
     "goalsFavor": 10,
     "goalsOwn": 5,
   },
-  {
-    "name": "Corinthians",
-    "totalPoints": 6,
-    "totalGames": 2,
-    "totalVictories": 2,
-    "totalDraws": 0,
-    "totalLosses": 0,
-    "goalsFavor": 6,
-    "goalsOwn": 1,
-  },
   ...
 ]
 ```
@@ -1150,6 +1152,8 @@ Esse projeto é composto de 4 fluxos principais:
   - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1567,6 +1571,8 @@ Esse projeto é composto de 4 fluxos principais:
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
 
+  - **Não** será avaliada a ordenação dos dados;
+
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
    <details>
@@ -1574,16 +1580,6 @@ Esse projeto é composto de 4 fluxos principais:
 
 ```json
 [
-  {
-    "name": "Palmeiras",
-    "totalPoints": 6,
-    "totalGames": 2,
-    "totalVictories": 2,
-    "totalDraws": 0,
-    "totalLosses": 0,
-    "goalsFavor": 7,
-    "goalsOwn": 0,
-  },
   {
     "name": "Corinthians",
     "totalPoints": 6,
@@ -1593,6 +1589,16 @@ Esse projeto é composto de 4 fluxos principais:
     "totalLosses": 1,
     "goalsFavor": 6,
     "goalsOwn": 2,
+  },
+  {
+    "name": "Palmeiras",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 7,
+    "goalsOwn": 0,
   },
   {
     "name": "Internacional",
@@ -1617,6 +1623,8 @@ Esse projeto é composto de 4 fluxos principais:
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
