@@ -6,7 +6,7 @@ const { select } = require('../utils/query');
 const { dbReset, termSequelize, initSequelize } = require('../config/sequelize');
 const { puppeteerDefs, containerPorts } = require('../config/constants');
 const { normalize, getRequirement, delay } = require('../utils/util');
-const { insertInProgress, insertFinished } = require('../utils/inserts');
+const { insertInProgress, insertFinished, finishMatchInProgress } = require('../utils/inserts');
 const waitForResponse = require('../utils/waitForResponse');
 const { logAdmin } = require('../utils/logInto');
 const { StatusCodes } = require('http-status-codes');
@@ -103,33 +103,35 @@ describe(getRequirement(17), () => {
 
   it('Será validado que ao finalizar uma partida é alterado no banco de dados e na página', async () => {
 
-    const dadosInsert = {
-      homeTeam: teams[3].teamName,
-      awayTeam: teams[8].teamName,
-      homeGoals: twoGoals,
-      awayGoals: oneGoal
-    }
+    const matchId = 41;
 
-    await insertFinished(page, dadosInsert)
+    let showMatchesButton = await page.$(header.showMatchesButton);
+    await showMatchesButton.click();
 
-    const rows = await database.query(select.all.matches, { type: 'SELECT' });
-    const [matchInserted] = normalize([lastInsert(rows)])
+    await page.waitForTimeout(puppeteerDefs.pause.brief);
+    
+    const matchStatusBefore = await page.$eval(pageMatches.matchStatus(matchId), (el) => el.innerText);
+    expect(matchStatusBefore).toBe('Em andamento');
+    
+    const headerButtonLogin = await page.$(header.loginButton);
+    await headerButtonLogin.click();
 
-    expect(matchInserted.homeTeamId).toBe(teams[3].id);
-    expect(matchInserted.awayTeamId).toBe(teams[8].id);
-    expect(matchInserted.inProgress).toBe(0);
+    await logAdmin(page, containerPorts.frontend); 
+    
+    await finishMatchInProgress(page, matchId);
 
-    const showMatchesButton = await page.$(header.showMatchesButton);
+    showMatchesButton = await page.$(header.showMatchesButton);
     await showMatchesButton.click();
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
-    const homeTeam = await page.$eval(pageMatches.homeTeam(49), (el) => el.innerText);
-    const awayTeam = await page.$eval(pageMatches.awayTeam(49), (el) => el.innerText);
-    const matchStatus = await page.$eval(pageMatches.matchStatus(49), (el) => el.innerText);
+    const matchStatusAfter = await page.$eval(pageMatches.matchStatus(matchId), (el) => el.innerText);
 
-    expect(homeTeam).toBe(teams[3].teamName);
-    expect(awayTeam).toBe(teams[8].teamName);
-    expect(matchStatus).toBe('Finalizado');
+    expect(matchStatusAfter).toBe('Finalizado');
+
+    const row = await database.query(select.where.matches(`id = ${matchId}`), { type: 'SELECT' });
+    const [match] = normalize(row)
+
+    expect(match.inProgress).toBe(0);
   });
 });
 
@@ -391,5 +393,3 @@ describe(getRequirement(21), () => {
     expect(result.message).toBe("There is no team with such id!");
   });
 });
-
-// describe(getRequirement(27), () => {});
