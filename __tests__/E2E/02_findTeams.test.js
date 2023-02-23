@@ -23,7 +23,7 @@ afterEach(async () => {
 });
 
 
-describe(getRequirement(15), () => {
+describe(getRequirement(3), () => {
   it('O avaliador verificará se tentar fazer a requisição correta na sua API, os dados corretos são retornados', async () => {
     const expectedResult = [
       {
@@ -106,7 +106,7 @@ describe(getRequirement(15), () => {
   });
 });
 
-describe(getRequirement(16), () => {
+describe(getRequirement(5), () => {
   it('O avaliador verificará se tentar fazer a requisição correta na sua API, os dados corretos são retornados', async () => {
     const expectedResult = {
       "id": 5,

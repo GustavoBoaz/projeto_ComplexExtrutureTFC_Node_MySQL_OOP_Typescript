@@ -84,7 +84,36 @@ const insertFinished = async (page, { homeTeam = 'Corinthians', awayTeam = 'inte
   return body
 }
 
+/**
+ * @param {puppeteer.page} page
+ * @param {expectedResponseStatus: Number} expectedResponseStatus
+ * @returns {Promise<{ id: number, homeTeam: number, homeTeamGoals: number,  awayTeam: number, awayTeamGoals: number, inProgress: boolean } | {message: string}>}
+ */
+const finishMatchInProgress = async (page, matchId = 41, expectedResponseStatus = 201) => {
+  
+  const matchEditButton = await page.$(pageMatches.matchStatusBtn(matchId));
+  matchEditButton.click();
+  
+  await page.waitForTimeout(puppeteerDefs.pause.brief);
+  
+  const finishMatchButton = await page.$(pageMatchSettings.finishMatchButton);
+  finishMatchButton.click();
+  
+  const { body } = await waitForResponse({
+    page,
+    trigger: () => finishMatchButton.click(),
+    expectedRequestType: 'script',
+    expectedRequestMethod: 'PATCH',
+    expectedResponseStatus: 200,
+    expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/matches/${matchId}/finish`
+  });
+  await page.waitForTimeout(puppeteerDefs.pause.brief);
+
+  return body
+}
+
 module.exports = {
   insertInProgress,
-  insertFinished
+  insertFinished,
+  finishMatchInProgress,
 }

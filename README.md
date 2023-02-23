@@ -62,7 +62,7 @@ O projeto é composto de 4 entidades importantes para sua estrutura:
   - Recomendamos que sempre que implementar um requisito no back-end acesse a página no front-end que consome a implementação para validar se está funcionando como esperado.
 
 4️⃣ **Docker:**
-  - O `docker-compose` tem a responsabilidade de unir todos os serviços conteinerizados (backend, frontend e db) e subir o projeto completo com o comando `npm run compose:up` ou `npm run compose:up:dev`;
+  - O `docker-compose` tem a responsabilidade de unir todos os serviços conteinerizados (backend, frontend e db) e subir o projeto completo com o comando `npm run compose:up`;
   - Você **deve** configurar as `Dockerfiles` corretamente nas raízes do `front-end` e `back-end`, para conseguir inicializar a aplicação;
 
 </details>
@@ -186,8 +186,7 @@ Na sua máquina você deve ter:
 
 - Seu projeto vai conter um arquivo `docker-compose.yml` que será utilizado pelo avaliador para realizar o _build_ da aplicação, você **não** deve alterá-lo ou excluí-lo.
 - O arquivo `docker-compose.yml` também pode ser utilizado para executar a aplicação na sua máquina local, para isso é necessário executar o comando `npm run compose:up` na raiz do projeto.
-- Recomendamos que enquanto desenvolve o projeto prefira o usar o comando `npm run compose:up:dev` pois, diferente do comando anterior, este comando está configurado para compartilhar volumes com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao fazer modificações no _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá realizar o re-build do seu compose, pois o volume está mapeando somente alterações dentro da pasta `src`. Você pode verificar essas configurações explorando o arquivo `docker-compose.dev.yml` e comparar com `docker-compose.yml`
-- Obs.: Se você quiser fazer o build da sua aplicação usando o `docker-compose.dev.yml`, você pode usar o comando: `npm run compose:up:dev -- --build`.
+- Recomendamos que enquanto desenvolve o projeto, descomentar as linhas 26, 27 e 28 do arquivo `docker-compose.yml` pois, estas linhas configuram o compartilhamento de [volumes](https://docs.docker.com/storage/volumes/) com o _docker_ e também utiliza o _script_ que realiza o _live-reload_ ao fazer modificações no _back-end_. Somente quando instalar uma nova dependência ou alterar algum arquivo na raiz do backend, você deverá realizar o re-build do seu compose, pois o volume está mapeando somente alterações dentro da pasta `src`. Você pode verificar essas configurações explorando o arquivo `docker-compose.yml`
 
 >  👀 **De olho na dica:**
 > Lembre-se, você pode revisitar os conteúdos sobre Docker:
@@ -279,26 +278,6 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 
 </details>
 
-<details id='Variaveis-de-ambiente'>
-<summary><strong> ⚙️ Variáveis de ambiente </strong></summary><br />
-
-  **No diretório `app/backend/` renomeie o arquivo `.env.example` para `.env` e configure os valores de acordo com o cenário do seu ambiente (credenciais de banco de dados, secrets desejadas e etc)**. Isso vai permitir que você inicialize a aplicação fora do _container_ e ela se conecte com seu banco local caso deseje.
- > `./app/backend/.env.example`
-  ```txt
-  JWT_SECRET=jwt_secret
-  APP_PORT=3001
-  DB_USER=seu_user
-  DB_PASS=sua_senha
-  DB_HOST=localhost
-  DB_PORT=3306
-  ```
-
-  **⚠️ Variáveis de ambiente além das especificadas acima não são suportadas, pois não são esperadas pelo avaliador do projeto. ⚠️**
-
-  **⚠️ Não defina variável de ambiente para o nome do banco, o mesmo deve se manter com o nome `TRYBE_FUTEBOL_CLUBE`. ⚠️**
-
-</details>
-
 <details>
 <summary><strong> 📦 Pacotes externos</strong></summary><br />
 
@@ -317,7 +296,7 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 <details id='Criptografia-de-senhas'>
 <summary><strong>🔐 Criptografia de senhas </strong></summary><br />
 
-⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs) e que já vem instalada no projeto e não deve ser alterada ou substituída. Recomendamos que explore os recursos da biblioteca na documentação para implementar no projeto ao cadastrar um usuário e ao realizar login ⚠️
+⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://github.com/dcodeIO/bcrypt.js) e que já vem instalada no projeto e não deve ser alterada ou substituída. Recomendamos que explore os recursos da biblioteca na documentação para implementar no projeto ao cadastrar um usuário e ao realizar login ⚠️
 
 </details>
 
@@ -425,11 +404,11 @@ Aqui você encontrará orientações e dicas que ajudarão muito no desenvolvime
 </details>
 
 <details>
-  <summary><strong>🛠 Execução de testes localmente</strong></summary>
+  <summary><strong>🛠 Execução de testes em sua máquina</strong></summary>
 
 > :information_source: IMPORTANTE
 
-Para que os testes do projeto sejam executados localmente é necessário que todos os seus containers estejam no ar e saudáveis.
+Para que os testes do projeto sejam executados na sua máquina, é necessário que todos os seus containers estejam no ar e saudáveis.
 
 ### :eyes: executando os testes localmente
 
@@ -445,7 +424,6 @@ Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudá
 
 </details>
 
-
 <details>
   <summary><strong> 👀 Dicas e comandos úteis </strong></summary><br />
 
@@ -454,9 +432,13 @@ Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudá
   - Você pode **instalar suas aplicações (front e back)** rodando o comando `npm run install:apps` na pasta raiz do projeto;
   - Você pode rodar o avaliador **mostrando as operações que o navegador vai fazer no front-end** durante os testes E2E utilizando o comando `npm run test:browser`;
   - Você pode **debugar alguns erros do avaliador** (como por exemplo a validação do banco de dados, ou da compilação do TS), onde são *printadas* na tela algumas infos adicionais, utilizando o comando `npm run test:debug`;
-  - Você pode **subir ou descer uma aplicação do compose**, utilizando `npm run` com os scripts `compose:up`, `compose:down`, ou `compose:up:dev`, `compose:down:dev`;
+  - Você pode **subir ou descer uma aplicação do compose**, utilizando `npm run` com os scripts `compose:up`, `compose:down`;
   - Os comando de _compose_ anteriores estão configurados para executar o _docker-compose_ com o terminal desanexado (detached mode `-d`). Caso queira acompanhar os logs de um serviço em tempo real pelo terminal, basta executar `npm run logs [nome_do_servico]` onde _nome_do_servico_ é opcional e pode receber os serviços _backend_, _frontend_ ou _db_
   - Para criação da API com TS + POO, **recomenda-se fazer ou relembrar os exercícios** do conteúdo de POO e SOLID, especificamente o do dia de `SOLID - Introdução e Princípios S, O e D`, [nesse link](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/62c97d81-c729-445d-9e9f-f636a5c24231/day/d5d5de7d-7f64-4317-928c-1981fe076cd9/lesson/397a316e-f4a4-4516-9b61-389af92b019a).
+  - Para inicializar a aplicação fora do _container_ e conectá-la com seu banco local:
+    - No diretório `app/backend/` renomeie o arquivo `.env.example` para `.env`
+    - Configure os valores de acordo com o cenário do seu ambiente (credenciais de banco de dados, secrets desejadas e etc).
+    > Lembrando que para testar o projeto, é necessário que as aplicações estejam rodando dentro do Docker.
 
 </details>
 
@@ -504,11 +486,11 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 # Sobre os Requisitos
 
-Esse projeto é composto de 4 seções principais:
-1. Users e Login
-2. Times
-3. Partidas
-4. Placar
+Esse projeto é composto de 4 fluxos principais:
+1. Teams (Times)
+2. Users e Login (Pessoas Usuárias e Credenciais de acesso)
+3. Matches (Partidas)
+4. Leaderboards (Placares)
 
 ## Database
   - Comece rodando o comando `npm run build` na pasta do `back-end` para fazer o _build_ da aplicação;
@@ -516,129 +498,7 @@ Esse projeto é composto de 4 seções principais:
   - Mantenha o arquivo `/app/backend/src/database/migrations/99999999999999-create-z.js`, pois ele é necessário para a avaliação dos requisitos dessa seção;
   - A leitura da seção `Model com Sequelize` no conteúdo de `TypeScript: Tipagem Estática e Generics`, contido [nesse link](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/4e3b7d3a-94a1-4fce-9545-0f2b04f8ccd9/day/55580b57-6754-49bc-83bf-465967e0d2a1/lesson/70a59622-f05f-44cc-b3ce-6e5c28435f25), é recomendável!
 
-## Seção 1: Users e Login
-
-<details>
-  <summary><strong> Introdução </strong></summary>
-
-- A rota utilizada deve ser (`/login`);
-
-- A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados:
-  - O campo `email` deve receber um email válido;
-  - O Campo `password` deve ter mais de 6 caracteres.
-
-- O body da requisição deve conter o seguinte formato:
-  ```json
-  {
-    "email": "string",
-    "password": "string"
-  }
-  ```
-
-</details>
-
-<details>
-  <summary><strong> Requisitos </strong></summary>
-
-### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela `users`
-
-  - O avaliador consultará os dados da tabela `users`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades;
-
-### 2 - (`TDD`) Desenvolva testes que cubram no mínimo 5% dos arquivos back-end em `/src`, com um mínimo de 7 linhas cobertas
-
-  **Sugestões:**
-  - Baseando-se no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;
-  - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
-  - Para tanto, utilize/altere o arquivo de referência `app/backend/src/tests/change.me.test.ts`;
-  - Veja a seção de [Testes de cobertura](#testes-de-cobertura) para mais detalhes.
-
-### 3 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
-
-  - A rota de ser do tipo `POST`;
-
-  - O avaliador verificará se é possível fazer o login com dados corretos e que, após o acesso, será redirecionado para a tela de jogos.
-
-- As senhas que existem no banco de dados estão encriptadas. Veja a [seção de Criptografia de Senhas](#Criptografia-de-senhas) para mais detalhes de como comparar a senha do banco com a senha do corpo da requisição.
-
-- Se o login foi feito com sucesso, o resultado retornado deverá ser similar ao exibido abaixo, com um status http `200`:
-  ```json
-  {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTI3MTg5fQ.XS_9AA82iNoiVaASi0NtJpqOQ_gHSHhxrpIdigiT-fc" // Aqui deve ser o token gerado pelo backend.
-  }
-  ```
-
-### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 10% dos arquivos back-end em `/src`, com um mínimo de 19 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
-
-### 5 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso sem informar um email no front-end
-
-  - O avaliador verificará se fazer o login sem um email, haverá o retorno de status _bad request_.
-
-  - Se o login não tiver o campo "email", o resultado retornado deverá ser a mensagem abaixo, com um status http `400`:
-  ```json
-    { "message": "All fields must be filled" }
-  ```
-
-### 6 - (`TDD`) Desenvolva testes que cubram no mínimo 15% dos arquivos back-end em `/src`, com um mínimo de 25 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
-
-### 7 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso sem informar uma senha no front-end
-
-  - O avaliador verificará se fazer login sem senha, o retorno será status _bad request_.
-
-  - Se o login não tiver o campo "password", o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
-  ```json
-    { "message": "All fields must be filled" }
-  ```
-
-
-### 8 - (`TDD`) Desenvolva testes que cubram no mínimo 20% dos arquivos back-end em `/src`, com um mínimo de 35 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
-
-### 9 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email inválido no front-end
-
-  - O avaliador verificará se fazer o login com um email incorreto retornará status não-autorizado.
-
-  - Se o login tiver o "email" **inválido**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
-  ```json
-    { "message": "Incorrect email or password" }
-  ```
-
-
-### 10 - (`TDD`) Desenvolva testes que cubram no mínimo 30% dos arquivos back-end em `/src`, com um mínimo de 45 linhas cobertas
-
-  **Sugestão:**
-  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **os contratos dos próximos dois requisitos**.
-
-### 11 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com uma senha inválida no front-end
-
-  - O avaliador verificará se fazer o login com uma senha incorreta retornará status não-autorizado.
-
-  - Se o login tiver a "senha" **inválida**, o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`:
-  ```json
-    { "message": "Incorrect email or password" }
-  ```
-
-### 12 - Desenvolva o endpoint `/login/validate` no back-end de maneira que ele retorne os dados corretamente no front-end
-
-  - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization`, onde ficará armazenado o token gerado no login;
-
-  - O avaliador verificará se ao tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário.
-
-  A resposta deve ser de status `200` com um `objeto` contendo a `role` do *user*:
-  ```json
-    { "role": "admin" }
-  ```
-
-</details>
-
-## Seção 2: Times
+## Fluxo 1: Teams (Times)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -650,16 +510,23 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 13 - (`TDD`) Desenvolva testes que cubram no mínimo 45% dos arquivos back-end em `/src`, com um mínimo de 70 linhas cobertas
-
-  **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/teams`, utilizando o método `TDD`, considerando **os contratos dos próximos dois requisitos**. [Nessa seção](#sequelize) temos o diagrama de entidades.
-
-### 14 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `teams`
+### 1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de times
 
   - O avaliador consultará os dados da tabela `teams`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
-### 15 - Desenvolva o endpoint `/teams` no back-end de forma que ele possa retornar todos os times corretamente
+  > 👀 **De olho na dica:**
+  > Lembre-se você pode revisitar os conteúdos sobre Model com Sequelize:
+  > - [Model com Sequelize](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/4e3b7d3a-94a1-4fce-9545-0f2b04f8ccd9/day/55580b57-6754-49bc-83bf-465967e0d2a1/lesson/70a59622-f05f-44cc-b3ce-6e5c28435f25)
+
+### 2 - (`TDD`) Desenvolva testes que cubram no mínimo 5 por cento dos arquivos em `/app/backend/src`, com um mínimo de 7 linhas cobertas
+
+  **Sugestões:**
+  - Baseando-se no contrato do endpoint `/teams` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;
+  - Nesse primeiro momento, foque em desenvolver o que pede o requisito, progredindo gradualmente a partir disso;
+  - Para tanto, utilize/altere o arquivo de referência `app/backend/src/tests/change.me.test.ts`;
+  - Veja a seção de [Testes de cobertura](#testes-de-cobertura) para mais detalhes.
+
+### 3 - Desenvolva o endpoint `/teams` no back-end de forma que ele possa retornar todos os times corretamente
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -681,7 +548,12 @@ Esse projeto é composto de 4 seções principais:
 ]
 ```
 
-### 16 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico
+### 4 - (`TDD`) Desenvolva testes que cubram no mínimo 10 por cento dos arquivos em `/app/backend/src`, com um mínimo de 19 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/teams`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
+
+### 5 - Desenvolva o endpoint `/teams/:id` no back-end de forma que ele possa retornar dados de um time específico
 
   - Deve ser uma rota `GET` com resposta com status `200` e com um `json` contendo o retorno no seguinte modelo:
 
@@ -692,14 +564,133 @@ Esse projeto é composto de 4 seções principais:
 }
 ```
 
-### 17 - (`TDD`) Desenvolva testes que cubram no mínimo 60% dos arquivos back-end em `/src`, com um mínimo de 80 linhas cobertas
+</details>
 
-  **Sugestão:**
-  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos três requisitos**.
+## Fluxo 2: Users e Login (Pessoas Usuárias e Credenciais de acesso)
+
+<details>
+  <summary><strong> Introdução </strong></summary>
+
+- A rota utilizada deve ser (`/login`);
+
+- A rota deve receber os campos `email` e `password` e esses campos devem ser validados no banco de dados:
+  - O campo `email` deve receber um email válido. Ex: `tfc@projeto.com`;
+  - O campo `password` deve ter mais de 6 caracteres.
+  - Além de válidos, é necessário que o email e a senha estejam cadastrados no banco para ser feito o login;
+
+- O body da requisição deve conter o seguinte formato:
+  ```json
+  {
+    "email": "string",
+    "password": "string"
+  }
+  ```
 
 </details>
 
-## Seção 3: Partidas
+<details>
+  <summary><strong> Requisitos </strong></summary>
+
+### 6 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de pessoas usuárias
+
+  - O avaliador consultará os dados da tabela `users`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades;
+
+### 7 - (`TDD`) Desenvolva testes que cubram no mínimo 15 por cento dos arquivos em `/app/backend/src`, com um mínimo de 25 linhas cobertas
+
+  **Sugestão:**
+  - Baseando-se no contrato do endpoint `/login` **do próximo requisito**, inicie um teste de integração utilizando a metodologia `TDD` com a implementação do requisito seguinte;
+
+### 8 - Desenvolva o endpoint `/login` no back-end de maneira que ele permita o acesso com dados válidos no front-end
+
+  - A rota de ser do tipo `POST`;
+
+  - O avaliador verificará se é possível fazer o login com dados corretos e que, após o acesso, será redirecionado para a tela de jogos.
+
+  - O endpoint `/login` no back-end não deve permitir o acesso sem informar um email no front-end
+
+  - O endpoint `/login` no back-end não deve permitir o acesso sem informar uma senha no front-end
+
+  - As senhas que existem no banco de dados estão encriptadas. Veja a [seção de Criptografia de Senhas](#Criptografia-de-senhas) para mais detalhes de como comparar a senha do banco com a senha do corpo da requisição.
+
+  - Se o login foi feito com sucesso, o resultado retornado deverá ser similar ao exibido abaixo, com um status http `200`:
+
+    ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjU0NTI3MTg5fQ.XS_9AA82iNoiVaASi0NtJpqOQ_gHSHhxrpIdigiT-fc" // Aqui deve ser o token gerado pelo backend.
+    }
+    ```
+
+  - O avaliador verificará se fazer o login sem um email, haverá o retorno de status _bad request_.
+
+  - Se o login não tiver o campo "email", o resultado retornado deverá ser a mensagem abaixo, com um status http `400`:
+
+    ```json
+    { "message": "All fields must be filled" }
+    ```
+
+  - O avaliador verificará se fazer login sem senha, o retorno será status _bad request_.
+
+  - Se o login não tiver o campo "password", o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+
+    ```json
+    { "message": "All fields must be filled" }
+    ```
+
+### 9 - (`TDD`) Desenvolva testes que cubram no mínimo 20 por cento dos arquivos em `/app/backend/src`, com um mínimo de 35 linhas cobertas
+
+  **Sugestão:**
+  - Evolua os testes de integração da sua rota `/login`, utilizando o método `TDD`, agora considerando **o contrato do próximo requisito**.
+
+### 10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email não cadastrado ou senha incorreta no front-end
+
+- Se o login tiver o "email" **inválido** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
+
+  ```json
+    { "message": "Invalid email or password" }
+  ```
+
+- Sendo emails inválidos:
+  - Emails com formato inválido: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`;
+  - Emails com formato válido, mas não cadastrados no banco;
+- Sendo senhas inválidas:
+  - Senhas com formato inválido: com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`;
+  - Senhas com formato válido, mas não cadastradas no banco;
+
+### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos em `/app/backend/src`, com um mínimo de 45 linhas cobertas
+
+  **Sugestão:**
+- Baseando-se no contrato do endpoint `/login/role` **do próximo requisito**, inicie um teste de integração utilizando a metodologia TDD com a implementação do requisito seguinte;
+
+### 12 - Desenvolva um middleware de validação para o `token`, verificando se ele é válido, e desenvolva o endpoint `/login/role` no back-end de maneira que ele retorne os dados corretamente no front-end
+
+  - Deve ser uma rota `GET` que receba um `header` com parâmetro `authorization`, onde ficará armazenado o token gerado no login;
+
+  - Será validado na API que não é possível retornar um objeto com o tipo de usuário, sem um token;
+
+  - Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+  - Será validado na API que não é possível retornar um objeto com o tipo de usuário, com um token inválido
+
+  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+  - O avaliador verificará se ao tentar bater na rota com um token válido, o mesmo retornará o tipo de usuário.
+
+  A resposta deve ser de status `200` com um `objeto` contendo a `role` do *user*:
+  ```json
+    { "role": "admin" }
+  ```
+
+</details>
+
+## Fluxo 3: Matches (Partidas)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -711,17 +702,24 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
-### 18 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de `matches`
+### 13 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de partidas
 
-  - O avaliador consultará os dados da tabela `matches`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
+- O avaliador consultará os dados da tabela `matches`, verificando se ela contém os dados iniciais corretos. [Nessa seção](#sequelize) temos o diagrama de entidades.
 
-### 19 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end.
+### 14 - (`TDD`) Desenvolva testes que cubram no mínimo 45 por cento dos arquivos em `/app/backend/src`, com um mínimo de 70 linhas cobertas
 
-  - A rota deve ser um `GET` e retorna uma lista de partidas;
+  **Sugestão:**
 
-  - Será validado que a página apresentará todos os dados de partidas sem nenhum filtro.
+- Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, considerando **os contratos dos próximos requisitos**. [Nessa seção](#sequelize) temos o diagrama de entidades.
+
+### 15 - Desenvolva o endpoint `/matches` de forma que os dados apareçam corretamente na tela de partidas no front-end
+
+- A rota deve ser um `GET` e retorna uma lista de partidas;
+
+- Será validado que a página apresentará todos os dados de partidas sem nenhum filtro.
 
     Exemplo de retorno:
+
     ```json
     [
       {
@@ -756,9 +754,9 @@ Esse projeto é composto de 4 seções principais:
     ]
     ```
 
-  - **OBS:** Você deverá definir os relacionamentos para ```homeTeam``` e ```awayTeam``` somente na model de partidas.
+- **OBS:** Você deverá definir os relacionamentos para ```homeTeam``` e ```awayTeam``` somente na model de partidas.
 
-### 20 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas em andamento na tela de partidas do front-end
+### 16 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar somente as partidas em andamento, e também filtrar somente as partidas finalizadas, na tela de partidas do front-end
 
   - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
 
@@ -801,10 +799,6 @@ Esse projeto é composto de 4 seções principais:
   ]
   ```
 
-### 21 - Desenvolva o endpoint `/matches` de forma que seja possível filtrar as partidas finalizadas na tela de partidas do front-end
-
-  - A rota deverá ser do tipo `GET` e retornar uma lista de partidas filtradas;
-
   - Será validado que,ao escolher a opção de partidas finalizadas, serão filtradas todas as partidas finalizadas;
 
   - Essa requisição deverá usar `query string` para definir o parâmetro.
@@ -844,20 +838,100 @@ Esse projeto é composto de 4 seções principais:
   ]
   ```
 
-### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80% dos arquivos back-end em `/src`, com um mínimo de 100 linhas cobertas
+### 17 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível finalizar uma partida no banco de dados
+
+- A rota deve ser do tipo `PATCH`;
+
+- Será recebido o `id` pelo parâmetro da URL;
+
+- Será validado que não é possível alterar uma partida sem um token;
+
+- Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+- Será validado que não é possível alterar uma partida com um token inválido;
+
+- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+- Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
+
+- Deve-se retornar, com um status `200`, a seguinte mensagem:
+
+  ```json
+  { "message": "Finished" }
+  ```
+
+### 18 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
+
+- O endpoint deve ser do tipo `PATCH`;
+
+- Será recebido o `id` pelo parâmetro da URL;
+
+- Será validado que não é possível alterar uma partida sem um token;
+
+- Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token not found" }
+  ```
+
+- Será validado que não é possível alterar uma partida com um token inválido;
+
+- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+- Será avaliado que é possível alterar o resultado de uma partida.
+
+- O corpo da requisição terá o seguinte formato:
+
+  ```json
+  {
+    "homeTeamGoals": 3,
+    "awayTeamGoals": 1
+  }
+  ```
+
+- Será avaliado que é o endpoint responde à requisição com um status `200` e qualquer corpo.
+
+### 19 - (`TDD`) Desenvolva testes que cubram no mínimo 60 por cento dos arquivos em `/app/backend/src`, com um mínimo de 80 linhas cobertas
 
   **Sugestão:**
-  - Evolua os testes de integração da sua rota `/matches`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
+  - Crie um novo teste de integração, agora da sua rota `/matches`, utilizando o método `TDD`, agora considerando **os contratos dos próximos requisitos**.
 
-### 23 - Desenvolva o endpoint `/matches` de modo que seja possível salvar uma partida com o status de inProgress como true no banco de dados
+### 20 - Desenvolva o endpoint `/matches` de modo que seja possível cadastrar uma nova partida em andamento no banco de dados
 
-  - A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
+- A rota deverá ser do tipo `POST` e retornar a partida inserida no banco de dados;
 
-  - Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
+- Será validado que não é possível inserir uma partida sem um token;
 
-  - A partida só pode ser criada com token JWT validado;
+- Caso o token não seja informado, deve-se retornar, com um status `401`, a seguinte mensagem:
 
-  - O corpo da requisição terá o seguinte formato:
+  ```json
+  { "message": "Token not found" }
+  ```
+
+- Será validado que não é possível inserir uma partida com um token inválido;
+
+- Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
+
+  ```json
+  { "message": "Token must be a valid token" }
+  ```
+
+- Será validado que é possível salvar um jogo no banco de dados e ver o jogo na página de jogos;
+
+- O corpo da requisição terá o seguinte formato:
+
   ```json
   {
     "homeTeamId": 16, // O valor deve ser o id do time
@@ -867,7 +941,7 @@ Esse projeto é composto de 4 seções principais:
   }
   ```
 
-  - Caso a partida seja inserida com sucesso, deve-se retornar os dados da partida, com _status_ `201`:
+- Caso a partida seja inserida com sucesso, deve-se retornar os dados da partida, com _status_ `201`:
 
   ```json
   {
@@ -880,31 +954,15 @@ Esse projeto é composto de 4 seções principais:
   }
   ```
 
-### 24 - Desenvolva o endpoint `/matches/:id/finish` de modo que seja possível alterar o status inProgress de uma partida para false no banco de dados
-
-  - A rota deve ser do tipo `PATCH`;
-
-  - Será recebido o `id` pelo parâmetro da URL;
-
-  - Será validado que, ao finalizar uma partida, a alteração é feita no banco de dados e na página.
-
-  - Deve-se retornar, com um status `200`, a seguinte mensagem:
-
-  ```json
-  { "message": "Finished" }
-  ```
-
-### 25 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais
+### 21 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com times iguais nem com um time que não existe na tabela de times
 
   - Será validado que não é possível inserir uma partida em que o `homeTeam` e o `awayTeam` sejam iguais, por exemplo: Barcelona x Barcelona;
 
-  - Caso isso ocorra, deve-se retornar, com um status `422`, a seguinte mensagem::
+  - Caso isso ocorra, deve-se retornar, com um status `422`, a seguinte mensagem:
 
   ```json
   { "message": "It is not possible to create a match with two equal teams" }
   ```
-
-### 26 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida com um time que não existe na tabela teams
 
   - Será validado que não é possível inserir uma partida com um time que não existe na tabela teams;
 
@@ -914,36 +972,9 @@ Esse projeto é composto de 4 seções principais:
   { "message": "There is no team with such id!" }
   ```
 
-### 27 - Desenvolva o endpoint `/matches` de forma que não seja possível inserir uma partida sem um token válido
-
-  - Será validado que não é possível inserir uma partida com um token inválido;
-
-  - Caso o token informado não seja válido, deve-se retornar, com um status `401`, a seguinte mensagem:
-
-  ```json
-  { "message": "Token must be a valid token" }
-  ```
-
-### 28 - Desenvolva o endpoint `/matches/:id` de forma que seja possível atualizar partidas em andamento
-
-  - O endpoint deve ser do tipo `PATCH`;
-
-  - Será recebido o `id` pelo parâmetro da URL;
-
-  - Será avaliado que é possível alterar o resultado de uma partida.
-
-  - O corpo da requisição terá o seguinte formato:
-  ```json
-  {
-    "homeTeamGoals": 3,
-    "awayTeamGoals": 1
-  }
-  ```
-  - Será avaliado que é o endpoint responde à requisição com um status `200` e qualquer corpo.
-
 </details>
 
-## Seção 4: Leaderboards (placares)
+## Fluxo 4: Leaderboards (Placares)
 
 <details>
   <summary><strong> Introdução </strong></summary>
@@ -1062,13 +1093,72 @@ Esse projeto é composto de 4 seções principais:
 <details>
   <summary><strong> Requisitos </strong></summary>
 
+
+### 22 - (`Bônus`; `TDD`) Desenvolva testes que cubram no mínimo 80 por cento dos arquivos em `/app/backend/src`, com um mínimo de 100 linhas cobertas
+
+  **Sugestão:**
+  - Crie os testes de integração para a rota `/leaderboard`, utilizando o método `TDD`, agora considerando **o contrato dos próximos requisitos**.
+
 ## Leaderboard Home
 
-### 29 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times `da casa` na tela de classificação do front-end com os dados iniciais do banco de dados
+ ### 23 - Desenvolva o endpoint `/leaderboard/home` de forma que retorne as informações do desempenho dos times da casa com as seguintes propriedades: `name`, `totalPoints`, `totalGames`, `totalVictories`, `totalDraws`, `totalLosses`, `goalsFavor` e `goalsOwn`
+
+ - O endpoint deverá ser do tipo `GET`;
+
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - **Não** será avaliada a ordenação dos dados;
+
+  - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+   <details>
+<summary><strong> Exemplo de retorno: </strong></summary> <br/>
+
+```json
+[
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 6,
+    "goalsOwn": 1,
+  },
+  {
+    "name": "Santos",
+    "totalPoints": 9,
+    "totalGames": 3,
+    "totalVictories": 3,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 9,
+    "goalsOwn": 3,
+  },
+  {
+    "name": "Palmeiras",
+    "totalPoints": 7,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 1,
+    "totalLosses": 0,
+    "goalsFavor": 10,
+    "goalsOwn": 5,
+  },
+  ...
+]
+```
+
+</details>
+
+### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
@@ -1273,9 +1363,11 @@ Esse projeto é composto de 4 seções principais:
 ```
 </details>
 
-### 30 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 25 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end, e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/home`, serão retornados os campos e valores corretos.
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
@@ -1480,13 +1572,66 @@ Esse projeto é composto de 4 seções principais:
 
 ## Leaderboard away
 
-### 31 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end, com os dados iniciais do banco de dados
+### 26 - Desenvolva o endpoint `/leaderboard/away` de forma que retorne as informações do desempenho dos times visitantes com as seguintes propriedades: `name`, `totalPoints`, `totalGames`, `totalVictories`, `totalDraws`, `totalLosses`, `goalsFavor` e `goalsOwn`
+
+ - O endpoint deverá ser do tipo `GET`;
+
+  - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos, considerando os dados iniciais do banco de dados;
+
+  - **Não** será avaliada a ordenação dos dados;
+
+  - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+   <details>
+<summary><strong> Exemplo de retorno: </strong></summary> <br/>
+
+```json
+[
+  {
+    "name": "Corinthians",
+    "totalPoints": 6,
+    "totalGames": 3,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 1,
+    "goalsFavor": 6,
+    "goalsOwn": 2,
+  },
+  {
+    "name": "Palmeiras",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 7,
+    "goalsOwn": 0,
+  },
+  {
+    "name": "Internacional",
+    "totalPoints": 6,
+    "totalGames": 2,
+    "totalVictories": 2,
+    "totalDraws": 0,
+    "totalLosses": 0,
+    "goalsFavor": 3,
+    "goalsOwn": 0,
+  },
+  ...
+]
+```
+
+</details>
+
+### 27 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end, com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
   - O endpoint deverá ser do tipo `GET`;
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados;
 
   - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
+
+  - Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
@@ -1689,9 +1834,11 @@ Esse projeto é composto de 4 seções principais:
 ```
 </details>
 
-### 32 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
+### 28 - Desenvolva o endpoint `/leaderboard/away` de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end e atualizar a tabela ao inserir a partida Corinthians 2 X 1 Internacional
 
   - Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint `/leaderboard/away`, serão retornados os campos e valores corretos.
+
+- Será avaliado se os dados estão ordenados conforme as regras de negócio definidas na [Introdução do fluxo 4](#fluxo-4-leaderboards-placares);
 
 <details>
 <summary><strong> Retorno esperado: </strong></summary> <br/>
@@ -1896,7 +2043,7 @@ Esse projeto é composto de 4 seções principais:
 
 ## Leaderboard
 
-### 33 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
+### 29 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end com os dados iniciais do banco de dados
 
   - O endpoint deverá ser do tipo `GET`;
 
@@ -2105,7 +2252,7 @@ Esse projeto é composto de 4 seções principais:
 ```
 </details>
 
-### 34 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
+### 30 - (`Bônus`) Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC
 
   - Será avaliado que após acrescentar a partida Flamengo 3 X 0 Napoli-SC e fazer a requisição ao endpoint /leaderboard, serão retornados os campos e valores corretos.
 
@@ -2309,211 +2456,3 @@ Esse projeto é composto de 4 seções principais:
 ]
 ```
 </details>
-
-### 35 - Desenvolva o endpoint /leaderboard de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Minas Brasília 1 X 0 Ferroviária
-
-  - Será avaliado que após acrescentar a partida Minas Brasília 1 X 0 Ferroviária e fazer a requisição ao endpoint /leaderboard, serão retornados os campos e valores corretos.
-
-<details>
-<summary><strong> Retorno esperado: </strong></summary> <br/>
-
-```json
-[
-  {
-    "name": "Palmeiras",
-    "totalPoints": 13,
-    "totalGames": 5,
-    "totalVictories": 4,
-    "totalDraws": 1,
-    "totalLosses": 0,
-    "goalsFavor": 17,
-    "goalsOwn": 5,
-    "goalsBalance": 12,
-    "efficiency": "86.67"
-  },
-  {
-    "name": "Corinthians",
-    "totalPoints": 12,
-    "totalGames": 5,
-    "totalVictories": 4,
-    "totalDraws": 0,
-    "totalLosses": 1,
-    "goalsFavor": 12,
-    "goalsOwn": 3,
-    "goalsBalance": 9,
-    "efficiency": "80.00"
-  },
-  {
-    "name": "Santos",
-    "totalPoints": 11,
-    "totalGames": 5,
-    "totalVictories": 3,
-    "totalDraws": 2,
-    "totalLosses": 0,
-    "goalsFavor": 12,
-    "goalsOwn": 6,
-    "goalsBalance": 6,
-    "efficiency": "73.33"
-  },
-  {
-    "name": "Grêmio",
-    "totalPoints": 10,
-    "totalGames": 5,
-    "totalVictories": 3,
-    "totalDraws": 1,
-    "totalLosses": 1,
-    "goalsFavor": 9,
-    "goalsOwn": 8,
-    "goalsBalance": 1,
-    "efficiency": "66.67"
-  },
-  {
-    "name": "Internacional",
-    "totalPoints": 10,
-    "totalGames": 5,
-    "totalVictories": 3,
-    "totalDraws": 1,
-    "totalLosses": 1,
-    "goalsFavor": 7,
-    "goalsOwn": 6,
-    "goalsBalance": 1,
-    "efficiency": "66.67"
-  },
-  {
-    "name": "Real Brasília",
-    "totalPoints": 10,
-    "totalGames": 5,
-    "totalVictories": 3,
-    "totalDraws": 1,
-    "totalLosses": 1,
-    "goalsFavor": 5,
-    "goalsOwn": 4,
-    "goalsBalance": 1,
-    "efficiency": "66.67"
-  },
-  {
-    "name": "São Paulo",
-    "totalPoints": 8,
-    "totalGames": 5,
-    "totalVictories": 2,
-    "totalDraws": 2,
-    "totalLosses": 1,
-    "goalsFavor": 9,
-    "goalsOwn": 6,
-    "goalsBalance": 3,
-    "efficiency": "53.33"
-  },
-  {
-    "name": "Ferroviária",
-    "totalPoints": 7,
-    "totalGames": 6,
-    "totalVictories": 2,
-    "totalDraws": 1,
-    "totalLosses": 3,
-    "goalsFavor": 7,
-    "goalsOwn": 8,
-    "goalsBalance": -1,
-    "efficiency": "38.89"
-  },
-  {
-    "name": "São José-SP",
-    "totalPoints": 6,
-    "totalGames": 5,
-    "totalVictories": 2,
-    "totalDraws": 0,
-    "totalLosses": 3,
-    "goalsFavor": 5,
-    "goalsOwn": 6,
-    "goalsBalance": -1,
-    "efficiency": "40.00"
-  },
-  {
-    "name": "Flamengo",
-    "totalPoints": 5,
-    "totalGames": 5,
-    "totalVictories": 1,
-    "totalDraws": 2,
-    "totalLosses": 2,
-    "goalsFavor": 2,
-    "goalsOwn": 5,
-    "goalsBalance": -3,
-    "efficiency": "33.33"
-  },
-  {
-    "name": "Minas Brasília",
-    "totalPoints": 5,
-    "totalGames": 6,
-    "totalVictories": 1,
-    "totalDraws": 2,
-    "totalLosses": 3,
-    "goalsFavor": 5,
-    "goalsOwn": 9,
-    "goalsBalance": -4,
-    "efficiency": "27.78"
-  },
-  {
-    "name": "Cruzeiro",
-    "totalPoints": 4,
-    "totalGames": 5,
-    "totalVictories": 1,
-    "totalDraws": 1,
-    "totalLosses": 3,
-    "goalsFavor": 8,
-    "goalsOwn": 10,
-    "goalsBalance": -2,
-    "efficiency": "26.67"
-  },
-  {
-    "name": "Avaí/Kindermann",
-    "totalPoints": 4,
-    "totalGames": 5,
-    "totalVictories": 1,
-    "totalDraws": 1,
-    "totalLosses": 3,
-    "goalsFavor": 4,
-    "goalsOwn": 8,
-    "goalsBalance": -4,
-    "efficiency": "26.67"
-  },
-  {
-    "name": "Botafogo",
-    "totalPoints": 4,
-    "totalGames": 5,
-    "totalVictories": 1,
-    "totalDraws": 1,
-    "totalLosses": 3,
-    "goalsFavor": 3,
-    "goalsOwn": 8,
-    "goalsBalance": -5,
-    "efficiency": "26.67"
-  },
-  {
-    "name": "Bahia",
-    "totalPoints": 2,
-    "totalGames": 5,
-    "totalVictories": 0,
-    "totalDraws": 2,
-    "totalLosses": 3,
-    "goalsFavor": 2,
-    "goalsOwn": 6,
-    "goalsBalance": -4,
-    "efficiency": "13.33"
-  },
-  {
-    "name": "Napoli-SC",
-    "totalPoints": 2,
-    "totalGames": 5,
-    "totalVictories": 0,
-    "totalDraws": 2,
-    "totalLosses": 3,
-    "goalsFavor": 3,
-    "goalsOwn": 12,
-    "goalsBalance": -9,
-    "efficiency": "13.33"
-  }
-]
-```
-</details>
-
-</details>
-
