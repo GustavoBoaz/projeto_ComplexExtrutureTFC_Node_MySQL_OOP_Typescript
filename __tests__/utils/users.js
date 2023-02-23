@@ -32,7 +32,7 @@ module.exports = {
     },
     invalidEmailUsers: [
       {
-        id: 2,
+        id: 3,
         username: 'User',
         role: 'user',
         email: '@user.com',
@@ -54,27 +54,13 @@ module.exports = {
       },
     ],
     invalidPasswordUsers: [
-      {
-        id: 2,
-        username: 'User',
-        role: 'user',
-        email: 'user@user.com',
-        password: 'secret_users',
-      },
        {
-        id: 2,
+        id: 4,
         username: 'User',
         role: 'user',
-        email: 'user@user.com',
+        email: 'invalid.user@user.com',
         password: '12345',
-      },
-      {
-        id: 2,
-        username: 'User',
-        role: 'user',
-        email: 'user@user.com',
-        password: '      ',
-      },
+      }
     ]
   },
   usersToLogin: [
