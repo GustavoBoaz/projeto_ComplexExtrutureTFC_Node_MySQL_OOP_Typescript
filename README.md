@@ -643,23 +643,18 @@ Esse projeto é composto de 4 fluxos principais:
 
 ### 10 - Desenvolva o endpoint `/login` no back-end de maneira que ele não permita o acesso com um email não cadastrado ou senha incorreta no front-end
 
-- O avaliador verificará se, ao fazer o login com um email não cadastrado ou senha incorreta, retornará status não-autorizado.
-
-- Se o login tiver o "email" ou a "senha" **não cadastrados no banco de dados**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
-
-  ```json
-    { "message": "Incorrect email or password" }
-  ```
-
-- Se o login tiver o "email" ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
+- Se o login tiver o "email" **inválido** ou a "senha" **inválida**, o resultado retornado será similar ao exibido abaixo, com um status http `401`:
 
   ```json
     { "message": "Invalid email or password" }
   ```
 
-- Sendo emails inválidos: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`, emails não cadastrados no banco;
-
-- Sendo senhas inválidas, com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`, senhas não cadastradas no banco;
+- Sendo emails inválidos:
+  - Emails com formato inválido: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`;
+  - Emails com formato válido, mas não cadastrados no banco;
+- Sendo senhas inválidas:
+  - Senhas com formato inválido: com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`;
+  - Senhas com formato válido, mas não cadastradas no banco;
 
 ### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos em `/app/backend/src`, com um mínimo de 45 linhas cobertas
 

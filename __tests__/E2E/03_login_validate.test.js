@@ -135,7 +135,7 @@ describe(getRequirement(10), () => {
       expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
-    expect(message).toBe('Incorrect email or password');
+    expect(message).toBe('Invalid email or password');
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -197,7 +197,7 @@ describe(getRequirement(10), () => {
       expectedResponseUrl: `${URL(containerPorts.backend).BASE_URL}/login`
     });
 
-    expect(message).toBe('Incorrect email or password');
+    expect(message).toBe('Invalid email or password');
 
     await page.waitForTimeout(puppeteerDefs.pause.brief);
 
@@ -281,9 +281,7 @@ describe(getRequirement(12), () => {
     expect(result.message).toBe("Token must be a valid token");
   });
 
-  it('O avaliador verificará se ao tentar enviar um token válido no header authorization, o endpoint retornará um objeto com o tipo de usuário', async () => {
-    const randomPosition = () => Math.floor(Math.random() * 2);
-    const userToLogin = usersToLogin[randomPosition()]
+  it.each(usersToLogin)('O avaliador verificará se ao tentar enviar um token válido no header authorization, o endpoint retornará um objeto com o tipo de usuário', async (userToLogin) => {
     const expectedResult = { "role": userToLogin.role }
     const { data: { token } } = await axios.post(`${URL(containerPorts.backend).BASE_URL}/login`, {
       "email": userToLogin.email,
