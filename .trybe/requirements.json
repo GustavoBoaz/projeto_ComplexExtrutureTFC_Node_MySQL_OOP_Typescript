@@ -2,7 +2,7 @@
   "requirements": [
     {
       "bonus": false,
-      "description": "1 - Desenvolva em /app/backend/src/database nas pastas correspondentes, uma migration e um model para a tabela de users",
+      "description": "1 - Desenvolva em `/app/backend/src/database` nas pastas correspondentes, uma migration e um model para a tabela de times",
       "enabled": true,
       "identifier": null,
       "order": 1,
@@ -234,7 +234,7 @@
     },
     {
       "bonus": true,
-      "description": "30 - Desenvolva o endpoint /leaderboard/home de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do frontend e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada",
+      "description": "30 - Desenvolva o endpoint `/leaderboard` de forma que seja possível filtrar a classificação geral dos times na tela de classificação do front-end e atualizar a tabela ao inserir a partida Flamengo 3 X 0 Napoli-SC",
       "enabled": true,
       "identifier": null,
       "order": 30,
