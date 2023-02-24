@@ -653,7 +653,7 @@ Esse projeto é composto de 4 fluxos principais:
   - Emails com formato inválido: `@exemplo.com`, `exemplo@exemplo`, `exemplo@.com`, `exemplo.exemplo.com`;
   - Emails com formato válido, mas não cadastrados no banco;
 - Sendo senhas inválidas:
-  - Senhas com formato inválido: com um tamanho **menor** do que `6 caracteres`, `vazias` ou `undefined`;
+  - Senhas com formato inválido: com um tamanho **menor** do que `6 caracteres`;
   - Senhas com formato válido, mas não cadastradas no banco;
 
 ### 11 - (`TDD`) Desenvolva testes que cubram no mínimo 30 por cento dos arquivos em `/app/backend/src`, com um mínimo de 45 linhas cobertas
