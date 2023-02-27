@@ -1,15 +1,20 @@
+import 'express-async-errors';
 import * as express from 'express';
+import AuthController from './api/controllers/AuthController';
+import MatchController from './api/controllers/MatchController';
+import TeamController from './api/controllers/TeamController';
+import ErrorHandler from './api/middlewares/ErrorHandler';
 
 class App {
   public app: express.Express;
 
   constructor() {
     this.app = express();
-
     this.config();
-
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
+    this.initRoutes();
+    this.initMiddlewares();
   }
 
   private config():void {
@@ -22,6 +27,16 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+  }
+
+  private initMiddlewares(): void {
+    this.app.use(ErrorHandler.handle);
+  }
+
+  private initRoutes(): void {
+    this.app.use('/teams', new TeamController().initRoutes());
+    this.app.use('/login', new AuthController().initRoutes());
+    this.app.use('/matches', new MatchController().initRoutes());
   }
 
   public start(PORT: string | number):void {
