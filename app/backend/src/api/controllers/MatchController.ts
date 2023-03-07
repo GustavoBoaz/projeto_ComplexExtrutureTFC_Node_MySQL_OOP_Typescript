@@ -9,7 +9,6 @@ import AController from './AController';
 export default class MatchController extends AController<IServiceMatch<Match>> {
   private async all(req: Request, res: Response): Promise<Response> {
     const result = await this.service.readAll(req.query.inProgress as string);
-    console.table(result);
     return res.status(200).json(result);
   }
 
